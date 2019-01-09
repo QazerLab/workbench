@@ -1,0 +1,15 @@
+---
+- name: deploy common configurations
+  hosts: all
+  roles:
+    - role: dotfiles-minimal
+      vars:
+        vim_plugins:
+          - nerdtree
+          - syntastic
+          - fugitive
+          - mru
+          - rust
+          - rustdoc
+          - commandt
+          - youcompleteme

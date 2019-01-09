@@ -1,0 +1,27 @@
+# If not running interactively, don't do anything.
+[[ $- != *i* ]] && return
+
+PS1='\[\e[1;32m\]\t | \w>\n\[\e[1;37m\]\$ '
+PS2='> '
+PS3='> '
+PS4='+ '
+
+alias ls='ls --color=auto'
+alias grep='grep --color'
+
+alias mysql="mysql --pager=less"
+alias pacman='pacman --color always'
+
+# Common completions for well-known tools.
+[ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
+[ -r /usr/share/git/completion/git-completion.bash ] && . /usr/share/git/completion/git-completion.bash
+
+# Finally, give a chance to perform machine-specific configuration.
+# This configuration is not managed by Ansible.
+if [ -d ~/.bashrc.d ]
+then
+    for rcfile in ~/.bashrc.d/*
+    do
+        . "$rcfile"
+    done
+fi

@@ -1,0 +1,24 @@
+---
+- name: fail if {{ plugin }} plugin settings are not present
+  when: "vim_configs_plugins[plugin] is undefined"
+  fail:
+    msg: Plugin {{ plugin }} is unknown to this role!
+
+- name: download {{ plugin }} plugin
+  git:
+    repo: "{{ vim_configs_plugins[plugin].repo }}"
+    dest: "{{ bundle_dir }}/{{ plugin }}"
+    depth: 1
+    force: yes
+
+- name: install {{ plugin }} plugin config
+  when: vim_configs_plugins[plugin].requires_config
+  copy:
+    src: "vim/configs/{{ plugin }}.vim"
+    dest: "{{ configs_dir }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+
+- include_tasks: "vim_plugins/{{ plugin }}_build.yml"
+  when: vim_configs_plugins[plugin].requires_build

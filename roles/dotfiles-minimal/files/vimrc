@@ -1,0 +1,70 @@
+" Default backslash is a crap. Space is much more comfy and
+" its position is pretty consistent across keyboard layouts.
+let mapleader=" "
+
+" Of course, the most crucial thing...
+filetype plugin on
+
+" Colors, colors, colors!
+colorscheme qaztom
+syntax on
+
+" Indentation settings.
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+
+" Highlight tabs and trailing spaces.
+set list
+set listchars=tab:→\ ,trail:·
+nnoremap <Leader>et :set list!<CR>
+
+" YAML is a special case - 2-space indents are better here.
+autocmd FileType yaml setlocal softtabstop=2
+autocmd FileType yaml setlocal shiftwidth=2
+
+" Tabs in Makefiles are mandatory, so allow using them.
+autocmd FileType make setlocal listchars=tab:\ ,trail:·
+autocmd FileType make setlocal noexpandtab
+
+" No margin by default, but it is still crucial to have a possibility to check it.
+" 80, 100 and 120 are the most common limits.
+set colorcolumn=""
+nnoremap <leader>ew :execute "set colorcolumn=" . (&colorcolumn == "" ? "80,100,120" : "")<CR>
+
+" Allow hiding unsaved buffers when navigating away.
+set hidden
+
+" Backups and swaps are just annoying and pointless. Just use Git, Luke.
+set nobackup
+set noswapfile
+
+" Ignore this stuff in file listings and completions.
+set wildignore=*.class,*.jar,*.o,*.so,*.a,*.rlib,*.dylib,*.bin,*/target/*,*/build/*,.git,.hg,.svn
+
+" This one is too frequently used. It is more comfy to use it with space.
+nnoremap <Leader>w <C-w>
+
+" Absolute numbering by default, but toggleable to relative.
+set number
+nnoremap <Leader>er :set relativenumber!<CR>
+
+" Search highlight toggle. Off by default.
+set nohlsearch
+nnoremap <Leader>eh :set hlsearch!<CR>
+
+autocmd FileType json nnoremap <Leader>f :%!python -m json.tool<CR>
+
+
+
+" Bootstrap Pathogen and load plugins configurations.
+" Assume that Pathogen is the only plugin manager we can use.
+if filereadable(expand('~/.vim/autoload/pathogen.vim'))
+    execute pathogen#infect()
+
+    for plugin_cfg in split(globpath('~/.vim/configs', '*.vim'), '\n')
+      :execute 'source' plugin_cfg
+    endfor
+endif

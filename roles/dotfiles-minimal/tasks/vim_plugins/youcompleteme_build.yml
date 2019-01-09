@@ -1,0 +1,28 @@
+---
+- name: create youcompleteme build directory
+  file:
+    path: "{{ plugin_dir }}/build"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0755
+
+- name: prepare plugin for build
+  command: cmake -G "Unix Makefiles" . {{ plugin_dir }}/third_party/ycmd/cpp
+  args:
+    chdir: "{{ plugin_dir }}/build"
+
+- name: build youcompleteme plugin
+  command: cmake --build . --target ycm_core --config Release
+  args:
+    chdir: "{{ plugin_dir }}/build"
+
+- name: build racerd for youcompleteme plugin
+  command: cargo build --release
+  args:
+    chdir: "{{ plugin_dir }}/third_party/ycmd/third_party/racerd"
+
+- name: remove youcompleteme build directory
+  file:
+    path: "{{ plugin_dir }}/build"
+    state: absent

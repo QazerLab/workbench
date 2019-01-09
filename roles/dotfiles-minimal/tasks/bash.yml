@@ -1,0 +1,8 @@
+---
+- name: install .bashrc
+  copy:
+    src: bashrc
+    dest: "{{ home_dir }}/.bashrc"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644

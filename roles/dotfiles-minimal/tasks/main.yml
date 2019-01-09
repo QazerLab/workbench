@@ -1,0 +1,14 @@
+---
+- name: get home dir of {{ user }}
+  getent:
+    database: passwd
+    key: "{{ user }}"
+    split: ':'
+
+- name: store home dir of {{ user }}
+  set_fact:
+    home_dir: "{{ getent_passwd[user][4] }}"
+
+- include_tasks: bash.yml
+
+- include_tasks: vim.yml
