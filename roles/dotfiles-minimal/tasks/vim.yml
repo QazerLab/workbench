@@ -26,7 +26,6 @@
     dest: "{{ colors_dir }}"
     owner: "{{ user }}"
     group: "{{ user }}"
-    directory_mode: 0755
     mode: 0644
 
 - name: install .vimrc

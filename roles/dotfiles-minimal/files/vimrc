@@ -65,6 +65,6 @@ if filereadable(expand('~/.vim/autoload/pathogen.vim'))
     execute pathogen#infect()
 
     for plugin_cfg in split(globpath('~/.vim/configs', '*.vim'), '\n')
-      :execute 'source' plugin_cfg
+        :execute 'source' plugin_cfg
     endfor
 endif
