@@ -44,8 +44,9 @@ set noswapfile
 " Ignore this stuff in file listings and completions.
 set wildignore=*.class,*.jar,*.o,*.so,*.a,*.rlib,*.dylib,*.bin,*/target/*,*/build/*,.git,.hg,.svn
 
-" This one is too frequently used. It is more comfy to use it with space.
+" These ones are too frequently used. It is more comfy to use them with space.
 nnoremap <Leader>w <C-w>
+nnoremap <Leader>z <C-w>z
 
 " Absolute numbering by default, but toggleable to relative.
 set number
