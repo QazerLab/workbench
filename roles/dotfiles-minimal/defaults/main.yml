@@ -6,3 +6,5 @@ vim_plugins:
   - nerdtree
   - fugitive
   - mru
+
+rustup_toolchain: nightly-x86_64-unknown-linux-gnu

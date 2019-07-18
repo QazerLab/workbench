@@ -13,14 +13,19 @@
     chdir: "{{ plugin_dir }}/build"
 
 - name: build youcompleteme plugin
-  command: cmake --build . --target ycm_core --config Release
+  command: cmake --build . --target ycm_core
   args:
     chdir: "{{ plugin_dir }}/build"
 
-- name: build racerd for youcompleteme plugin
-  command: cargo build --release
-  args:
-    chdir: "{{ plugin_dir }}/third_party/ycmd/third_party/racerd"
+# XXX: here we diverge from YCM installation guide, which suggests installing
+# whole toolchain into the temporary directory and then copy it into YCM dir.
+# This is done to avoid syncing YCM with each rustup update - we just point YCM
+# to the user's default rustup home, assuming that the toolchain is present.
+- name: youcompleteme language support - Rust
+  file:
+    path: "{{ plugin_dir }}/third_party/ycmd/third_party/rls"
+    src: "{{ home_dir }}/.rustup/toolchains/{{ rustup_toolchain }}"
+    state: link
 
 - name: remove youcompleteme build directory
   file:

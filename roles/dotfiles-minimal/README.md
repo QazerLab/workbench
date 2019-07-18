@@ -35,7 +35,7 @@ For YCM vim plugin:
 * `python-dev`
 * `gcc`
 * `cmake`
-* `cargo` (for Rust stuff)
+* `rustup` and whole toolchain being installed (for Rust stuff)
 
 For Command-T vim plugin:
 
