@@ -26,7 +26,7 @@ autocmd FileType yaml setlocal softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2
 
 " Tabs in Makefiles are mandatory, so allow using them.
-autocmd FileType make setlocal listchars=tab:\ ,trail:·
+autocmd FileType make setlocal listchars=tab:\ \ ,trail:·
 autocmd FileType make setlocal noexpandtab
 
 " No margin by default, but it is still crucial to have a possibility to check it.
