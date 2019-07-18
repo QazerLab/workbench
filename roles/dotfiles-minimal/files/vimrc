@@ -29,6 +29,10 @@ autocmd FileType yaml setlocal shiftwidth=2
 autocmd FileType make setlocal listchars=tab:\ \ ,trail:·
 autocmd FileType make setlocal noexpandtab
 
+" The same is for Golang.
+autocmd FileType go setlocal listchars=tab:\ \ ,trail:·
+autocmd FileType go setlocal noexpandtab
+
 " No margin by default, but it is still crucial to have a possibility to check it.
 " 80, 100 and 120 are the most common limits.
 set colorcolumn=""
