@@ -2,6 +2,9 @@
 " its position is pretty consistent across keyboard layouts.
 let mapleader=" "
 
+" This is a bit controversal, but still better than Esc.
+:inoremap jk <Esc>
+
 " Of course, the most crucial thing...
 filetype plugin on
 
@@ -49,6 +52,7 @@ set noswapfile
 set wildignore=*.class,*.jar,*.o,*.so,*.a,*.rlib,*.dylib,*.bin,*/target/*,*/build/*,.git,.hg,.svn
 
 " These ones are too frequently used. It is more comfy to use them with space.
+nnoremap <Leader>q :q<CR>
 nnoremap <Leader>w <C-w>
 nnoremap <Leader>z <C-w>z
 
