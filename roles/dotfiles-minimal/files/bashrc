@@ -11,7 +11,7 @@ alias ll='ls -l'
 alias kc='kubectl'
 
 alias grep='grep --color'
-alias mysql="mysql --pager=less"
+alias mysql='mysql --pager=less'
 alias pacman='pacman --color always'
 
 # Common completions for well-known tools.
