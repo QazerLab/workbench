@@ -8,8 +8,9 @@ PS4='+ '
 
 alias ls='ls --color=auto'
 alias ll='ls -l'
-alias grep='grep --color'
+alias kc='kubectl'
 
+alias grep='grep --color'
 alias mysql="mysql --pager=less"
 alias pacman='pacman --color always'
 
