@@ -9,6 +9,10 @@
   set_fact:
     home_dir: "{{ getent_passwd[user][4] }}"
 
-- include_tasks: bash.yml
-
-- include_tasks: vim.yml
+- name: install .bashrc
+  copy:
+    src: bashrc
+    dest: "{{ home_dir }}/.bashrc"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644

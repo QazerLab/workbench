@@ -1,10 +1,9 @@
 dotfiles-minimal
 ================
 
-Installs minimal set of configuration files, which are useful both at desktop
+Installs minimal set of vim configuration files, which are useful both at desktop
 and server machines. Currently includes:
 
-* bash configuration
 * vanilla vim configuration
 * vim plugins and their configurations
 

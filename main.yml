@@ -2,7 +2,8 @@
 - name: deploy common configurations
   hosts: all
   roles:
-    - role: dotfiles-minimal
+    - role: bash
+    - role: vim
       vars:
         vim_plugins:
           - nerdtree

@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  description: minimal set of configurations
+  description: vim and configurations
   min_ansible_version: 2.4
 
 # XXX: software dependencies are not declared.
