@@ -18,6 +18,46 @@ alias pacman='pacman --color always'
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 [ -r /usr/share/git/completion/git-completion.bash ] && . /usr/share/git/completion/git-completion.bash
 
+# Diff between actual config and its default version in the installed package.
+#
+# $1 - file.
+function cdiff () {
+    if ! which pacman >/dev/null 2>&1
+    then
+        echo "cdiff currently works only on pacman-based distros!"
+        return 2
+    fi
+
+    pkg=$(pacman -Qoq "$1")
+    if [ $? -ne 0 ]
+    then
+        echo "Could not determine the file owner!"
+        return 2
+    fi
+
+    pkg_ver=$(pacman -Qi "$pkg" | grep Version | awk '{print $3}')
+    if [ $? -ne 0 ]
+    then
+        echo "Could not determine the package version!"
+        return 2
+    fi
+
+    pkg_name="$pkg-$pkg_ver-$(uname -m).pkg.tar.xz"
+    pkg_file="/var/cache/pacman/pkg/$pkg_name"
+    if [ ! -r "$pkg_file" ]
+    then
+        echo "Pacman cache does not contain $pkg_file or may not be read by you!"
+        return 2
+    fi
+
+    file_name=$(readlink -f "$1")
+
+    # Cut leading slash, cause in archive the path is relative
+    file_name_cut=${file_name:1}
+
+    xz -dc "/var/cache/pacman/pkg/$pkg_name" | tar -xO "$file_name_cut" | diff --color -u - "$file_name"
+}
+
 # Finally, give a chance to perform machine-specific configuration.
 # This configuration is not managed by Ansible.
 if [ -d ~/.bashrc.d ]
