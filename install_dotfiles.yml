@@ -1,0 +1,18 @@
+---
+- name: deploy common configurations
+  hosts: all
+  vars:
+    install_packages: false
+  roles:
+    - role: bash
+    - role: vim
+      vars:
+        vim_plugins:
+          - nerdtree
+          - syntastic
+          - fugitive
+          - mru
+          - rust
+          - rustdoc
+          - commandt
+          - youcompleteme

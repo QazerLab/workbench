@@ -1,7 +1,7 @@
 dotfiles-minimal
 ================
 
-Installs minimal set of vim configuration files, which are useful both at desktop
+Installs vim with minimal set of configuration files, which are useful both at desktop
 and server machines. Currently includes:
 
 * vanilla vim configuration
@@ -16,14 +16,13 @@ For this reason, only minimal set of trivial vim plugins is installed by default
 Requirements
 ------------
 
-This role is for unprivileged user-level things, thus, it *does not* cover
-installation of the software which is configured by the dotfiles. It also does not check
-the presence of external software dependencies (like `cargo` for `vim-rust` vim plugin).
+The role does not check the presence of external software dependencies (like `cargo` for `vim-rust` vim plugin).
 
 Role Variables
 --------------
 
 * `user` - a name of target user. Defaults to current (connection) user.
+* `install_packages` - if set to `false`, skips the package installation.
 * `vim_plugins` - a list of vim plugins to be installed.
 
 Dependencies

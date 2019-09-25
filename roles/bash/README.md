@@ -1,18 +1,18 @@
 bash
 ====
 
-Installs bash configurations.
+Installs bash and its configurations.
 
 Requirements
 ------------
 
-This role is for unprivileged user-level things, thus, it *does not* cover
-installation of the software which is configured by the dotfiles.
+None.
 
 Role Variables
 --------------
 
 * `user` - a name of target user. Defaults to current (connection) user.
+* `install_packages` - if set to `false`, skips the package installation.
 
 Dependencies
 ------------

@@ -1,5 +1,6 @@
 ---
 user: "{{ ansible_user_id }}"
+install_packages: true
 
 # By default, install only plugins which are unlikely to cause any pain.
 vim_plugins:

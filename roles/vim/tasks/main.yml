@@ -1,4 +1,11 @@
 ---
+- name: install vim
+  when: install_packages
+  become: true
+  package:
+    name: vim
+    state: present
+
 - name: get home dir of {{ user }}
   getent:
     database: passwd

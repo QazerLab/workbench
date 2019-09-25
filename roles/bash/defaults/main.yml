@@ -1,2 +1,3 @@
 ---
 user: "{{ ansible_user_id }}"
+install_packages: true
