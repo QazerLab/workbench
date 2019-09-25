@@ -1,38 +1,38 @@
 ---
-- name: create youcompleteme build directory
+- name: 'create youcompleteme build directory'
   file:
-    path: "{{ plugin_dir }}/build"
-    state: directory
-    owner: "{{ user }}"
-    group: "{{ user }}"
+    path: '{{ plugin_dir }}/build'
+    state: 'directory'
+    owner: '{{ user }}'
+    group: '{{ user }}'
     mode: 0755
 
-- name: prepare plugin for build
-  command: cmake -G "Unix Makefiles" . {{ plugin_dir }}/third_party/ycmd/cpp
+- name: 'prepare plugin for build'
+  command: 'cmake -G "Unix Makefiles" . {{ plugin_dir }}/third_party/ycmd/cpp'
   args:
-    chdir: "{{ plugin_dir }}/build"
+    chdir: '{{ plugin_dir }}/build'
 
-- name: build youcompleteme plugin
-  command: cmake --build . --target ycm_core
+- name: 'build youcompleteme plugin'
+  command: 'cmake --build . --target ycm_core'
   args:
-    chdir: "{{ plugin_dir }}/build"
+    chdir: '{{ plugin_dir }}/build'
 
-- name: youcompleteme language support - Golang
-  command: go build
+- name: 'youcompleteme language support - Golang'
+  command: 'go build'
   args:
-    chdir: "{{ plugin_dir }}/third_party/ycmd/third_party/go/src/golang.org/x/tools/cmd/gopls"
+    chdir: '{{ plugin_dir }}/third_party/ycmd/third_party/go/src/golang.org/x/tools/cmd/gopls'
 
 # XXX: here we diverge from YCM installation guide, which suggests installing
 # whole toolchain into the temporary directory and then copy it into YCM dir.
 # This is done to avoid syncing YCM with each rustup update - we just point YCM
 # to the user's default rustup home, assuming that the toolchain is present.
-- name: youcompleteme language support - Rust
+- name: 'youcompleteme language support - Rust'
   file:
-    path: "{{ plugin_dir }}/third_party/ycmd/third_party/rls"
-    src: "{{ home_dir }}/.rustup/toolchains/{{ rustup_toolchain }}"
-    state: link
+    path: '{{ plugin_dir }}/third_party/ycmd/third_party/rls'
+    src: '{{ home_dir }}/.rustup/toolchains/{{ rustup_toolchain }}'
+    state: 'link'
 
-- name: remove youcompleteme build directory
+- name: 'remove youcompleteme build directory'
   file:
-    path: "{{ plugin_dir }}/build"
-    state: absent
+    path: '{{ plugin_dir }}/build'
+    state: 'absent'

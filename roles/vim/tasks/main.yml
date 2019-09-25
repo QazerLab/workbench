@@ -1,19 +1,19 @@
 ---
-- name: install vim
-  when: install_packages
+- name: 'install vim'
+  when: 'install_packages'
   become: true
   package:
-    name: vim
-    state: present
+    name: 'vim'
+    state: 'present'
 
-- name: get home dir of {{ user }}
+- name: 'get home dir of {{ user }}'
   getent:
-    database: passwd
-    key: "{{ user }}"
+    database: 'passwd'
+    key: '{{ user }}'
     split: ':'
 
-- name: store home dir of {{ user }}
+- name: 'store home dir of {{ user }}'
   set_fact:
-    home_dir: "{{ getent_passwd[user][4] }}"
+    home_dir: '{{ getent_passwd[user][4] }}'
 
-- include_tasks: vim.yml
+- include_tasks: 'vim.yml'

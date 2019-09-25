@@ -1,53 +1,53 @@
 ---
-- name: store vim dirs locations
+- name: 'store vim dirs locations'
   set_fact:
-    autoload_dir: "{{ home_dir }}/.vim/autoload"
-    bundle_dir: "{{ home_dir }}/.vim/bundle"
-    colors_dir: "{{ home_dir}}/.vim/colors"
-    configs_dir: "{{ home_dir }}/.vim/configs"
+    autoload_dir: '{{ home_dir }}/.vim/autoload'
+    bundle_dir: '{{ home_dir }}/.vim/bundle'
+    colors_dir: '{{ home_dir}}/.vim/colors'
+    configs_dir: '{{ home_dir }}/.vim/configs'
 
-- name: ensure .vim directory and its children exist
+- name: 'ensure .vim directory and its children exist'
   loop:
-    - "{{ home_dir }}/.vim"
-    - "{{ autoload_dir }}"
-    - "{{ bundle_dir }}"
-    - "{{ colors_dir }}"
-    - "{{ configs_dir }}"
+    - '{{ home_dir }}/.vim'
+    - '{{ autoload_dir }}'
+    - '{{ bundle_dir }}'
+    - '{{ colors_dir }}'
+    - '{{ configs_dir }}'
   file:
-    path: "{{ item }}"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    state: directory
+    path: '{{ item }}'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    state: 'directory'
     mode: 0755
 
-- name: install custom color schemes
+- name: 'install custom color schemes'
   copy:
-    src: "vim/colors/"
-    dest: "{{ colors_dir }}"
-    owner: "{{ user }}"
-    group: "{{ user }}"
+    src: 'vim/colors/'
+    dest: '{{ colors_dir }}'
+    owner: '{{ user }}'
+    group: '{{ user }}'
     mode: 0644
 
-- name: install .vimrc
+- name: 'install .vimrc'
   copy:
-    src: vimrc
-    dest: "{{ home_dir }}/.vimrc"
-    owner: "{{ user }}"
-    group: "{{ user }}"
+    src: 'vimrc'
+    dest: '{{ home_dir }}/.vimrc'
+    owner: '{{ user }}'
+    group: '{{ user }}'
     mode: 0644
 
-- name: install pathogen
+- name: 'install pathogen'
   get_url:
-    url: "{{ vim_pathogen_url }}"
-    dest: "{{ autoload_dir }}/pathogen.vim"
-    owner: "{{ user }}"
-    group: "{{ user }}"
+    url: '{{ vim_pathogen_url }}'
+    dest: '{{ autoload_dir }}/pathogen.vim'
+    owner: '{{ user }}'
+    group: '{{ user }}'
     mode: 0644
 
 - with_items:
-    - "{{ vim_plugins }}"
-  include_tasks: vim_plugin.yml
+    - '{{ vim_plugins }}'
+  include_tasks: 'vim_plugin.yml'
   vars:
-    plugin_dir: "{{ bundle_dir }}/{{ plugin }}"
+    plugin_dir: '{{ bundle_dir }}/{{ plugin }}'
   loop_control:
-    loop_var: plugin
+    loop_var: 'plugin'

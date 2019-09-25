@@ -1,9 +1,9 @@
 ---
-- name: configure commandt plugin build
-  command: ruby extconf.rb
+- name: 'configure commandt plugin build'
+  command: 'ruby extconf.rb'
   args:
-    chdir: "{{ plugin_dir }}/ruby/command-t/ext/command-t"
+    chdir: '{{ plugin_dir }}/ruby/command-t/ext/command-t'
 
-- name: build commandt plugin
+- name: 'build commandt plugin'
   make:
-    chdir: "{{ plugin_dir }}/ruby/command-t/ext/command-t"
+    chdir: '{{ plugin_dir }}/ruby/command-t/ext/command-t'

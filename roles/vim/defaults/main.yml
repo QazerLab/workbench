@@ -1,5 +1,5 @@
 ---
-user: "{{ ansible_user_id }}"
+user: '{{ ansible_user_id }}'
 install_packages: true
 
 # By default, install only plugins which are unlikely to cause any pain.
@@ -8,4 +8,4 @@ vim_plugins:
   - fugitive
   - mru
 
-rustup_toolchain: nightly-x86_64-unknown-linux-gnu
+rustup_toolchain: 'nightly-x86_64-unknown-linux-gnu'
