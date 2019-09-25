@@ -20,5 +20,5 @@
     group: '{{ user }}'
     mode: 0644
 
-- include_tasks: 'vim_plugins/{{ plugin }}_build.yml'
+- include_tasks: 'plugins/{{ plugin }}_build.yml'
   when: 'vim_configs_plugins[plugin].requires_build'
