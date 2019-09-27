@@ -1,5 +1,5 @@
-dotfiles-minimal
-================
+vim
+===
 
 Installs vim with minimal set of configuration files, which are useful both at desktop
 and server machines. Currently includes:
