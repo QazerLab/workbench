@@ -14,3 +14,4 @@
   roles:
     - 'bash'
     - 'vim'
+    - 'viewnior'

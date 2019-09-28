@@ -1,0 +1,33 @@
+---
+- name: 'install viewnior'
+  when: 'install_packages'
+  become: true
+  package:
+    name: 'viewnior'
+    state: 'present'
+
+- name: 'get home dir of {{ user }}'
+  getent:
+    database: 'passwd'
+    key: '{{ user }}'
+    split: ':'
+
+- name: 'store home dir of {{ user }}'
+  set_fact:
+    home_dir: '{{ getent_passwd[user][4] }}'
+
+- name: 'ensure viewnior config directory exists'
+  file:
+    path: '{{ home_dir }}/.config/viewnior'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install viewnior config'
+  copy:
+    src: 'viewnior.conf'
+    dest: '{{ home_dir }}/.config/viewnior/viewnior.conf'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0644
