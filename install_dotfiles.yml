@@ -14,6 +14,7 @@
       - 'youcompleteme'
   roles:
     - 'gtk2'
+    - 'gtk3'
     - 'bash'
     - 'vim'
     - 'viewnior'
