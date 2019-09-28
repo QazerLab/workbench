@@ -12,6 +12,7 @@
       - 'commandt'
       - 'youcompleteme'
   roles:
+    - 'gtk2'
     - 'bash'
     - 'vim'
     - 'viewnior'

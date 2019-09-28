@@ -1,0 +1,18 @@
+style "panel"
+{
+  bg[NORMAL] = "#aaaaff"
+  bg[ACTIVE] = "#ccccff"
+  bg[PRELIGHT] = "#ddddff"
+  bg[SELECTED] = "#ccccff"
+
+  text[NORMAL] = "#000000"
+  text[ACTIVE] = "#000000"
+  text[PRELIGHT] = "#000000"
+  text[SELECTED] = "#000000"
+  text[INSENSITIVE] = "#000000"
+}
+
+
+widget_class "*Panel*"      style "panel"
+widget "*Panel*"            style "panel"
+class "*Panel*"             style "panel"
