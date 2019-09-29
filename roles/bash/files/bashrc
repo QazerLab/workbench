@@ -58,6 +58,36 @@ function cdiff () {
     xz -dc "/var/cache/pacman/pkg/$pkg_name" | tar -xO "$file_name_cut" | diff --color -u - "$file_name"
 }
 
+# Traverses the git repository and prints statistics about commits.
+function gitstat() {
+    local script='
+        function defval(val, def) {
+            return val == "" ? def : val
+        }
+
+        {
+            if($0 ~ " file[s]? changed, ") {
+                files_changed = $1
+                additions = defval($4, 0)
+                deletions = defval($6, 0)
+                total_diff = additions + deletions
+                print files_changed "\t" additions "\t" deletions "\t" total_diff "\t" subjlen "\t" len
+                subjlen = 0
+                len = 0
+            } else {
+                if (len == 0) {
+                    subjlen = length($0)
+                }
+
+                len += length($0)
+            }
+        }
+    '
+
+    echo -e "FILES\tADD\tDEL\tDIFF\tSUBJLEN\tMSGLEN"
+    git log --shortstat --no-merges --format='%s%n%b' "$@" | awk "$script"
+}
+
 # Finally, give a chance to perform machine-specific configuration.
 # This configuration is not managed by Ansible.
 if [ -d ~/.bashrc.d ]
