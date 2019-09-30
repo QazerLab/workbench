@@ -60,6 +60,10 @@ nnoremap <Leader>z <C-w>z
 set number
 nnoremap <Leader>er :set relativenumber!<CR>
 
+" Removing the numbers simplifies copying the text from vim
+" to other windows.
+nnoremap <Leader>en :set number!<CR>
+
 " Search highlight toggle. Off by default.
 set nohlsearch
 nnoremap <Leader>eh :set hlsearch!<CR>
