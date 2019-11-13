@@ -53,7 +53,7 @@ function kc() {
         #
         # XXX: this does not work perfectly, as resource name may be at any place after the verb.
         # While "kc get dc -o yaml" is OK, "kc get -o yaml dc" won't do, though this is a valid arguments order.
-        "get" | "describe")
+        "get" | "describe" | "edit" | "delete")
             case "$2" in
                 "dc")
                     kubectl "$1" deployments ${@:3}
