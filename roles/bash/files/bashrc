@@ -22,9 +22,9 @@ alias pacman='pacman --color always'
 #
 # $1 may (optionally) be a special alias for subcommands.
 function kc() {
-    # Shortcut for setting current namespace. Vanilla kubectl API here is a total crap, and looks like
-    # nobody i k8s comunity is going to implement something as short as OpenShift's "oc project PROJECT".
     case "$1" in
+        # Shortcut for setting current namespace. Vanilla kubectl API here is a total crap, and looks like
+        # nobody i k8s comunity is going to implement something as short as OpenShift's "oc project PROJECT".
         "ns")
             if [ -z "$2" ]
             then
@@ -34,6 +34,18 @@ function kc() {
             fi
 
             kubectl config set-context --current --namespace "$2"
+            ;;
+
+        # Again, inspired by OpenShift's "oc rsh". highly useful.
+        "rsh")
+            if [ -z "$2" ]
+            then
+                echo "You must specify a pod to be accessed:"
+                echo "    kc rsh POD"
+                return 2
+            fi
+
+            kubectl exec -it "$2" sh
             ;;
 
         # This block enhances kubectl with few additional resource name abbreviations. Not all of them are
