@@ -1,0 +1,5 @@
+[Icon Theme]
+Name=sc-cursors
+Comment= upgraded sc-cursors theme
+Example=left_ptr
+Inherits=core

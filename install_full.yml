@@ -12,6 +12,7 @@
       - 'commandt'
       - 'youcompleteme'
   roles:
+    - 'xresources'
     - 'gtk2'
     - 'gtk3'
     - 'bash'

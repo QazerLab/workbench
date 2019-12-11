@@ -1,0 +1,34 @@
+---
+- name: 'get home dir of {{ user }}'
+  getent:
+    database: 'passwd'
+    key: '{{ user }}'
+    split: ':'
+
+- name: 'store home dir of {{ user }}'
+  set_fact:
+    home_dir: '{{ getent_passwd[user][4] }}'
+
+- name: 'ensure X icons directory exists'
+  file:
+    path: '{{ home_dir }}/.local/share/icons'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install icons'
+  copy:
+    src: 'icons/'
+    dest: '{{ home_dir }}/.local/share/icons'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0644
+
+- name: 'install .Xdefaults'
+  copy:
+    src: 'Xdefaults'
+    dest: '{{ home_dir }}/.Xdefaults'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0644
