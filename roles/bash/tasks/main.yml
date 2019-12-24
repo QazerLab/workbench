@@ -23,3 +23,11 @@
     owner: '{{ user }}'
     group: '{{ user }}'
     mode: 0644
+
+- name: 'install .bash_profile'
+  copy:
+    src: 'bash_profile'
+    dest: '{{ home_dir }}/.bash_profile'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0644
