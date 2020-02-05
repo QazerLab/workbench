@@ -13,6 +13,7 @@
       - 'commandt'
       - 'youcompleteme'
   roles:
+    - 'profile'
     - 'xresources'
     - 'gtk2'
     - 'gtk3'

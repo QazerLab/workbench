@@ -1,0 +1,4 @@
+---
+user: '{{ ansible_user_id }}'
+
+hidpi: false
