@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
-PS1='\[\e[1;32m\]\t | \w>\n\[\e[1;37m\]\$ '
+PS1='\[\e[92m\]\t | \w>\n\[\e[97m\]\$ '
 PS2='> '
 PS3='> '
 PS4='+ '
