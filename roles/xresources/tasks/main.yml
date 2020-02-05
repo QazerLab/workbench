@@ -24,11 +24,12 @@
     owner: '{{ user }}'
     group: '{{ user }}'
     mode: 0644
+    local_follow: false
 
-- name: 'install .Xdefaults'
-  copy:
-    src: 'Xdefaults'
-    dest: '{{ home_dir }}/.Xdefaults'
+- name: 'install .Xresources'
+  template:
+    src: 'Xresources'
+    dest: '{{ home_dir }}/.Xresources'
     owner: '{{ user }}'
     group: '{{ user }}'
     mode: 0644

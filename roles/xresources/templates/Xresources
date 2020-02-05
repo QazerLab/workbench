@@ -1,1 +1,11 @@
+{% if hidpi -%}
+
+Xft.dpi: 235
+Xcursor.size: 64
+Xcursor.theme: XenonBlue
+
+{%- else -%}
+
 Xcursor.theme: sc-cursors
+
+{%- endif %}

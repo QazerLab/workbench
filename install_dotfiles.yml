@@ -3,6 +3,7 @@
   hosts: 'all'
   vars:
     install_packages: false
+    hidpi: true
     vim_plugins:
       - 'nerdtree'
       - 'syntastic'
