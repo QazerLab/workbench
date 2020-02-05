@@ -19,4 +19,5 @@
     - 'gtk3'
     - 'bash'
     - 'vim'
+    - 'alacritty'
     - 'viewnior'

@@ -1,0 +1,39 @@
+window:
+  dimensions:
+    columns: 80
+    lines: 24
+
+colors:
+  normal:
+    black:   '0x000000'
+    red:     '0xAA0000'
+    green:   '0x00AA00'
+    yellow:  '0xAA5500'
+    blue:    '0x0000AA'
+    magenta: '0xAA00AA'
+    cyan:    '0x00AAAA'
+    white:   '0xAAAAAA'
+
+  bright:
+    black:   '0x555555'
+    red:     '0xFF5555'
+    green:   '0x55FF55'
+    yellow:  '0xFFFF55'
+    blue:    '0x5555FF'
+    magenta: '0xFF55FF'
+    cyan:    '0x55FFFF'
+    white:   '0xFFFFFF'
+
+# Allow terminal applications to change Alacritty's window title.
+dynamic_title: true
+
+# Live config reload (changes require restart)
+live_config_reload: true
+
+key_bindings:
+  - key: N
+    mods: Control|Shift
+    action: SpawnNewInstance
+  - key: F
+    mods: Control|Shift
+    action: ToggleFullscreen
