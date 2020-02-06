@@ -3,7 +3,9 @@
   when: 'install_packages'
   become: true
   package:
-    name: 'gtk2'
+    name:
+      - 'gtk2'
+      - 'gnome-themes-extra'
     state: 'present'
 
 - name: 'get home dir of {{ user }}'
