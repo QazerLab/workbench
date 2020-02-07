@@ -1,0 +1,33 @@
+---
+- name: 'install galculator'
+  when: 'install_packages'
+  become: true
+  package:
+    name: 'galculator'
+    state: 'present'
+
+- name: 'get home dir of {{ user }}'
+  getent:
+    database: 'passwd'
+    key: '{{ user }}'
+    split: ':'
+
+- name: 'store home dir of {{ user }}'
+  set_fact:
+    home_dir: '{{ getent_passwd[user][4] }}'
+
+- name: 'ensure galculator config directory exists'
+  file:
+    path: '{{ home_dir }}/.config/galculator'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install galculator config'
+  copy:
+    src: 'galculator.conf'
+    dest: '{{ home_dir }}/.config/galculator/galculator.conf'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0644
