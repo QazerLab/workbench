@@ -1,7 +1,7 @@
 gtk3
 ====
 
-Installs GTK 3 and its configurations.
+Installs GTK 3 and its configuration.
 
 Requirements
 ------------

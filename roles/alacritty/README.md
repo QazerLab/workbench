@@ -1,7 +1,7 @@
 alacritty
 =========
 
-Installs alacritty and its configurations.
+Installs alacritty and its configuration.
 
 Requirements
 ------------

@@ -1,7 +1,7 @@
 gtk2
 ====
 
-Installs GTK 2 and its configurations.
+Installs GTK 2 and its configuration.
 
 Requirements
 ------------

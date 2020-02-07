@@ -1,7 +1,7 @@
 viewnior
 ========
 
-Installs viewnior and its configurations.
+Installs viewnior and its configuration.
 
 Requirements
 ------------
