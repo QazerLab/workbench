@@ -69,6 +69,7 @@ set nohlsearch
 nnoremap <Leader>eh :set hlsearch!<CR>
 
 autocmd FileType json nnoremap <Leader>f :%!python -m json.tool<CR>
+autocmd FileType xml nnoremap <Leader>f :%!xmllint --format -<CR>
 
 
 
