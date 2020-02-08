@@ -1,1 +1,11 @@
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+if [[ -f ~/.profile ]]
+then
+    . ~/.profile
+fi
+
+# This is a login shell (as we are in .bash_profile), but it still
+# could be an interactive. Let's check and source bashrc, if this is the case.
+if [[ $- = *i* && -f ~/.bashrc ]]
+then
+    . ~/.bashrc
+fi
