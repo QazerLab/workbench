@@ -3,32 +3,55 @@ Workbench
 
 A workstation installation suite.
 
+
+
 Target Requirements
 ===================
 
-Designed for ArchLinux, but some things may occasionally work for other distros.
+The main target distro is ArchLinux, though there are no explicit dependencies (the
+implicit ones are package names).
 
-Support for other distros (at least CentOS/RHEL) is planned for future.
+The suite expects the target OS to be
+
+* working and self-sufficient (e.g. in case of Arch the system is expected to be
+in post-[Installation Guide](https://wiki.archlinux.org/index.php/Installation_guide)
+state);
+* connected to the Internet.
+
+Roles which may be useful for configuring user profile on servers (e.g.
+`profile`, `bash`, `vim`) are planned to support CentOS/RHEL in future.
+
+
 
 Installation
 ============
 
-Generally there are two options:
+The configuration file is [`group_vars/all.yml`](group_vars/all.yml).
 
-* full installation (with packages and root-owned configs in `/etc`);
-* user-specific configurations update (dotfiles rollout only).
-
-This separation is designed with the intent to use this installation suite not only for workstations,
-but also for shared servers, where the user does not have privileges, but still needs the dotfiles.
-
-To run the full installation, execute
+After editing it as required, run
 
 ```
-ansible-playbook install_full.yml
+ansible-playbook install.yml
 ```
 
-To install/update the configurations, run
+to start the installation process.
 
-```
-ansible-playbook install_dotfiles.yml
-```
+
+
+Note on Implementation
+======================
+
+The playbook and the roles are intentionally **not** idempotent in the following ways:
+
+* package versions are not specified;
+* when something is installed from sources (e.g. `vim` plugins), `master` is used
+instead of specific commits.
+
+This radically differs from Ansible best practices and is dictated by the main use
+case of this suite: the installation and maintenance of Arch workstation.
+
+The installation process may implicitly update something and break the system &mdash;
+this is completely OK and is expected (this is Arch, dude...).
+On the other hand, finding the latest stable tag/version for each software
+piece and filling it into the inventory variables is completely NOK and boring,
+so the idempotence (and stability) is given up for the sake of usability.
