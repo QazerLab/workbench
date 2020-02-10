@@ -1,17 +1,6 @@
 ---
 - name: 'install the whole suite'
   hosts: 'all'
-  vars:
-    hidpi: true
-    vim_plugins:
-      - 'nerdtree'
-      - 'syntastic'
-      - 'fugitive'
-      - 'mru'
-      - 'rust'
-      - 'rustdoc'
-      - 'commandt'
-      - 'youcompleteme'
   roles:
     - 'profile'
     - 'xresources'

@@ -1,0 +1,22 @@
+# Install packages on target machine?
+#
+# If false, only configuration files are deployed, so that privileges
+# escalation is not required.
+install_packages: true
+
+# Does target machine use HiDPI screen?
+#
+# Soem GUI-related roles may use different settings to ensure that GUI is
+# scaled properly for such screens.
+hidpi: true
+
+# A list of vim plugins to install.
+vim_plugins:
+  - 'nerdtree'
+  - 'syntastic'
+  - 'fugitive'
+  - 'mru'
+  - 'rust'
+  - 'rustdoc'
+  - 'commandt'
+  - 'youcompleteme'
