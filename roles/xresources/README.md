@@ -28,4 +28,5 @@ None.
 License
 -------
 
-WTFPL
+WTFPL for all files except those which are under `files` directory.
+The files in `files` retain their original license.
