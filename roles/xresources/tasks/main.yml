@@ -28,7 +28,7 @@
 
 - name: 'install .Xresources'
   template:
-    src: 'Xresources'
+    src: 'Xresources.j2'
     dest: '{{ home_dir }}/.Xresources'
     owner: '{{ user }}'
     group: '{{ user }}'
