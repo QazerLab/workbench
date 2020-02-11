@@ -11,8 +11,8 @@ None.
 Role Variables
 --------------
 
-* `user` - a name of target user. Defaults to current (connection) user.
-* `install_packages` - if set to `false`, skips the package installation.
+* `user` &mdash; a name of target user. Defaults to current (connection) user.
+* `install_packages` &mdash; if set to `false`, skips the package installation.
 
 Dependencies
 ------------

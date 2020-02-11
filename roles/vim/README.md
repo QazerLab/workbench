@@ -21,9 +21,9 @@ The role does not check the presence of external software dependencies (like `ca
 Role Variables
 --------------
 
-* `user` - a name of target user. Defaults to current (connection) user.
-* `install_packages` - if set to `false`, skips the package installation.
-* `vim_plugins` - a list of vim plugins to be installed.
+* `user` &mdash; a name of target user. Defaults to current (connection) user.
+* `install_packages` &mdash; if set to `false`, skips the package installation.
+* `vim_plugins` &mdash; a list of vim plugins to be installed.
 
 Dependencies
 ------------
