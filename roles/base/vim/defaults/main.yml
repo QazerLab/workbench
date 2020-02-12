@@ -1,5 +1,15 @@
 ---
 user: '{{ ansible_user_id }}'
+
+features: {
+  # Uncomment to add support for different dev tools.
+  #
+  # dev:
+  #
+  #   # Enables settings for basic dev tools like xmllint.
+  #   - 'base'
+}
+
 install_packages: true
 
 # By default, install only plugins which are unlikely to cause any pain.

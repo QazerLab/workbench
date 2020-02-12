@@ -2,7 +2,15 @@
 user: '{{ ansible_user_id }}'
 
 features: {
+  # Uncomment to export dev-related variables.
+  #
+  # dev:
+  #
+  #   # Enables settings for basic dev tools like xmllint.
+  #   - 'base'
+
   # Uncomment to enable GUI-related settings.
+  #
   # gui: {}
 }
 

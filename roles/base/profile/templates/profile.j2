@@ -1,7 +1,13 @@
 export EDITOR=vim
 
+{% if 'dev' in features and 'base' in features['dev'] -%}
+
 # Set xmllint indentation to four spaces (instead of default two).
 export XMLLINT_INDENT='    '
+
+{% endif -%}
+
+
 
 {% if 'gui' in features and system['hidpi'] -%}
 
@@ -16,6 +22,8 @@ export GDK_DPI_SCALE=0.5
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 {% endif -%}
+
+
 
 # The following block is a workaround for DMs which do not source
 # /etc/profile, thus, do not load locale settings properly.
