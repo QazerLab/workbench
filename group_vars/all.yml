@@ -1,3 +1,22 @@
+# Features which are to be available on the target system.
+#
+# This dictionary influences
+#
+# * which packages will be installed to the target system;
+# * which plugins will be installed for the software;
+# * which parts of configurations are useful/useless on the target system.
+features:
+  dev:
+    - 'base'
+    - 'rust'
+    - 'java'
+    - 'go'
+    - 'haskell'
+    - 'python'
+
+  gui:
+    - 'openbox'
+
 # Facts about the target system which are not gathered by Ansible.
 #
 # These facts are used to tune the software configurations.
