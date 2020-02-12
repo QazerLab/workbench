@@ -14,6 +14,7 @@
     - 'make'
     - 'autoconf'
     - 'automake'
+    - 'cmake'
     - 'pkgconf'
     - 'gcc'
 
