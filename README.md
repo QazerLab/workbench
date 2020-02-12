@@ -63,9 +63,9 @@ Note on Roles Grouping
 
 The roles are grouped according to the feature group to which they belong, e.g.:
 
-* base for things which are useful on even most minimal setups;
-* dev for development tools;
-* gui for software which runs with graphical interface.
+* `base` for things which are useful on even most minimal setups;
+* `dev` for development tools;
+* `gui` for software which runs with graphical interface.
 
 If some software piece logically belongs to multiple groups (e.g. Netbeans belongs to
 both `dev` and `gui` groups), the role has to go to the group which is installed later,
