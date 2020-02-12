@@ -55,3 +55,24 @@ this is completely OK and is expected (this is Arch, dude...).
 On the other hand, finding the latest stable tag/version for each software
 piece and filling it into the inventory variables is completely NOK and boring,
 so the idempotence (and stability) is given up for the sake of usability.
+
+
+
+Note on Roles Grouping
+======================
+
+The roles are grouped according to the feature group to which they belong, e.g.:
+
+* base for things which are useful on even most minimal setups;
+* dev for development tools;
+* gui for software which runs with graphical interface.
+
+If some software piece logically belongs to multiple groups (e.g. Netbeans belongs to
+both `dev` and `gui` groups), the role has to go to the group which is installed later,
+e.g. Netbeans has to go to `gui`, as GUI things are installed later than development
+tools in general).
+
+This way we
+
+* avoid the implicit installation of "heavy" dependencies earlier than they are really required;
+* do not get lots of non-functional "garbage" if the installation fails in the middle.
