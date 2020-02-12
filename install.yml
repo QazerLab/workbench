@@ -8,9 +8,34 @@
       loop:
         - 'base/profile'
         - 'base/bash'
-        - 'base/vim'
       loop_control:
         loop_var: 'role_item'
+
+    - name: 'apply development roles'
+      include_role:
+        name: 'dev/{{ role_item }}'
+      when: '"dev" in features and role_item in features["dev"]'
+      loop:
+        - 'base'
+      #  - 'rust'
+      #  - 'java'
+      #  - 'go'
+      #  - 'haskell'
+      loop_control:
+        loop_var: 'role_item'
+
+    # Though Vim is _obviously_ much more "basic" than development tools,
+    # its plugins and configurations have too many dependencies on development
+    # tools and runtimes, which could become a problem when we need not only Vim
+    # itself, but also a handful of development plugins for it.
+    #
+    # To resolve this, let's install Vim a bit later that it should be installed.
+    # If development tools are not installed, Vim will still go directly after other
+    # base packages, but if they are, Vim will be installed when the environment is
+    # ready for building and running the appropriate plugins.
+    - name: 'install vim'
+      include_role:
+        name: 'base/vim'
 
     - name: 'apply GUI roles'
       include_role:

@@ -1,0 +1,42 @@
+---
+- name: 'install basic development tools'
+  when: 'install_packages'
+  become: true
+  package:
+    name: '{{ pkg_item }}'
+    state: 'present'
+  loop:
+    - 'binutils'
+
+    # Basic C toolchain. it is in base, as it is used for numerous things,
+    # not only for C development.
+    - 'm4'
+    - 'make'
+    - 'autoconf'
+    - 'automake'
+    - 'pkgconf'
+    - 'gcc'
+
+    # Mostly used for package building.
+    - 'fakeroot'
+
+    # Versioning and patching tools.
+    - 'git'
+    - 'subversion'
+    - 'mercurial'
+    - 'diffutils'
+    - 'patch'
+
+    # Basic debugging tools.
+    - 'gdb'
+    - 'valgrind'
+
+    # These libs are used for XML processing.
+    #
+    # Though they are usually installed as dependencies, we install them
+    # explicitly to know that we have xmllint and xsltproc tools in the system.
+    - 'libxml2'
+    - 'libxslt'
+
+  loop_control:
+    loop_var: 'pkg_item'

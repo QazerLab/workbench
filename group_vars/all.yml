@@ -12,7 +12,6 @@ features:
     - 'java'
     - 'go'
     - 'haskell'
-    - 'python'
 
   gui:
     - 'openbox'
