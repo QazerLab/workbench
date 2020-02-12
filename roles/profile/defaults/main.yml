@@ -1,5 +1,10 @@
 ---
 user: '{{ ansible_user_id }}'
 
+features: {
+  # Uncomment to enable GUI-related settings.
+  # gui: {}
+}
+
 system:
   hidpi: false

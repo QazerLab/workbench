@@ -3,7 +3,7 @@ export EDITOR=vim
 # Set xmllint indentation to four spaces (instead of default two).
 export XMLLINT_INDENT='    '
 
-{% if system['hidpi'] -%}
+{% if 'gui' in features and system['hidpi'] -%}
 
 # Scale GDK UIs 2x...
 export GDK_SCALE=2

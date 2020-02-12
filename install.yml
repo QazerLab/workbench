@@ -1,15 +1,28 @@
 ---
 - name: 'install the whole suite'
   hosts: 'all'
-  roles:
-    - 'profile'
-    - 'xresources'
-    - 'gtk2'
-    - 'gtk3'
-    - 'bash'
-    - 'vim'
-    - 'alacritty'
-    - 'gmrun'
-    - 'galculator'
-    - 'viewnior'
-    - 'tilda'
+  tasks:
+    - name: 'apply basic roles'
+      include_role:
+        name: '{{ role_item }}'
+      loop:
+        - 'profile'
+        - 'bash'
+        - 'vim'
+      loop_control:
+        loop_var: 'role_item'
+
+    - name: 'apply GUI roles'
+      include_role:
+        name: '{{ role_item }}'
+      when: '"gui" in features'
+      loop:
+        - 'gtk2'
+        - 'gtk3'
+        - 'alacritty'
+        - 'tilda'
+        - 'gmrun'
+        - 'viewnior'
+        - 'galculator'
+      loop_control:
+        loop_var: 'role_item'
