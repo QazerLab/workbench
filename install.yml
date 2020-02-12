@@ -6,9 +6,9 @@
       include_role:
         name: '{{ role_item }}'
       loop:
-        - 'profile'
-        - 'bash'
-        - 'vim'
+        - 'base/profile'
+        - 'base/bash'
+        - 'base/vim'
       loop_control:
         loop_var: 'role_item'
 
@@ -17,12 +17,12 @@
         name: '{{ role_item }}'
       when: '"gui" in features'
       loop:
-        - 'gtk2'
-        - 'gtk3'
-        - 'alacritty'
-        - 'tilda'
-        - 'gmrun'
-        - 'viewnior'
-        - 'galculator'
+        - 'gui/gtk2'
+        - 'gui/gtk3'
+        - 'gui/alacritty'
+        - 'gui/tilda'
+        - 'gui/gmrun'
+        - 'gui/viewnior'
+        - 'gui/galculator'
       loop_control:
         loop_var: 'role_item'
