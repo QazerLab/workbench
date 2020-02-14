@@ -8,6 +8,7 @@
 features:
   dev:
     - 'base'
+    - 'extras'
     - 'rust'
     - 'java'
     - 'golang'

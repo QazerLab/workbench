@@ -1,0 +1,21 @@
+---
+- name: 'install extra development tools'
+  when: 'install_packages'
+  become: true
+  package:
+    name: '{{ pkg_item }}'
+    state: 'present'
+  loop:
+    - 'podman'
+    - 'buildah'
+    - 'skopeo'
+
+    # Cloud clients.
+    - 'kubectl'
+
+    # Database clients.
+    - 'mariadb-clients'
+    - 'postgresql-libs'
+
+  loop_control:
+    loop_var: 'pkg_item'

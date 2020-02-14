@@ -22,6 +22,7 @@
       when: '"dev" in features and role_item in features["dev"]'
       loop:
         - 'base'
+        - 'extras'
       #  - 'rust'
       #  - 'java'
         - 'golang'
