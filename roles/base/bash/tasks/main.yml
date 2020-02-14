@@ -17,8 +17,8 @@
     home_dir: '{{ getent_passwd[user][4] }}'
 
 - name: 'install .bashrc'
-  copy:
-    src: 'bashrc'
+  template:
+    src: 'bashrc.j2'
     dest: '{{ home_dir }}/.bashrc'
     owner: '{{ user }}'
     group: '{{ user }}'
