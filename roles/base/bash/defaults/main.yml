@@ -1,3 +1,16 @@
 ---
 user: '{{ ansible_user_id }}'
+
+features: {
+  # Uncomment to export dev-related variables.
+  #
+  # dev:
+  #
+  #   # Enables settings for basic dev tools.
+  #   - 'base'
+  #
+  #   # Enables settings for extra dev tools.
+  #   - 'extras'
+}
+
 install_packages: true
