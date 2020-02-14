@@ -11,7 +11,7 @@ export XMLLINT_INDENT='    '
 
 {% if 'dev' in features and 'golang' in features['dev'] -%}
 
-export GOPATH='~/{{ golang_gopath }}'
+export GOPATH=~/"{{ golang_gopath }}"
 
 {% endif -%}
 
