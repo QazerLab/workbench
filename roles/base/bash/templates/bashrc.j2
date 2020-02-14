@@ -13,9 +13,11 @@ alias diff='diff --unified --color'
 
 {% if 'dev' in features and 'extras' in features['dev'] %}
 alias mysql='mysql --pager=less'
-{% endif -%}
+{% endif %}
 
+{% if ansible_os_family == 'Archlinux' %}
 alias pacman='pacman --color always'
+{% endif %}
 
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 {% if 'dev' in features and 'base' in features['dev'] %}
@@ -93,6 +95,8 @@ function kc() {
 
 
 
+{% if ansible_os_family == 'Archlinux' -%}
+
 # Diff between actual config and its default version in the installed package.
 #
 # $1 - file.
@@ -132,6 +136,10 @@ function cdiff () {
 
     xz -dc "/var/cache/pacman/pkg/$pkg_name" | tar -xO "$file_name_cut" | diff --color -u - "$file_name"
 }
+
+{% endif -%}
+
+
 
 # Finally, give a chance to perform machine-specific configuration.
 # This configuration is not managed by Ansible.
