@@ -8,6 +8,9 @@ features: {
   #
   #   # Enables settings for basic dev tools like xmllint.
   #   - 'base'
+  #
+  #   # Enables Golang support.
+  #   - 'golang'
 
   # Uncomment to enable GUI-related settings.
   #
@@ -16,3 +19,6 @@ features: {
 
 system:
   hidpi: false
+
+# Relative to the user's home directory.
+golang_gopath: 'go'

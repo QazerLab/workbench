@@ -24,7 +24,7 @@
         - 'base'
       #  - 'rust'
       #  - 'java'
-      #  - 'go'
+        - 'golang'
       #  - 'haskell'
       loop_control:
         loop_var: 'role_item'

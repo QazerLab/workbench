@@ -10,7 +10,7 @@ features:
     - 'base'
     - 'rust'
     - 'java'
-    - 'go'
+    - 'golang'
     - 'haskell'
 
   gui:
@@ -27,6 +27,9 @@ system:
 # If false, only configuration files are deployed, so that privileges
 # escalation is not required.
 install_packages: true
+
+# GOPATH value; relative to user's home directory.
+golang_gopath: 'pub/src/misc/gopath'
 
 # A list of vim plugins to install.
 vim_plugins:

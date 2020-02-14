@@ -1,0 +1,6 @@
+---
+user: '{{ ansible_user_id }}'
+install_packages: true
+
+# Relative to the user's home directory.
+golang_gopath: 'go'

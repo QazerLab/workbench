@@ -1,0 +1,25 @@
+---
+- name: 'install golang toolchain'
+  when: 'install_packages'
+  become: true
+  package:
+    name: 'go'
+    state: 'present'
+
+- name: 'get home dir of {{ user }}'
+  getent:
+    database: 'passwd'
+    key: '{{ user }}'
+    split: ':'
+
+- name: 'store home dir of {{ user }}'
+  set_fact:
+    home_dir: '{{ getent_passwd[user][4] }}'
+
+- name: 'ensure GOPATH exists'
+  file:
+    path: '{{ home_dir }}/{{ golang_gopath }}'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    state: 'directory'
+    mode: 0755
