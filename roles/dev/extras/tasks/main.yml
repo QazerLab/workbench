@@ -10,6 +10,16 @@
     - 'buildah'
     - 'skopeo'
 
+    # XXX: here we intentionally do not install any backend for Vagrant.
+    # The easiest to use (and most probable) backend is a Virtualbox, however,
+    # in Arch repos, it comes only in full form (headless one is only in AUR).
+    #
+    # Installing full VBox version is an overkill at this stage, so we either
+    # wait for GUI roles to run (if any) or let the user to opt-in for this
+    # bloatware explicitly. Finally, the user may choose to install another
+    # hypervisor manually.
+    - 'vagrant'
+
     # Cloud clients.
     - 'kubectl'
 
