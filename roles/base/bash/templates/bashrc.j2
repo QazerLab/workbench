@@ -147,6 +147,6 @@ if [ -d ~/.bashrc.d ]
 then
     for rcfile in ~/.bashrc.d/*
     do
-        . "$rcfile"
+        [ -r "$rcfile" ] && . "$rcfile"
     done
 fi
