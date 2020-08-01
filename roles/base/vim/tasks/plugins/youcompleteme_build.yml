@@ -17,6 +17,15 @@
   args:
     chdir: '{{ plugin_dir }}/build'
 
+- name: 'install watchdog library'
+  copy:
+    remote_src: true
+    src: '{{ plugin_dir }}/third_party/ycmd/third_party/watchdog_deps/watchdog/src/watchdog'
+    dest: '{{ plugin_dir }}/third_party/ycmd/third_party/watchdog_deps/watchdog/build/lib3/'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0755
+
 - name: 'youcompleteme language support - Golang'
   command: 'go get golang.org/x/tools/gopls@v0.4.2'
   environment:
