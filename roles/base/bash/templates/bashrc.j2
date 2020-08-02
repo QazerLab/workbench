@@ -13,6 +13,10 @@ alias diff='diff --unified --color'
 
 {% if 'dev' in features and 'extras' in features['dev'] %}
 alias mysql='mysql --pager=less'
+{% endif -%}
+
+{% if 'dev' in features and 'java' in features['dev'] %}
+alias gradle='gradle --console=plain'
 {% endif %}
 
 {% if ansible_os_family == 'Archlinux' %}
