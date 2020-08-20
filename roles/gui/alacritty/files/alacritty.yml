@@ -3,7 +3,13 @@ window:
     columns: 80
     lines: 24
 
+  # Allow terminal applications to change Alacritty's window title.
+  dynamic_title: true
+
 colors:
+  primary:
+    background: '0x000000'
+
   normal:
     black:   '0x000000'
     red:     '0xAA0000'
@@ -23,9 +29,6 @@ colors:
     magenta: '0xFF55FF'
     cyan:    '0x55FFFF'
     white:   '0xFFFFFF'
-
-# Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
 
 # Live config reload (changes require restart)
 live_config_reload: true
