@@ -5,6 +5,14 @@ let mapleader=" "
 " This is a bit controversal, but still better than Esc.
 :inoremap jk <Esc>
 
+" Enable Ctrl-arrows navigation in all modes.
+nmap <ESC>[1;5D <C-Left>
+nmap <ESC>[1;5C <C-Right>
+cmap <ESC>[1;5D <C-Left>
+cmap <ESC>[1;5C <C-Right>
+imap <ESC>[1;5D <C-o><C-Left>
+imap <ESC>[1;5C <C-o><C-Right>
+
 " Of course, the most crucial thing...
 filetype plugin on
 
