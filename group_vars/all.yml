@@ -34,6 +34,7 @@ golang_gopath: 'pub/src/misc/gopath'
 
 # A list of vim plugins to install.
 vim_plugins:
+  - 'youarehere'
   - 'nerdtree'
   - 'syntastic'
   - 'fugitive'

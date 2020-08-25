@@ -31,6 +31,11 @@ rustup_toolchain: 'stable-x86_64-unknown-linux-gnu'
 vim_pathogen_url: https://tpo.pe/pathogen.vim
 
 vim_configs_plugins:
+  youarehere:
+    repo: https://github.com/bignimbus/you-are-here.vim.git
+    requires_build: false
+    requires_config: true
+
   nerdtree:
     repo: https://github.com/scrooloose/nerdtree
     requires_build: false
