@@ -76,3 +76,10 @@ This way we
 
 * avoid the implicit installation of "heavy" dependencies earlier than they are really required;
 * do not get lots of non-functional "garbage" if the installation fails in the middle.
+
+
+
+Troubleshooting
+===============
+
+See [The Troubleshooting Guide](TROUBLESHOOTING.md).
