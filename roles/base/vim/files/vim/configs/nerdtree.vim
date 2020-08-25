@@ -1,5 +1,4 @@
 nnoremap <Leader>n :NERDTreeFocus<CR>
-nnoremap <Leader>N :NERDTreeToggle<CR>
 nnoremap <Leader>l :NERDTreeFind<CR>
 
 " Chdir on plugin load.
