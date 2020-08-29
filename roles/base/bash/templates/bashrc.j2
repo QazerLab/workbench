@@ -30,6 +30,21 @@ alias pacman='pacman --color always'
 
 
 
+function xfind() {
+    if [ -z "$1" ]
+    then
+        echo 'xfind requires at least 1 argument!'
+        echo ''
+        echo 'Usage: xfind EXTENSION [find arguments]'
+
+        return 1
+    fi
+
+    find . -name "*.$1" "${@:2}"
+}
+
+
+
 {% if 'dev' in features and 'extras' in features['dev'] -%}
 
 # A shortcut for kubectl and its specific long subcommands.
