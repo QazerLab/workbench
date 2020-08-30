@@ -1,1 +1,1 @@
-nnoremap <Leader>ee :call you_are_here#Toggle()<CR>
+nnoremap <Leader>ee :call you_are_here#ToggleFor(2500)<CR>
