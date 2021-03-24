@@ -39,7 +39,7 @@
 # to the user's default rustup home, assuming that the toolchain is present.
 - name: 'youcompleteme language support - Rust'
   file:
-    path: '{{ plugin_dir }}/third_party/ycmd/third_party/rls'
+    path: '{{ plugin_dir }}/third_party/ycmd/third_party/rust-analyzer'
     src: '{{ home_dir }}/.rustup/toolchains/{{ rustup_toolchain }}'
     state: 'link'
 

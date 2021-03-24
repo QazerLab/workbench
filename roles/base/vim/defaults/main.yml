@@ -18,7 +18,8 @@ vim_plugins:
   - fugitive
   - mru
 
-rustup_toolchain: 'stable-x86_64-unknown-linux-gnu'
+# Only nightly currently has rust-analyzer.
+rustup_toolchain: 'nightly-x86_64-unknown-linux-gnu'
 
 
 
