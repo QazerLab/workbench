@@ -153,7 +153,7 @@ function cdiff () {
         return 2
     fi
 
-    pkg_name="$pkg-$pkg_ver-$(uname -m).pkg.tar.xz"
+    pkg_name="$pkg-$pkg_ver-$(uname -m).pkg.tar.zst"
     pkg_file="/var/cache/pacman/pkg/$pkg_name"
     if [ ! -r "$pkg_file" ]
     then
@@ -166,7 +166,7 @@ function cdiff () {
     # Cut leading slash, cause in archive the path is relative
     file_name_cut=${file_name:1}
 
-    xz -dc "/var/cache/pacman/pkg/$pkg_name" | tar -xO "$file_name_cut" | diff --color -u - "$file_name"
+    zstd -d --stdout "/var/cache/pacman/pkg/$pkg_name" | tar -xO "$file_name_cut" | diff --color -u - "$file_name"
 }
 
 {% endif -%}
