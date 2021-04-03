@@ -1,7 +1,7 @@
 openbox
 =======
 
-Installs openbox and its configuration.
+Installs openbox and its configuration. Note the [keymap](docs/keymap.md) description.
 
 Requirements
 ------------
