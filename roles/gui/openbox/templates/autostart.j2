@@ -1,0 +1,26 @@
+# TODO: support different lockers based on feature flags
+# Lockscreen manager.
+light-locker &
+
+# XCompmgr is used only for transparency in Tilda.
+xcompmgr &
+
+# TODO: find free wallpaper and add to the role?
+# Wallpaper under the desktop.
+feh --bg-scale "{{ home_dir }}/misc/wallpapers/desktop.png"
+
+# The panel.
+#
+# XXX: though the panel is logically on the higher Z-level than Tilda,
+# we start it earlier to let it occupy its place and notify the WM
+# about this *before* Tilda starts.
+#
+# After this we sleep just a bit to ensure that the panel window is
+# created and placed, so that Tilda may calculate its own size properly:
+# 100% of height will not include the panel height, and Tilda window
+# won't be overlapped by the panel.
+xfce4-panel &
+sleep 0.1
+
+# Finally, the main desktop window: terminal instead of icons and other trash.
+tilda &

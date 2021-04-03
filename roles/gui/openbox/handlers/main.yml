@@ -1,0 +1,11 @@
+---
+- name: 'check if openbox is running'
+  command: 'pgrep openbox'
+  register: 'openbox_test'
+  failed_when: 'openbox_test.rc >= 2'
+  listen: 'reconfigure openbox'
+
+- name: 'reconfigure current openbox session'
+  command: 'openbox --reconfigure'
+  when: 'openbox_test.rc == 0'
+  listen: 'reconfigure openbox'

@@ -58,3 +58,14 @@
         - 'gui/galculator'
       loop_control:
         loop_var: 'role_item'
+
+    # Things like WMs and DMs are intended to be replaceable with alternatives,
+    # thus, each of them is optional by definition.
+    - name: 'apply optional GUI roles'
+      include_role:
+        name: 'gui/{{ role_item }}'
+      when: '"gui" in features and role_item in features["gui"]'
+      loop:
+        - 'openbox'
+      loop_control:
+        loop_var: 'role_item'

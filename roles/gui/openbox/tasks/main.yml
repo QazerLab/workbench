@@ -1,0 +1,38 @@
+---
+- name: 'install openbox'
+  when: 'install_packages'
+  become: true
+  package:
+    name: 'openbox'
+    state: 'present'
+
+- name: 'get home dir of {{ user }}'
+  getent:
+    database: 'passwd'
+    key: '{{ user }}'
+    split: ':'
+
+- name: 'store home dir of {{ user }}'
+  set_fact:
+    home_dir: '{{ getent_passwd[user][4] }}'
+
+- name: 'ensure openbox config directory exists'
+  file:
+    path: '{{ home_dir }}/.config/openbox'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install {{ item }} openbox config'
+  loop:
+    - 'autostart'
+    - 'rc.xml'
+    - 'menu.xml'
+  template:
+    src: '{{ item }}.j2'
+    dest: '{{ home_dir }}/.config/openbox/{{ item }}'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0644
+  notify: 'reconfigure openbox'

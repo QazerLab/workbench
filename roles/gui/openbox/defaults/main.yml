@@ -1,0 +1,16 @@
+---
+user: '{{ ansible_user_id }}'
+
+features: {
+  # Uncomment to enable support for different software.
+  #
+  # dev:
+  #
+  #   # Enables hotkeys for Java-related GUI tools.
+  #   - 'java'
+}
+
+system:
+  hidpi: false
+
+install_packages: true

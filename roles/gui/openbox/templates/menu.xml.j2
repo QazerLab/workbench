@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+    <menu id="apps-devel" label="Devel">
+{% if 'dev' in features and 'java' in features['dev'] %}
+        <item label="NetBeans">
+            <action name="Execute">
+                <command>netbeans</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                </startupnotify>
+            </action>
+        </item>
+        <item label="Visual VM">
+            <action name="Execute">
+                <command>visualvm</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                </startupnotify>
+            </action>
+        </item>
+{% endif %}
+    </menu>
+
+    <menu id="apps-net" label="Net">
+        <!-- TODO: make optional when Vivaldi deployment would be supported -->
+        <item label="Vivaldi">
+            <action name="Execute">
+                <command>vivaldi-stable</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                    <wmclass>Vivaldi</wmclass>
+                </startupnotify>
+            </action>
+        </item>
+
+        <!-- TODO: make optional when Transmission deployment would be supported -->
+        <item label="Transmission">
+            <action name="Execute">
+                <command>transmission-gtk</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                </startupnotify>
+            </action>
+        </item>
+    </menu>
+
+    <!-- TODO: make optional when LO deployment would be supported -->
+    <menu id="apps-office" label="Libre Office">
+        <item label="Writer">
+            <action name="Execute">
+                <command>lowriter</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                </startupnotify>
+            </action>
+        </item>
+        <item label="Calc">
+            <action name="Execute">
+                <command>localc</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                </startupnotify>
+            </action>
+        </item>
+        <item label="Impress">
+            <action name="Execute">
+                <command>loimpress</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                </startupnotify>
+            </action>
+        </item>
+    </menu>
+
+    <menu id="apps-other" label="Other">
+        <!-- TODO: make optional when Gimp deployment would be supported -->
+        <item label="Gimp">
+            <action name="Execute">
+                <command>gimp</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                </startupnotify>
+            </action>
+        </item>
+        <item label="Galculator">
+            <action name="Execute">
+                <command>galculator</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                </startupnotify>
+            </action>
+        </item>
+    </menu>
+
+    <menu id="system" label="System">
+        <!-- TODO: use specific lock screen dependeng on feature flags -->
+        <item label="Lock">
+            <action name="Execute">
+                <command>light-locker-command -l</command>
+            </action>
+        </item>
+        <item label="Log Out">
+            <action name="Exit">
+                <prompt>yes</prompt>
+            </action>
+        </item>
+        <item label="Reboot">
+            <action name="Execute">
+                <command>sudo systemctl reboot</command>
+            </action>
+        </item>
+        <item label="Shutdown">
+            <action name="Execute">
+                <command>sudo systemctl poweroff</command>
+            </action>
+        </item>
+    </menu>
+
+    <menu id="root-menu" label="Openbox 3">
+        <separator label="Applications"/>
+        <item label="Terminal">
+            <action name="Execute">
+                <command>alacritty</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                </startupnotify>
+            </action>
+        </item>
+        <item label="Double Commander">
+            <action name="Execute">
+                <command>doublecmd</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                </startupnotify>
+            </action>
+        </item>
+
+        <!-- TODO: make optional when Sublime deployment would be supported -->
+        <item label="Sublime">
+            <action name="Execute">
+                <command>subl</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                </startupnotify>
+            </action>
+        </item>
+
+        <menu id="apps-devel"/>
+        <menu id="apps-net"/>
+        <menu id="apps-office"/>
+        <menu id="apps-other"/>
+
+        <separator/>
+
+        <menu id="system"/>
+    </menu>
+</openbox_menu>
