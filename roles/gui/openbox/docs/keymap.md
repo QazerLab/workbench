@@ -27,56 +27,56 @@ Complete Layout
 
 The only hotkey from F-row which is allowed to exist as an exception:
 
-Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>
----------|----------------------------------|------------------------
-Esc      | Shutdown                         | Seboot
+Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>       | Comment
+---------|----------------------------------|------------------------|-----------------------------
+Esc      | Shutdown                         | Reboot                 | Really nice to hit blindly
 
 
 The numeric row keymap includes only rare actions:
 
-Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>
----------|----------------------------------|------------------------
-~        | Toggle Tilda (delegated to app)  |
-1        | Go to desktop 1                  |
-2        | Go to desktop 2                  |
-3        | Go to desktop 3                  |
-4        | Go to desktop 4                  |
-5...0    |                                  |
-\-       |                                  |
-=        |                                  |
-Bksp     | Suspend                          | Hibernate
+Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>       | Comment
+---------|----------------------------------|------------------------|-----------------------------
+~        | Toggle Tilda                     |                        | Delegated to app (exception)
+1        | Go to desktop 1                  |                        |
+2        | Go to desktop 2                  |                        |
+3        | Go to desktop 3                  |                        |
+4        | Go to desktop 4                  |                        |
+5...0    |                                  |                        |
+\-       |                                  |                        |
+=        |                                  |                        |
+Bksp     | Suspend                          | Hibernate              |
 
 
 The top row:
 
-Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>
----------|----------------------------------|------------------------
-Tab      | Cycle windows                    |
-Q        | Reconfigure Openbox              |
-W        | Close window                     | Run Wireshark
-E        | Show window menu                 | Run editor (Sublime)
-R        | Open quick run window (gmrun)    |
-T        | Run terminal                     | Run Transmission
-Y        |                                  |
-U        | Move to desktop left             |
-I        | Reconfigure screens (optional)   | Run IDEA
-O        | Move to desktop right            | Run Vivaldi
-P        |                                  |
-[        |                                  |
-]        |                                  |
-\        |                                  |
+Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>       | Comment
+---------|----------------------------------|------------------------|-----------------------------
+Tab      | Cycle windows                    |                        | Better than `Alt-Tab`!
+Q        | Reconfigure Openbox              |                        |
+W        | Close window                     | Run Wireshark          | `W-W` beats `Alt-F4`
+E        | Show window menu                 | Run editor (Sublime)   |
+R        | Open quick run window (gmrun)    |                        | `W-R` is from Windows
+T        | Run terminal                     | Run Transmission       |
+Y        |                                  |                        |
+U        | Move to desktop left             |                        |
+I        | Reconfigure screens (optional)   | Run IDEA               |
+O        | Move to desktop right            | Run Vivaldi            |
+P        |                                  |                        |
+[        |                                  |                        |
+]        |                                  |                        |
+\        |                                  |                        |
 
 
 The home row:
 
-Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>
----------|----------------------------------|------------------------
-A        | Toggle maximize                  |
-S        |                                  | Run Skype
-D        | Toggle show desktop              | Run DoubleCmd
-F        | Toggle fullscreen                | Run Firefox
-G        |                                  | Run Gimp
-H        | Go to desktop left               |
+Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>       | Comment
+---------|----------------------------------|------------------------|-----------------------------
+A        | Toggle maximize                  |                        | Incredibly useful
+S        |                                  | Run Skype              |
+D        | Toggle show desktop              | Run DoubleCmd          | `W-D` is from Windows
+F        | Toggle fullscreen                | Run Firefox            |
+G        |                                  | Run Gimp               |
+H        | Go to desktop left               |                        |
 J        | Minimize window                  |
 K        | Maximize window                  |
 L        | Go to desktop right              | Run Slack
@@ -86,18 +86,18 @@ L        | Go to desktop right              | Run Slack
 
 Finally, the bottom row:
 
-Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>
----------|----------------------------------|------------------------
-Z        | Move to edge left                |
-X        | Move to edge down                |
-C        | Move to edge up                  |
-V        | Move to edge right               | Run VisualVM
-B        |                                  |
-N        | Change window size               | Run Netbeans
-M        | Move window                      | Run Chromium
-\<       | Volume down                      |
-\>       | Volume up                        |
-/        | Volume mute                      |
+Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>       | Comment
+---------|----------------------------------|------------------------|-----------------------------
+Z        | Move to edge left                |                        |
+X        | Move to edge down                |                        |
+C        | Move to edge up                  |                        |
+V        | Move to edge right               | Run VisualVM           |
+B        |                                  |                        |
+N        | Change window size               | Run Netbeans           |
+M        | Move window                      | Run Chromium           |
+\<       | Volume down                      |                        | One more awesome finding
+\>       | Volume up                        |                        | Two more awesome findings...
+/        | Volume mute                      |                        | Three more awesome findings!
 
 
 
