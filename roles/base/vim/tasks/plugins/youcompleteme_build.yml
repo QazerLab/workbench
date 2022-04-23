@@ -27,7 +27,7 @@
     mode: 0755
 
 - name: 'youcompleteme language support - Golang'
-  command: 'go get golang.org/x/tools/gopls@v0.4.2'
+  command: 'go install golang.org/x/tools/gopls@v0.7.1'
   environment:
     GO111MODULE: 'on'
     GOPATH: '{{ plugin_dir }}/third_party/ycmd/third_party/go'
