@@ -3,44 +3,40 @@
   when: 'install_packages'
   become: true
   package:
-    name: '{{ pkg_item }}'
     state: 'present'
-  loop:
-    - 'binutils'
+    name:
+      - 'binutils'
 
-    # Basic C toolchain. it is in base, as it is used for numerous things,
-    # not only for C development.
-    - 'm4'
-    - 'make'
-    - 'autoconf'
-    - 'automake'
-    - 'cmake'
-    - 'pkgconf'
-    - 'gcc'
+      # Basic C toolchain. it is in base, as it is used for numerous things,
+      # not only for C development.
+      - 'm4'
+      - 'make'
+      - 'autoconf'
+      - 'automake'
+      - 'cmake'
+      - 'pkgconf'
+      - 'gcc'
 
-    # Mostly used for package building.
-    - 'fakeroot'
+      # Mostly used for package building.
+      - 'fakeroot'
 
-    # Versioning and patching tools.
-    - 'git'
-    - 'subversion'
-    - 'mercurial'
-    - 'diffutils'
-    - 'patch'
+      # Versioning and patching tools.
+      - 'git'
+      - 'subversion'
+      - 'mercurial'
+      - 'diffutils'
+      - 'patch'
 
-    # Basic debugging tools.
-    - 'gdb'
-    - 'valgrind'
+      # Basic debugging tools.
+      - 'gdb'
+      - 'valgrind'
 
-    # These libs are used for XML processing.
-    #
-    # Though they are usually installed as dependencies, we install them
-    # explicitly to know that we have xmllint and xsltproc tools in the system.
-    - 'libxml2'
-    - 'libxslt'
+      # These libs are used for XML processing.
+      #
+      # Though they are usually installed as dependencies, we install them
+      # explicitly to know that we have xmllint and xsltproc tools in the system.
+      - 'libxml2'
+      - 'libxslt'
 
-    - 'curl'
-    - 'jq'
-
-  loop_control:
-    loop_var: 'pkg_item'
+      - 'curl'
+      - 'jq'
