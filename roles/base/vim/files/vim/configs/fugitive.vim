@@ -1,1 +1,1 @@
-nnoremap <Leader>a :Gblame<CR>
+nnoremap <Leader>a :Git blame<CR>
