@@ -1,0 +1,6 @@
+---
+galaxy_info:
+  description: 'installation of extra CLI tools'
+  min_ansible_version: 2.4
+
+dependencies: []

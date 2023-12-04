@@ -8,6 +8,10 @@ alias ll='ls -l'
 alias grep='grep --color'
 alias ?='echo $?'
 
+{% if 'cli' in features and 'extras' in features['cli'] %}
+alias bat='bat --pager="less -XRF"'
+{% endif -%}
+
 {% if 'dev' in features and 'base' in features['dev'] %}
 alias diff='diff --unified --color'
 {% endif -%}
@@ -31,36 +35,35 @@ alias pacman='pacman --color always'
 
 
 
-function xfind() {
-    if [ -z "$1" ]
-    then
-        echo 'xfind requires at least 1 argument!'
-        echo ''
-        echo 'Usage: xfind EXTENSION [find arguments]'
+{% if 'cli' in features and 'extras' in features['cli'] %}
 
-        return 1
-    fi
+. /usr/share/fzf/key-bindings.bash
+. /usr/share/fzf/completion.bash
 
-    find . -name "*.$1" "${@:2}"
+_fzf_compgen_path() {
+    fd --hidden --follow --exclude ".git" . "$1"
 }
 
-# Finds all plain files of specific extension and greps over them.
-#
-# $1 - the file extension.
-#
-# The rest of arguments are passed to grep.
-function xgrep() {
-    if [ -z "$2" ]
-    then
-        echo 'xgrep requires at least 2 argument!'
-        echo ''
-        echo 'usage: xgrep EXTENSION GREP-ARG...'
-
-        return 1
-    fi
-
-    xfind "$1" -type f | xargs grep --color "${@:2}"
+_fzf_compgen_dir() {
+    fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
+_fzf_comprun() {
+    local command=$1
+    shift
+
+    # TODO: add conditionals for tree and dig?
+    case "$command" in
+        cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+        export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+        ssh)          fzf --preview 'dig {}'                   "$@" ;;
+        *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+    esac
+}
+
+{% endif %}
+
+
 
 {% if 'dev' in features and 'base' in features['dev'] -%}
 

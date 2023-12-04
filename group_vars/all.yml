@@ -6,6 +6,8 @@
 # * which plugins will be installed for the software;
 # * which parts of configurations are useful/useless on the target system.
 features:
+  cli:
+    - 'extras'
   dev:
     - 'base'
     - 'extras'

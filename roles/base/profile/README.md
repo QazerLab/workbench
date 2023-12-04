@@ -16,6 +16,8 @@ Role Variables
     * `dev` &mdash; a list of development features to be supported.
         * `base` &mdash; basic development tools.
         * `golang` &mdash; Golang toolchain.
+    * `cli` &mdash`; a list of CLI features to be supported.
+        * `extras` &mdash; extra tools to enrich the command-line experience.
     * `gui` &mdash; a list of GUI features to be supported; an empty object
       `gui` (or its absence, if no GUI support is required) is sufficient for
        this specific role.

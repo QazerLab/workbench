@@ -16,6 +16,11 @@
       loop_control:
         loop_var: 'role_item'
 
+    - name: 'install cli extras'
+      include_role:
+        name: 'base/cli-extras'
+      when: '"cli" in features and "extras" in features["cli"]'
+
     - name: 'apply development roles'
       include_role:
         name: 'dev/{{ role_item }}'

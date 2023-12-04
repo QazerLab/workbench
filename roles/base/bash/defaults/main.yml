@@ -11,6 +11,13 @@ features: {
   #
   #   # Enables settings for extra dev tools.
   #   - 'extras'
+
+  # Uncomment to export cli-related variables.
+  #
+  # cli:
+  #
+  #  # Enables additional CLI tools support.
+  #  - 'extras'
 }
 
 install_packages: true

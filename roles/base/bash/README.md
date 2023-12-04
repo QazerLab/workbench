@@ -17,6 +17,8 @@ Role Variables
     * `dev` &mdash; a list of development features to be supported.
         * `base` &mdash; basic development tools.
         * `extras` &mdash; extra development tools.
+    * `cli` &mdash`; a list of CLI features to be supported.
+        * `extras` &mdash; extra tools to enrich the command-line experience.
 
 Dependencies
 ------------

@@ -1,0 +1,12 @@
+---
+- name: 'install extra CLI tools'
+  when: 'install_packages'
+  become: true
+  package:
+    state: 'present'
+    name:
+      - 'moreutils'
+      - 'ripgrep'
+      - 'fd'
+      - 'fzf'
+      - 'bat'
