@@ -57,9 +57,9 @@ vim_configs_plugins:
     requires_build: false
     requires_config: true
 
-  commandt:
-    repo: https://github.com/wincent/Command-T
-    requires_build: true
+  fzf:
+    repo: https://github.com/junegunn/fzf.vim
+    requires_build: false
     requires_config: true
 
   youcompleteme:

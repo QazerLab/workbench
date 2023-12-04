@@ -41,7 +41,7 @@ vim_plugins:
   - 'syntastic'
   - 'fugitive'
   - 'mru'
+  - 'fzf'
   - 'rust'
   - 'rustdoc'
-  - 'commandt'
   - 'youcompleteme'
