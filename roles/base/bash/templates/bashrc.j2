@@ -22,6 +22,13 @@ alias mysql='mysql --pager=less'
 
 {% if 'dev' in features and 'java' in features['dev'] %}
 alias gradle='gradle --console=plain'
+
+{% if ansible_os_family == 'Archlinux' %}
+alias j8='sudo archlinux-java set java-8-openjdk'
+alias j11='sudo archlinux-java set java-11-openjdk'
+alias j17='sudo archlinux-java set java-17-openjdk'
+alias j21='sudo archlinux-java set java-21-openjdk'
+{% endif %}
 {% endif %}
 
 {% if ansible_os_family == 'Archlinux' %}
