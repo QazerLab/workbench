@@ -48,11 +48,11 @@ alias pacman='pacman --color always'
 . /usr/share/fzf/completion.bash
 
 _fzf_compgen_path() {
-    fd --hidden --follow --exclude ".git" . "$1"
+    fd --color=always --hidden --follow --exclude ".git" . "$1"
 }
 
 _fzf_compgen_dir() {
-    fd --type d --hidden --follow --exclude ".git" . "$1"
+    fd --color=always --type d --hidden --follow --exclude ".git" . "$1"
 }
 
 _fzf_comprun() {
