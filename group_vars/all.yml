@@ -23,6 +23,7 @@ features:
 #
 # These facts are used to tune the software configurations.
 system:
+  laptop: true
   hidpi: true
 
 # Install packages on target machine?

@@ -31,6 +31,7 @@ The configuration file is [`group_vars/all.yml`](group_vars/all.yml).
 After editing it as required, run
 
 ```
+ansible-playbook -b install_system.yml
 ansible-playbook install.yml
 ```
 
