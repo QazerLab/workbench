@@ -1,0 +1,19 @@
+---
+# XXX: /usr/share/icons and /etc/X11 are owned by the package manager
+# and must already be present after xorg-xserver and xorg-apps installation.
+- name: 'install icons'
+  copy:
+    src: 'icons/'
+    dest: '/usr/share/icons'
+    owner: 'root'
+    group: 'root'
+    mode: 0644
+    local_follow: false
+
+- name: 'install global Xresources'
+  template:
+    src: 'Xresources.j2'
+    dest: '/etc/X11/Xresources'
+    owner: 'root'
+    group: 'root'
+    mode: 0644

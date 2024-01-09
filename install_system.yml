@@ -13,5 +13,6 @@
       when: '"gui" in features'
       loop:
         - 'system/gui/xorg'
+        - 'system/gui/xresources'
       loop_control:
         loop_var: 'role_item'

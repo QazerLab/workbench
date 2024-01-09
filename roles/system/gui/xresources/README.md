@@ -1,7 +1,7 @@
 X resources
 ===========
 
-Installs X resources (icons, themes, related X configs, etc.).
+Installs global X resources (icons, themes, related X configs, etc.).
 
 All cursors are taken from [gnome-look.org](gnome-look.org) and copied here due to
 possible unavailability of the original source; the copy is done under assumption
@@ -16,7 +16,6 @@ None.
 Role Variables
 --------------
 
-* `user` &mdash; a name of target user. Defaults to current (connection) user.
 * `system` &mdash; a dict with target system properties.
     * `hidpi` &mdash; whether to use HiDPI configuration or not.
 
