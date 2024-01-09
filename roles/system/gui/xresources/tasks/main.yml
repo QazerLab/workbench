@@ -1,6 +1,24 @@
 ---
 # XXX: /usr/share/icons and /etc/X11 are owned by the package manager
 # and must already be present after xorg-xserver and xorg-apps installation.
+#
+# Wallpapers directory is custom, so we create it.
+- name: 'ensure wallpapers directory exists'
+  file:
+    path: '/usr/local/share/wallpapers'
+    owner: 'root'
+    group: 'root'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install global Xresources'
+  template:
+    src: 'Xresources.j2'
+    dest: '/etc/X11/Xresources'
+    owner: 'root'
+    group: 'root'
+    mode: 0644
+
 - name: 'install icons'
   copy:
     src: 'icons/'
@@ -10,10 +28,10 @@
     mode: 0644
     local_follow: false
 
-- name: 'install global Xresources'
-  template:
-    src: 'Xresources.j2'
-    dest: '/etc/X11/Xresources'
+- name: 'install wallpapers'
+  copy:
+    src: 'wallpapers/'
+    dest: '/usr/local/share/wallpapers'
     owner: 'root'
     group: 'root'
     mode: 0644
