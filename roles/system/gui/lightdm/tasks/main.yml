@@ -3,6 +3,7 @@
   loop:
     - 'lightdm'
     - 'lightdm-slick-greeter'
+    - 'light-locker'
   package:
     name: '{{ item }}'
     state: 'present'
