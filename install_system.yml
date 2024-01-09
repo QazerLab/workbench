@@ -14,5 +14,6 @@
       loop:
         - 'system/gui/xorg'
         - 'system/gui/xresources'
+        - 'system/gui/lightdm'
       loop_control:
         loop_var: 'role_item'

@@ -1,0 +1,34 @@
+---
+- name: 'install lightdm packages'
+  loop:
+    - 'lightdm'
+    - 'lightdm-slick-greeter'
+  package:
+    name: '{{ item }}'
+    state: 'present'
+
+- name: 'install lightdm configuration'
+  loop:
+    - 'lightdm.conf'
+    - 'users.conf'
+  copy:
+    src: '{{ item }}'
+    dest: '/etc/lightdm/{{ item }}'
+    owner: 'root'
+    group: 'root'
+    mode: 0644
+
+- name: 'install lightdm templates'
+  loop:
+    - 'slick-greeter.conf'
+  template:
+    src: '{{ item }}.j2'
+    dest: '/etc/lightdm/{{ item }}'
+    owner: 'root'
+    group: 'root'
+    mode: 0644
+
+- name: 'enable lightdm service'
+  service:
+    name: 'lightdm'
+    enabled: true
