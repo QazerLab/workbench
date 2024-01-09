@@ -5,3 +5,5 @@ desktops:
       system:
         laptop: true
         hidpi: false
+
+      wallpaper: '/usr/local/share/wallpapers/arch_desktop.png'

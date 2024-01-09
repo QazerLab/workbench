@@ -5,8 +5,10 @@ light-locker &
 # XCompmgr is used only for transparency in Tilda.
 xcompmgr &
 
+{% if wallpaper is defined %}
 # Wallpaper under the desktop.
-feh --bg-scale "/usr/local/share/wallpapers/arch_desktop.png"
+feh --bg-scale "{{ wallpaper }}"
+{% endif %}
 
 # The panel.
 #
