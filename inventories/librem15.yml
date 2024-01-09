@@ -1,0 +1,7 @@
+---
+desktops:
+  hosts:
+    librem15:
+      system:
+        laptop: true
+        hidpi: true

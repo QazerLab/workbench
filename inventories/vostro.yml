@@ -1,0 +1,7 @@
+---
+desktops:
+  hosts:
+    vostro:
+      system:
+        laptop: true
+        hidpi: false

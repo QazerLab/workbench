@@ -26,16 +26,23 @@ Roles which may be useful for configuring user profile on servers (e.g.
 Installation
 ============
 
-The configuration file is [`group_vars/all.yml`](group_vars/all.yml).
+The [`group_vars`](group_vars) directory contains basic configuration for different device
+archetypes; currently only desktops are supported. The [`inventories`](inventories) directory
+contains host-specific inventories.
 
-After editing it as required, run
+Run
 
 ```
-ansible-playbook -b install_system.yml
-ansible-playbook install.yml
+ansible-playbook -i inventories/$DEVICE -b install_system.yml
 ```
 
-to start the installation process.
+to start system configuration process; run
+
+```
+ansible-playbook -i inventories/$DEVICE install.yml
+```
+
+to configure specific user and their environment.
 
 
 
