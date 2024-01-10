@@ -1,0 +1,48 @@
+---
+- name: 'install ssh'
+  when: 'install_packages'
+  become: true
+  package:
+    name: 'openssh'
+    state: 'present'
+
+- name: 'get home dir of {{ user }}'
+  getent:
+    database: 'passwd'
+    key: '{{ user }}'
+    split: ':'
+
+- name: 'store home dir of {{ user }}'
+  set_fact:
+    home_dir: '{{ getent_passwd[user][4] }}'
+
+- name: 'ensure .ssh and config.d directories exist'
+  loop:
+    - '{{ home_dir }}/.ssh'
+    - '{{ home_dir }}/.ssh/config.d'
+  file:
+    path: '{{ item }}'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    state: 'directory'
+    mode: 0700
+
+- name: 'install ssh config'
+  template:
+    src: 'config.j2'
+    dest: '{{ home_dir }}/.ssh/config'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0644
+
+# XXX: do not bother with creating custom units for non-Arch systems, as currently
+# the agent is required only for client machines, which are Arch desktops, and Arch
+# has a default agent unit shipepd with openssh package (which is not the case for,
+# say, CentOS / Almalinux).
+- name: 'enable ssh agent'
+  when: 'ansible_os_family == "Archlinux" and ssh["use_agent"]'
+  systemd_service:
+    name: 'ssh-agent'
+    scope: 'user'
+    state: 'started'
+    enabled: true

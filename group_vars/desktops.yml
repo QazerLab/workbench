@@ -30,6 +30,9 @@ install_packages: true
 # GOPATH value; relative to user's home directory.
 golang_gopath: 'pub/src/misc/gopath'
 
+ssh:
+  use_agent: true
+
 # A list of vim plugins to install.
 vim_plugins:
   - 'youarehere'

@@ -13,6 +13,7 @@
       loop:
         - 'base/profile'
         - 'base/bash'
+        - 'base/ssh'
       loop_control:
         loop_var: 'role_item'
 

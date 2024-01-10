@@ -1,0 +1,6 @@
+---
+user: '{{ ansible_user_id }}'
+install_packages: true
+
+ssh:
+  use_agent: false

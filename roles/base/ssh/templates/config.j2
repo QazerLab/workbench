@@ -1,0 +1,6 @@
+Include config.d/*
+
+{% if ssh['use_agent'] %}
+Host *
+    AddKeysToAgent yes
+{% endif %}
