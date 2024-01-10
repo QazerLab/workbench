@@ -1,0 +1,6 @@
+---
+galaxy_info:
+  description: 'xfce screenshooter installation and its configuration'
+  min_ansible_version: 2.4
+
+dependencies: []

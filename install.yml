@@ -58,6 +58,7 @@
         - 'gui/alacritty'
         - 'gui/tilda'
         - 'gui/xfce4-panel'
+        - 'gui/xfce4-screenshooter'
         - 'gui/gmrun'
         - 'gui/viewnior'
         - 'gui/galculator'
