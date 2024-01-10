@@ -201,11 +201,22 @@ function cdiff () {
 
 
 
-# Finally, give a chance to perform machine-specific configuration.
-# This configuration is not managed by Ansible.
+# Load Ansible-managed drop-ins.
 if [ -d ~/.bashrc.d ]
 then
     for rcfile in ~/.bashrc.d/*
+    do
+        [ -r "$rcfile" ] && . "$rcfile"
+    done
+fi
+
+
+
+# Finally, give a chance to perform machine-specific configuration.
+# This configuration is not managed by Ansible.
+if [ -d ~/.bashrc.d-unmanaged ]
+then
+    for rcfile in ~/.bashrc.d-unmanaged/*
     do
         [ -r "$rcfile" ] && . "$rcfile"
     done

@@ -9,7 +9,23 @@
   set_fact:
     home_dir: '{{ getent_passwd[user][4] }}'
 
-- name: 'install .profile'
+- name: 'clean managed drop-ins directory'
+  file:
+    path: '{{ home_dir }}/.profile.d'
+    state: 'absent'
+
+- name: 'ensure drop-ins directories exist'
+  loop:
+    - '{{ home_dir }}/.profile.d'
+    - '{{ home_dir }}/.profile.d-unmanaged'
+  file:
+    path: '{{ item }}'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install basic .profile'
   template:
     src: 'profile.j2'
     dest: '{{ home_dir }}/.profile'
