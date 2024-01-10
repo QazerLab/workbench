@@ -26,8 +26,8 @@
 
 - name: 'install alacritty config'
   copy:
-    src: 'alacritty.yml'
-    dest: '{{ home_dir }}/.config/alacritty/alacritty.yml'
+    src: 'alacritty.toml'
+    dest: '{{ home_dir }}/.config/alacritty/alacritty.toml'
     owner: '{{ user }}'
     group: '{{ user }}'
     mode: 0644

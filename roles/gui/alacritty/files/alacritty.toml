@@ -1,0 +1,41 @@
+live_config_reload = true
+
+[colors.bright]
+black = "0x555555"
+blue = "0x5555FF"
+cyan = "0x55FFFF"
+green = "0x55FF55"
+magenta = "0xFF55FF"
+red = "0xFF5555"
+white = "0xFFFFFF"
+yellow = "0xFFFF55"
+
+[colors.normal]
+black = "0x000000"
+blue = "0x0000AA"
+cyan = "0x00AAAA"
+green = "0x00AA00"
+magenta = "0xAA00AA"
+red = "0xAA0000"
+white = "0xAAAAAA"
+yellow = "0xAA5500"
+
+[colors.primary]
+background = "0x000000"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F"
+mods = "Control|Shift"
+
+[window]
+dynamic_title = true
+
+[window.dimensions]
+columns = 80
+lines = 24
