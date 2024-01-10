@@ -7,3 +7,8 @@ desktops:
         hidpi: false
 
       wallpaper: '/usr/local/share/wallpapers/arch_desktop.png'
+
+      xfce:
+        panel:
+          x: 960
+          y: 1066

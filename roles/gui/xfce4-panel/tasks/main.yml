@@ -1,0 +1,57 @@
+---
+- name: 'install xfce-panel packages'
+  loop:
+    - 'xfce4-panel'
+    - 'xfce4-pulseaudio-plugin'
+    - 'xfce4-xkb-plugin'
+    - 'xfce4-battery-plugin'
+  when: 'install_packages'
+  become: true
+  package:
+    name: '{{ item }}'
+    state: 'present'
+
+- name: 'get home dir of {{ user }}'
+  getent:
+    database: 'passwd'
+    key: '{{ user }}'
+    split: ':'
+
+- name: 'store home dir of {{ user }}'
+  set_fact:
+    home_dir: '{{ getent_passwd[user][4] }}'
+
+- name: 'ensure xfce config directories exist'
+  loop:
+    - '{{ home_dir }}/.config/xfce4/xfconf/xfce-perchannel-xml'
+    - '{{ home_dir }}/.config/xfce4/panel'
+  file:
+    path: '{{ item }}'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    state: 'directory'
+    mode: 0755
+
+# XXX: that is a pretty dirty trick, as xfconfd caches configuration in-memory
+# and poking into that configuration manually would require us to deal with xfconfd
+# in the handler. However, applying all the required settings properly via the
+# xfconf module or command would be quite boring and ugly, and having whole XML config
+# stored as-is would be much more simple in support.
+- name: 'install xfce-panel config'
+  template:
+    src: 'xfce4-panel.xml.j2'
+    dest: '{{ home_dir }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0644
+  notify: 'reconfigure xfce-panel'
+
+- name: 'install xfce-battery-plugin config'
+  when: 'system["laptop"]'
+  copy:
+    src: 'battery-5.rc'
+    dest: '{{ home_dir }}/.config/xfce4/panel/battery-5.rc'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0644
+  notify: 'reconfigure xfce-panel'

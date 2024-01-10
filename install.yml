@@ -57,6 +57,7 @@
         - 'gui/gtk3'
         - 'gui/alacritty'
         - 'gui/tilda'
+        - 'gui/xfce4-panel'
         - 'gui/gmrun'
         - 'gui/viewnior'
         - 'gui/galculator'
