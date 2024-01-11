@@ -25,7 +25,7 @@ Role Variables
 * `install_packages` &mdash; if set to `false`, skips the package installation.
 * `system` &mdash; a dict with target system properties.
     * `hidpi` &mdash; whether to use HiDPI configuration or not.
-    * `gui` &mdash GUI settings.
+    * `gui` &mdash; GUI settings.
         * `dm` &mdash display manager used in this system.
 * `features` &mdash; a dict with feature flags.
     * `dev` &mdash; a list of development features to be supported.
