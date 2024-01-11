@@ -1,34 +1,24 @@
 ---
-- name: 'get home dir of {{ user }}'
-  getent:
-    database: 'passwd'
-    key: '{{ user }}'
-    split: ':'
-
-- name: 'store home dir of {{ user }}'
-  set_fact:
-    home_dir: '{{ getent_passwd[user][4] }}'
-
 - name: 'clean managed drop-ins directory'
   file:
-    path: '{{ home_dir }}/.profile.d'
+    path: '{{ user_config["home_dir"] }}/.profile.d'
     state: 'absent'
 
 - name: 'ensure drop-ins directories exist'
   loop:
-    - '{{ home_dir }}/.profile.d'
-    - '{{ home_dir }}/.profile.d-unmanaged'
+    - '.profile.d'
+    - '.profile.d-unmanaged'
   file:
-    path: '{{ item }}'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    path: '{{ user_config["home_dir"] }}/{{ item }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     state: 'directory'
     mode: 0755
 
 - name: 'install basic .profile'
   template:
     src: 'profile.j2'
-    dest: '{{ home_dir }}/.profile'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    dest: '{{ user_config["home_dir"] }}/.profile'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     mode: 0644

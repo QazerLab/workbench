@@ -9,36 +9,26 @@
       - 'gnome-themes-extra'
     state: 'present'
 
-- name: 'get home dir of {{ user }}'
-  getent:
-    database: 'passwd'
-    key: '{{ user }}'
-    split: ':'
-
-- name: 'store home dir of {{ user }}'
-  set_fact:
-    home_dir: '{{ getent_passwd[user][4] }}'
-
 - name: 'install .gtkrc-2.0'
   copy:
     src: 'gtkrc-2.0'
-    dest: '{{ home_dir }}/.gtkrc-2.0'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    dest: '{{ user_config["home_dir"] }}/.gtkrc-2.0'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     mode: 0644
 
 - name: 'ensure gkt3 config directory exists'
   file:
-    path: '{{ home_dir }}/.config/gtk-3.0'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    path: '{{ user_config["home_dir"] }}/.config/gtk-3.0'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     state: 'directory'
     mode: 0755
 
 - name: 'install gtk3 configuration'
   copy:
     src: 'gtk.css'
-    dest: '{{ home_dir }}/.config/gtk-3.0/gtk.css'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    dest: '{{ user_config["home_dir"] }}/.config/gtk-3.0/gtk.css'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     mode: 0644

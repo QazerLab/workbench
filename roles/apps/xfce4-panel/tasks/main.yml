@@ -11,24 +11,14 @@
     name: '{{ item }}'
     state: 'present'
 
-- name: 'get home dir of {{ user }}'
-  getent:
-    database: 'passwd'
-    key: '{{ user }}'
-    split: ':'
-
-- name: 'store home dir of {{ user }}'
-  set_fact:
-    home_dir: '{{ getent_passwd[user][4] }}'
-
 - name: 'ensure xfce config directories exist'
   loop:
-    - '{{ home_dir }}/.config/xfce4/xfconf/xfce-perchannel-xml'
-    - '{{ home_dir }}/.config/xfce4/panel'
+    - '{{ user_config["home_dir"] }}/.config/xfce4/xfconf/xfce-perchannel-xml'
+    - '{{ user_config["home_dir"] }}/.config/xfce4/panel'
   file:
     path: '{{ item }}'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     state: 'directory'
     mode: 0755
 
@@ -40,9 +30,9 @@
 - name: 'install xfce-panel config'
   template:
     src: 'xfce4-panel.xml.j2'
-    dest: '{{ home_dir }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    dest: '{{ user_config["home_dir"] }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     mode: 0644
   notify: 'reconfigure xfce-panel'
 
@@ -50,8 +40,8 @@
   when: 'system["laptop"]'
   copy:
     src: 'battery-5.rc'
-    dest: '{{ home_dir }}/.config/xfce4/panel/battery-5.rc'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    dest: '{{ user_config["home_dir"] }}/.config/xfce4/panel/battery-5.rc'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     mode: 0644
   notify: 'reconfigure xfce-panel'

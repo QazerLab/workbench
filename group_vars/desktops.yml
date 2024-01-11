@@ -1,5 +1,9 @@
 ansible_connection: 'local'
 
+user_config:
+  name: 'qazer'
+  home_dir: '/home/qazer'
+
 # Features which are to be available on the target system.
 #
 # This dictionary influences

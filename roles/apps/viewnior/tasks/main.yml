@@ -6,28 +6,18 @@
     name: 'viewnior'
     state: 'present'
 
-- name: 'get home dir of {{ user }}'
-  getent:
-    database: 'passwd'
-    key: '{{ user }}'
-    split: ':'
-
-- name: 'store home dir of {{ user }}'
-  set_fact:
-    home_dir: '{{ getent_passwd[user][4] }}'
-
 - name: 'ensure viewnior config directory exists'
   file:
-    path: '{{ home_dir }}/.config/viewnior'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    path: '{{ user_config["home_dir"] }}/.config/viewnior'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     state: 'directory'
     mode: 0755
 
 - name: 'install viewnior config'
   copy:
     src: 'viewnior.conf'
-    dest: '{{ home_dir }}/.config/viewnior/viewnior.conf'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    dest: '{{ user_config["home_dir"] }}/.config/viewnior/viewnior.conf'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     mode: 0644

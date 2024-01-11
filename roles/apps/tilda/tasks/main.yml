@@ -6,28 +6,18 @@
     name: 'tilda'
     state: 'present'
 
-- name: 'get home dir of {{ user }}'
-  getent:
-    database: 'passwd'
-    key: '{{ user }}'
-    split: ':'
-
-- name: 'store home dir of {{ user }}'
-  set_fact:
-    home_dir: '{{ getent_passwd[user][4] }}'
-
 - name: 'ensure tilda config directory exists'
   file:
-    path: '{{ home_dir }}/.config/tilda'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    path: '{{ user_config["home_dir"] }}/.config/tilda'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     state: 'directory'
     mode: 0755
 
 - name: 'install tilda config'
   copy:
     src: 'config_0'
-    dest: '{{ home_dir }}/.config/tilda/config_0'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    dest: '{{ user_config["home_dir"] }}/.config/tilda/config_0'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     mode: 0644

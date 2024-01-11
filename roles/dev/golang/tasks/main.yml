@@ -6,20 +6,10 @@
     name: 'go'
     state: 'present'
 
-- name: 'get home dir of {{ user }}'
-  getent:
-    database: 'passwd'
-    key: '{{ user }}'
-    split: ':'
-
-- name: 'store home dir of {{ user }}'
-  set_fact:
-    home_dir: '{{ getent_passwd[user][4] }}'
-
 - name: 'ensure GOPATH exists'
   file:
-    path: '{{ home_dir }}/{{ golang_gopath }}'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    path: '{{ user_config["home_dir"] }}/{{ golang_gopath }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     state: 'directory'
     mode: 0755

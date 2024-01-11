@@ -6,34 +6,24 @@
     name: 'vim'
     state: 'present'
 
-- name: 'get home dir of {{ user }}'
-  getent:
-    database: 'passwd'
-    key: '{{ user }}'
-    split: ':'
-
-- name: 'store home dir of {{ user }}'
-  set_fact:
-    home_dir: '{{ getent_passwd[user][4] }}'
-
 - name: 'store vim dirs locations'
   set_fact:
-    autoload_dir: '{{ home_dir }}/.vim/autoload'
-    bundle_dir: '{{ home_dir }}/.vim/bundle'
-    colors_dir: '{{ home_dir}}/.vim/colors'
-    configs_dir: '{{ home_dir }}/.vim/configs'
+    autoload_dir: '{{ user_config["home_dir"] }}/.vim/autoload'
+    bundle_dir: '{{ user_config["home_dir"] }}/.vim/bundle'
+    colors_dir: '{{ user_config["home_dir"]}}/.vim/colors'
+    configs_dir: '{{ user_config["home_dir"] }}/.vim/configs'
 
 - name: 'ensure .vim directory and its children exist'
   loop:
-    - '{{ home_dir }}/.vim'
+    - '{{ user_config["home_dir"] }}/.vim'
     - '{{ autoload_dir }}'
     - '{{ bundle_dir }}'
     - '{{ colors_dir }}'
     - '{{ configs_dir }}'
   file:
     path: '{{ item }}'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     state: 'directory'
     mode: 0755
 
@@ -41,24 +31,24 @@
   copy:
     src: 'vim/colors/'
     dest: '{{ colors_dir }}'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     mode: 0644
 
 - name: 'install .vimrc'
   template:
     src: 'vimrc.j2'
-    dest: '{{ home_dir }}/.vimrc'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    dest: '{{ user_config["home_dir"] }}/.vimrc'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     mode: 0644
 
 - name: 'install pathogen'
   get_url:
     url: '{{ vim_pathogen_url }}'
     dest: '{{ autoload_dir }}/pathogen.vim'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     mode: 0644
 
 - with_items:

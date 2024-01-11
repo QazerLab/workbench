@@ -6,28 +6,18 @@
     name: 'alacritty'
     state: 'present'
 
-- name: 'get home dir of {{ user }}'
-  getent:
-    database: 'passwd'
-    key: '{{ user }}'
-    split: ':'
-
-- name: 'store home dir of {{ user }}'
-  set_fact:
-    home_dir: '{{ getent_passwd[user][4] }}'
-
 - name: 'ensure alacritty config directory exists'
   file:
-    path: '{{ home_dir }}/.config/alacritty'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    path: '{{ user_config["home_dir"] }}/.config/alacritty'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     state: 'directory'
     mode: 0755
 
 - name: 'install alacritty config'
   copy:
     src: 'alacritty.toml'
-    dest: '{{ home_dir }}/.config/alacritty/alacritty.toml'
-    owner: '{{ user }}'
-    group: '{{ user }}'
+    dest: '{{ user_config["home_dir"] }}/.config/alacritty/alacritty.toml'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
     mode: 0644

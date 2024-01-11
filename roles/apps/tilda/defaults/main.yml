@@ -1,3 +1,6 @@
 ---
-user: '{{ ansible_user_id }}'
+user_config:
+  name: 'qazer'
+  home_dir: '/home/qazer'
+
 install_packages: true
