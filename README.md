@@ -97,4 +97,4 @@ See [The Troubleshooting Guide](TROUBLESHOOTING.md).
 Interesting Stuff
 =================
 
-* The complete and highly custom [Openbox keymap](roles/gui/openbox/docs/keymap.md).
+* The complete and highly custom [Openbox keymap](roles/des/openbox-qaztom/docs/keymap.md).

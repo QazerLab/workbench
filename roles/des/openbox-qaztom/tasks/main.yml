@@ -1,0 +1,181 @@
+---
+- name: 'install qaztom packages'
+  when: 'install_packages'
+  become: true
+  package:
+    name:
+      - 'openbox'
+      - 'gtk2'
+      - 'gtk3'
+      - 'gnome-themes-extra'
+      - 'tilda'
+      - 'alacritty'
+      - 'gmrun'
+      - 'xfce4-panel'
+      - 'xfce4-pulseaudio-plugin'
+      - 'xfce4-xkb-plugin'
+      - 'xfce4-battery-plugin'
+      - 'xfce4-screenshooter'
+      - 'galculator'
+      - 'viewnior'
+    state: 'present'
+
+- name: 'ensure openbox config directory exists'
+  file:
+    path: '{{ user_config["home_dir"] }}/.config/openbox'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install {{ item }} openbox config'
+  loop:
+    - 'autostart'
+    - 'rc.xml'
+    - 'menu.xml'
+  template:
+    src: 'openbox/{{ item }}.j2'
+    dest: '{{ user_config["home_dir"] }}/.config/openbox/{{ item }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+  notify: 'reconfigure openbox'
+
+- name: 'install .gtkrc-2.0'
+  copy:
+    src: 'gtk/gtkrc-2.0'
+    dest: '{{ user_config["home_dir"] }}/.gtkrc-2.0'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
+- name: 'ensure gkt3 config directory exists'
+  file:
+    path: '{{ user_config["home_dir"] }}/.config/gtk-3.0'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install gtk3 configuration'
+  copy:
+    src: 'gtk/gtk.css'
+    dest: '{{ user_config["home_dir"] }}/.config/gtk-3.0/gtk.css'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
+- name: 'ensure tilda config directory exists'
+  file:
+    path: '{{ user_config["home_dir"] }}/.config/tilda'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install tilda config'
+  copy:
+    src: 'tilda/config_0'
+    dest: '{{ user_config["home_dir"] }}/.config/tilda/config_0'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
+- name: 'ensure alacritty config directory exists'
+  file:
+    path: '{{ user_config["home_dir"] }}/.config/alacritty'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install alacritty config'
+  copy:
+    src: 'alacritty/alacritty.toml'
+    dest: '{{ user_config["home_dir"] }}/.config/alacritty/alacritty.toml'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
+- name: 'install gmrun config'
+  copy:
+    src: 'gmrun/gmrunrc'
+    dest: '{{ user_config["home_dir"] }}/.gmrunrc'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
+- name: 'ensure xfce config directories exist'
+  loop:
+    - '/.config/xfce4/xfconf/xfce-perchannel-xml'
+    - '/.config/xfce4/panel'
+  file:
+    path: '{{ user_config["home_dir"] }}/{{ item }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    state: 'directory'
+    mode: 0755
+
+# XXX: that is a pretty dirty trick, as xfconfd caches configuration in-memory
+# and poking into that configuration manually would require us to deal with xfconfd
+# in the handler. However, applying all the required settings properly via the
+# xfconf module or command would be quite boring and ugly, and having whole XML config
+# stored as-is would be much more simple in support.
+- name: 'install xfce-panel config'
+  template:
+    src: 'xfce4-panel/xfce4-panel.xml.j2'
+    dest: '{{ user_config["home_dir"] }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+  notify: 'reconfigure xfce-panel'
+
+- name: 'install xfce-battery-plugin config'
+  when: 'system["laptop"]'
+  copy:
+    src: 'xfce4-panel/battery-5.rc'
+    dest: '{{ user_config["home_dir"] }}/.config/xfce4/panel/battery-5.rc'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+  notify: 'reconfigure xfce-panel'
+
+- name: 'install xfce-screenshooter config'
+  template:
+    src: 'xfce4-screenshooter/xfce4-screenshooter.j2'
+    dest: '{{ user_config["home_dir"] }}/.config/xfce4/xfce4-screenshooter'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
+- name: 'ensure galculator config directory exists'
+  file:
+    path: '{{ user_config["home_dir"] }}/.config/galculator'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install galculator config'
+  copy:
+    src: 'galculator/galculator.conf'
+    dest: '{{ user_config["home_dir"] }}/.config/galculator/galculator.conf'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
+- name: 'ensure viewnior config directory exists'
+  file:
+    path: '{{ user_config["home_dir"] }}/.config/viewnior'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install viewnior config'
+  copy:
+    src: 'viewnior/viewnior.conf'
+    dest: '{{ user_config["home_dir"] }}/.config/viewnior/viewnior.conf'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644

@@ -5,7 +5,7 @@ user_config:
   home_dir: '/home/qazer'
 
   gui:
-    wm: 'openbox'
+    de: 'openbox-qaztom'
 
 # Features which are to be available on the target system.
 #

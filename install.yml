@@ -49,25 +49,7 @@
       include_role:
         name: 'base/vim'
 
-    - name: 'apply GUI roles'
+    - name: 'install user`s desktop environment, if required'
       include_role:
-        name: 'apps/{{ role_item }}'
-      when: '"gui" in features'
-      loop:
-        - 'gtk'
-        - 'alacritty'
-        - 'tilda'
-        - 'xfce4-panel'
-        - 'xfce4-screenshooter'
-        - 'gmrun'
-        - 'viewnior'
-        - 'galculator'
-      loop_control:
-        loop_var: 'role_item'
-
-    # Things like WMs and DMs are intended to be replaceable with alternatives,
-    # thus, each of them is optional by definition.
-    - name: 'apply optional GUI roles'
-      include_role:
-        name: 'wms/{{ user_config["gui"]["wm"] }}'
-      when: '"gui" in user_config and "wm" in user_config["gui"]'
+        name: 'des/{{ user_config["gui"]["de"] }}'
+      when: '"gui" in user_config and "de" in user_config["gui"]'
