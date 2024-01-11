@@ -1,48 +1,68 @@
 ---
-- name: 'install xorg'
+- name: 'install Xorg server, utilities and fonts'
   package:
-    name: 'xorg-server'
+    name:
+      - 'xorg-server'
+      - 'xorg-apps'
+      - 'ttf-dejavu'
+      - 'ttf-opensans'
     state: 'present'
 
-- name: 'install xorg utilities'
-  package:
-    name: 'xorg-apps'
-    state: 'present'
-
-- name: 'install fonts'
-  loop:
-    - 'ttf-dejavu'
-    - 'ttf-opensans'
-  package:
-    name: '{{ item }}'
-    state: 'present'
-
-- name: 'ensure xorg config directory exists'
+# XXX: /usr/share/icons and /etc/X11 are owned by the package manager
+# and must already be present after xorg-xserver and xorg-apps installation.
+#
+# Wallpapers directory is custom, so we create it.
+- name: 'ensure wallpapers directory exists'
   file:
-    path: '/etc/X11/xorg.conf.d'
+    path: '/usr/local/share/wallpapers'
     owner: 'root'
     group: 'root'
     state: 'directory'
     mode: 0755
 
-- name: 'install common xorg configuration'
+- name: 'install common Xorg configuration'
   loop:
     - '00_disable_screensaver.conf'
     - '10_keyboard.conf'
   copy:
-    src: '{{ item }}'
+    src: 'xorg.conf/{{ item }}'
     dest: '/etc/X11/xorg.conf.d/{{ item }}'
     owner: 'root'
     group: 'root'
     mode: 0644
 
-- name: 'install laptop xorg configuration'
+- name: 'install laptop Xorg configuration'
   when: 'system["laptop"]'
   loop:
     - '20_touchpad.conf'
   copy:
-    src: '{{ item }}'
+    src: 'xorg.conf/{{ item }}'
     dest: '/etc/X11/xorg.conf.d/{{ item }}'
+    owner: 'root'
+    group: 'root'
+    mode: 0644
+
+- name: 'install global Xresources'
+  template:
+    src: 'Xresources.j2'
+    dest: '/etc/X11/Xresources'
+    owner: 'root'
+    group: 'root'
+    mode: 0644
+
+- name: 'install icons'
+  copy:
+    src: 'icons/'
+    dest: '/usr/share/icons'
+    owner: 'root'
+    group: 'root'
+    mode: 0644
+    local_follow: false
+
+- name: 'install wallpapers'
+  copy:
+    src: 'wallpapers/'
+    dest: '/usr/local/share/wallpapers'
     owner: 'root'
     group: 'root'
     mode: 0644

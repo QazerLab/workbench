@@ -1,7 +1,0 @@
----
-galaxy_info:
-  description: 'installation of global X resources (themes, cursors, etc.)'
-  min_ansible_version: 2.4
-
-dependencies:
-  - 'xorg'
