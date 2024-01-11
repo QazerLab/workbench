@@ -3,6 +3,10 @@ user_config:
   name: 'qazer'
   home_dir: '/home/qazer'
 
+  # Uncomment to enable GUI-related settings.
+  #
+  # gui: {}
+
 features: {
   # Uncomment to export dev-related variables.
   #
@@ -20,10 +24,6 @@ features: {
   #
   #  # Enables additional CLI tools support.
   #  - 'extras'
-
-  # Uncomment to enable GUI-related settings.
-  #
-  # gui: {}
 }
 
 system:

@@ -25,9 +25,6 @@ features:
     - 'golang'
     - 'haskell'
 
-  gui:
-    - 'openbox'
-
 # Install packages on target machine?
 #
 # If false, only configuration files are deployed, so that privileges

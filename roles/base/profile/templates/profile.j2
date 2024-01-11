@@ -38,7 +38,7 @@ export GOPATH=~/"{{ golang_gopath }}"
 
 
 
-{% if 'gui' in features and system['hidpi'] -%}
+{% if 'gui' in user_config and system['hidpi'] -%}
 
 # Scale GDK UIs 2x...
 export GDK_SCALE=2
