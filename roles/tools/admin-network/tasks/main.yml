@@ -1,0 +1,24 @@
+---
+- name: 'install network administration tools'
+  when: 'install_packages'
+  become: true
+  package:
+    state: 'present'
+    name:
+      - 'bind-tools'
+      - 'traceroute'
+      - 'gnu-netcat'
+      - 'mtr'
+      - 'tcpdump'
+      - 'nmap'
+      - 'curl'
+
+      # TODO: this is user-preference and distro-specific stuff.
+      # Introduce feature flags to define what is used to manage
+      # network connections.
+      - 'dhcpcd'
+      - 'netctl'
+      - 'dialog'
+      - 'wpa_supplicant'
+      - 'ifplugd'
+      - 'openresolv'
