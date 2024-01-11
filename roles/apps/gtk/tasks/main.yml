@@ -1,10 +1,11 @@
 ---
-- name: 'install gtk2'
+- name: 'install gtk'
   when: 'install_packages'
   become: true
   package:
     name:
       - 'gtk2'
+      - 'gtk3'
       - 'gnome-themes-extra'
     state: 'present'
 
@@ -22,6 +23,22 @@
   copy:
     src: 'gtkrc-2.0'
     dest: '{{ home_dir }}/.gtkrc-2.0'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0644
+
+- name: 'ensure gkt3 config directory exists'
+  file:
+    path: '{{ home_dir }}/.config/gtk-3.0'
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install gtk3 configuration'
+  copy:
+    src: 'gtk.css'
+    dest: '{{ home_dir }}/.config/gtk-3.0/gtk.css'
     owner: '{{ user }}'
     group: '{{ user }}'
     mode: 0644

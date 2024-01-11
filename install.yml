@@ -54,8 +54,7 @@
         name: 'apps/{{ role_item }}'
       when: '"gui" in features'
       loop:
-        - 'gtk2'
-        - 'gtk3'
+        - 'gtk'
         - 'alacritty'
         - 'tilda'
         - 'xfce4-panel'
