@@ -69,5 +69,5 @@
     # thus, each of them is optional by definition.
     - name: 'apply optional GUI roles'
       include_role:
-        name: 'wms/openbox'
-      when: '"gui" in features and "openbox" in features["gui"]'
+        name: 'wms/{{ user_config["gui"]["wm"] }}'
+      when: '"gui" in user_config and "wm" in user_config["gui"]'

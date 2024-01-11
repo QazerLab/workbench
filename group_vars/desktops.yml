@@ -4,6 +4,9 @@ user_config:
   name: 'qazer'
   home_dir: '/home/qazer'
 
+  gui:
+    wm: 'openbox'
+
 # Features which are to be available on the target system.
 #
 # This dictionary influences

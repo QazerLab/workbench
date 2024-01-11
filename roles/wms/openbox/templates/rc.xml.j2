@@ -315,7 +315,7 @@
             System session management section.
         -->
 
-        <!-- TODO: use specific lock screen dependeng on feature flags -->
+{% if 'dm' in system['gui'] and system['gui']['dm'] == 'lightdm' %}
         <keybind key="W-semicolon">
             <action name="Execute">
                 <startupnotify>
@@ -325,6 +325,7 @@
                 <command>light-locker-command -l</command>
             </action>
         </keybind>
+{% endif %}
         <keybind key="W-q">
             <action name="Reconfigure"/>
         </keybind>

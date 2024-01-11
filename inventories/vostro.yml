@@ -6,6 +6,9 @@ desktops:
         laptop: true
         hidpi: false
 
+        gui:
+          dm: 'lightdm'
+
       wallpaper: '/usr/local/share/wallpapers/arch_desktop.png'
 
       xfce:

@@ -7,12 +7,12 @@
         msg: 'Please define the desired feature flags in the "features" dictionary.'
       when: 'features is not defined'
 
-    - name: 'apply GUI roles'
+    - name: 'install Xorg'
       include_role:
-        name: '{{ role_item }}'
-      when: '"gui" in features'
-      loop:
-        - 'xorg'
-        - 'dms/lightdm'
-      loop_control:
-        loop_var: 'role_item'
+        name: 'xorg'
+      when: '"gui" in system'
+
+    - name: 'install DM'
+      include_role:
+        name: 'dms/{{ system["gui"]["dm"] }}'
+      when: '"gui" in system and "dm" in system["gui"]'

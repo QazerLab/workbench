@@ -1,6 +1,7 @@
-# TODO: support different lockers based on feature flags
+{% if 'dm' in system['gui'] and system['gui']['dm'] == 'lightdm' %}
 # Lockscreen manager.
 light-locker &
+{% endif %}
 
 # XCompmgr is used only for transparency in Tilda.
 xcompmgr &

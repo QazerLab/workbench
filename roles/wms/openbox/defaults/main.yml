@@ -15,4 +15,7 @@ features: {
 system:
   hidpi: false
 
+  gui:
+    dm: 'lightdm'
+
 install_packages: true

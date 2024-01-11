@@ -93,12 +93,13 @@
     </menu>
 
     <menu id="system" label="System">
-        <!-- TODO: use specific lock screen dependeng on feature flags -->
+{% if 'dm' in system['gui'] and system['gui']['dm'] == 'lightdm' %}
         <item label="Lock">
             <action name="Execute">
                 <command>light-locker-command -l</command>
             </action>
         </item>
+{% endif %}
         <item label="Log Out">
             <action name="Exit">
                 <prompt>yes</prompt>
