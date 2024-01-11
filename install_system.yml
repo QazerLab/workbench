@@ -12,8 +12,8 @@
         name: '{{ role_item }}'
       when: '"gui" in features'
       loop:
-        - 'system/gui/xorg'
-        - 'system/gui/xresources'
-        - 'system/gui/lightdm'
+        - 'xorg'
+        - 'xresources'
+        - 'dms/lightdm'
       loop_control:
         loop_var: 'role_item'

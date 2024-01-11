@@ -51,18 +51,18 @@
 
     - name: 'apply GUI roles'
       include_role:
-        name: '{{ role_item }}'
+        name: 'apps/{{ role_item }}'
       when: '"gui" in features'
       loop:
-        - 'gui/gtk2'
-        - 'gui/gtk3'
-        - 'gui/alacritty'
-        - 'gui/tilda'
-        - 'gui/xfce4-panel'
-        - 'gui/xfce4-screenshooter'
-        - 'gui/gmrun'
-        - 'gui/viewnior'
-        - 'gui/galculator'
+        - 'gtk2'
+        - 'gtk3'
+        - 'alacritty'
+        - 'tilda'
+        - 'xfce4-panel'
+        - 'xfce4-screenshooter'
+        - 'gmrun'
+        - 'viewnior'
+        - 'galculator'
       loop_control:
         loop_var: 'role_item'
 
@@ -70,9 +70,5 @@
     # thus, each of them is optional by definition.
     - name: 'apply optional GUI roles'
       include_role:
-        name: 'gui/{{ role_item }}'
-      when: '"gui" in features and role_item in features["gui"]'
-      loop:
-        - 'openbox'
-      loop_control:
-        loop_var: 'role_item'
+        name: 'wms/openbox'
+      when: '"gui" in features and "openbox" in features["gui"]'
