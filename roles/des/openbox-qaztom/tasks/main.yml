@@ -5,6 +5,8 @@
   package:
     name:
       - 'openbox'
+      - 'xcompmgr'
+      - 'feh'
       - 'gtk2'
       - 'gtk3'
       - 'gnome-themes-extra'
