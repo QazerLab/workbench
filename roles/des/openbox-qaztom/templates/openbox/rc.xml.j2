@@ -290,9 +290,20 @@
                 <command>amixer set Master 10%-</command>
             </action>
         </keybind>
+
+        <!--
+            XXX: While it would be better to mute sound at ALSA
+            level, there are problems which make this difficult,
+            so we resort to muting the default sink of PulseAudio
+            and hope that this will always work as expected.
+
+            See also:
+
+            https://wiki.archlinux.org/title/PulseAudio/Troubleshooting#Output_stuck_muted_while_Master_is_toggled
+        -->
         <keybind key="W-slash">
             <action name="Execute">
-                <command>pactl set-sink-mute 0 toggle</command>
+                <command>sh -c 'pactl set-sink-mute $(pactl get-default-sink) toggle'</command>
             </action>
         </keybind>
         <keybind key="XF86AudioRaiseVolume">
