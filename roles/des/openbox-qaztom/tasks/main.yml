@@ -23,10 +23,13 @@
       - 'pavucontrol'
       - 'galculator'
       - 'viewnior'
+      - 'guvcview'
       - 'zathura'
       - 'zathura-djvu'
       - 'zathura-pdf-poppler'
       - 'zathura-ps'
+      - 'audacious'
+      - 'vlc'
     state: 'present'
 
 - name: 'ensure openbox config directory exists'
