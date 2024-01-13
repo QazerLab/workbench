@@ -1,0 +1,45 @@
+---
+- name: 'install doublecmd package'
+  when: 'install_packages'
+  become: true
+  package:
+    name: 'doublecmd-gtk2'
+    state: 'present'
+
+- name: 'delete doublecmd configs if forced'
+  file:
+    path: '{{ user_config["home_dir"] }}/.config/doublecmd'
+    state: 'absent'
+  when: 'force_clean_configs'
+
+- name: 'check for doublecmd config directory'
+  stat:
+    path: '{{ user_config["home_dir"] }}/.config/doublecmd'
+  register: 'dconfig_result'
+
+- name: 'install doublecmd configs'
+  when: 'not dconfig_result.stat.exists'
+  block:
+    - name: 'create doublecmd configs directory'
+      file:
+        path: '{{ user_config["home_dir"] }}/.config/doublecmd'
+        owner: '{{ user_config["name"] }}'
+        group: '{{ user_config["name"] }}'
+        state: 'directory'
+        mode: 0755
+
+    - name: 'install doublecmd.xml'
+      template:
+        src: 'doublecmd.xml.j2'
+        dest: '{{ user_config["home_dir"] }}/.config/doublecmd/doublecmd.xml'
+        owner: '{{ user_config["name"] }}'
+        group: '{{ user_config["name"] }}'
+        mode: 0644
+
+    - name: 'install ignorelist.txt'
+      copy:
+        src: 'ignorelist.txt'
+        dest: '{{ user_config["home_dir"] }}/.config/doublecmd/ignorelist.txt'
+        owner: '{{ user_config["name"] }}'
+        group: '{{ user_config["name"] }}'
+        mode: 0644

@@ -38,6 +38,10 @@ golang_gopath: 'pub/src/misc/gopath'
 ssh:
   use_agent: true
 
+doublecmd:
+  terminal: 'alacritty'
+  editor: 'subl'
+
 # A list of vim plugins to install.
 vim_plugins:
   - 'youarehere'

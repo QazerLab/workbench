@@ -54,6 +54,7 @@
         name: 'apps/{{ role_item }}'
       loop:
         - 'vivaldi'
+        - 'doublecmd'
       loop_control:
         loop_var: 'role_item'
 

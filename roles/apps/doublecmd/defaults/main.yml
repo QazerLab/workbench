@@ -2,11 +2,8 @@
 user_config:
   name: 'qazer'
   home_dir: '/home/qazer'
+  downloads_dir: '/home/qazer/misc/downloads'
 
 install_packages: true
 
 force_clean_configs: false
-
-doublecmd:
-  terminal: 'alacritty'
-  editor: 'subl'
