@@ -23,6 +23,10 @@
       - 'pavucontrol'
       - 'galculator'
       - 'viewnior'
+      - 'zathura'
+      - 'zathura-djvu'
+      - 'zathura-pdf-poppler'
+      - 'zathura-ps'
     state: 'present'
 
 - name: 'ensure openbox config directory exists'
@@ -181,6 +185,22 @@
   copy:
     src: 'viewnior/viewnior.conf'
     dest: '{{ user_config["home_dir"] }}/.config/viewnior/viewnior.conf'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
+- name: 'ensure zathura config directory exists'
+  file:
+    path: '{{ user_config["home_dir"] }}/.config/zathura'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install zathura config'
+  copy:
+    src: 'zathura/zathurarc'
+    dest: '{{ user_config["home_dir"] }}/.config/zathura/zathurarc'
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     mode: 0644
