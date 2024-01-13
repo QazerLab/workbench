@@ -4,6 +4,7 @@
   become: true
   package:
     name:
+      - 'xdg-utils'
       - 'openbox'
       - 'xcompmgr'
       - 'feh'
@@ -192,6 +193,20 @@
     group: '{{ user_config["name"] }}'
     mode: 0644
 
+# There are other options which sometimes happe to become defaults: feh, browsers.
+- name: 'make viewnior default for images'
+  command:
+    argv:
+      - 'xdg-mime'
+      - 'default'
+      - 'viewnior.desktop'
+      - 'image/bmp'
+      - 'image/gif'
+      - 'image/jpeg'
+      - 'image/jpg'
+      - 'image/png'
+      - 'image/tiff'
+
 - name: 'ensure zathura config directory exists'
   file:
     path: '{{ user_config["home_dir"] }}/.config/zathura'
@@ -207,3 +222,13 @@
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     mode: 0644
+
+# Chromium likes to hijack PDF documents filetype association, get it back.
+- name: 'make zathura default for documents'
+  command:
+    argv:
+      - 'xdg-mime'
+      - 'default'
+      - 'org.pwmt.zathura.desktop'
+      - 'application/pdf'
+      - 'image/vnd.djvu'
