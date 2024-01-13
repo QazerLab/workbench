@@ -1,0 +1,6 @@
+---
+galaxy_info:
+  description: 'installation of multimedia manipulation tools'
+  min_ansible_version: 2.4
+
+dependencies: []

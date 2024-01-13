@@ -1,0 +1,11 @@
+---
+- name: 'install multimedia tools'
+  when: 'install_packages'
+  become: true
+  package:
+    state: 'present'
+    name:
+      - 'ffmpeg'
+      - 'flac'
+      - 'audacity'
+      - 'gimp'

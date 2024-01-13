@@ -58,6 +58,10 @@
       loop_control:
         loop_var: 'role_item'
 
+    - name: 'install multimedia toolchain'
+      include_role:
+        name: 'tools/media'
+
     - name: 'install user`s desktop environment, if required'
       include_role:
         name: 'des/{{ user_config["gui"]["de"] }}'
