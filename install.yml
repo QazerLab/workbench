@@ -49,6 +49,14 @@
       include_role:
         name: 'base/vim'
 
+    - name: 'install standalone GUI apps'
+      include_role:
+        name: 'apps/{{ role_item }}'
+      loop:
+        - 'vivaldi'
+      loop_control:
+        loop_var: 'role_item'
+
     - name: 'install user`s desktop environment, if required'
       include_role:
         name: 'des/{{ user_config["gui"]["de"] }}'

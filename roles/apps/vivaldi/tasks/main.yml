@@ -1,0 +1,47 @@
+---
+- name: 'install vivaldi packages'
+  when: 'install_packages'
+  become: true
+  package:
+    name:
+      - 'vivaldi'
+      - 'vivaldi-ffmpeg-codecs'
+    state: 'present'
+
+- name: 'ensure vivaldi downloads directory exists'
+  file:
+    path: '{{ user_config["downloads_dir"] }}/vivaldi'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'delete vivaldi configs if forced'
+  file:
+    path: '{{ user_config["home_dir"] }}/.config/vivaldi'
+    state: 'absent'
+  when: 'force_clean_configs'
+
+- name: 'check for vivaldi config directory'
+  stat:
+    path: '{{ user_config["home_dir"] }}/.config/vivaldi'
+  register: 'vconfig_result'
+
+- name: 'install vivaldi config'
+  when: 'not vconfig_result.stat.exists'
+  block:
+    - name: 'create vivaldi config directory'
+      file:
+        path: '{{ user_config["home_dir"] }}/.config/vivaldi/Default'
+        owner: '{{ user_config["name"] }}'
+        group: '{{ user_config["name"] }}'
+        state: 'directory'
+        mode: 0755
+
+    - name: 'install vivaldi preferences'
+      template:
+        src: 'Preferences.j2'
+        dest: '{{ user_config["home_dir"] }}/.config/vivaldi/Default/Preferences'
+        owner: '{{ user_config["name"] }}'
+        group: '{{ user_config["name"] }}'
+        mode: 0644

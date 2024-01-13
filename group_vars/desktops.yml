@@ -3,6 +3,7 @@ ansible_connection: 'local'
 user_config:
   name: 'qazer'
   home_dir: '/home/qazer'
+  downloads_dir: '/home/qazer/misc/downloads'
 
   gui:
     de: 'openbox-qaztom'
