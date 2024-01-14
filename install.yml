@@ -40,6 +40,16 @@
       loop_control:
         loop_var: 'role_item'
 
+    # XXX: installation of all toolchains will be merged together into a single loop
+    # once we move a list of required toolchains into the user_config and replace all
+    # existing dev roles with toolchains, deprecating the features.dev flag at all.
+    #
+    # Unless this, we have a little structural mess and apply many roles separately,
+    # so Java stands off other dev toolchains installation.
+    - name: 'apply Java development role'
+      include_role:
+        name: 'tools/devel-java'
+
     # Though Vim is _obviously_ much more "basic" than development tools,
     # its plugins and configurations have too many dependencies on development
     # tools and runtimes, which could become a problem when we need not only Vim

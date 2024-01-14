@@ -1,0 +1,26 @@
+---
+- name: 'install Java packages'
+  when: 'install_packages'
+  become: true
+  package:
+    state: 'present'
+    name:
+      - 'jdk-openjdk'
+      - 'openjdk-doc'
+      - 'openjdk-src'
+
+      - 'jdk17-openjdk'
+      - 'openjdk17-doc'
+      - 'openjdk17-src'
+
+      - 'jdk11-openjdk'
+      - 'openjdk11-doc'
+      - 'openjdk11-src'
+
+      - 'ant'
+      - 'maven'
+      - 'gradle'
+      - 'bazel'
+
+      - 'netbeans'
+      - 'visualvm'
