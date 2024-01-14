@@ -55,6 +55,7 @@
       loop:
         - 'vivaldi'
         - 'doublecmd'
+        - 'sublime'
       loop_control:
         loop_var: 'role_item'
 

@@ -1,0 +1,62 @@
+---
+- name: 'add sublime repo'
+  when: 'install_packages'
+  become: true
+  blockinfile:
+    dest: '/etc/pacman.conf'
+    prepend_newline: true
+    append_newline: true
+    block: |
+      [sublime-text]
+      Server = https://download.sublimetext.com/arch/stable/x86_64
+
+- name: 'copy sublime repo key'
+  when: 'install_packages'
+  copy:
+    src: 'sublimehq-publickey.gpg'
+    dest: '/tmp/sublimehq-publickey.gpg'
+
+- name: 'import sublime repo key'
+  when: 'install_packages'
+  become: true
+  shell:
+    argv:
+      - 'pacman-key'
+      - '--add'
+      - '/tmp/sublimehq-publickey.gpg'
+
+- name: 'self-sign sublime repo key to approve it'
+  when: 'install_packages'
+  become: true
+  shell:
+    argv:
+      - 'pacman-key'
+      - '--lsign-key'
+      - '{{ sublime_gpg_publickey }}'
+
+- name: 'install sublime-text package'
+  when: 'install_packages'
+  become: true
+  pacman:
+    name: 'sublime-text'
+    state: 'present'
+    update_cache: true
+
+- name: 'check for sublime user config directory'
+  file:
+    path: '{{ sublime_user_config_dir }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    state: 'directory'
+    mode: 0755
+
+- name: 'install sublime configs'
+  loop:
+    - 'NetBeans.tmTheme'
+    - 'Preferences.sublime-settings'
+  copy:
+    src: '{{ item }}'
+    dest: '{{ sublime_user_config_dir }}/{{ item }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
