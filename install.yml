@@ -17,9 +17,13 @@
       loop_control:
         loop_var: 'role_item'
 
-    - name: 'install cli extras'
+    - name: 'install basic shell tools'
       include_role:
-        name: 'base/cli-extras'
+        name: 'tools/shell-basic'
+
+    - name: 'install shell extras'
+      include_role:
+        name: 'tools/shell-extras'
       when: '"cli" in features and "extras" in features["cli"]'
 
     - name: 'apply development roles'

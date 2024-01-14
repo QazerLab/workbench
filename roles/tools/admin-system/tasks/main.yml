@@ -5,10 +5,7 @@
   package:
     state: 'present'
     name:
-      - 'which'
       - 'socat'
-      - 'man-db'
-      - 'man-pages'
       - 'pciutils'
       - 'usbutils'
       - 'smartmontools'

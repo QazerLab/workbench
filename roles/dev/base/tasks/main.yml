@@ -37,6 +37,3 @@
       # explicitly to know that we have xmllint and xsltproc tools in the system.
       - 'libxml2'
       - 'libxslt'
-
-      - 'curl'
-      - 'jq'

@@ -1,5 +1,5 @@
-cli-extras
-==========
+shell-extras
+============
 
 Installs extra CLI tools, which may be heavyweight or absent in some repositories.
 

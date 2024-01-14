@@ -1,0 +1,14 @@
+---
+- name: 'install extra CLI tools'
+  when: 'install_packages'
+  become: true
+  package:
+    state: 'present'
+    name:
+      - 'grep'
+      - 'curl'
+      - 'wget'
+      - 'which'
+      - 'file'
+      - 'man-db'
+      - 'man-pages'
