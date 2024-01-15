@@ -12,8 +12,14 @@
         name: '{{ role_item }}'
       loop:
         - 'base/profile'
-        - 'base/bash'
         - 'base/ssh'
+      loop_control:
+        loop_var: 'role_item'
+
+    - name: 'install shells'
+      loop: '{{ user_config["shells"] }}'
+      include_role:
+        name: 'shells/{{ role_item }}'
       loop_control:
         loop_var: 'role_item'
 
@@ -59,9 +65,12 @@
     # If development tools are not installed, Vim will still go directly after other
     # base packages, but if they are, Vim will be installed when the environment is
     # ready for building and running the appropriate plugins.
-    - name: 'install vim'
+    - name: 'install editors'
+      loop: '{{ user_config["editors"] | dict2items }}'
       include_role:
-        name: 'base/vim'
+        name: 'editors/{{ role_item.key }}'
+      loop_control:
+        loop_var: 'role_item'
 
     - name: 'install standalone GUI apps'
       include_role:

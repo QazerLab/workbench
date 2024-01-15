@@ -5,6 +5,13 @@ user_config:
   home_dir: '/home/qazer'
   downloads_dir: '/home/qazer/misc/downloads'
 
+  shells:
+    - 'bash'
+
+  editors:
+    vim:
+      default: true
+
   gui:
     de: 'openbox-qaztom'
 
