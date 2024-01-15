@@ -1,7 +1,3 @@
-{% if 'cli' in features and 'extras' in features['cli'] %}
-alias bat='bat --pager="less -XRF"'
-{% endif -%}
-
 {% if 'dev' in features and 'base' in features['dev'] %}
 alias diff='diff --unified --color'
 alias delta='delta --side-by-side'
@@ -25,36 +21,6 @@ alias j21='sudo archlinux-java set java-21-openjdk'
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 {% if 'dev' in features and 'base' in features['dev'] %}
 [ -r /usr/share/git/completion/git-completion.bash ] && . /usr/share/git/completion/git-completion.bash
-{% endif %}
-
-
-
-{% if 'cli' in features and 'extras' in features['cli'] %}
-
-. /usr/share/fzf/key-bindings.bash
-. /usr/share/fzf/completion.bash
-
-_fzf_compgen_path() {
-    fd --color=always --hidden --follow --exclude ".git" . "$1"
-}
-
-_fzf_compgen_dir() {
-    fd --color=always --type d --hidden --follow --exclude ".git" . "$1"
-}
-
-_fzf_comprun() {
-    local command=$1
-    shift
-
-    # TODO: add conditionals for tree and dig?
-    case "$command" in
-        cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
-        export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
-        ssh)          fzf --preview 'dig {}'                   "$@" ;;
-        *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
-    esac
-}
-
 {% endif %}
 
 

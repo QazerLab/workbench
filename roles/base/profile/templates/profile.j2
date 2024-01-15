@@ -9,27 +9,6 @@ export XMLLINT_INDENT='    '
 
 
 
-{% if 'cli' in features and 'extras' in features['cli'] %}
-
-# Sane defaults for fzf, using fd as much as possible.
-#
-# TODO: add conditional for tree?
-export FZF_COMPLETION_TRIGGER='//'
-export FZF_COMPLETION_OPTS='--border --info=inline'
-
-export FZF_DEFAULT_COMMAND="fd --type file --color=always"
-export FZF_DEFAULT_OPTS="--ansi"
-
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
-
-export FZF_ALT_C_COMMAND="fd --type directory --color=always"
-export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
-
-{% endif %}
-
-
-
 {% if 'dev' in features and 'golang' in features['dev'] -%}
 
 export GOPATH=~/"{{ golang_gopath }}"

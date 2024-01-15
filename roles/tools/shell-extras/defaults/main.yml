@@ -1,2 +1,9 @@
 ---
+user_config:
+  profile_dropins_dir: '.profile.d'
+
+  shells:
+    bash:
+      dropins_dir: '.bashrc.d'
+
 install_packages: true
