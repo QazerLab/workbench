@@ -1,5 +1,5 @@
 ---
-- name: 'install network administration tools'
+- name: 'install system administration tools'
   when: 'install_packages'
   become: true
   package:
@@ -13,3 +13,14 @@
       - 'upower'
       - 'lshw'
       - 'hwloc'
+      - 'upower'
+      - 'acpi'
+
+      # TODO: this one is needed only on Arch-based
+      # desktops, as it provides udev rules for USB
+      # LTE dongles.
+      #
+      # Make it conditional depending on host's group
+      # and distro?
+      - 'usb_modeswitch'
+
