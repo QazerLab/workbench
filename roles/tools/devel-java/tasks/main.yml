@@ -24,3 +24,15 @@
 
       - 'netbeans'
       - 'visualvm'
+
+- name: 'install templated shell drop-ins'
+  vars:
+    java_dropin_templates:
+      - '10_01_java_aliases'
+  loop: '{{ user_config["shells"] | dict2items | product(java_dropin_templates) }}'
+  template:
+    src: 'shell_dropins/{{ item[0]["key"] }}/{{ item[1] }}.j2'
+    dest: '{{ user_config["home_dir"] }}/{{ item[0]["value"]["dropins_dir"] }}/{{ item[1] }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
