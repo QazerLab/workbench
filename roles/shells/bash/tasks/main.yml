@@ -48,10 +48,10 @@
 
 - name: 'install templated basic drop-ins'
   loop:
-    - '00_03_arch_utils.j2'
+    - '00_03_arch_utils'
   template:
-    src: 'dropins/{{ item }}'
-    dest: '{{ user_config["home_dir"] }}/{{ shell_config["dropins_dir"] }}'
+    src: 'dropins/{{ item }}.j2'
+    dest: '{{ user_config["home_dir"] }}/{{ shell_config["dropins_dir"] }}/{{ item }}'
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     mode: 0644
