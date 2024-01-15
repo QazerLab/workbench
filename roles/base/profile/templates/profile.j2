@@ -9,14 +9,6 @@ export XMLLINT_INDENT='    '
 
 
 
-{% if 'dev' in features and 'golang' in features['dev'] -%}
-
-export GOPATH=~/"{{ golang_gopath }}"
-
-{% endif -%}
-
-
-
 {% if 'gui' in user_config and system['hidpi'] -%}
 
 # Scale GDK UIs 2x...
