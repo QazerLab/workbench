@@ -1,4 +1,19 @@
 ---
+- name: 'find default toolchains'
+  set_fact:
+    rustup_default_toolchains: >-
+      {{
+         toolchain_config["rustup_toolchains"] |
+         selectattr("default", "defined") |
+         selectattr("default") |
+         map(attribute = "name")
+      }}
+
+- name: 'check that exactly one toolchain is default'
+  when: 'rustup_default_toolchains | length == 0 or rustup_default_toolchains | length > 1'
+  fail:
+    msg: 'Configuration error: exactly one Rust toolchain must be default!'
+
 - name: 'install rustup package'
   when: 'install_packages'
   become: true
@@ -8,7 +23,7 @@
       - 'rustup'
 
 - name: 'install rust toolchains'
-  loop: '{{ toolchain_config["rustup_toolchains"] }}'
+  loop: '{{ toolchain_config["rustup_toolchains"] | map(attribute = "name") }}'
   shell:
     argv:
       - 'rustup'
@@ -21,7 +36,7 @@
     argv:
       - 'rustup'
       - 'default'
-      - '{{ toolchain_config["rustup_default_toolchain"] }}'
+      - '{{ rustup_default_toolchains | first }}'
 
 - name: 'add mandatory rust components'
   loop:
