@@ -1,0 +1,36 @@
+---
+- name: 'install rustup package'
+  when: 'install_packages'
+  become: true
+  package:
+    state: 'present'
+    name:
+      - 'rustup'
+
+- name: 'install rust toolchains'
+  loop: '{{ toolchain_config["rustup_toolchains"] }}'
+  shell:
+    argv:
+      - 'rustup'
+      - 'toolchain'
+      - 'install'
+      - '{{ item }}'
+
+- name: 'set default rust toolchain'
+  shell:
+    argv:
+      - 'rustup'
+      - 'default'
+      - '{{ toolchain_config["rustup_default_toolchain"] }}'
+
+- name: 'add mandatory rust components'
+  loop:
+    - 'rust-src'
+    - 'rust-docs'
+    - 'rust-analyzer'
+  shell:
+    argv:
+      - 'rustup'
+      - 'component'
+      - 'add'
+      - '{{ item }}'

@@ -51,10 +51,15 @@
     # existing dev roles with toolchains, deprecating the features.dev flag at all.
     #
     # Unless this, we have a little structural mess and apply many roles separately,
-    # so Java stands off other dev toolchains installation.
-    - name: 'apply Java development role'
+    # so Java and Rust stand off other toolchains installation.
+    - name: 'install toolchains required for user'
       include_role:
-        name: 'tools/devel-java'
+        name: '{{ role_item }}'
+      loop:
+        - 'tools/devel-java'
+        - 'tools/devel-rust'
+      loop_control:
+        loop_var: 'role_item'
 
     # Though Vim is _obviously_ much more "basic" than development tools,
     # its plugins and configurations have too many dependencies on development
