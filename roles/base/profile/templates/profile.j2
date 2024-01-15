@@ -33,14 +33,6 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 
 
-{% if ssh['use_agent'] -%}
-
-export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
-
-{% endif -%}
-
-
-
 # Load Ansible-managed drop-ins.
 if [ -d ~/{{ user_config['profile_dropins_dir'] }} ]
 then

@@ -25,6 +25,16 @@
     group: '{{ user_config["name"] }}'
     mode: 0644
 
+- name: 'install templated profile drop-ins'
+  loop:
+    - '03_01_ssh_agent_socket'
+  template:
+    src: 'profile_dropins/{{ item }}.j2'
+    dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
 # XXX: do not bother with creating custom units for non-Arch systems, as currently
 # the agent is required only for client machines, which are Arch desktops, and Arch
 # has a default agent unit shipepd with openssh package (which is not the case for,
