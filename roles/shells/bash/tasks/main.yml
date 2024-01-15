@@ -8,13 +8,13 @@
 
 - name: 'clean managed drop-ins directory'
   file:
-    path: '{{ user_config["home_dir"] }}/.bashrc.d'
+    path: '{{ user_config["home_dir"] }}/{{ shell_config["dropins_dir"] }}'
     state: 'absent'
 
 - name: 'ensure drop-ins directories exist'
   loop:
-    - '{{ user_config["home_dir"] }}/.bashrc.d'
-    - '{{ user_config["home_dir"] }}/.bashrc.d-unmanaged'
+    - '{{ user_config["home_dir"] }}/{{ shell_config["dropins_dir"] }}'
+    - '{{ user_config["home_dir"] }}/{{ shell_config["dropins_dir"] }}-unmanaged'
   file:
     path: '{{ item }}'
     owner: '{{ user_config["name"] }}'
@@ -34,6 +34,24 @@
   copy:
     src: 'bash_profile'
     dest: '{{ user_config["home_dir"] }}/.bash_profile'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
+- name: 'install basic drop-ins'
+  copy:
+    src: 'dropins/'
+    dest: '{{ user_config["home_dir"] }}/{{ shell_config["dropins_dir"] }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
+- name: 'install templated basic drop-ins'
+  loop:
+    - '00_03_arch_utils.j2'
+  template:
+    src: 'dropins/{{ item }}'
+    dest: '{{ user_config["home_dir"] }}/{{ shell_config["dropins_dir"] }}'
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     mode: 0644

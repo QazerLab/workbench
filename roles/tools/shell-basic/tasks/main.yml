@@ -1,10 +1,12 @@
 ---
-- name: 'install extra CLI tools'
+- name: 'install basic CLI tools'
   when: 'install_packages'
   become: true
   package:
     state: 'present'
     name:
+      - 'coreutils'
+      - 'iproute2'
       - 'grep'
       - 'curl'
       - 'wget'
@@ -12,3 +14,12 @@
       - 'file'
       - 'man-db'
       - 'man-pages'
+
+- name: 'install drop-ins for shells'
+  loop: '{{ user_config["shells"] | dict2items }}'
+  copy:
+    src: 'shell_dropins/{{ item["key"] }}/'
+    dest: '{{ user_config["home_dir"] }}/{{ item["value"]["dropins_dir"] }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644

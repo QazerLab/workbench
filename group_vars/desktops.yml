@@ -6,7 +6,8 @@ user_config:
   downloads_dir: '/home/qazer/misc/downloads'
 
   shells:
-    - 'bash'
+    bash:
+      dropins_dir: '.bashrc.d'
 
   editors:
     vim:

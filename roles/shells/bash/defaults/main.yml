@@ -3,6 +3,9 @@ user_config:
   name: 'qazer'
   home_dir: '/home/qazer'
 
+shell_config:
+  dropins_dir: '.bashrc.d'
+
 features: {
   # Uncomment to export dev-related variables.
   #

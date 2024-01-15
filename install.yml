@@ -17,9 +17,11 @@
         loop_var: 'role_item'
 
     - name: 'install shells'
-      loop: '{{ user_config["shells"] }}'
+      loop: '{{ user_config["shells"] | dict2items }}'
       include_role:
-        name: 'shells/{{ role_item }}'
+        name: 'shells/{{ role_item.key }}'
+      vars:
+        shell_config: '{{ role_item["value"] }}'
       loop_control:
         loop_var: 'role_item'
 
