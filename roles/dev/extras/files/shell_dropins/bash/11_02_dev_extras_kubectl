@@ -1,0 +1,62 @@
+# A shortcut for kubectl and its specific long subcommands.
+#
+# $1 may (optionally) be a special alias for subcommands.
+function kc() {
+    case "$1" in
+        # Shortcut for setting current namespace. Vanilla kubectl API here is a total crap, and looks like
+        # nobody i k8s comunity is going to implement something as short as OpenShift's "oc project PROJECT".
+        "ns")
+            if [ -z "$2" ]
+            then
+                echo "You must specify a namespace to be set:"
+                echo "    kc ns NAMESPACE"
+                return 2
+            fi
+
+            kubectl config set-context --current --namespace "$2"
+            ;;
+
+        # Again, inspired by OpenShift's "oc rsh". highly useful.
+        "rsh")
+            if [ -z "$2" ]
+            then
+                echo "You must specify a pod to be accessed:"
+                echo "    kc rsh POD"
+                return 2
+            fi
+
+            kubectl exec -it "$2" sh
+            ;;
+
+        # This block enhances kubectl with few additional resource name abbreviations. Not all of them are
+        # straightfoward, e.g. "dc" for "deployment" is rather a tribute to OpenShift than a logical contraction.
+        #
+        # XXX: this does not work perfectly, as resource name may be at any place after the verb.
+        # While "kc get dc -o yaml" is OK, "kc get -o yaml dc" won't do, though this is a valid arguments order.
+        "get" | "describe" | "edit" | "delete")
+            case "$2" in
+                "dc")
+                    kubectl "$1" deployments ${@:3}
+                    ;;
+
+                "rb")
+                    kubectl "$1" rolebindings ${@:3}
+                    ;;
+
+                "cr")
+                    kubectl "$1" clusterroles ${@:3}
+                    ;;
+
+                "crb")
+                    kubectl "$1" clusterrolebindings ${@:3}
+                    ;;
+
+                *)
+                    kubectl $@
+            esac
+            ;;
+
+        *)
+            kubectl $@
+    esac
+}

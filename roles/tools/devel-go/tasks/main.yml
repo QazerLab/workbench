@@ -16,7 +16,7 @@
 
 - name: 'install templated profile drop-ins'
   loop:
-    - '11_01_go_gopath'
+    - '15_01_go_gopath'
   template:
     src: 'profile_dropins/{{ item }}.j2'
     dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'

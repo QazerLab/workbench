@@ -37,3 +37,22 @@
       # explicitly to know that we have xmllint and xsltproc tools in the system.
       - 'libxml2'
       - 'libxslt'
+
+- name: 'install drop-ins for shells'
+  loop: '{{ user_config["shells"] | dict2items }}'
+  copy:
+    src: 'shell_dropins/{{ item["key"] }}/'
+    dest: '{{ user_config["home_dir"] }}/{{ item["value"]["dropins_dir"] }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
+- name: 'install templated profile drop-ins'
+  loop:
+    - '10_01_dev_base_xmllint'
+  template:
+    src: 'profile_dropins/{{ item }}.j2'
+    dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644

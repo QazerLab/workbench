@@ -1,14 +1,5 @@
 export EDITOR=vim
 
-{% if 'dev' in features and 'base' in features['dev'] -%}
-
-# Set xmllint indentation to four spaces (instead of default two).
-export XMLLINT_INDENT='    '
-
-{% endif -%}
-
-
-
 {% if 'gui' in user_config and system['hidpi'] -%}
 
 # Scale GDK UIs 2x...

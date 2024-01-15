@@ -28,7 +28,7 @@
 - name: 'install templated shell drop-ins'
   vars:
     java_dropin_templates:
-      - '10_01_java_aliases'
+      - '13_01_java_aliases'
   loop: '{{ user_config["shells"] | dict2items | product(java_dropin_templates) }}'
   template:
     src: 'shell_dropins/{{ item[0]["key"] }}/{{ item[1] }}.j2'
