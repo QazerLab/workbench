@@ -1,13 +1,13 @@
 ---
 - name: 'clean managed drop-ins directory'
   file:
-    path: '{{ user_config["home_dir"] }}/.profile.d'
+    path: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}'
     state: 'absent'
 
 - name: 'ensure drop-ins directories exist'
   loop:
-    - '.profile.d'
-    - '.profile.d-unmanaged'
+    - '{{ user_config["profile_dropins_dir"] }}'
+    - '{{ user_config["profile_dropins_dir"] }}-unmanaged'
   file:
     path: '{{ user_config["home_dir"] }}/{{ item }}'
     owner: '{{ user_config["name"] }}'
@@ -19,6 +19,14 @@
   template:
     src: 'profile.j2'
     dest: '{{ user_config["home_dir"] }}/.profile'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
+
+- name: 'install basic drop-ins'
+  copy:
+    src: 'dropins/'
+    dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}'
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     mode: 0644

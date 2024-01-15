@@ -62,36 +62,10 @@ export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 
 
 
-# The following block is a workaround for DMs which do not source
-# /etc/profile, thus, do not load locale settings properly.
-# Let's do this here on our own.
-if [ -r /etc/locale.conf ]
-then
-    . /etc/locale.conf
-fi
-
-LANG=${LANG:-C}
-
-export LANG LANGUAGE \
-       LC_CTYPE \
-       LC_NUMERIC \
-       LC_TIME \
-       LC_COLLATE \
-       LC_MONETARY \
-       LC_MESSAGES \
-       LC_PAPER \
-       LC_NAME \
-       LC_ADDRESS \
-       LC_TELEPHONE \
-       LC_MEASUREMENT \
-       LC_IDENTIFICATION
-
-
-
 # Load Ansible-managed drop-ins.
-if [ -d ~/.profile.d ]
+if [ -d ~/{{ user_config['profile_dropins_dir'] }} ]
 then
-    for rcfile in ~/.profile.d/*
+    for rcfile in ~/{{ user_config['profile_dropins_dir'] }}/*
     do
         [ -r "$rcfile" ] && . "$rcfile"
     done
@@ -101,9 +75,9 @@ fi
 
 # Finally, give a chance to perform machine-specific configuration.
 # This configuration is not managed by Ansible.
-if [ -d ~/.profile.d-unmanaged ]
+if [ -d ~/{{ user_config['profile_dropins_dir'] }}-unmanaged ]
 then
-    for rcfile in ~/.profile.d-unmanaged/*
+    for rcfile in ~/{{ user_config['profile_dropins_dir'] }}-unmanaged/*
     do
         [ -r "$rcfile" ] && . "$rcfile"
     done

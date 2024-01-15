@@ -14,6 +14,7 @@ Role Variables
 * `user_config` &mdash; user configuration.
     * `name` &mdash; name of the target user.
     * `home_dir` &mdash; target user's home.
+    * `profile_dropins_dir` &mdash; directory for profile drop-ins.
 * `features` &mdash; a dict with feature flags.
     * `dev` &mdash; a list of development features to be supported.
         * `base` &mdash; basic development tools.

@@ -1,0 +1,23 @@
+# The following block is a workaround for DMs which do not source
+# /etc/profile, thus, do not load locale settings properly.
+# Let's do this here on our own.
+if [ -r /etc/locale.conf ]
+then
+    . /etc/locale.conf
+fi
+
+LANG=${LANG:-C}
+
+export LANG LANGUAGE \
+       LC_CTYPE \
+       LC_NUMERIC \
+       LC_TIME \
+       LC_COLLATE \
+       LC_MONETARY \
+       LC_MESSAGES \
+       LC_PAPER \
+       LC_NAME \
+       LC_ADDRESS \
+       LC_TELEPHONE \
+       LC_MEASUREMENT \
+       LC_IDENTIFICATION

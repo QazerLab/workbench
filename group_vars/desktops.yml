@@ -5,6 +5,8 @@ user_config:
   home_dir: '/home/qazer'
   downloads_dir: '/home/qazer/misc/downloads'
 
+  profile_dropins_dir: '.profile.d'
+
   shells:
     bash:
       dropins_dir: '.bashrc.d'
