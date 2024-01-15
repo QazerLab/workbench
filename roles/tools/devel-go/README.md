@@ -1,5 +1,5 @@
-dev/golang
-==========
+devel-golang
+============
 
 Installs and configures the Golang toolchain.
 
@@ -15,7 +15,8 @@ Role Variables
     * `name` &mdash; name of the target user.
     * `home_dir` &mdash; target user's home.
 * `install_packages` &mdash; if set to `false`, skips the package installation.
-* `golang_gopath` &mdash; the value of `GOPATH`; relative to the user home directory.
+* `toolchain_config` &mdash; configuration of this toolchain.
+    * `gopath` &mdash; the value of `GOPATH`; relative to the user home directory.
 
 Dependencies
 ------------

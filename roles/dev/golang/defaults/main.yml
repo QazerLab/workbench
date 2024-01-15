@@ -1,9 +1,0 @@
----
-user_config:
-  name: 'qazer'
-  home_dir: '/home/qazer'
-
-install_packages: true
-
-# Relative to the user's home directory.
-golang_gopath: 'go'

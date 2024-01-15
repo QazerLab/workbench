@@ -39,10 +39,6 @@
       loop:
         - 'base'
         - 'extras'
-      #  - 'rust'
-      #  - 'java'
-        - 'golang'
-      #  - 'haskell'
       loop_control:
         loop_var: 'role_item'
 
@@ -51,13 +47,14 @@
     # existing dev roles with toolchains, deprecating the features.dev flag at all.
     #
     # Unless this, we have a little structural mess and apply many roles separately,
-    # so Java and Rust stand off other toolchains installation.
+    # so these tools stand off other toolchains installation.
     - name: 'install toolchains required for user'
       include_role:
         name: '{{ role_item }}'
       loop:
         - 'tools/devel-java'
         - 'tools/devel-rust'
+        - 'tools/devel-go'
       loop_control:
         loop_var: 'role_item'
 

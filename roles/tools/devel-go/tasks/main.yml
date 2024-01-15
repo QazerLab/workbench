@@ -8,7 +8,7 @@
 
 - name: 'ensure GOPATH exists'
   file:
-    path: '{{ user_config["home_dir"] }}/{{ golang_gopath }}'
+    path: '{{ user_config["home_dir"] }}/{{ toolchain_config["gopath"] }}'
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     state: 'directory'
