@@ -3,25 +3,7 @@ user_config:
   name: 'qazer'
   home_dir: '/home/qazer'
 
-features: {
-  # Uncomment to add support for different dev tools.
-  #
-  # dev:
-  #
-  #   # Enables settings for basic dev tools like xmllint.
-  #   - 'base'
-}
-
 install_packages: true
-
-# By default, install only plugins which are unlikely to cause any pain.
-vim_plugins:
-  - nerdtree
-  - fugitive
-  - mru
-
-# Only nightly currently has rust-analyzer.
-rustup_toolchain: 'nightly-x86_64-unknown-linux-gnu'
 
 
 
@@ -33,48 +15,11 @@ rustup_toolchain: 'nightly-x86_64-unknown-linux-gnu'
 
 vim_pathogen_url: https://tpo.pe/pathogen.vim
 
-vim_configs_plugins:
+vim_basic_plugins:
   youarehere:
     repo: https://github.com/bignimbus/you-are-here.vim.git
-    requires_build: false
     requires_config: true
 
   nerdtree:
     repo: https://github.com/scrooloose/nerdtree
-    requires_build: false
     requires_config: true
-
-  syntastic:
-    repo: https://github.com/vim-syntastic/syntastic
-    requires_build: false
-    requires_config: false
-
-  fugitive:
-    repo: https://github.com/tpope/vim-fugitive
-    requires_build: false
-    requires_config: true
-
-  mru:
-    repo: https://github.com/vim-scripts/mru.vim
-    requires_build: false
-    requires_config: true
-
-  fzf:
-    repo: https://github.com/junegunn/fzf.vim
-    requires_build: false
-    requires_config: true
-
-  youcompleteme:
-    repo: https://github.com/Valloric/YouCompleteMe
-    requires_build: true
-    requires_config: true
-
-  rust:
-    repo: https://github.com/rust-lang/rust.vim
-    requires_build: false
-    requires_config: true
-
-  rustdoc:
-    repo: https://github.com/rhysd/rust-doc.vim
-    requires_build: false
-    requires_config: false

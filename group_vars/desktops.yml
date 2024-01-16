@@ -14,6 +14,8 @@ user_config:
   editors:
     vim:
       default: true
+      config_dropins_dir: '.vim/configs'
+      plugins_dir: '.vim/bundle'
 
   gui:
     de: 'openbox-qaztom'
@@ -51,15 +53,3 @@ ssh:
 doublecmd:
   terminal: 'alacritty'
   editor: 'subl'
-
-# A list of vim plugins to install.
-vim_plugins:
-  - 'youarehere'
-  - 'nerdtree'
-  - 'syntastic'
-  - 'fugitive'
-  - 'mru'
-  - 'fzf'
-  - 'rust'
-  - 'rustdoc'
-  - 'youcompleteme'

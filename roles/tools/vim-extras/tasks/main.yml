@@ -1,0 +1,15 @@
+---
+- name: 'store vim editor config'
+  set_fact:
+    editor_config: '{{ user_config["editors"]["vim"] }}'
+
+- name: 'store vim dirs locations'
+  set_fact:
+    bundle_dir: '{{ user_config["home_dir"] }}/{{ editor_config["plugins_dir"] }}'
+    configs_dir: '{{ user_config["home_dir"] }}/{{ editor_config["config_dropins_dir"] }}'
+
+- with_items:
+    - '{{ vim_extra_plugins | dict2items | map(attribute = "key") }}'
+  include_tasks: 'plugin.yml'
+  loop_control:
+    loop_var: 'plugin'

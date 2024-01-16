@@ -1,0 +1,6 @@
+---
+galaxy_info:
+  description: 'extra vim plugins installation and configurations'
+  min_ansible_version: 2.4
+
+dependencies: []

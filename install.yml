@@ -25,6 +25,15 @@
       loop_control:
         loop_var: 'role_item'
 
+    - name: 'install editors'
+      loop: '{{ user_config["editors"] | dict2items }}'
+      include_role:
+        name: 'editors/{{ role_item.key }}'
+      vars:
+        editor_config: '{{ user_config["editors"][role_item.key] }}'
+      loop_control:
+        loop_var: 'role_item'
+
     - name: 'install basic shell tools'
       include_role:
         name: 'tools/shell-basic'
@@ -60,19 +69,12 @@
       loop_control:
         loop_var: 'role_item'
 
-    # Though Vim is _obviously_ much more "basic" than development tools,
-    # its plugins and configurations have too many dependencies on development
-    # tools and runtimes, which could become a problem when we need not only Vim
-    # itself, but also a handful of development plugins for it.
-    #
-    # To resolve this, let's install Vim a bit later that it should be installed.
-    # If development tools are not installed, Vim will still go directly after other
-    # base packages, but if they are, Vim will be installed when the environment is
-    # ready for building and running the appropriate plugins.
-    - name: 'install editors'
-      loop: '{{ user_config["editors"] | dict2items }}'
+    # TODO: distribute this between toolchains!
+    - name: 'install additional vim plugins'
       include_role:
-        name: 'editors/{{ role_item.key }}'
+        name: '{{ role_item }}'
+      loop:
+        - 'tools/vim-extras'
       loop_control:
         loop_var: 'role_item'
 

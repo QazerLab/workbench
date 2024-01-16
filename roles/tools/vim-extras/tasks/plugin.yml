@@ -1,7 +1,7 @@
 ---
 - name: 'find plugin config for {{ plugin }}'
   set_fact:
-    plugin_config: '{{ vim_basic_plugins[plugin] }}'
+    plugin_config: '{{ vim_extra_plugins[plugin] }}'
     plugin_dir: '{{ bundle_dir }}/{{ plugin }}'
 
 - name: 'download {{ plugin }} plugin'
@@ -19,3 +19,6 @@
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     mode: 0644
+
+- include_tasks: 'plugins/{{ plugin }}_build.yml'
+  when: 'plugin_config.requires_build'

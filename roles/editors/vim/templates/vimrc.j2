@@ -88,7 +88,7 @@ autocmd FileType xml nnoremap <Leader>f :%!xmllint --format -<CR>
 if filereadable(expand('~/.vim/autoload/pathogen.vim'))
     execute pathogen#infect()
 
-    for plugin_cfg in split(globpath('~/.vim/configs', '*.vim'), '\n')
+    for plugin_cfg in split(globpath('{{ configs_dir }}', '*.vim'), '\n')
         :execute 'source' plugin_cfg
     endfor
 endif

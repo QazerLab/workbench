@@ -1,14 +1,7 @@
 vim
 ===
 
-Installs vim with minimal set of configuration files, which are useful both at desktop
-and server machines. Currently includes:
-
-* basic vim configuration (`.vimrc`);
-* plugins manager (pathogen) and configuration drop-in directory;
-* basic vim plugins and their configurations.
-
-Toolchains may install their own tools and configuration drop-ins to enrich Vim configuration.
+Installs additional vim plugins.
 
 Requirements
 ------------
@@ -29,7 +22,20 @@ Role Variables
 Dependencies
 ------------
 
-None.
+For YCM vim plugin:
+
+* `python-dev`
+* `gcc`
+* `cmake`
+* `go` (for Golang stuff)
+* `rustup` and whole toolchain being installed (for Rust stuff)
+
+For Fzf vim plugin (TODO: move to respective toolchain!):
+
+* `fzf`
+* `fd`
+
+For Rust-related vim plugins (including YCM) Rust toolchain must be present.
 
 License
 -------
