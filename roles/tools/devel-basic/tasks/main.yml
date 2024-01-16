@@ -17,19 +17,10 @@
       - 'pkgconf'
       - 'gcc'
 
-      # Mostly used for package building.
-      - 'fakeroot'
-
       # Versioning and patching tools.
       - 'git'
-      - 'subversion'
-      - 'mercurial'
       - 'diffutils'
       - 'patch'
-
-      # Basic debugging tools.
-      - 'gdb'
-      - 'valgrind'
 
       # These libs are used for XML processing.
       #

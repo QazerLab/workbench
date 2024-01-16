@@ -5,8 +5,19 @@
   package:
     state: 'present'
     name:
-      - 'git-delta'
+      # Basic debugging tools.
+      - 'gdb'
+      - 'valgrind'
 
+      # VCS stuff that is unlikely to be needed.
+      - 'git-delta'
+      - 'subversion'
+      - 'mercurial'
+
+      # Mostly used for package building, specifically, AUR packages.
+      - 'fakeroot'
+
+      # Heavyweight stuff.
       - 'podman'
       - 'buildah'
       - 'skopeo'
