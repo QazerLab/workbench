@@ -27,6 +27,7 @@
     mode: 0755
 
 - name: 'youcompleteme language support - Golang'
+  when: '"devel-go" in user_config["toolchains"]'
   command: 'go install golang.org/x/tools/gopls@v0.7.1'
   environment:
     GO111MODULE: 'on'
@@ -38,10 +39,25 @@
 # This is done to avoid syncing YCM with each rustup update - we just point YCM
 # to the user's default rustup home, assuming that the toolchain is present.
 - name: 'youcompleteme language support - Rust'
-  file:
-    path: '{{ plugin_dir }}/third_party/ycmd/third_party/rust-analyzer'
-    src: '{{ user_config["home_dir"] }}/.rustup/toolchains/{{ rustup_toolchain }}'
-    state: 'link'
+  when: '"devel-rust" in user_config["toolchains"]'
+  block:
+    - name: 'YCM Rust :: find default toolchain'
+      set_fact:
+        rustup_default_toolchain: >-
+          {{
+             user_config["toolchains"]["devel-rust"]["rustup_toolchains"] |
+             selectattr("default", "defined") |
+             selectattr("default") |
+             map(attribute = "name") |
+             first
+          }}
+
+    - name: 'YCM Rust :: integrate YCM with Rust toolchain'
+      when:
+      file:
+        path: '{{ plugin_dir }}/third_party/ycmd/third_party/rust-analyzer'
+        src: '{{ user_config["home_dir"] }}/.rustup/toolchains/{{ rustup_default_toolchain }}'
+        state: 'link'
 
 - name: 'remove youcompleteme build directory'
   file:

@@ -38,15 +38,6 @@
       loop_control:
         loop_var: 'toolchain_item'
 
-    # TODO: distribute this between toolchains!
-    - name: 'install additional vim plugins'
-      include_role:
-        name: '{{ role_item }}'
-      loop:
-        - 'tools/vim-extras'
-      loop_control:
-        loop_var: 'role_item'
-
     - name: 'install standalone applications'
       include_role:
         name: 'apps/{{ role_item }}'

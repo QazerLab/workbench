@@ -1,8 +1,8 @@
 ---
 - name: 'find plugin config for {{ plugin }}'
   set_fact:
-    plugin_config: '{{ vim_extra_plugins[plugin] }}'
-    plugin_dir: '{{ bundle_dir }}/{{ plugin }}'
+    plugin_config: '{{ role_editor_plugins[plugin] }}'
+    plugin_dir: '{{ plugins_dir }}/{{ plugin }}'
 
 - name: 'download {{ plugin }} plugin'
   git:
@@ -14,11 +14,11 @@
 - name: 'install {{ plugin }} plugin config'
   when: 'plugin_config.requires_config'
   copy:
-    src: 'vim/configs/{{ plugin }}.vim'
+    src: 'editor_configs/vim/{{ plugin }}.vim'
     dest: '{{ configs_dir }}'
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     mode: 0644
 
-- include_tasks: 'plugins/{{ plugin }}_build.yml'
+- include_tasks: 'vim_plugins/{{ plugin }}_build.yml'
   when: 'plugin_config.requires_build'
