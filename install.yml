@@ -4,12 +4,7 @@
   tasks:
     - name: 'apply basic roles'
       include_role:
-        name: '{{ role_item }}'
-      loop:
-        - 'base/profile'
-        - 'base/ssh'
-      loop_control:
-        loop_var: 'role_item'
+        name: 'profile'
 
     - name: 'install shells'
       loop: '{{ user_config["shells"] | dict2items }}'
@@ -56,6 +51,7 @@
       include_role:
         name: 'apps/{{ role_item }}'
       loop:
+        - 'ssh'
         - 'vivaldi'
         - 'doublecmd'
         - 'sublime'
