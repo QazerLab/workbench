@@ -43,16 +43,6 @@
         name: 'tools/shell-extras'
       when: '"cli" in features and "extras" in features["cli"]'
 
-    - name: 'apply development roles'
-      include_role:
-        name: 'dev/{{ role_item }}'
-      when: '"dev" in features and role_item in features["dev"]'
-      loop:
-        - 'base'
-        - 'extras'
-      loop_control:
-        loop_var: 'role_item'
-
     # XXX: installation of all toolchains will be merged together into a single loop
     # once we move a list of required toolchains into the user_config and replace all
     # existing dev roles with toolchains, deprecating the features.dev flag at all.
@@ -63,9 +53,11 @@
       include_role:
         name: '{{ role_item }}'
       loop:
+        - 'tools/devel-basic'
         - 'tools/devel-java'
         - 'tools/devel-rust'
         - 'tools/devel-go'
+        - 'tools/devel-extras'
       loop_control:
         loop_var: 'role_item'
 

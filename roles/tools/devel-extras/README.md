@@ -1,8 +1,8 @@
-dev/base
-========
+devel-extras
+============
 
-Installs basic development tools (language-agnostic except C toolchain, which
-is essential for most ecosystems).
+Installs extra development tools. The main reason for not including them into
+`base` is that these tools either are of heavy weight or are of extemely rare use.
 
 Requirements
 ------------
