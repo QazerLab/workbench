@@ -21,13 +21,3 @@ vim_extra_plugins:
     repo: https://github.com/Valloric/YouCompleteMe
     requires_build: true
     requires_config: true
-
-  rust:
-    repo: https://github.com/rust-lang/rust.vim
-    requires_build: false
-    requires_config: true
-
-  rustdoc:
-    repo: https://github.com/rhysd/rust-doc.vim
-    requires_build: false
-    requires_config: false
