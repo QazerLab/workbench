@@ -17,16 +17,6 @@ rustup_toolchain: 'nightly-x86_64-unknown-linux-gnu'
 # to another repo, or adds a build step, etc.
 
 vim_extra_plugins:
-  fugitive:
-    repo: https://github.com/tpope/vim-fugitive
-    requires_build: false
-    requires_config: true
-
-  fzf:
-    repo: https://github.com/junegunn/fzf.vim
-    requires_build: false
-    requires_config: true
-
   youcompleteme:
     repo: https://github.com/Valloric/YouCompleteMe
     requires_build: true

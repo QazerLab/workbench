@@ -30,11 +30,6 @@ For YCM vim plugin:
 * `go` (for Golang stuff)
 * `rustup` and whole toolchain being installed (for Rust stuff)
 
-For Fzf vim plugin (TODO: move to respective toolchain!):
-
-* `fzf`
-* `fd`
-
 For Rust-related vim plugins (including YCM) Rust toolchain must be present.
 
 License

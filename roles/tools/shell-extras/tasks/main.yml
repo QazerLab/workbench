@@ -30,3 +30,12 @@
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     mode: 0644
+
+- name: 'install drop-ins for editors'
+  loop: '{{ user_config["editors"] | dict2items | map(attribute = "key") }}'
+  loop_control:
+    loop_var: 'editor_item'
+  vars:
+    editor: '{{ editor_item }}'
+  include_tasks:
+    file: 'editor_config.yml'

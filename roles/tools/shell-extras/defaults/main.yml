@@ -7,3 +7,9 @@ user_config:
       dropins_dir: '.bashrc.d'
 
 install_packages: true
+
+shell_extras_editor_plugins:
+  vim:
+    fzf:
+      repo: 'https://github.com/junegunn/fzf.vim'
+      requires_config: true
