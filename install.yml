@@ -34,30 +34,23 @@
       loop_control:
         loop_var: 'role_item'
 
-    - name: 'install basic shell tools'
+    - name: 'install user`s desktop environment, if required'
       include_role:
-        name: 'tools/shell-basic'
+        name: 'des/{{ user_config["gui"]["de"] }}'
+      when: '"gui" in user_config and "de" in user_config["gui"]'
 
-    - name: 'install shell extras'
-      include_role:
-        name: 'tools/shell-extras'
-      when: '"cli" in features and "extras" in features["cli"]'
-
-    # XXX: installation of all toolchains will be merged together into a single loop
-    # once we move a list of required toolchains into the user_config and replace all
-    # existing dev roles with toolchains, deprecating the features.dev flag at all.
-    #
-    # Unless this, we have a little structural mess and apply many roles separately,
-    # so these tools stand off other toolchains installation.
     - name: 'install toolchains required for user'
       include_role:
         name: '{{ role_item }}'
       loop:
+        - 'tools/shell-basic'
+        - 'tools/shell-extras'
         - 'tools/devel-basic'
         - 'tools/devel-java'
         - 'tools/devel-rust'
         - 'tools/devel-go'
         - 'tools/devel-extras'
+        - 'tools/media'
       loop_control:
         loop_var: 'role_item'
 
@@ -70,7 +63,7 @@
       loop_control:
         loop_var: 'role_item'
 
-    - name: 'install standalone GUI apps'
+    - name: 'install standalone applications'
       include_role:
         name: 'apps/{{ role_item }}'
       loop:
@@ -79,12 +72,3 @@
         - 'sublime'
       loop_control:
         loop_var: 'role_item'
-
-    - name: 'install multimedia toolchain'
-      include_role:
-        name: 'tools/media'
-
-    - name: 'install user`s desktop environment, if required'
-      include_role:
-        name: 'des/{{ user_config["gui"]["de"] }}'
-      when: '"gui" in user_config and "de" in user_config["gui"]'
