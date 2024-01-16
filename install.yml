@@ -41,18 +41,12 @@
 
     - name: 'install toolchains required for user'
       include_role:
-        name: '{{ role_item }}'
-      loop:
-        - 'tools/shell-basic'
-        - 'tools/shell-extras'
-        - 'tools/devel-basic'
-        - 'tools/devel-java'
-        - 'tools/devel-rust'
-        - 'tools/devel-go'
-        - 'tools/devel-extras'
-        - 'tools/media'
+        name: 'tools/{{ toolchain_item.key }}'
+      vars:
+        toolchain_config: '{{ user_config["toolchains"][toolchain_item.key] }}'
+      loop: '{{ user_config["toolchains"] | dict2items }}'
       loop_control:
-        loop_var: 'role_item'
+        loop_var: 'toolchain_item'
 
     # TODO: distribute this between toolchains!
     - name: 'install additional vim plugins'

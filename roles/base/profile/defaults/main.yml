@@ -32,6 +32,3 @@ features: {
 
 system:
   hidpi: false
-
-# Relative to the user's home directory.
-golang_gopath: 'go'

@@ -17,6 +17,30 @@ user_config:
       config_dropins_dir: '.vim/configs'
       plugins_dir: '.vim/bundle'
 
+  toolchains:
+    shell-basic: {}
+    shell-extras: {}
+
+    admin-system: {}
+    admin-network: {}
+    admin-tracing: {}
+
+    devel-basic: {}
+    devel-java: {}
+
+    devel-rust:
+      rustup_toolchains:
+        - name: 'stable-x86_64-unknown-linux-gnu'
+          default: true
+        - name: 'nightly-x86_64-unknown-linux-gnu'
+
+    devel-go:
+      gopath: 'pub/src/misc/gopath'
+
+    devel-extras: {}
+
+    media: {}
+
   gui:
     de: 'openbox-qaztom'
 
@@ -43,9 +67,6 @@ features:
 # If false, only configuration files are deployed, so that privileges
 # escalation is not required.
 install_packages: true
-
-# GOPATH value; relative to user's home directory.
-golang_gopath: 'pub/src/misc/gopath'
 
 ssh:
   use_agent: true

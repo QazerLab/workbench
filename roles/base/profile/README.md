@@ -26,7 +26,6 @@ Role Variables
        this specific role.
 * `system` &mdash; a dict with target system properties.
     * `hidpi` &mdash; whether to use HiDPI configuration or not.
-* `golang_gopath` &mdash; the value of `GOPATH`; relative to the user home directory.
   Makes sense only if `golang` is present in `features["dev"]`.
 
 Dependencies
