@@ -40,11 +40,9 @@
 
     - name: 'install standalone applications'
       include_role:
-        name: 'apps/{{ role_item }}'
-      loop:
-        - 'ssh'
-        - 'vivaldi'
-        - 'doublecmd'
-        - 'sublime'
+        name: 'apps/{{ app_item.key }}'
+      vars:
+        app_config: '{{ user_config["apps"][app_item.key] }}'
+      loop: '{{ user_config["apps"] | dict2items }}'
       loop_control:
-        loop_var: 'role_item'
+        loop_var: 'app_item'

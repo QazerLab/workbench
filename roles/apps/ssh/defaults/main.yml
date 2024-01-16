@@ -5,5 +5,5 @@ user_config:
 
 install_packages: true
 
-ssh:
+app_config:
   use_agent: false

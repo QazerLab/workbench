@@ -40,7 +40,7 @@
 # has a default agent unit shipepd with openssh package (which is not the case for,
 # say, CentOS / Almalinux).
 - name: 'enable ssh agent'
-  when: 'ansible_os_family == "Archlinux" and ssh["use_agent"]'
+  when: 'ansible_os_family == "Archlinux" and app_config["use_agent"]'
   systemd_service:
     name: 'ssh-agent'
     scope: 'user'

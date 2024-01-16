@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <doublecmd DCVersion="1.0.11" ConfigVersion="13">
   <Behaviours>
-    <RunInTerminalStayOpenCmd>{{ doublecmd['terminal'] }}</RunInTerminalStayOpenCmd>
+    <RunInTerminalStayOpenCmd>{{ app_config['terminal'] }}</RunInTerminalStayOpenCmd>
     <RunInTerminalStayOpenParams>-e sh -c '{command}; echo -n Press ENTER to exit... ; read a'</RunInTerminalStayOpenParams>
-    <RunInTerminalCloseCmd>{{ doublecmd['terminal'] }}</RunInTerminalCloseCmd>
+    <RunInTerminalCloseCmd>{{ app_config['terminal'] }}</RunInTerminalCloseCmd>
     <RunInTerminalCloseParams>-e sh -c {command}</RunInTerminalCloseParams>
-    <JustRunTerminal>{{ doublecmd['terminal'] }}</JustRunTerminal>
+    <JustRunTerminal>{{ app_config['terminal'] }}</JustRunTerminal>
     <JustRunTermParams/>
   </Behaviours>
 
   <Tools>
     <Editor Enabled="True">
-      <Path>{{ doublecmd['editor'] }}</Path>
+      <Path>{{ app_config['editor'] }}</Path>
       <Parameters/>
       <RunInTerminal>False</RunInTerminal>
       <KeepTerminalOpen>False</KeepTerminalOpen>

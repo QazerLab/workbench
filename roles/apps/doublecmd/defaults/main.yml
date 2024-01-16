@@ -4,6 +4,10 @@ user_config:
   home_dir: '/home/qazer'
   downloads_dir: '/home/qazer/misc/downloads'
 
+app_config:
+  terminal: 'xterm'
+  editor: 'vi'
+
 install_packages: true
 
 force_clean_configs: false

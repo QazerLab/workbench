@@ -41,6 +41,17 @@ user_config:
 
     media: {}
 
+  apps:
+    ssh:
+      use_agent: true
+
+    vivaldi: {}
+    sublime: {}
+
+    doublecmd:
+      terminal: 'alacritty'
+      editor: 'subl'
+
   gui:
     de: 'openbox-qaztom'
 
@@ -50,9 +61,3 @@ user_config:
 # escalation is not required.
 install_packages: true
 
-ssh:
-  use_agent: true
-
-doublecmd:
-  terminal: 'alacritty'
-  editor: 'subl'
