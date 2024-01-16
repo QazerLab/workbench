@@ -3,11 +3,21 @@
   set_fact:
     plugins_dir: '{{ user_config["home_dir"] }}/{{ user_config["editors"][editor]["plugins_dir"] }}'
     configs_dir: '{{ user_config["home_dir"] }}/{{ user_config["editors"][editor]["config_dropins_dir"] }}'
-    role_editor_settings: '{{ devel_basic_editor_plugins[editor] }}'
+    role_editor_plugins: '{{ devel_basic_editor_plugins[editor] }}'
+    role_editor_configs: '{{ devel_basic_editor_configs[editor] }}'
 
 - name: 'install plugins for {{ editor }}'
-  loop: '{{ role_editor_settings | dict2items | map(attribute = "key") }}'
+  loop: '{{ role_editor_plugins | dict2items | map(attribute = "key") }}'
   vars:
     plugin: '{{ item }}'
   include_tasks:
     file: '{{ editor }}_plugin.yml'
+
+- name: 'install freestanding config dropins for {{ editor }}'
+  loop: '{{ role_editor_configs }}'
+  copy:
+    src: 'editor_configs/{{ editor }}/{{ item }}'
+    dest: '{{ configs_dir }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644

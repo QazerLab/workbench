@@ -1,7 +1,7 @@
 ---
 - name: 'find plugin config for {{ plugin }}'
   set_fact:
-    plugin_config: '{{ role_editor_settings[plugin] }}'
+    plugin_config: '{{ role_editor_plugins[plugin] }}'
     plugin_dir: '{{ plugins_dir }}/{{ plugin }}'
 
 - name: 'download {{ plugin }} plugin'

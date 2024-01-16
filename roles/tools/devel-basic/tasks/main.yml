@@ -26,6 +26,7 @@
       #
       # Though they are usually installed as dependencies, we install them
       # explicitly to know that we have xmllint and xsltproc tools in the system.
+      # These are needed for poor man's XML autoformatting hotkeys in editors.
       - 'libxml2'
       - 'libxslt'
 

@@ -7,3 +7,8 @@ devel_basic_editor_plugins:
       repo: 'https://github.com/tpope/vim-fugitive'
       requires_build: false
       requires_config: true
+
+# Freestanding configs which do not belong to any particular plugin.
+devel_basic_editor_configs:
+  vim:
+    - 'xml_format_hotkey.vim'

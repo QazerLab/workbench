@@ -6,23 +6,4 @@ user_config:
 shell_config:
   dropins_dir: '.bashrc.d'
 
-features: {
-  # Uncomment to export dev-related variables.
-  #
-  # dev:
-  #
-  #   # Enables settings for basic dev tools.
-  #   - 'base'
-  #
-  #   # Enables settings for extra dev tools.
-  #   - 'extras'
-
-  # Uncomment to export cli-related variables.
-  #
-  # cli:
-  #
-  #  # Enables additional CLI tools support.
-  #  - 'extras'
-}
-
 install_packages: true

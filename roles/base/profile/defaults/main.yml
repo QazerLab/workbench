@@ -5,30 +5,9 @@ user_config:
 
   profile_dropins_dir: '.profile.d'
 
-
-
   # Uncomment to enable GUI-related settings.
   #
   # gui: {}
-
-features: {
-  # Uncomment to export dev-related variables.
-  #
-  # dev:
-  #
-  #   # Enables settings for basic dev tools like xmllint.
-  #   - 'base'
-  #
-  #   # Enables Golang support.
-  #   - 'golang'
-
-  # Uncomment to export cli-related variables.
-  #
-  # cli:
-  #
-  #  # Enables additional CLI tools support.
-  #  - 'extras'
-}
 
 system:
   hidpi: false

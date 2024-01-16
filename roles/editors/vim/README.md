@@ -22,9 +22,6 @@ Role Variables
     * `name` &mdash; name of the target user.
     * `home_dir` &mdash; target user's home.
 * `install_packages` &mdash; if set to `false`, skips the package installation.
-* `features` &mdash; a dict with feature flags.
-    * `dev` &mdash; a list of development features to be supported.
-        * `base` &mdash; basic development tools.
 
 Dependencies
 ------------

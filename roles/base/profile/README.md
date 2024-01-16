@@ -15,18 +15,8 @@ Role Variables
     * `name` &mdash; name of the target user.
     * `home_dir` &mdash; target user's home.
     * `profile_dropins_dir` &mdash; directory for profile drop-ins.
-* `features` &mdash; a dict with feature flags.
-    * `dev` &mdash; a list of development features to be supported.
-        * `base` &mdash; basic development tools.
-        * `golang` &mdash; Golang toolchain.
-    * `cli` &mdash`; a list of CLI features to be supported.
-        * `extras` &mdash; extra tools to enrich the command-line experience.
-    * `gui` &mdash; a list of GUI features to be supported; an empty object
-      `gui` (or its absence, if no GUI support is required) is sufficient for
-       this specific role.
 * `system` &mdash; a dict with target system properties.
     * `hidpi` &mdash; whether to use HiDPI configuration or not.
-  Makes sense only if `golang` is present in `features["dev"]`.
 
 Dependencies
 ------------

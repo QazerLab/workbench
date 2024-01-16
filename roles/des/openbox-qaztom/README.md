@@ -27,9 +27,6 @@ Role Variables
     * `hidpi` &mdash; whether to use HiDPI configuration or not.
     * `gui` &mdash; GUI settings.
         * `dm` &mdash display manager used in this system.
-* `features` &mdash; a dict with feature flags.
-    * `dev` &mdash; a list of development features to be supported.
-        * `java` &mdash; support Java-related GUI stuff.
 * `wallpaper` &mdash; path to wallpaper image (if required).
 * `xfce` &mdash; xfce settings.
     * `panel` &mdash; xfce-panel settings.

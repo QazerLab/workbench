@@ -2,11 +2,6 @@
 - name: 'install the whole suite'
   hosts: 'all'
   tasks:
-    - name: 'fail if features are not set'
-      fail:
-        msg: 'Please define the desired feature flags in the "features" dictionary.'
-      when: 'features is not defined'
-
     - name: 'install system tools'
       include_role:
         name: 'tools/{{ role_item }}'

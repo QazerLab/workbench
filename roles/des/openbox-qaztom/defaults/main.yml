@@ -5,15 +5,6 @@ user_config:
 
 install_packages: true
 
-features: {
-  # Uncomment to enable support for different software.
-  #
-  # dev:
-  #
-  #   # Enables hotkeys for Java-related GUI tools.
-  #   - 'java'
-}
-
 system:
   hidpi: false
 

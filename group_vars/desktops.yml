@@ -44,24 +44,6 @@ user_config:
   gui:
     de: 'openbox-qaztom'
 
-# Features which are to be available on the target system.
-#
-# This dictionary influences
-#
-# * which packages will be installed to the target system;
-# * which plugins will be installed for the software;
-# * which parts of configurations are useful/useless on the target system.
-features:
-  cli:
-    - 'extras'
-  dev:
-    - 'base'
-    - 'extras'
-    - 'rust'
-    - 'java'
-    - 'golang'
-    - 'haskell'
-
 # Install packages on target machine?
 #
 # If false, only configuration files are deployed, so that privileges
