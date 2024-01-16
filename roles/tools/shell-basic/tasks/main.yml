@@ -12,6 +12,7 @@
       - 'wget'
       - 'which'
       - 'file'
+      - 'tree'
       - 'man-db'
       - 'man-pages'
 
