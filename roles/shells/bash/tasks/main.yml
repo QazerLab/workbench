@@ -12,11 +12,8 @@
     state: 'absent'
 
 - name: 'ensure drop-ins directories exist'
-  loop:
-    - '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
-    - '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}-unmanaged'
   file:
-    path: '{{ item }}'
+    path: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     state: 'directory'
