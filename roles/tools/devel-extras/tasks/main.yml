@@ -18,6 +18,8 @@
       - 'fakeroot'
 
       # Heavyweight stuff.
+      - 'docker'
+      - 'docker-compose'
       - 'podman'
       - 'buildah'
       - 'skopeo'
@@ -30,6 +32,9 @@
       # wait for GUI roles to run (if any) or let the user to opt-in for this
       # bloatware explicitly. Finally, the user may choose to install another
       # hypervisor manually.
+      #
+      # If the user still wants the backend to be installed automatically,
+      # they may supply the vagrant_backend option in the toolchain config.
       - 'vagrant'
 
       # Cloud clients.
@@ -38,6 +43,11 @@
       # Database clients.
       - 'mariadb-clients'
       - 'postgresql-libs'
+
+- name: 'install vagrant backend'
+  when: '"vagrant_backend" in toolchain_config'
+  include_tasks:
+    file: 'vagrant_backends/{{ toolchain_config["vagrant_backend"] }}.yml'
 
 - name: 'install drop-ins for shells'
   loop: '{{ user_config["shells"] | dict2items }}'

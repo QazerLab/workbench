@@ -1,0 +1,9 @@
+---
+- name: 'install vbox backend for vagrant'
+  when: 'install_packages'
+  become: true
+  package:
+    state: 'present'
+    name:
+      - 'virtualbox-host-modules-arch'
+      - 'virtualbox-guest-iso'

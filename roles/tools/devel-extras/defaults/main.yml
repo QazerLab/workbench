@@ -1,6 +1,12 @@
 ---
 install_packages: true
 
+toolchain_config:
+
+# Uncomment to auto-install a backend for vagrant.
+#
+#  vagrant_backend: 'virtualbox'
+
 devel_extra_editor_plugins:
   vim:
     youcompleteme:

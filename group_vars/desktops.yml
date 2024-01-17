@@ -39,7 +39,8 @@ user_config:
     devel-go:
       gopath: 'pub/src/misc/gopath'
 
-    devel-extras: {}
+    devel-extras:
+      vagrant_backend: 'virtualbox'
 
     media: {}
 
