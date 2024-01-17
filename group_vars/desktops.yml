@@ -33,6 +33,8 @@ user_config:
         - name: 'stable-x86_64-unknown-linux-gnu'
           default: true
         - name: 'nightly-x86_64-unknown-linux-gnu'
+      cargo_plugins:
+        - 'cargo-expand'
 
     devel-go:
       gopath: 'pub/src/misc/gopath'

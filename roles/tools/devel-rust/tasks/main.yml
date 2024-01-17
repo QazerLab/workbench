@@ -49,3 +49,12 @@
       - 'component'
       - 'add'
       - '{{ item }}'
+
+- name: 'add user-requsted cargo components'
+  loop: '{{ toolchain_config["cargo_plugins"] }}'
+  when: '"cargo_plugins" in toolchain_config'
+  shell:
+    argv:
+      - 'cargo'
+      - 'install'
+      - '{{ item }}'
