@@ -10,7 +10,7 @@
 
 - name: 'ensure vivaldi downloads directory exists'
   file:
-    path: '{{ user_config["downloads_dir"] }}/vivaldi'
+    path: '{{ user_config["home_dir"] }}/{{ user_config["downloads_dir"] }}/vivaldi'
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     state: 'directory'

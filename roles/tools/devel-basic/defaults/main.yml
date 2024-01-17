@@ -5,7 +5,6 @@ devel_basic_editor_plugins:
   vim:
     fugitive:
       repo: 'https://github.com/tpope/vim-fugitive'
-      requires_build: false
       requires_config: true
 
 # Freestanding configs which do not belong to any particular plugin.

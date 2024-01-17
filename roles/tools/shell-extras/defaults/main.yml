@@ -4,7 +4,7 @@ user_config:
 
   shells:
     bash:
-      dropins_dir: '.bashrc.d'
+      config_dropins_dir: '.bashrc.d'
 
 install_packages: true
 

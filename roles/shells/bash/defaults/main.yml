@@ -4,6 +4,6 @@ user_config:
   home_dir: '/home/qazer'
 
 shell_config:
-  dropins_dir: '.bashrc.d'
+  config_dropins_dir: '.bashrc.d'
 
 install_packages: true

@@ -3,13 +3,13 @@ ansible_connection: 'local'
 user_config:
   name: 'qazer'
   home_dir: '/home/qazer'
-  downloads_dir: '/home/qazer/misc/downloads'
+  downloads_dir: 'misc/downloads'
 
   profile_dropins_dir: '.profile.d'
 
   shells:
     bash:
-      dropins_dir: '.bashrc.d'
+      config_dropins_dir: '.bashrc.d'
 
   editors:
     vim:

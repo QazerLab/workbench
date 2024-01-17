@@ -43,7 +43,7 @@
   loop: '{{ user_config["shells"] | dict2items }}'
   copy:
     src: 'shell_dropins/{{ item["key"] }}/'
-    dest: '{{ user_config["home_dir"] }}/{{ item["value"]["dropins_dir"] }}'
+    dest: '{{ user_config["home_dir"] }}/{{ item["value"]["config_dropins_dir"] }}'
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     mode: 0644

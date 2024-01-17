@@ -2,7 +2,6 @@
 user_config:
   name: 'qazer'
   home_dir: '/home/qazer'
-  downloads_dir: '/home/qazer/misc/downloads'
 
 app_config:
   terminal: 'xterm'

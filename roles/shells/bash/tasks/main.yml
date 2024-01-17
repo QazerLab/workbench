@@ -8,13 +8,13 @@
 
 - name: 'clean managed drop-ins directory'
   file:
-    path: '{{ user_config["home_dir"] }}/{{ shell_config["dropins_dir"] }}'
+    path: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
     state: 'absent'
 
 - name: 'ensure drop-ins directories exist'
   loop:
-    - '{{ user_config["home_dir"] }}/{{ shell_config["dropins_dir"] }}'
-    - '{{ user_config["home_dir"] }}/{{ shell_config["dropins_dir"] }}-unmanaged'
+    - '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
+    - '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}-unmanaged'
   file:
     path: '{{ item }}'
     owner: '{{ user_config["name"] }}'
@@ -41,7 +41,7 @@
 - name: 'install basic drop-ins'
   copy:
     src: 'dropins/'
-    dest: '{{ user_config["home_dir"] }}/{{ shell_config["dropins_dir"] }}'
+    dest: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     mode: 0644
@@ -51,7 +51,7 @@
     - '00_03_arch_utils'
   template:
     src: 'dropins/{{ item }}.j2'
-    dest: '{{ user_config["home_dir"] }}/{{ shell_config["dropins_dir"] }}/{{ item }}'
+    dest: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}/{{ item }}'
     owner: '{{ user_config["name"] }}'
     group: '{{ user_config["name"] }}'
     mode: 0644
