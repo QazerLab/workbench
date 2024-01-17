@@ -1,0 +1,17 @@
+{% if 'gui' in user_config and system['hidpi'] -%}
+
+# Scale GDK UIs 2x...
+export GDK_SCALE=2
+
+# ...Then scale text down, because it is already scaled due to Xft.dpi
+# option in Xresources.
+export GDK_DPI_SCALE=0.5
+
+# Enable Qt autoscaling for HiDPI.
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+
+{% else %}
+# The system does not use hiDPI screen.
+No additional configuration is required.
+{% endif %}
+

@@ -1,19 +1,3 @@
-{% if 'gui' in user_config and system['hidpi'] -%}
-
-# Scale GDK UIs 2x...
-export GDK_SCALE=2
-
-# ...Then scale text down, because it is already scaled due to Xft.dpi
-# option in Xresources.
-export GDK_DPI_SCALE=0.5
-
-# Enable Qt autoscaling for HiDPI.
-export QT_AUTO_SCREEN_SCALE_FACTOR=1
-
-{% endif -%}
-
-
-
 # Load Ansible-managed drop-ins.
 if [ -d ~/{{ user_config['profile_dropins_dir'] }} ]
 then
@@ -23,9 +7,7 @@ then
     done
 fi
 
-
-
-# Finally, give a chance to perform machine-specific configuration.
+# Give a chance to perform machine-specific configuration.
 # This configuration is not managed by Ansible.
 if [ -d ~/{{ user_config['profile_dropins_dir'] }}-unmanaged ]
 then

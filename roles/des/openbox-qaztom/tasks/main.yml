@@ -232,3 +232,13 @@
       - 'org.pwmt.zathura.desktop'
       - 'application/pdf'
       - 'image/vnd.djvu'
+
+- name: 'install profile drop-ins'
+  loop:
+    - '20_01_hidpi_vars'
+  template:
+    src: 'profile_dropins/{{ item }}.j2'
+    dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
+    owner: '{{ user_config["name"] }}'
+    group: '{{ user_config["name"] }}'
+    mode: 0644
