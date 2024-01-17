@@ -56,7 +56,12 @@ user_config:
       editor: 'subl'
 
   gui:
-    de: 'openbox-qaztom'
+    de:
+      name: 'openbox-qaztom'
+      wallpaper: '/usr/local/share/wallpapers/arch_desktop.png'
+      xfce_panel:
+          x: 960
+          y: 1066
 
 # Install packages on target machine?
 #

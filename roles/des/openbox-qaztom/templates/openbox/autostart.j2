@@ -6,9 +6,9 @@ light-locker &
 # XCompmgr is used only for transparency in Tilda.
 xcompmgr &
 
-{% if wallpaper is defined %}
+{% if "wallpaper" in de_config %}
 # Wallpaper under the desktop.
-feh --bg-scale "{{ wallpaper }}"
+feh --bg-scale "{{ de_config['wallpaper'] }}"
 {% endif %}
 
 # The panel.
