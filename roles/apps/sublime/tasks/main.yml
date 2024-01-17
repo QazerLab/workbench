@@ -10,29 +10,13 @@
       [sublime-text]
       Server = https://download.sublimetext.com/arch/stable/x86_64
 
-- name: 'copy sublime repo key'
-  when: 'install_packages'
-  copy:
-    src: 'sublimehq-publickey.gpg'
-    dest: '/tmp/sublimehq-publickey.gpg'
-
 - name: 'import sublime repo key'
   when: 'install_packages'
   become: true
-  shell:
-    argv:
-      - 'pacman-key'
-      - '--add'
-      - '/tmp/sublimehq-publickey.gpg'
-
-- name: 'self-sign sublime repo key to approve it'
-  when: 'install_packages'
-  become: true
-  shell:
-    argv:
-      - 'pacman-key'
-      - '--lsign-key'
-      - '{{ sublime_gpg_publickey }}'
+  community.general.pacman_key:
+    id: '{{ sublime_gpg_publickey }}'
+    data: '{{ lookup("file", "sublimehq-publickey.gpg") }}'
+    state: 'present'
 
 - name: 'install sublime-text package'
   when: 'install_packages'
