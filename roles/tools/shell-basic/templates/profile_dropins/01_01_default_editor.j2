@@ -1,0 +1,5 @@
+{% if shell_basic_default_editor is defined %}
+export EDITOR={{ shell_basic_default_editor }}
+{% else %}
+# No default editor was set in user config.
+{% endif %}
