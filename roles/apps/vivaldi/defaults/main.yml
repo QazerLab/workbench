@@ -1,12 +1,2 @@
 ---
-user_config:
-  name: 'qazer'
-  home_dir: '/home/qazer'
-
-install_packages: true
-
 force_clean_configs: false
-
-doublecmd:
-  terminal: 'alacritty'
-  editor: 'subl'

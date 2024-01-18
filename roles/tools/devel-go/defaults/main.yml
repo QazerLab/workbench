@@ -1,10 +1,4 @@
 ---
-user_config:
-  name: 'qazer'
-  home_dir: '/home/qazer'
-
-install_packages: true
-
 toolchain_config:
 
   # Relative to the user's home directory.

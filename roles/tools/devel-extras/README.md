@@ -4,22 +4,10 @@ devel-extras
 Installs extra development tools. The main reason for not including them into
 `base` is that these tools either are of heavy weight or are of extemely rare use.
 
-Requirements
-------------
-
-None.
 
 Role Variables
 --------------
 
-* `install_packages` &mdash; if set to `false`, skips the package installation.
+Custom `toolchain_config` variables:
 
-Dependencies
-------------
-
-None.
-
-License
--------
-
-WTFPL
+* `vagrant_backend` &mdash; set to `virtualbox` to install VBox as a Vagrant back-end.

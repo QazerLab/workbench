@@ -1,6 +1,4 @@
 ---
-install_packages: true
-
 toolchain_config:
   rustup_toolchains:
     - name: 'stable-x86_64-unknown-linux-gnu'

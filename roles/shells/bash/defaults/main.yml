@@ -1,9 +1,3 @@
 ---
-user_config:
-  name: 'qazer'
-  home_dir: '/home/qazer'
-
 shell_config:
   config_dropins_dir: '.bashrc.d'
-
-install_packages: true

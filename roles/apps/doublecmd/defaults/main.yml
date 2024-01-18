@@ -1,12 +1,6 @@
 ---
-user_config:
-  name: 'qazer'
-  home_dir: '/home/qazer'
-
 app_config:
   terminal: 'xterm'
   editor: 'vi'
-
-install_packages: true
 
 force_clean_configs: false

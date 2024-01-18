@@ -1,18 +1,4 @@
 ---
-user_config:
-  name: 'qazer'
-  home_dir: '/home/qazer'
-
-install_packages: true
-
-
-
-# Here be dragons (till the end of the file)!
-#
-# You don't wish to override these defaults unless you explicitly know
-# what do you do. Touch this only in extreme cases, e.g. some plugin moves
-# to another repo, or adds a build step, etc.
-
 vim_pathogen_url: https://tpo.pe/pathogen.vim
 
 vim_basic_plugins:

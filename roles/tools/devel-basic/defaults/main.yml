@@ -1,6 +1,4 @@
 ---
-install_packages: true
-
 devel_basic_editor_plugins:
   vim:
     fugitive:

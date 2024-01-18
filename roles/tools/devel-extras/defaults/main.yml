@@ -1,6 +1,4 @@
 ---
-install_packages: true
-
 toolchain_config:
 
 # Uncomment to auto-install a backend for vagrant.

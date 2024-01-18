@@ -1,20 +1,5 @@
 ---
-user_config:
-  name: 'qazer'
-  home_dir: '/home/qazer'
-
-install_packages: true
-
-system:
-  hidpi: false
-
-  gui:
-    dm: 'lightdm'
-
 de_config:
-
-  # Uncomment to set the wallpaper under Tilda.
-  # wallpaper: /path/to/file
 
   # There is no option 'stick to bottom, stretch to full width'; instead xfce stores
   # raw coordinates which depend on resolution (and, probably, DPI?) and are not that
@@ -29,3 +14,6 @@ de_config:
   xfce_panel:
       x: 960
       y: 1066
+
+  # Uncomment to set the wallpaper under Tilda.
+  # wallpaper: /path/to/file

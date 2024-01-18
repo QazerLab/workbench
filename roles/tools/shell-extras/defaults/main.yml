@@ -1,13 +1,4 @@
 ---
-user_config:
-  profile_dropins_dir: '.profile.d'
-
-  shells:
-    bash:
-      config_dropins_dir: '.bashrc.d'
-
-install_packages: true
-
 shell_extras_editor_plugins:
   vim:
     fzf:
