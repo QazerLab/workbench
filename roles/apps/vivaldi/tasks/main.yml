@@ -11,8 +11,8 @@
   tags: 'user'
   file:
     path: '{{ user_config["home_dir"] }}/{{ user_config["downloads_dir"] }}/vivaldi'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     state: 'directory'
     mode: 0755
 
@@ -36,8 +36,8 @@
     - name: 'create vivaldi config directory'
       file:
         path: '{{ user_config["home_dir"] }}/.config/vivaldi/Default'
-        owner: '{{ user_config["name"] }}'
-        group: '{{ user_config["name"] }}'
+        owner: '{{ user_name }}'
+        group: '{{ user_name }}'
         state: 'directory'
         mode: 0755
 
@@ -45,6 +45,6 @@
       template:
         src: 'Preferences.j2'
         dest: '{{ user_config["home_dir"] }}/.config/vivaldi/Default/Preferences'
-        owner: '{{ user_config["name"] }}'
-        group: '{{ user_config["name"] }}'
+        owner: '{{ user_name }}'
+        group: '{{ user_name }}'
         mode: 0644

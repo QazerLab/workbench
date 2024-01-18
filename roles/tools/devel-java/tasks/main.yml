@@ -33,6 +33,6 @@
   template:
     src: 'shell_dropins/{{ item[0]["key"] }}/{{ item[1] }}.j2'
     dest: '{{ user_config["home_dir"] }}/{{ item[0]["value"]["config_dropins_dir"] }}/{{ item[1] }}'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     mode: 0644

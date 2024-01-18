@@ -12,8 +12,8 @@
     - '.ssh/config.d'
   file:
     path: '{{ user_config["home_dir"] }}/{{ item }}'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     state: 'directory'
     mode: 0700
 
@@ -22,8 +22,8 @@
   template:
     src: 'config.j2'
     dest: '{{ user_config["home_dir"] }}/.ssh/config'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     mode: 0644
 
 - name: 'install templated profile drop-ins'
@@ -33,8 +33,8 @@
   template:
     src: 'profile_dropins/{{ item }}.j2'
     dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     mode: 0644
 
 # XXX: do not bother with creating custom units for non-Arch systems, as currently

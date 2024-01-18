@@ -3,8 +3,8 @@
   file:
     path: '{{ plugin_dir }}/build'
     state: 'directory'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     mode: 0755
 
 - name: 'prepare plugin for build'
@@ -22,8 +22,8 @@
     remote_src: true
     src: '{{ plugin_dir }}/third_party/ycmd/third_party/watchdog_deps/watchdog/src/watchdog'
     dest: '{{ plugin_dir }}/third_party/ycmd/third_party/watchdog_deps/watchdog/build/lib3/'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     mode: 0755
 
 - name: 'youcompleteme language support - Golang'

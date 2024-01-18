@@ -16,8 +16,8 @@
   copy:
     src: 'editor_configs/vim/{{ plugin }}.vim'
     dest: '{{ configs_dir }}'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     mode: 0644
 
 - include_tasks:

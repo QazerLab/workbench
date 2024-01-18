@@ -1,64 +1,64 @@
 ansible_connection: 'local'
 
-user_config:
-  name: 'qazer'
-  home_dir: '/home/qazer'
-  downloads_dir: 'misc/downloads'
+users:
+  qazer:
+    home_dir: '/home/qazer'
+    downloads_dir: 'misc/downloads'
 
-  profile_dropins_dir: '.profile.d'
+    profile_dropins_dir: '.profile.d'
 
-  shells:
-    bash:
-      config_dropins_dir: '.bashrc.d'
+    shells:
+      bash:
+        config_dropins_dir: '.bashrc.d'
 
-  editors:
-    vim:
-      default: true
-      config_dropins_dir: '.vim/configs'
-      plugins_dir: '.vim/bundle'
+    editors:
+      vim:
+        default: true
+        config_dropins_dir: '.vim/configs'
+        plugins_dir: '.vim/bundle'
 
-  toolchains:
-    shell-basic: {}
-    shell-extras: {}
+    toolchains:
+      shell-basic: {}
+      shell-extras: {}
 
-    admin-system: {}
-    admin-network: {}
-    admin-tracing: {}
+      admin-system: {}
+      admin-network: {}
+      admin-tracing: {}
 
-    devel-basic: {}
-    devel-java: {}
+      devel-basic: {}
+      devel-java: {}
 
-    devel-rust:
-      rustup_toolchains:
-        - name: 'stable-x86_64-unknown-linux-gnu'
-          default: true
-        - name: 'nightly-x86_64-unknown-linux-gnu'
-      cargo_plugins:
-        - 'cargo-expand'
+      devel-rust:
+        rustup_toolchains:
+          - name: 'stable-x86_64-unknown-linux-gnu'
+            default: true
+          - name: 'nightly-x86_64-unknown-linux-gnu'
+        cargo_plugins:
+          - 'cargo-expand'
 
-    devel-go:
-      gopath: 'pub/src/misc/gopath'
+      devel-go:
+        gopath: 'pub/src/misc/gopath'
 
-    devel-extras:
-      vagrant_backend: 'virtualbox'
+      devel-extras:
+        vagrant_backend: 'virtualbox'
 
-    media: {}
+      media: {}
 
-  apps:
-    ssh:
-      use_agent: true
+    apps:
+      ssh:
+        use_agent: true
 
-    vivaldi: {}
-    sublime: {}
+      vivaldi: {}
+      sublime: {}
 
-    doublecmd:
-      terminal: 'alacritty'
-      editor: 'subl'
+      doublecmd:
+        terminal: 'alacritty'
+        editor: 'subl'
 
-  gui:
-    de:
-      name: 'openbox-qaztom'
-      wallpaper: '/usr/local/share/wallpapers/arch_desktop.png'
-      xfce_panel:
-          x: 960
-          y: 1066
+    gui:
+      de:
+        name: 'openbox-qaztom'
+        wallpaper: '/usr/local/share/wallpapers/arch_desktop.png'
+        xfce_panel:
+            x: 960
+            y: 1066

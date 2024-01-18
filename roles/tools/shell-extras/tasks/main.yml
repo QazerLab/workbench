@@ -18,8 +18,8 @@
   copy:
     src: 'profile_dropins/'
     dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     mode: 0644
 
 - name: 'install drop-ins for shells'
@@ -28,8 +28,8 @@
   copy:
     src: 'shell_dropins/{{ item["key"] }}/'
     dest: '{{ user_config["home_dir"] }}/{{ item["value"]["config_dropins_dir"] }}'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     mode: 0644
 
 - name: 'install drop-ins for editors'

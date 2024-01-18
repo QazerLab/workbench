@@ -10,8 +10,8 @@
   tags: 'user'
   file:
     path: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     state: 'directory'
     mode: 0755
 
@@ -20,8 +20,8 @@
   template:
     src: 'profile.j2'
     dest: '{{ user_config["home_dir"] }}/.profile'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     mode: 0644
 
 - name: 'install basic drop-ins'
@@ -29,6 +29,6 @@
   copy:
     src: 'dropins/'
     dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     mode: 0644

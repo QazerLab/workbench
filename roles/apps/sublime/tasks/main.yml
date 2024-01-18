@@ -27,8 +27,8 @@
   tags: 'user'
   file:
     path: '{{ sublime_user_config_dir }}'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     state: 'directory'
     mode: 0755
 
@@ -40,6 +40,6 @@
   copy:
     src: '{{ item }}'
     dest: '{{ sublime_user_config_dir }}/{{ item }}'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     mode: 0644

@@ -9,8 +9,8 @@
   tags: 'user'
   file:
     path: '{{ user_config["home_dir"] }}/{{ toolchain_config["gopath"] }}'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     state: 'directory'
     mode: 0755
 
@@ -21,6 +21,6 @@
   template:
     src: 'profile_dropins/{{ item }}.j2'
     dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
-    owner: '{{ user_config["name"] }}'
-    group: '{{ user_config["name"] }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
     mode: 0644
