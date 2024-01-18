@@ -137,7 +137,7 @@ Finally, as a shorthand for respective `user_config` part,
 * each shell role receives the associated `shell_config`;
 * each editor role receives the associated `editor_config`;
 * each toolchain receives the associated `toolchain_config`;
-* desktop environment receives the associated `de_config.
+* desktop environment receives the associated `de_config`.
 
 These roles still have access to whole `user_config`, but should use it directly
 only when there is a need to access parts of user configuration outside of their
