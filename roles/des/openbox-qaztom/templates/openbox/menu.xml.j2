@@ -22,7 +22,7 @@
     </menu>
 
     <menu id="apps-net" label="Net">
-        <!-- TODO: make optional when Vivaldi deployment would be supported -->
+{% if 'vivaldi' in user_config['apps'] %}
         <item label="Vivaldi">
             <action name="Execute">
                 <command>vivaldi-stable</command>
@@ -32,6 +32,7 @@
                 </startupnotify>
             </action>
         </item>
+{% endif %}
 
         <!-- TODO: make optional when Transmission deployment would be supported -->
         <item label="Transmission">
@@ -73,7 +74,7 @@
     </menu>
 
     <menu id="apps-other" label="Other">
-        <!-- TODO: make optional when Gimp deployment would be supported -->
+{% if 'media' in user_config['toolchains'] %}
         <item label="Gimp">
             <action name="Execute">
                 <command>gimp</command>
@@ -82,6 +83,7 @@
                 </startupnotify>
             </action>
         </item>
+{% endif %}
         <item label="Galculator">
             <action name="Execute">
                 <command>galculator</command>
@@ -127,6 +129,8 @@
                 </startupnotify>
             </action>
         </item>
+
+{% if 'doublecmd' in user_config['apps'] %}
         <item label="Double Commander">
             <action name="Execute">
                 <command>doublecmd</command>
@@ -135,8 +139,9 @@
                 </startupnotify>
             </action>
         </item>
+{% endif %}
 
-        <!-- TODO: make optional when Sublime deployment would be supported -->
+{% if 'sublime' in user_config['apps'] %}
         <item label="Sublime">
             <action name="Execute">
                 <command>subl</command>
@@ -145,6 +150,7 @@
                 </startupnotify>
             </action>
         </item>
+{% endif %}
 
         <menu id="apps-devel"/>
         <menu id="apps-net"/>

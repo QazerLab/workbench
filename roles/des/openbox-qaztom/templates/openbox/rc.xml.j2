@@ -366,7 +366,6 @@
             Application launchers section.
         -->
 
-        <!-- TODO: make optional depending on feature flags -->
         <keybind key="W-Print">
             <action name="Execute">
                 <startupnotify>
@@ -377,7 +376,7 @@
             </action>
         </keybind>
 
-        <!-- TODO: make optional depending on feature flags -->
+{% if 'admin-network' in user_config['toolchains'] %}
         <keybind key="C-W-w">
             <action name="Execute">
                 <startupnotify>
@@ -387,8 +386,9 @@
                 <command>wireshark</command>
             </action>
         </keybind>
+{% endif %}
 
-        <!-- TODO: make optional depending on feature flags -->
+{% if 'sublime' in user_config['apps'] %}
         <keybind key="C-W-e">
             <action name="Execute">
                 <startupnotify>
@@ -398,7 +398,9 @@
                 <command>subl</command>
             </action>
         </keybind>
+{% endif %}
 
+{% if 'transmission' in user_config['apps'] %}
         <keybind key="C-W-t">
             <action name="Execute">
                 <startupnotify>
@@ -408,6 +410,8 @@
                 <command>transmission-gtk</command>
             </action>
         </keybind>
+{% endif %}
+
         <keybind key="W-t">
             <action name="Execute">
                 <startupnotify>
@@ -418,7 +422,7 @@
             </action>
         </keybind>
 
-        <!-- TODO: make optional depending on feature flags -->
+{% if 'vivaldi' in user_config['apps'] %}
         <keybind key="C-W-o">
             <action name="Execute">
                 <startupnotify>
@@ -428,8 +432,9 @@
                 <command>vivaldi-stable</command>
             </action>
         </keybind>
+{% endif %}
 
-        <!-- TODO: make optional depending on feature flags -->
+        <!-- TODO: make optional app? -->
         <keybind key="C-W-s">
             <action name="Execute">
                 <startupnotify>
@@ -440,6 +445,7 @@
             </action>
         </keybind>
 
+{% if 'doublecmd' in user_config['apps'] %}
         <keybind key="C-W-d">
             <action name="Execute">
                 <startupnotify>
@@ -449,8 +455,9 @@
                 <command>doublecmd</command>
             </action>
         </keybind>
+{% endif %}
 
-        <!-- TODO: make optional depending on feature flags -->
+        <!-- TODO: make optional app? -->
         <keybind key="C-W-f">
             <action name="Execute">
                 <startupnotify>
@@ -460,6 +467,8 @@
                 <command>firefox</command>
             </action>
         </keybind>
+
+{% if 'media' in user_config['toolchains'] %}
         <keybind key="C-W-g">
             <action name="Execute">
                 <startupnotify>
@@ -469,6 +478,9 @@
                 <command>gimp</command>
             </action>
         </keybind>
+{% endif %}
+
+        <!-- TODO: make optional app? -->
         <keybind key="C-W-l">
             <action name="Execute">
                 <startupnotify>
@@ -519,7 +531,7 @@
         </keybind>
 {% endif %}
 
-        <!-- TODO: make optional depending on feature flags -->
+        <!-- TODO: make optional app? -->
         <keybind key="C-W-m">
             <action name="Execute">
                 <startupnotify>
