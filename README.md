@@ -121,7 +121,7 @@ should be placed (by inspecting `user_config[$SHELL_NAME]` and
 Each user-specific role may have its own, unique (but public and readable by
 other roles) parameters &mdash; in this case, they should be placed under
 respecive `shell_config`, `editor_config` or `toolchain_config`. Only if this
-is not applicable, the default Ansaible convention must be followed and
+is not applicable, the default Ansible convention must be followed and
 role-specific parameter names must be prefixed with role name: this is
 the case, for example, for role-private parameters like Vim plugins metadata.
 
