@@ -1,6 +1,5 @@
 ---
 - name: 'install system tracing and debugging tools'
-  when: 'install_packages'
   become: true
   package:
     state: 'present'

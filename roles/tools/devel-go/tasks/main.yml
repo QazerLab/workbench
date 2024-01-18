@@ -1,12 +1,12 @@
 ---
 - name: 'install golang toolchain'
-  when: 'install_packages'
   become: true
   package:
     name: 'go'
     state: 'present'
 
 - name: 'ensure GOPATH exists'
+  tags: 'user'
   file:
     path: '{{ user_config["home_dir"] }}/{{ toolchain_config["gopath"] }}'
     owner: '{{ user_config["name"] }}'
@@ -15,6 +15,7 @@
     mode: 0755
 
 - name: 'install templated profile drop-ins'
+  tags: 'user'
   loop:
     - '15_01_go_gopath'
   template:

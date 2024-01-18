@@ -39,6 +39,14 @@ ansible-playbook -i inventories/$DEVICE install.yml
 
 to install system-wide stuff, configure specific user and their environment.
 
+To run unprivileged installation, use the `user` tag:
+
+```sh
+ansible-playbook -i inventories/$DEVICE -t user install.yml
+```
+
+This mode does not affect system-wide configs and does not install packages.
+
 
 
 Global Options

@@ -1,6 +1,5 @@
 ---
 - name: 'install vivaldi packages'
-  when: 'install_packages'
   become: true
   package:
     name:
@@ -9,6 +8,7 @@
     state: 'present'
 
 - name: 'ensure vivaldi downloads directory exists'
+  tags: 'user'
   file:
     path: '{{ user_config["home_dir"] }}/{{ user_config["downloads_dir"] }}/vivaldi'
     owner: '{{ user_config["name"] }}'
@@ -17,17 +17,20 @@
     mode: 0755
 
 - name: 'delete vivaldi configs if required'
+  tags: 'user'
   file:
     path: '{{ user_config["home_dir"] }}/.config/vivaldi'
     state: 'absent'
   when: 'clean_configs == "all"'
 
 - name: 'check for vivaldi config directory'
+  tags: 'user'
   stat:
     path: '{{ user_config["home_dir"] }}/.config/vivaldi'
   register: 'vconfig_result'
 
 - name: 'install vivaldi config'
+  tags: 'user'
   when: 'not vconfig_result.stat.exists'
   block:
     - name: 'create vivaldi config directory'

@@ -1,12 +1,12 @@
 ---
 - name: 'install ssh'
-  when: 'install_packages'
   become: true
   package:
     name: 'openssh'
     state: 'present'
 
 - name: 'ensure .ssh and config.d directories exist'
+  tags: 'user'
   loop:
     - '.ssh'
     - '.ssh/config.d'
@@ -18,6 +18,7 @@
     mode: 0700
 
 - name: 'install ssh config'
+  tags: 'user'
   template:
     src: 'config.j2'
     dest: '{{ user_config["home_dir"] }}/.ssh/config'
@@ -26,6 +27,7 @@
     mode: 0644
 
 - name: 'install templated profile drop-ins'
+  tags: 'user'
   loop:
     - '03_01_ssh_agent_socket'
   template:
@@ -40,6 +42,7 @@
 # has a default agent unit shipepd with openssh package (which is not the case for,
 # say, CentOS / Almalinux).
 - name: 'enable ssh agent'
+  tags: 'user'
   when: 'ansible_os_family == "Archlinux" and app_config["use_agent"]'
   systemd_service:
     name: 'ssh-agent'

@@ -1,18 +1,19 @@
 ---
 - name: 'install bash'
-  when: 'install_packages'
   become: true
   package:
     name: 'bash'
     state: 'present'
 
 - name: 'clean managed drop-ins directory'
+  tags: 'user'
   file:
     path: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
     state: 'absent'
   when: 'clean_configs in ["safe", "all"]'
 
 - name: 'ensure drop-ins directories exist'
+  tags: 'user'
   file:
     path: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
     owner: '{{ user_config["name"] }}'
@@ -21,6 +22,7 @@
     mode: 0755
 
 - name: 'install basic .bashrc'
+  tags: 'user'
   template:
     src: 'bashrc.j2'
     dest: '{{ user_config["home_dir"] }}/.bashrc'
@@ -29,6 +31,7 @@
     mode: 0644
 
 - name: 'install .bash_profile'
+  tags: 'user'
   copy:
     src: 'bash_profile'
     dest: '{{ user_config["home_dir"] }}/.bash_profile'
@@ -37,6 +40,7 @@
     mode: 0644
 
 - name: 'install basic drop-ins'
+  tags: 'user'
   copy:
     src: 'dropins/'
     dest: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
@@ -45,6 +49,7 @@
     mode: 0644
 
 - name: 'install templated basic drop-ins'
+  tags: 'user'
   loop:
     - '00_03_arch_utils'
   template:

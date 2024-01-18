@@ -1,6 +1,5 @@
 ---
 - name: 'install network administration tools'
-  when: 'install_packages'
   become: true
   package:
     state: 'present'

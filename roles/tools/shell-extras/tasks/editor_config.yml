@@ -11,3 +11,5 @@
     plugin: '{{ item }}'
   include_tasks:
     file: '{{ editor }}_plugin.yml'
+    apply:
+      tags: 'user'

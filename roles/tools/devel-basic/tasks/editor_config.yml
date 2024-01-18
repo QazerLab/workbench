@@ -12,6 +12,8 @@
     plugin: '{{ item }}'
   include_tasks:
     file: '{{ editor }}_plugin.yml'
+    apply:
+      tags: 'user'
 
 - name: 'install freestanding config dropins for {{ editor }}'
   loop: '{{ role_editor_configs }}'

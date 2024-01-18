@@ -1,6 +1,5 @@
 ---
 - name: 'install basic development tools'
-  when: 'install_packages'
   become: true
   package:
     state: 'present'
@@ -31,6 +30,7 @@
       - 'libxslt'
 
 - name: 'install drop-ins for shells'
+  tags: 'user'
   loop: '{{ user_config["shells"] | dict2items }}'
   copy:
     src: 'shell_dropins/{{ item["key"] }}/'
@@ -40,6 +40,7 @@
     mode: 0644
 
 - name: 'install templated profile drop-ins'
+  tags: 'user'
   loop:
     - '10_01_dev_base_xmllint'
   template:
@@ -50,6 +51,7 @@
     mode: 0644
 
 - name: 'install drop-ins for editors'
+  tags: 'user'
   loop: '{{ user_config["editors"] | dict2items | map(attribute = "key") }}'
   loop_control:
     loop_var: 'editor_item'
@@ -57,3 +59,5 @@
     editor: '{{ editor_item }}'
   include_tasks:
     file: 'editor_config.yml'
+    apply:
+      tags: 'user'

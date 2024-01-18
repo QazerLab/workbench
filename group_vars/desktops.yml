@@ -62,10 +62,3 @@ user_config:
       xfce_panel:
           x: 960
           y: 1066
-
-# Install packages on target machine?
-#
-# If false, only configuration files are deployed, so that privileges
-# escalation is not required.
-install_packages: true
-

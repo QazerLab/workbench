@@ -1,6 +1,5 @@
 ---
 - name: 'install Java packages'
-  when: 'install_packages'
   become: true
   package:
     state: 'present'
@@ -26,6 +25,7 @@
       - 'visualvm'
 
 - name: 'install templated shell drop-ins'
+  tags: 'user'
   vars:
     java_dropin_templates:
       - '13_01_java_aliases'

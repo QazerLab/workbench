@@ -1,23 +1,25 @@
 ---
 - name: 'install doublecmd package'
-  when: 'install_packages'
   become: true
   package:
     name: 'doublecmd-gtk2'
     state: 'present'
 
 - name: 'delete doublecmd configs if required'
+  tags: 'user'
+  when: 'clean_configs == "all"'
   file:
     path: '{{ user_config["home_dir"] }}/.config/doublecmd'
     state: 'absent'
-  when: 'clean_configs == "all"'
 
 - name: 'check for doublecmd config directory'
+  tags: 'user'
   stat:
     path: '{{ user_config["home_dir"] }}/.config/doublecmd'
   register: 'dconfig_result'
 
 - name: 'install doublecmd configs'
+  tags: 'user'
   when: 'not dconfig_result.stat.exists'
   block:
     - name: 'create doublecmd configs directory'

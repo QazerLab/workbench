@@ -1,12 +1,12 @@
 ---
 - name: 'install vim'
-  when: 'install_packages'
   become: true
   package:
     name: 'vim'
     state: 'present'
 
 - name: 'store vim dirs locations'
+  tags: 'user'
   set_fact:
     autoload_dir: '{{ user_config["home_dir"] }}/.vim/autoload'
     bundle_dir: '{{ user_config["home_dir"] }}/{{ editor_config["plugins_dir"] }}'
@@ -14,6 +14,7 @@
     configs_dir: '{{ user_config["home_dir"] }}/{{ editor_config["config_dropins_dir"] }}'
 
 - name: 'ensure .vim directory and its children exist'
+  tags: 'user'
   loop:
     - '{{ user_config["home_dir"] }}/.vim'
     - '{{ autoload_dir }}'
@@ -28,6 +29,7 @@
     mode: 0755
 
 - name: 'install custom color schemes'
+  tags: 'user'
   copy:
     src: 'vim/colors/'
     dest: '{{ colors_dir }}'
@@ -36,6 +38,7 @@
     mode: 0644
 
 - name: 'install basic .vimrc'
+  tags: 'user'
   template:
     src: 'vimrc.j2'
     dest: '{{ user_config["home_dir"] }}/.vimrc'
@@ -44,6 +47,7 @@
     mode: 0644
 
 - name: 'install pathogen'
+  tags: 'user'
   get_url:
     url: '{{ vim_pathogen_url }}'
     dest: '{{ autoload_dir }}/pathogen.vim'
@@ -53,6 +57,10 @@
 
 - with_items:
     - '{{ vim_basic_plugins | dict2items | map(attribute = "key") }}'
-  include_tasks: 'plugin.yml'
+  tags: 'user'
+  include_tasks:
+    file: 'plugin.yml'
+    apply:
+      tags: 'user'
   loop_control:
     loop_var: 'plugin'

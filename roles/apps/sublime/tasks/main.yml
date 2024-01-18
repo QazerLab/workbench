@@ -1,6 +1,5 @@
 ---
 - name: 'add sublime repo'
-  when: 'install_packages'
   become: true
   blockinfile:
     dest: '/etc/pacman.conf'
@@ -11,7 +10,6 @@
       Server = https://download.sublimetext.com/arch/stable/x86_64
 
 - name: 'import sublime repo key'
-  when: 'install_packages'
   become: true
   community.general.pacman_key:
     id: '{{ sublime_gpg_publickey }}'
@@ -19,7 +17,6 @@
     state: 'present'
 
 - name: 'install sublime-text package'
-  when: 'install_packages'
   become: true
   pacman:
     name: 'sublime-text'
@@ -27,6 +24,7 @@
     update_cache: true
 
 - name: 'check for sublime user config directory'
+  tags: 'user'
   file:
     path: '{{ sublime_user_config_dir }}'
     owner: '{{ user_config["name"] }}'
@@ -35,6 +33,7 @@
     mode: 0755
 
 - name: 'install sublime configs'
+  tags: 'user'
   loop:
     - 'NetBeans.tmTheme'
     - 'Preferences.sublime-settings'

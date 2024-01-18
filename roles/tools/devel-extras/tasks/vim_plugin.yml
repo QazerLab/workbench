@@ -20,5 +20,8 @@
     group: '{{ user_config["name"] }}'
     mode: 0644
 
-- include_tasks: 'vim_plugins/{{ plugin }}_build.yml'
+- include_tasks:
+    file: 'vim_plugins/{{ plugin }}_build.yml'
+    apply:
+      tags: 'user'
   when: 'plugin_config.requires_build'
