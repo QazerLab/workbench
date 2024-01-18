@@ -1,5 +1,6 @@
 ---
 - name: 'install Xorg server, utilities and fonts'
+  become: true
   package:
     name:
       - 'xorg-server'
@@ -13,6 +14,7 @@
 #
 # Wallpapers directory is custom, so we create it.
 - name: 'ensure wallpapers directory exists'
+  become: true
   file:
     path: '/usr/local/share/wallpapers'
     owner: 'root'
@@ -21,6 +23,7 @@
     mode: 0755
 
 - name: 'install common Xorg configuration'
+  become: true
   loop:
     - '00_disable_screensaver.conf'
     - '10_keyboard.conf'
@@ -32,6 +35,7 @@
     mode: 0644
 
 - name: 'install laptop Xorg configuration'
+  become: true
   when: 'system["laptop"]'
   loop:
     - '20_touchpad.conf'
@@ -43,6 +47,7 @@
     mode: 0644
 
 - name: 'install global Xresources'
+  become: true
   template:
     src: 'Xresources.j2'
     dest: '/etc/X11/Xresources'
@@ -51,6 +56,7 @@
     mode: 0644
 
 - name: 'install icons'
+  become: true
   copy:
     src: 'icons/'
     dest: '/usr/share/icons'
@@ -60,6 +66,7 @@
     local_follow: false
 
 - name: 'install wallpapers'
+  become: true
   copy:
     src: 'wallpapers/'
     dest: '/usr/local/share/wallpapers'

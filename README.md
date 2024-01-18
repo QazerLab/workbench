@@ -34,16 +34,10 @@ The [`inventories`](inventories) directory contains host-specific inventories.
 Run
 
 ```sh
-ansible-playbook -i inventories/$DEVICE -b install_system.yml
-```
-
-to start system configuration process; run
-
-```sh
 ansible-playbook -i inventories/$DEVICE install.yml
 ```
 
-to configure specific user and their environment.
+to install system-wide stuff, configure specific user and their environment.
 
 
 

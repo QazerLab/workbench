@@ -1,5 +1,6 @@
 ---
 - name: 'install lightdm packages'
+  become: true
   loop:
     - 'lightdm'
     - 'lightdm-slick-greeter'
@@ -9,6 +10,7 @@
     state: 'present'
 
 - name: 'install lightdm configuration'
+  become: true
   loop:
     - 'lightdm.conf'
     - 'users.conf'
@@ -20,6 +22,7 @@
     mode: 0644
 
 - name: 'install lightdm templates'
+  become: true
   loop:
     - 'slick-greeter.conf'
   template:
@@ -30,6 +33,7 @@
     mode: 0644
 
 - name: 'enable lightdm service'
+  become: true
   service:
     name: 'lightdm'
     enabled: true
