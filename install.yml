@@ -2,6 +2,11 @@
 - name: 'install the whole suite'
   hosts: 'all'
   tasks:
+    - name: 'check mandatory clean_configs option'
+      when: 'clean_configs is not defined or clean_configs not in ["no", "safe", "all"]'
+      set_fact:
+        clean_configs: 'safe'
+
     - name: 'apply basic roles'
       include_role:
         name: 'profile'

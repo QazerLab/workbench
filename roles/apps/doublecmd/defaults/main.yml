@@ -2,5 +2,3 @@
 app_config:
   terminal: 'xterm'
   editor: 'vi'
-
-force_clean_configs: false

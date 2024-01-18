@@ -6,11 +6,11 @@
     name: 'doublecmd-gtk2'
     state: 'present'
 
-- name: 'delete doublecmd configs if forced'
+- name: 'delete doublecmd configs if required'
   file:
     path: '{{ user_config["home_dir"] }}/.config/doublecmd'
     state: 'absent'
-  when: 'force_clean_configs'
+  when: 'clean_configs == "all"'
 
 - name: 'check for doublecmd config directory'
   stat:

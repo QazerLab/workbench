@@ -16,11 +16,11 @@
     state: 'directory'
     mode: 0755
 
-- name: 'delete vivaldi configs if forced'
+- name: 'delete vivaldi configs if required'
   file:
     path: '{{ user_config["home_dir"] }}/.config/vivaldi'
     state: 'absent'
-  when: 'force_clean_configs'
+  when: 'clean_configs == "all"'
 
 - name: 'check for vivaldi config directory'
   stat:

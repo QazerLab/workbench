@@ -47,6 +47,34 @@ to configure specific user and their environment.
 
 
 
+Global Options
+==============
+
+There are few global options.
+
+clean_configs
+-------------
+
+Given that Ansible does not clean things whose state is not described in tasks
+explicitly, there may be need in additional cleanup of leftover files (e. g. deprecated
+drop-ins in Ansible-managed drop-ins directories).
+
+Also, there are some applications which do not support drop-ins and manage large monolithic
+highly-mutalbe configurations which include some machine-specific or sensitive parameters,
+so these configurations may not be committed as-is. Such configurations are installed only
+once and then are intentionally left application-managed. There may be a need to reset
+such configurations to their basic state.
+
+Mandatory `clean_configs` parameter controls how such situations are handled:
+
+* `no` &mdash; do not perform any extra cleanup;
+* `safe` (default) &mdash; clean Ansible-managed drop-ins directories.
+  This is safe, because content of these directories is fully recreated during installation;
+* `all` &mdash; in addition to what is cleaned for `safe` mode, application-managed
+  configurations are cleaned and re-installed from scratch too.
+
+
+
 Common Configuration Model
 ==========================
 

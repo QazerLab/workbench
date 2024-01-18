@@ -3,6 +3,7 @@
   file:
     path: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}'
     state: 'absent'
+  when: 'clean_configs in ["safe", "all"]'
 
 - name: 'ensure drop-ins directories exist'
   file:
