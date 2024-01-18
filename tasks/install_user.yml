@@ -8,21 +8,21 @@
   tags: 'user'
   loop: '{{ user_config["shells"] | dict2items }}'
   include_role:
-    name: 'shells/{{ role_item.key }}'
+    name: 'shells/{{ shell_item.key }}'
   vars:
-    shell_config: '{{ role_item["value"] }}'
+    shell_config: '{{ shell_item.value }}'
   loop_control:
-    loop_var: 'role_item'
+    loop_var: 'shell_item'
 
 - name: 'install editors'
   tags: 'user'
   loop: '{{ user_config["editors"] | dict2items }}'
   include_role:
-    name: 'editors/{{ role_item.key }}'
+    name: 'editors/{{ editor_item.key }}'
   vars:
-    editor_config: '{{ user_config["editors"][role_item.key] }}'
+    editor_config: '{{ editor_item.value }}'
   loop_control:
-    loop_var: 'role_item'
+    loop_var: 'editor_item'
 
 - name: 'install user`s desktop environment, if required'
   tags: 'user'
@@ -37,7 +37,7 @@
   include_role:
     name: 'tools/{{ toolchain_item.key }}'
   vars:
-    toolchain_config: '{{ user_config["toolchains"][toolchain_item.key] }}'
+    toolchain_config: '{{ toolchain_item.value }}'
   loop: '{{ user_config["toolchains"] | dict2items }}'
   loop_control:
     loop_var: 'toolchain_item'
@@ -47,7 +47,7 @@
   include_role:
     name: 'apps/{{ app_item.key }}'
   vars:
-    app_config: '{{ user_config["apps"][app_item.key] }}'
+    app_config: '{{ app_item.value }}'
   loop: '{{ user_config["apps"] | dict2items }}'
   loop_control:
     loop_var: 'app_item'
