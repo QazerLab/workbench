@@ -37,7 +37,7 @@ Run
 ansible-playbook -i inventories/$DEVICE install.yml
 ```
 
-to install system-wide stuff, configure specific user and their environment.
+to install system-wide stuff, configure all users and their environments.
 
 To run unprivileged installation, use the `user` tag:
 
@@ -53,6 +53,21 @@ Global Options
 ==============
 
 There are few global options.
+
+user
+----
+
+If multiple users are configured for some host, there is a possibility to configure only
+one of these users by passing a `user` option and specifying the name of the desired user.
+
+Combined with `-t user`, this would allow to configure unprivileged users without any
+privileges escalation (i. e. when the connection user has no right to use `sudo`, etc.):
+
+```sh
+ansible-playbook -i inventories/$DEVICE -t user -e user=johndoe install.yml
+```
+
+
 
 clean_configs
 -------------
