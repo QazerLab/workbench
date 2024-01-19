@@ -1,6 +1,0 @@
----
-galaxy_info:
-  description: 'installation of system tracing/introspection tools'
-  min_ansible_version: 2.4
-
-dependencies: []

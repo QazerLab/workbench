@@ -1,6 +1,0 @@
----
-galaxy_info:
-  description: 'installation of user profile'
-  min_ansible_version: 2.4
-
-dependencies: []
