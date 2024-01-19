@@ -1,6 +1,30 @@
 ansible_connection: 'local'
 
 users:
+  root:
+    home_dir: '/root'
+
+    profile_dropins_dir: '.profile.d'
+
+    shells:
+      bash:
+        config_dropins_dir: '.bashrc.d'
+
+    editors:
+      vim:
+        default: true
+        config_dropins_dir: '.vim/configs'
+        plugins_dir: '.vim/bundle'
+
+    toolchains:
+      shell-basic: {}
+      shell-extras: {}
+      admin-system: {}
+      admin-network: {}
+      admin-tracing: {}
+
+    apps: {}
+
   qazer:
     home_dir: '/home/qazer'
     downloads_dir: 'misc/downloads'
