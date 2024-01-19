@@ -17,3 +17,118 @@ de_config:
 
   # Uncomment to set the wallpaper under Tilda.
   # wallpaper: /path/to/file
+
+
+
+openbox_qaztom_apps:
+  openbox:
+    config_dirs:
+      - '.config/openbox'
+    config_templates:
+      - from: 'autostart.j2'
+        to: '.config/openbox/autostart'
+      - from: 'menu.xml.j2'
+        to: '.config/openbox/menu.xml'
+      - from: 'rc.xml.j2'
+        to: '.config/openbox/rc.xml'
+    config_handlers:
+      - 'reconfigure openbox'
+
+  gtk:
+    config_dirs:
+      - '.config/gtk-3.0'
+    config_files:
+      - from: 'gtkrc-2.0'
+        to: '.gtkrc-2.0'
+      - from: 'gtk.css'
+        to: '.config/gtk-3.0/gtk.css'
+    config_handlers: []
+
+  tilda:
+    config_dirs:
+      - '.config/tilda'
+    config_files:
+      - from: 'config_0'
+        to: '.config/tilda/config_0'
+    config_handlers: []
+
+  alacritty:
+    config_dirs:
+      - '.config/alacritty'
+    config_files:
+      - from: 'alacritty.toml'
+        to: '.config/alacritty/alacritty.toml'
+    config_handlers: []
+
+  gmrun:
+    config_files:
+      - from: 'gmrunrc'
+        to: '.gmrunrc'
+    config_handlers: []
+
+  # XXX: that is a pretty dirty trick, as xfconfd caches configuration in-memory
+  # and poking into that configuration manually would require us to deal with xfconfd
+  # in the handler. However, applying all the required settings properly via the
+  # xfconf module or command would be quite boring and ugly, and having whole XML config
+  # stored as-is would be much more simple in support.
+  xfce4-panel:
+    config_dirs:
+      - '/.config/xfce4/xfconf/xfce-perchannel-xml'
+      - '/.config/xfce4/panel'
+    config_files:
+      - from: 'battery-5.rc'
+        to: '.config/xfce4/panel/battery-5.rc'
+    config_templates:
+      - from: 'xfce4-panel.xml.j2'
+        to: '.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml'
+    config_handlers:
+      - 'reconfigure xfce-panel'
+
+  xfce4-screenshooter:
+    config_dirs:
+      - '.config/xfce4'
+    config_templates:
+      - from: 'xfce4-screenshooter.j2'
+        to: '.config/xfce4/xfce4-screenshooter'
+    config_handlers: []
+
+  galculator:
+    config_dirs:
+      - '.config/galculator'
+    config_files:
+      - from: 'galculator.conf'
+        to: '.config/galculator/galculator.conf'
+    config_handlers: []
+
+  viewnior:
+    config_dirs:
+      - '.config/viewnior'
+    config_files:
+      - from: 'viewnior.conf'
+        to: '.config/viewnior/viewnior.conf'
+    config_handlers: []
+
+    # There are other options which sometimes happen
+    # to become defaults: feh, browsers.
+    mime_associations:
+      desktop_file: 'viewnior.desktop'
+      mime_types:
+        - 'image/bmp'
+        - 'image/gif'
+        - 'image/jpeg'
+        - 'image/jpg'
+        - 'image/png'
+        - 'image/tiff'
+
+  zathura:
+    config_dirs:
+      - '.config/zathura'
+    config_files:
+      - from: 'zathurarc'
+        to: '.config/zathura/zathurarc'
+    config_handlers: []
+    mime_associations:
+      desktop_file: 'org.pwmt.zathura.desktop'
+      mime_types:
+        - 'application/pdf'
+        - 'image/vnd.djvu'
