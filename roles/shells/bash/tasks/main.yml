@@ -48,9 +48,27 @@
     group: '{{ user_name }}'
     mode: 0644
 
+- name: 'prepare vars for PS1 configuration'
+  tags: 'user'
+  set_fact:
+    host_role: >-
+      {{
+        "server" if "servers" in groups
+        else (
+          "desktop" if "desktops" in groups
+          else "unknown"
+        )
+      }}
+    user_role: >-
+      {{
+        "superuser" if user_name == "root"
+        else "unprivileged"
+      }}
+
 - name: 'install templated basic drop-ins'
   tags: 'user'
   loop:
+    - '00_01_bash_ps_vars'
     - '00_03_arch_utils'
   template:
     src: 'dropins/{{ item }}.j2'
