@@ -1,6 +1,7 @@
 ---
 - name: 'install doublecmd package'
   become: true
+  become_user: 'root'
   package:
     name: 'doublecmd-gtk2'
     state: 'present'

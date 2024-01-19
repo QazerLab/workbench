@@ -1,53 +1,64 @@
 ---
-- name: 'apply basic roles'
-  tags: 'user'
-  include_role:
-    name: 'profile'
+- become: true
+  become_user: '{{ user_name }}'
+  block:
+    - name: 'print installation banner'
+      tags: 'user'
+      debug:
+        msg:
+          - '==============================================='
+          - 'Configuring user: {{ user_name }}'
+          - '==============================================='
 
-- name: 'install shells'
-  tags: 'user'
-  loop: '{{ user_config["shells"] | dict2items }}'
-  include_role:
-    name: 'shells/{{ shell_item.key }}'
-  vars:
-    shell_config: '{{ shell_item.value }}'
-  loop_control:
-    loop_var: 'shell_item'
+    - name: 'apply basic roles'
+      tags: 'user'
+      include_role:
+        name: 'profile'
 
-- name: 'install editors'
-  tags: 'user'
-  loop: '{{ user_config["editors"] | dict2items }}'
-  include_role:
-    name: 'editors/{{ editor_item.key }}'
-  vars:
-    editor_config: '{{ editor_item.value }}'
-  loop_control:
-    loop_var: 'editor_item'
+    - name: 'install shells'
+      tags: 'user'
+      loop: '{{ user_config["shells"] | dict2items }}'
+      include_role:
+        name: 'shells/{{ shell_item.key }}'
+      vars:
+        shell_config: '{{ shell_item.value }}'
+      loop_control:
+        loop_var: 'shell_item'
 
-- name: 'install user`s desktop environment, if required'
-  tags: 'user'
-  include_role:
-    name: 'des/{{ user_config["gui"]["de"]["name"] }}'
-  vars:
-    de_config: '{{ user_config["gui"]["de"] }}'
-  when: '"gui" in user_config and "de" in user_config["gui"]'
+    - name: 'install editors'
+      tags: 'user'
+      loop: '{{ user_config["editors"] | dict2items }}'
+      include_role:
+        name: 'editors/{{ editor_item.key }}'
+      vars:
+        editor_config: '{{ editor_item.value }}'
+      loop_control:
+        loop_var: 'editor_item'
 
-- name: 'install toolchains required for user'
-  tags: 'user'
-  include_role:
-    name: 'tools/{{ toolchain_item.key }}'
-  vars:
-    toolchain_config: '{{ toolchain_item.value }}'
-  loop: '{{ user_config["toolchains"] | dict2items }}'
-  loop_control:
-    loop_var: 'toolchain_item'
+    - name: 'install user`s desktop environment, if required'
+      tags: 'user'
+      include_role:
+        name: 'des/{{ user_config["gui"]["de"]["name"] }}'
+      vars:
+        de_config: '{{ user_config["gui"]["de"] }}'
+      when: '"gui" in user_config and "de" in user_config["gui"]'
 
-- name: 'install standalone applications'
-  tags: 'user'
-  include_role:
-    name: 'apps/{{ app_item.key }}'
-  vars:
-    app_config: '{{ app_item.value }}'
-  loop: '{{ user_config["apps"] | dict2items }}'
-  loop_control:
-    loop_var: 'app_item'
+    - name: 'install toolchains required for user'
+      tags: 'user'
+      include_role:
+        name: 'tools/{{ toolchain_item.key }}'
+      vars:
+        toolchain_config: '{{ toolchain_item.value }}'
+      loop: '{{ user_config["toolchains"] | dict2items }}'
+      loop_control:
+        loop_var: 'toolchain_item'
+
+    - name: 'install standalone applications'
+      tags: 'user'
+      include_role:
+        name: 'apps/{{ app_item.key }}'
+      vars:
+        app_config: '{{ app_item.value }}'
+      loop: '{{ user_config["apps"] | dict2items }}'
+      loop_control:
+        loop_var: 'app_item'

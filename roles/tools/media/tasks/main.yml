@@ -1,6 +1,7 @@
 ---
 - name: 'install multimedia tools'
   become: true
+  become_user: 'root'
   package:
     state: 'present'
     name:

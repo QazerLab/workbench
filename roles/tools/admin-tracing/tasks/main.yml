@@ -1,6 +1,7 @@
 ---
 - name: 'install system tracing and debugging tools'
   become: true
+  become_user: 'root'
   package:
     state: 'present'
     name:

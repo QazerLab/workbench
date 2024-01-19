@@ -1,6 +1,7 @@
 ---
 - name: 'install vivaldi packages'
   become: true
+  become_user: 'root'
   package:
     name:
       - 'vivaldi'

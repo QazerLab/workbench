@@ -1,6 +1,7 @@
 ---
 - name: 'install ssh'
   become: true
+  become_user: 'root'
   package:
     name: 'openssh'
     state: 'present'

@@ -1,6 +1,7 @@
 ---
 - name: 'install golang toolchain'
   become: true
+  become_user: 'root'
   package:
     name: 'go'
     state: 'present'

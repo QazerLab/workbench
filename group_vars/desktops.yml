@@ -45,10 +45,6 @@ users:
       shell-basic: {}
       shell-extras: {}
 
-      admin-system: {}
-      admin-network: {}
-      admin-tracing: {}
-
       devel-basic: {}
       devel-java: {}
 

@@ -1,6 +1,7 @@
 ---
 - name: 'add sublime repo'
   become: true
+  become_user: 'root'
   blockinfile:
     dest: '/etc/pacman.conf'
     prepend_newline: true
@@ -11,6 +12,7 @@
 
 - name: 'import sublime repo key'
   become: true
+  become_user: 'root'
   community.general.pacman_key:
     id: '{{ sublime_gpg_publickey }}'
     data: '{{ lookup("file", "sublimehq-publickey.gpg") }}'
@@ -18,6 +20,7 @@
 
 - name: 'install sublime-text package'
   become: true
+  become_user: 'root'
   pacman:
     name: 'sublime-text'
     state: 'present'

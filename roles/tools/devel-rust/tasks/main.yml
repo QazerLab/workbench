@@ -18,6 +18,7 @@
 
 - name: 'install rustup package'
   become: true
+  become_user: 'root'
   package:
     state: 'present'
     name:
