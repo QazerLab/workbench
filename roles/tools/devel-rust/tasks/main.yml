@@ -27,7 +27,7 @@
 - name: 'install rust toolchains'
   tags: 'user'
   loop: '{{ toolchain_config["rustup_toolchains"] | map(attribute = "name") }}'
-  shell:
+  command:
     argv:
       - 'rustup'
       - 'toolchain'
@@ -36,7 +36,7 @@
 
 - name: 'set default rust toolchain'
   tags: 'user'
-  shell:
+  command:
     argv:
       - 'rustup'
       - 'default'
@@ -48,7 +48,7 @@
     - 'rust-src'
     - 'rust-docs'
     - 'rust-analyzer'
-  shell:
+  command:
     argv:
       - 'rustup'
       - 'component'
@@ -59,7 +59,7 @@
   tags: 'user'
   loop: '{{ toolchain_config["cargo_plugins"] }}'
   when: '"cargo_plugins" in toolchain_config'
-  shell:
+  command:
     argv:
       - 'cargo'
       - 'install'
