@@ -53,7 +53,6 @@
           }}
 
     - name: 'YCM Rust - integrate YCM with Rust toolchain'
-      when:
       ansible.builtin.file:
         path: '{{ plugin_dir }}/third_party/ycmd/third_party/rust-analyzer'
         src: '{{ user_config["home_dir"] }}/.rustup/toolchains/{{ rustup_default_toolchain }}'
