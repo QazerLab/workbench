@@ -6,7 +6,7 @@
     role_editor_settings: '{{ shell_extras_editor_plugins[editor] }}'
 
 - name: 'Install plugins for {{ editor }}'
-  loop: '{{ role_editor_settings | dict2items | map(attribute = "key") }}'
+  loop: '{{ role_editor_settings | dict2items | map(attribute="key") }}'
   vars:
     plugin: '{{ item }}'
   ansible.builtin.include_tasks:

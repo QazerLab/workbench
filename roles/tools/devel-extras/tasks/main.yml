@@ -57,11 +57,11 @@
     dest: '{{ user_config["home_dir"] }}/{{ item["value"]["config_dropins_dir"] }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'
 
 - name: 'Install drop-ins for editors'
   tags: 'user'
-  loop: '{{ user_config["editors"] | dict2items | map(attribute = "key") }}'
+  loop: '{{ user_config["editors"] | dict2items | map(attribute="key") }}'
   loop_control:
     loop_var: 'editor_item'
   vars:

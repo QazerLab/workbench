@@ -20,7 +20,7 @@
     owner: 'root'
     group: 'root'
     state: 'directory'
-    mode: 0755
+    mode: '0755'
 
 - name: 'Install common Xorg configuration'
   become: true
@@ -32,7 +32,7 @@
     dest: '/etc/X11/xorg.conf.d/{{ item }}'
     owner: 'root'
     group: 'root'
-    mode: 0644
+    mode: '0644'
 
 - name: 'Install laptop Xorg configuration'
   become: true
@@ -44,7 +44,7 @@
     dest: '/etc/X11/xorg.conf.d/{{ item }}'
     owner: 'root'
     group: 'root'
-    mode: 0644
+    mode: '0644'
 
 - name: 'Install global Xresources'
   become: true
@@ -53,7 +53,7 @@
     dest: '/etc/X11/Xresources'
     owner: 'root'
     group: 'root'
-    mode: 0644
+    mode: '0644'
 
 - name: 'Install icons'
   become: true
@@ -62,7 +62,7 @@
     dest: '/usr/share/icons'
     owner: 'root'
     group: 'root'
-    mode: 0644
+    mode: '0644'
     local_follow: false
 
 - name: 'Install wallpapers'
@@ -72,4 +72,4 @@
     dest: '/usr/local/share/wallpapers'
     owner: 'root'
     group: 'root'
-    mode: 0644
+    mode: '0644'

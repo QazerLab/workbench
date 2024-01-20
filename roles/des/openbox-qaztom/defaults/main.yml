@@ -12,8 +12,8 @@ de_config:
   # The role defaults are suitable for 1920x1080 resolution, which is nowadays usual
   # for ordinary laptops.
   xfce_panel:
-      x: 960
-      y: 1066
+    x: 960
+    y: 1066
 
   # Uncomment to set the wallpaper under Tilda.
   # wallpaper: /path/to/file

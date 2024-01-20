@@ -29,7 +29,7 @@
         owner: '{{ user_name }}'
         group: '{{ user_name }}'
         state: 'directory'
-        mode: 0755
+        mode: '0755'
 
     - name: 'Install doublecmd.xml'
       ansible.builtin.template:
@@ -37,7 +37,7 @@
         dest: '{{ user_config["home_dir"] }}/.config/doublecmd/doublecmd.xml'
         owner: '{{ user_name }}'
         group: '{{ user_name }}'
-        mode: 0644
+        mode: '0644'
 
     - name: 'Install ignorelist.txt'
       ansible.builtin.copy:
@@ -45,4 +45,4 @@
         dest: '{{ user_config["home_dir"] }}/.config/doublecmd/ignorelist.txt'
         owner: '{{ user_name }}'
         group: '{{ user_name }}'
-        mode: 0644
+        mode: '0644'

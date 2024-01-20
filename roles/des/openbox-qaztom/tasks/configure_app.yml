@@ -11,7 +11,7 @@
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     state: 'directory'
-    mode: 0755
+    mode: '0755'
 
 - name: 'Install configs for {{ qaztom_app_name }}'
   loop: '{{ qaztom_app_config.config_files }}'
@@ -21,7 +21,7 @@
     dest: '{{ user_config["home_dir"] }}/{{ item.to }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'
   notify: '{{ qaztom_app_config.config_handlers }}'
 
 - name: 'Install templated configs for {{ qaztom_app_name }}'
@@ -32,7 +32,7 @@
     dest: '{{ user_config["home_dir"] }}/{{ item.to }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'
   notify: '{{ qaztom_app_config.config_handlers }}'
 
 - name: 'Apply mime types association for {{ qaztom_app_name }}'

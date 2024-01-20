@@ -21,12 +21,12 @@
       tags: 'user'
       when: 'user is defined and user in users'
       ansible.builtin.set_fact:
-       user_items: >-
-        {{
-          users |
-          dict2items |
-          selectattr("key", "equalto", user)
-        }}
+        user_items: >-
+          {{
+            users |
+            dict2items |
+            selectattr("key", "equalto", user)
+          }}
 
     - name: 'Install Xorg'
       ansible.builtin.include_role:
@@ -40,7 +40,7 @@
 
     - name: 'Configure users'
       tags: 'user'
-      loop: '{{ user_items | default (users | dict2items) }}'
+      loop: '{{ user_items | default(users | dict2items) }}'
       ansible.builtin.include_tasks:
         file: 'tasks/install_user.yml'
       vars:

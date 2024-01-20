@@ -33,7 +33,7 @@
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     state: 'directory'
-    mode: 0755
+    mode: '0755'
 
 - name: 'Install sublime configs'
   tags: 'user'
@@ -45,4 +45,4 @@
     dest: '{{ sublime_user_config_dir }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'

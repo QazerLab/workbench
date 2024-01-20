@@ -27,7 +27,7 @@
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     state: 'directory'
-    mode: 0755
+    mode: '0755'
 
 - name: 'Install custom color schemes'
   tags: 'user'
@@ -36,7 +36,7 @@
     dest: '{{ colors_dir }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'
 
 - name: 'Install basic .vimrc'
   tags: 'user'
@@ -45,7 +45,7 @@
     dest: '{{ user_config["home_dir"] }}/.vimrc'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'
 
 - name: 'Install pathogen'
   tags: 'user'
@@ -54,11 +54,11 @@
     dest: '{{ autoload_dir }}/pathogen.vim'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'
 
 - name: 'Install basic vim plugins'
   with_items:
-    - '{{ vim_basic_plugins | dict2items | map(attribute = "key") }}'
+    - '{{ vim_basic_plugins | dict2items | map(attribute="key") }}'
   tags: 'user'
   ansible.builtin.include_tasks:
     file: 'plugin.yml'

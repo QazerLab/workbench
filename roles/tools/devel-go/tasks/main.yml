@@ -13,7 +13,7 @@
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     state: 'directory'
-    mode: 0755
+    mode: '0755'
 
 - name: 'Install templated profile drop-ins'
   tags: 'user'
@@ -24,4 +24,4 @@
     dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'

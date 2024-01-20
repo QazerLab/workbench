@@ -35,7 +35,7 @@
 
 - name: 'Configure desktop environment apps'
   tags: 'user'
-  loop: '{{ openbox_qaztom_apps | dict2items | map(attribute = "key") }}'
+  loop: '{{ openbox_qaztom_apps | dict2items | map(attribute="key") }}'
   ansible.builtin.include_tasks:
     file: 'configure_app.yml'
     apply:
@@ -54,4 +54,4 @@
     dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'

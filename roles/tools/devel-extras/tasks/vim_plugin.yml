@@ -18,7 +18,7 @@
     dest: '{{ configs_dir }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'
 
 - name: 'Build plugin {{ plugin }}'
   ansible.builtin.include_tasks:

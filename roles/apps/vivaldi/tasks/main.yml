@@ -15,7 +15,7 @@
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     state: 'directory'
-    mode: 0755
+    mode: '0755'
 
 - name: 'Delete vivaldi configs if required'
   tags: 'user'
@@ -40,7 +40,7 @@
         owner: '{{ user_name }}'
         group: '{{ user_name }}'
         state: 'directory'
-        mode: 0755
+        mode: '0755'
 
     - name: 'Install vivaldi preferences'
       ansible.builtin.template:
@@ -48,4 +48,4 @@
         dest: '{{ user_config["home_dir"] }}/.config/vivaldi/Default/Preferences'
         owner: '{{ user_name }}'
         group: '{{ user_name }}'
-        mode: 0644
+        mode: '0644'

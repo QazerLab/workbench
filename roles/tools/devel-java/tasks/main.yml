@@ -36,4 +36,4 @@
     dest: '{{ user_config["home_dir"] }}/{{ item[0]["value"]["config_dropins_dir"] }}/{{ item[1] }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'

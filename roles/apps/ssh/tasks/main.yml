@@ -16,7 +16,7 @@
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     state: 'directory'
-    mode: 0700
+    mode: '0700'
 
 - name: 'Install ssh config'
   tags: 'user'
@@ -25,7 +25,7 @@
     dest: '{{ user_config["home_dir"] }}/.ssh/config'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'
 
 - name: 'Install templated profile drop-ins'
   tags: 'user'
@@ -36,7 +36,7 @@
     dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'
 
 # XXX: do not bother with creating custom units for non-Arch systems, as currently
 # the agent is required only for client machines, which are Arch desktops, and Arch

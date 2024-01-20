@@ -19,7 +19,7 @@
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     state: 'directory'
-    mode: 0755
+    mode: '0755'
 
 - name: 'Install basic .bashrc'
   tags: 'user'
@@ -28,7 +28,7 @@
     dest: '{{ user_config["home_dir"] }}/.bashrc'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'
 
 - name: 'Install .bash_profile'
   tags: 'user'
@@ -37,7 +37,7 @@
     dest: '{{ user_config["home_dir"] }}/.bash_profile'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'
 
 - name: 'Install basic drop-ins'
   tags: 'user'
@@ -46,7 +46,7 @@
     dest: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'
 
 - name: 'Prepare vars for PS1 configuration'
   tags: 'user'
@@ -75,4 +75,4 @@
     dest: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'

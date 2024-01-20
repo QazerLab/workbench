@@ -7,7 +7,7 @@
     role_editor_configs: '{{ devel_basic_editor_configs[editor] }}'
 
 - name: 'Install plugins for {{ editor }}'
-  loop: '{{ role_editor_plugins | dict2items | map(attribute = "key") }}'
+  loop: '{{ role_editor_plugins | dict2items | map(attribute="key") }}'
   vars:
     plugin: '{{ item }}'
   ansible.builtin.include_tasks:
@@ -22,4 +22,4 @@
     dest: '{{ configs_dir }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0644
+    mode: '0644'

@@ -80,5 +80,5 @@ users:
         name: 'openbox-qaztom'
         wallpaper: '/usr/local/share/wallpapers/arch_desktop.png'
         xfce_panel:
-            x: 960
-            y: 1066
+          x: 960
+          y: 1066

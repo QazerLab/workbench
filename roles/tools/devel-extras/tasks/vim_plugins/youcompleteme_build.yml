@@ -5,7 +5,7 @@
     state: 'directory'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0755
+    mode: '0755'
 
 - name: 'Prepare plugin for build'
   ansible.builtin.command: 'cmake -G "Unix Makefiles" . {{ plugin_dir }}/third_party/ycmd/cpp'
@@ -24,7 +24,7 @@
     dest: '{{ plugin_dir }}/third_party/ycmd/third_party/watchdog_deps/watchdog/build/lib3/'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
-    mode: 0755
+    mode: '0755'
 
 - name: 'Youcompleteme language support - Golang'
   when: '"devel-go" in user_config["toolchains"]'
