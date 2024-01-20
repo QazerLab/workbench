@@ -1,14 +1,14 @@
 ---
 - name: 'clean managed drop-ins directory'
   tags: 'user'
-  file:
+  ansible.builtin.file:
     path: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}'
     state: 'absent'
   when: 'clean_configs in ["safe", "all"]'
 
 - name: 'ensure drop-ins directories exist'
   tags: 'user'
-  file:
+  ansible.builtin.file:
     path: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
@@ -17,7 +17,7 @@
 
 - name: 'install basic .profile'
   tags: 'user'
-  template:
+  ansible.builtin.template:
     src: 'profile.j2'
     dest: '{{ user_config["home_dir"] }}/.profile'
     owner: '{{ user_name }}'
@@ -26,7 +26,7 @@
 
 - name: 'install basic drop-ins'
   tags: 'user'
-  copy:
+  ansible.builtin.copy:
     src: 'dropins/'
     dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}'
     owner: '{{ user_name }}'

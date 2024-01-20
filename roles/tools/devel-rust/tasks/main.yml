@@ -1,7 +1,7 @@
 ---
 - name: 'find default toolchains'
   tags: 'user'
-  set_fact:
+  ansible.builtin.set_fact:
     rustup_default_toolchains: >-
       {{
          toolchain_config["rustup_toolchains"] |
@@ -13,13 +13,13 @@
 - name: 'check that exactly one toolchain is default'
   tags: 'user'
   when: 'rustup_default_toolchains | length == 0 or rustup_default_toolchains | length > 1'
-  fail:
+  ansible.builtin.fail:
     msg: 'Configuration error: exactly one Rust toolchain must be default!'
 
 - name: 'install rustup package'
   become: true
   become_user: 'root'
-  package:
+  ansible.builtin.package:
     state: 'present'
     name:
       - 'rustup'
@@ -27,7 +27,7 @@
 - name: 'install rust toolchains'
   tags: 'user'
   loop: '{{ toolchain_config["rustup_toolchains"] | map(attribute = "name") }}'
-  command:
+  ansible.builtin.command:
     argv:
       - 'rustup'
       - 'toolchain'
@@ -36,7 +36,7 @@
 
 - name: 'set default rust toolchain'
   tags: 'user'
-  command:
+  ansible.builtin.command:
     argv:
       - 'rustup'
       - 'default'
@@ -48,7 +48,7 @@
     - 'rust-src'
     - 'rust-docs'
     - 'rust-analyzer'
-  command:
+  ansible.builtin.command:
     argv:
       - 'rustup'
       - 'component'
@@ -59,7 +59,7 @@
   tags: 'user'
   loop: '{{ toolchain_config["cargo_plugins"] }}'
   when: '"cargo_plugins" in toolchain_config'
-  command:
+  ansible.builtin.command:
     argv:
       - 'cargo'
       - 'install'

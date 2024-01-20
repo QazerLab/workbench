@@ -5,13 +5,13 @@
     - name: 'check mandatory clean_configs option'
       tags: 'user'
       when: 'clean_configs is not defined or clean_configs not in ["no", "safe", "all"]'
-      set_fact:
+      ansible.builtin.set_fact:
         clean_configs: 'safe'
 
     - name: 'fail if invalid user is requested'
       tags: 'user'
       when: 'user is defined and user not in users'
-      fail:
+      ansible.builtin.fail:
         msg: >-
           User configuration for {{ user }} is requested
           explicitly, but no configuration for this user
@@ -20,7 +20,7 @@
     - name: 'limit users list to specific user'
       tags: 'user'
       when: 'user is defined and user in users'
-      set_fact:
+      ansible.builtin.set_fact:
        user_items: >-
         {{
           users |
@@ -29,19 +29,19 @@
         }}
 
     - name: 'install Xorg'
-      include_role:
+      ansible.builtin.include_role:
         name: 'xorg'
       when: '"gui" in system'
 
     - name: 'install DM'
-      include_role:
+      ansible.builtin.include_role:
         name: 'dms/{{ system["gui"]["dm"] }}'
       when: '"gui" in system and "dm" in system["gui"]'
 
     - name: 'configure users'
       tags: 'user'
       loop: '{{ user_items | default (users | dict2items) }}'
-      include_tasks:
+      ansible.builtin.include_tasks:
         file: 'tasks/install_user.yml'
       vars:
         user_name: '{{ user_item.key }}'

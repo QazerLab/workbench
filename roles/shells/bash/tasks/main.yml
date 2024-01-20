@@ -1,20 +1,20 @@
 ---
 - name: 'install bash'
   become: true
-  package:
+  ansible.builtin.package:
     name: 'bash'
     state: 'present'
 
 - name: 'clean managed drop-ins directory'
   tags: 'user'
-  file:
+  ansible.builtin.file:
     path: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
     state: 'absent'
   when: 'clean_configs in ["safe", "all"]'
 
 - name: 'ensure drop-ins directories exist'
   tags: 'user'
-  file:
+  ansible.builtin.file:
     path: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
@@ -23,7 +23,7 @@
 
 - name: 'install basic .bashrc'
   tags: 'user'
-  template:
+  ansible.builtin.template:
     src: 'bashrc.j2'
     dest: '{{ user_config["home_dir"] }}/.bashrc'
     owner: '{{ user_name }}'
@@ -32,7 +32,7 @@
 
 - name: 'install .bash_profile'
   tags: 'user'
-  copy:
+  ansible.builtin.copy:
     src: 'bash_profile'
     dest: '{{ user_config["home_dir"] }}/.bash_profile'
     owner: '{{ user_name }}'
@@ -41,7 +41,7 @@
 
 - name: 'install basic drop-ins'
   tags: 'user'
-  copy:
+  ansible.builtin.copy:
     src: 'dropins/'
     dest: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
     owner: '{{ user_name }}'
@@ -50,7 +50,7 @@
 
 - name: 'prepare vars for PS1 configuration'
   tags: 'user'
-  set_fact:
+  ansible.builtin.set_fact:
     host_role: >-
       {{
         "server" if "servers" in groups
@@ -70,7 +70,7 @@
   loop:
     - '00_01_bash_ps_vars'
     - '00_03_arch_utils'
-  template:
+  ansible.builtin.template:
     src: 'dropins/{{ item }}.j2'
     dest: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}/{{ item }}'
     owner: '{{ user_name }}'

@@ -2,7 +2,7 @@
 - name: 'add sublime repo'
   become: true
   become_user: 'root'
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: '/etc/pacman.conf'
     prepend_newline: true
     append_newline: true
@@ -21,14 +21,14 @@
 - name: 'install sublime-text package'
   become: true
   become_user: 'root'
-  pacman:
+  community.general.pacman:
     name: 'sublime-text'
     state: 'present'
     update_cache: true
 
 - name: 'check for sublime user config directory'
   tags: 'user'
-  file:
+  ansible.builtin.file:
     path: '{{ sublime_user_config_dir }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
@@ -40,7 +40,7 @@
   loop:
     - 'NetBeans.tmTheme'
     - 'Preferences.sublime-settings'
-  copy:
+  ansible.builtin.copy:
     src: '{{ item }}'
     dest: '{{ sublime_user_config_dir }}/{{ item }}'
     owner: '{{ user_name }}'

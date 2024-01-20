@@ -2,7 +2,7 @@
 - name: 'install extra development tools'
   become: true
   become_user: 'root'
-  package:
+  ansible.builtin.package:
     state: 'present'
     name:
       # Basic debugging tools.
@@ -46,13 +46,13 @@
 
 - name: 'install vagrant backend'
   when: '"vagrant_backend" in toolchain_config'
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: 'vagrant_backends/{{ toolchain_config["vagrant_backend"] }}.yml'
 
 - name: 'install drop-ins for shells'
   tags: 'user'
   loop: '{{ user_config["shells"] | dict2items }}'
-  copy:
+  ansible.builtin.copy:
     src: 'shell_dropins/{{ item["key"] }}/'
     dest: '{{ user_config["home_dir"] }}/{{ item["value"]["config_dropins_dir"] }}'
     owner: '{{ user_name }}'
@@ -66,7 +66,7 @@
     loop_var: 'editor_item'
   vars:
     editor: '{{ editor_item }}'
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: 'editor_config.yml'
     apply:
       tags: 'user'

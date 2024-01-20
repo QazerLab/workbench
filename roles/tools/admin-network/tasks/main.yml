@@ -2,7 +2,7 @@
 - name: 'install network administration tools'
   become: true
   become_user: 'root'
-  package:
+  ansible.builtin.package:
     state: 'present'
     name:
       - 'bind-tools'

@@ -1,7 +1,7 @@
 ---
 - name: 'install Xorg server, utilities and fonts'
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - 'xorg-server'
       - 'xorg-apps'
@@ -15,7 +15,7 @@
 # Wallpapers directory is custom, so we create it.
 - name: 'ensure wallpapers directory exists'
   become: true
-  file:
+  ansible.builtin.file:
     path: '/usr/local/share/wallpapers'
     owner: 'root'
     group: 'root'
@@ -27,7 +27,7 @@
   loop:
     - '00_disable_screensaver.conf'
     - '10_keyboard.conf'
-  copy:
+  ansible.builtin.copy:
     src: 'xorg.conf/{{ item }}'
     dest: '/etc/X11/xorg.conf.d/{{ item }}'
     owner: 'root'
@@ -39,7 +39,7 @@
   when: 'system["laptop"]'
   loop:
     - '20_touchpad.conf'
-  copy:
+  ansible.builtin.copy:
     src: 'xorg.conf/{{ item }}'
     dest: '/etc/X11/xorg.conf.d/{{ item }}'
     owner: 'root'
@@ -48,7 +48,7 @@
 
 - name: 'install global Xresources'
   become: true
-  template:
+  ansible.builtin.template:
     src: 'Xresources.j2'
     dest: '/etc/X11/Xresources'
     owner: 'root'
@@ -57,7 +57,7 @@
 
 - name: 'install icons'
   become: true
-  copy:
+  ansible.builtin.copy:
     src: 'icons/'
     dest: '/usr/share/icons'
     owner: 'root'
@@ -67,7 +67,7 @@
 
 - name: 'install wallpapers'
   become: true
-  copy:
+  ansible.builtin.copy:
     src: 'wallpapers/'
     dest: '/usr/local/share/wallpapers'
     owner: 'root'

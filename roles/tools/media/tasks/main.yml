@@ -2,7 +2,7 @@
 - name: 'install multimedia tools'
   become: true
   become_user: 'root'
-  package:
+  ansible.builtin.package:
     state: 'present'
     name:
       - 'ffmpeg'

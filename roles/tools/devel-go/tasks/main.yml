@@ -2,13 +2,13 @@
 - name: 'install golang toolchain'
   become: true
   become_user: 'root'
-  package:
+  ansible.builtin.package:
     name: 'go'
     state: 'present'
 
 - name: 'ensure GOPATH exists'
   tags: 'user'
-  file:
+  ansible.builtin.file:
     path: '{{ user_config["home_dir"] }}/{{ toolchain_config["gopath"] }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
@@ -19,7 +19,7 @@
   tags: 'user'
   loop:
     - '15_01_go_gopath'
-  template:
+  ansible.builtin.template:
     src: 'profile_dropins/{{ item }}.j2'
     dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
     owner: '{{ user_name }}'

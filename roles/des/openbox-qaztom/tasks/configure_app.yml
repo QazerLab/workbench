@@ -1,12 +1,12 @@
 ---
 - name: 'store desktop environment app config'
-  set_fact:
+  ansible.builtin.set_fact:
     qaztom_app_config: '{{ openbox_qaztom_apps[qaztom_app_name] }}'
 
 - name: 'ensure app config directories exist for {{ qaztom_app_name }}'
   loop: '{{ qaztom_app_config.config_dirs }}'
   when: 'qaztom_app_config.config_dirs is defined'
-  file:
+  ansible.builtin.file:
     path: '{{ user_config["home_dir"] }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
@@ -16,7 +16,7 @@
 - name: 'install configs for {{ qaztom_app_name }}'
   loop: '{{ qaztom_app_config.config_files }}'
   when: 'qaztom_app_config.config_files is defined'
-  copy:
+  ansible.builtin.copy:
     src: '{{ qaztom_app_name }}/{{ item.from }}'
     dest: '{{ user_config["home_dir"] }}/{{ item.to }}'
     owner: '{{ user_name }}'
@@ -27,7 +27,7 @@
 - name: 'install templated configs for {{ qaztom_app_name }}'
   loop: '{{ qaztom_app_config.config_templates }}'
   when: 'qaztom_app_config.config_templates is defined'
-  template:
+  ansible.builtin.template:
     src: '{{ qaztom_app_name }}/{{ item.from }}'
     dest: '{{ user_config["home_dir"] }}/{{ item.to }}'
     owner: '{{ user_name }}'
@@ -37,7 +37,7 @@
 
 - name: 'apply mime types association for {{ qaztom_app_name }}'
   when: 'qaztom_app_config.mime_associations is defined'
-  command:
+  ansible.builtin.command:
     argv:
       - 'xdg-mime'
       - 'default'

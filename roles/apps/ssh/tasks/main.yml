@@ -2,7 +2,7 @@
 - name: 'install ssh'
   become: true
   become_user: 'root'
-  package:
+  ansible.builtin.package:
     name: 'openssh'
     state: 'present'
 
@@ -11,7 +11,7 @@
   loop:
     - '.ssh'
     - '.ssh/config.d'
-  file:
+  ansible.builtin.file:
     path: '{{ user_config["home_dir"] }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
@@ -20,7 +20,7 @@
 
 - name: 'install ssh config'
   tags: 'user'
-  template:
+  ansible.builtin.template:
     src: 'config.j2'
     dest: '{{ user_config["home_dir"] }}/.ssh/config'
     owner: '{{ user_name }}'
@@ -31,7 +31,7 @@
   tags: 'user'
   loop:
     - '03_01_ssh_agent_socket'
-  template:
+  ansible.builtin.template:
     src: 'profile_dropins/{{ item }}.j2'
     dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
     owner: '{{ user_name }}'
@@ -45,7 +45,7 @@
 - name: 'enable ssh agent'
   tags: 'user'
   when: 'ansible_os_family == "Archlinux" and app_config["use_agent"]'
-  systemd_service:
+  ansible.builtin.systemd_service:
     name: 'ssh-agent'
     scope: 'user'
     state: 'started'

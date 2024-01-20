@@ -5,7 +5,7 @@
     - 'lightdm'
     - 'lightdm-slick-greeter'
     - 'light-locker'
-  package:
+  ansible.builtin.package:
     name: '{{ item }}'
     state: 'present'
 
@@ -14,7 +14,7 @@
   loop:
     - 'lightdm.conf'
     - 'users.conf'
-  copy:
+  ansible.builtin.copy:
     src: '{{ item }}'
     dest: '/etc/lightdm/{{ item }}'
     owner: 'root'
@@ -25,7 +25,7 @@
   become: true
   loop:
     - 'slick-greeter.conf'
-  template:
+  ansible.builtin.template:
     src: '{{ item }}.j2'
     dest: '/etc/lightdm/{{ item }}'
     owner: 'root'
@@ -34,6 +34,6 @@
 
 - name: 'enable lightdm service'
   become: true
-  service:
+  ansible.builtin.service:
     name: 'lightdm'
     enabled: true

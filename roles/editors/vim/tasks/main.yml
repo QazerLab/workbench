@@ -2,13 +2,13 @@
 - name: 'install vim'
   become: true
   become_user: 'root'
-  package:
+  ansible.builtin.package:
     name: 'vim'
     state: 'present'
 
 - name: 'store vim dirs locations'
   tags: 'user'
-  set_fact:
+  ansible.builtin.set_fact:
     autoload_dir: '{{ user_config["home_dir"] }}/.vim/autoload'
     bundle_dir: '{{ user_config["home_dir"] }}/{{ editor_config["plugins_dir"] }}'
     colors_dir: '{{ user_config["home_dir"] }}/.vim/colors'
@@ -22,7 +22,7 @@
     - '{{ bundle_dir }}'
     - '{{ colors_dir }}'
     - '{{ configs_dir }}'
-  file:
+  ansible.builtin.file:
     path: '{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
@@ -31,7 +31,7 @@
 
 - name: 'install custom color schemes'
   tags: 'user'
-  copy:
+  ansible.builtin.copy:
     src: 'vim/colors/'
     dest: '{{ colors_dir }}'
     owner: '{{ user_name }}'
@@ -40,7 +40,7 @@
 
 - name: 'install basic .vimrc'
   tags: 'user'
-  template:
+  ansible.builtin.template:
     src: 'vimrc.j2'
     dest: '{{ user_config["home_dir"] }}/.vimrc'
     owner: '{{ user_name }}'
@@ -49,7 +49,7 @@
 
 - name: 'install pathogen'
   tags: 'user'
-  get_url:
+  ansible.builtin.get_url:
     url: '{{ vim_pathogen_url }}'
     dest: '{{ autoload_dir }}/pathogen.vim'
     owner: '{{ user_name }}'
@@ -59,7 +59,7 @@
 - with_items:
     - '{{ vim_basic_plugins | dict2items | map(attribute = "key") }}'
   tags: 'user'
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: 'plugin.yml'
     apply:
       tags: 'user'

@@ -1,6 +1,6 @@
 ---
 - name: 'create youcompleteme build directory'
-  file:
+  ansible.builtin.file:
     path: '{{ plugin_dir }}/build'
     state: 'directory'
     owner: '{{ user_name }}'
@@ -8,17 +8,17 @@
     mode: 0755
 
 - name: 'prepare plugin for build'
-  command: 'cmake -G "Unix Makefiles" . {{ plugin_dir }}/third_party/ycmd/cpp'
+  ansible.builtin.command: 'cmake -G "Unix Makefiles" . {{ plugin_dir }}/third_party/ycmd/cpp'
   args:
     chdir: '{{ plugin_dir }}/build'
 
 - name: 'build youcompleteme plugin'
-  command: 'cmake --build . --target ycm_core'
+  ansible.builtin.command: 'cmake --build . --target ycm_core'
   args:
     chdir: '{{ plugin_dir }}/build'
 
 - name: 'install watchdog library'
-  copy:
+  ansible.builtin.copy:
     remote_src: true
     src: '{{ plugin_dir }}/third_party/ycmd/third_party/watchdog_deps/watchdog/src/watchdog'
     dest: '{{ plugin_dir }}/third_party/ycmd/third_party/watchdog_deps/watchdog/build/lib3/'
@@ -28,7 +28,7 @@
 
 - name: 'youcompleteme language support - Golang'
   when: '"devel-go" in user_config["toolchains"]'
-  command: 'go install golang.org/x/tools/gopls@v0.7.1'
+  ansible.builtin.command: 'go install golang.org/x/tools/gopls@v0.7.1'
   environment:
     GO111MODULE: 'on'
     GOPATH: '{{ plugin_dir }}/third_party/ycmd/third_party/go'
@@ -42,7 +42,7 @@
   when: '"devel-rust" in user_config["toolchains"]'
   block:
     - name: 'YCM Rust :: find default toolchain'
-      set_fact:
+      ansible.builtin.set_fact:
         rustup_default_toolchain: >-
           {{
              user_config["toolchains"]["devel-rust"]["rustup_toolchains"] |
@@ -54,12 +54,12 @@
 
     - name: 'YCM Rust :: integrate YCM with Rust toolchain'
       when:
-      file:
+      ansible.builtin.file:
         path: '{{ plugin_dir }}/third_party/ycmd/third_party/rust-analyzer'
         src: '{{ user_config["home_dir"] }}/.rustup/toolchains/{{ rustup_default_toolchain }}'
         state: 'link'
 
 - name: 'remove youcompleteme build directory'
-  file:
+  ansible.builtin.file:
     path: '{{ plugin_dir }}/build'
     state: 'absent'

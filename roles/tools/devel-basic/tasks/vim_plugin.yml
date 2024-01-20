@@ -1,11 +1,11 @@
 ---
 - name: 'find plugin config for {{ plugin }}'
-  set_fact:
+  ansible.builtin.set_fact:
     plugin_config: '{{ role_editor_plugins[plugin] }}'
     plugin_dir: '{{ plugins_dir }}/{{ plugin }}'
 
 - name: 'download {{ plugin }} plugin'
-  git:
+  ansible.builtin.git:
     repo: '{{ plugin_config.repo }}'
     dest: '{{ plugin_dir }}'
     depth: 1
@@ -13,7 +13,7 @@
 
 - name: 'install {{ plugin }} plugin config'
   when: 'plugin_config.requires_config'
-  copy:
+  ansible.builtin.copy:
     src: 'editor_configs/vim/{{ plugin }}.vim'
     dest: '{{ configs_dir }}'
     owner: '{{ user_name }}'

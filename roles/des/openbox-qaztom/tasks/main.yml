@@ -2,7 +2,7 @@
 - name: 'install qaztom packages'
   become: true
   become_user: 'root'
-  package:
+  ansible.builtin.package:
     name:
       - 'xdg-utils'
       - 'openbox'
@@ -36,7 +36,7 @@
 - name: 'configure desktop environment apps'
   tags: 'user'
   loop: '{{ openbox_qaztom_apps | dict2items | map(attribute = "key") }}'
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: 'configure_app.yml'
     apply:
       tags: 'user'
@@ -49,7 +49,7 @@
   tags: 'user'
   loop:
     - '20_01_hidpi_vars'
-  template:
+  ansible.builtin.template:
     src: 'profile_dropins/{{ item }}.j2'
     dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
     owner: '{{ user_name }}'
