@@ -1,5 +1,6 @@
 ---
-- become: true
+- name: 'Configure user {{ user_name }}'
+  become: true
   become_user: '{{ user_name }}'
   block:
     - name: 'Print installation banner'

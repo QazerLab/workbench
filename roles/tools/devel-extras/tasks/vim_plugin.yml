@@ -20,7 +20,8 @@
     group: '{{ user_name }}'
     mode: 0644
 
-- ansible.builtin.include_tasks:
+- name: 'Build plugin {{ plugin }}'
+  ansible.builtin.include_tasks:
     file: 'vim_plugins/{{ plugin }}_build.yml'
     apply:
       tags: 'user'

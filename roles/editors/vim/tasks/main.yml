@@ -56,7 +56,8 @@
     group: '{{ user_name }}'
     mode: 0644
 
-- with_items:
+- name: 'Install basic vim plugins'
+  with_items:
     - '{{ vim_basic_plugins | dict2items | map(attribute = "key") }}'
   tags: 'user'
   ansible.builtin.include_tasks:
