@@ -1,12 +1,12 @@
 ---
-- name: 'install ssh'
+- name: 'Install ssh'
   become: true
   become_user: 'root'
   ansible.builtin.package:
     name: 'openssh'
     state: 'present'
 
-- name: 'ensure .ssh and config.d directories exist'
+- name: 'Ensure .ssh and config.d directories exist'
   tags: 'user'
   loop:
     - '.ssh'
@@ -18,7 +18,7 @@
     state: 'directory'
     mode: 0700
 
-- name: 'install ssh config'
+- name: 'Install ssh config'
   tags: 'user'
   ansible.builtin.template:
     src: 'config.j2'
@@ -27,7 +27,7 @@
     group: '{{ user_name }}'
     mode: 0644
 
-- name: 'install templated profile drop-ins'
+- name: 'Install templated profile drop-ins'
   tags: 'user'
   loop:
     - '03_01_ssh_agent_socket'
@@ -42,7 +42,7 @@
 # the agent is required only for client machines, which are Arch desktops, and Arch
 # has a default agent unit shipepd with openssh package (which is not the case for,
 # say, CentOS / Almalinux).
-- name: 'enable ssh agent'
+- name: 'Enable ssh agent'
   tags: 'user'
   when: 'ansible_os_family == "Archlinux" and app_config["use_agent"]'
   ansible.builtin.systemd_service:

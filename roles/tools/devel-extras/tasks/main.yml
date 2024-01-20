@@ -1,5 +1,5 @@
 ---
-- name: 'install extra development tools'
+- name: 'Install extra development tools'
   become: true
   become_user: 'root'
   ansible.builtin.package:
@@ -44,12 +44,12 @@
       - 'mariadb-clients'
       - 'postgresql-libs'
 
-- name: 'install vagrant backend'
+- name: 'Install vagrant backend'
   when: '"vagrant_backend" in toolchain_config'
   ansible.builtin.include_tasks:
     file: 'vagrant_backends/{{ toolchain_config["vagrant_backend"] }}.yml'
 
-- name: 'install drop-ins for shells'
+- name: 'Install drop-ins for shells'
   tags: 'user'
   loop: '{{ user_config["shells"] | dict2items }}'
   ansible.builtin.copy:
@@ -59,7 +59,7 @@
     group: '{{ user_name }}'
     mode: 0644
 
-- name: 'install drop-ins for editors'
+- name: 'Install drop-ins for editors'
   tags: 'user'
   loop: '{{ user_config["editors"] | dict2items | map(attribute = "key") }}'
   loop_control:

@@ -1,5 +1,5 @@
 ---
-- name: 'install extra CLI tools'
+- name: 'Install extra CLI tools'
   become: true
   become_user: 'root'
   ansible.builtin.package:
@@ -14,7 +14,7 @@
       - 'yq'
       - 'lynx'
 
-- name: 'install profile drop-ins'
+- name: 'Install profile drop-ins'
   tags: 'user'
   ansible.builtin.copy:
     src: 'profile_dropins/'
@@ -23,7 +23,7 @@
     group: '{{ user_name }}'
     mode: 0644
 
-- name: 'install drop-ins for shells'
+- name: 'Install drop-ins for shells'
   tags: 'user'
   loop: '{{ user_config["shells"] | dict2items }}'
   ansible.builtin.copy:
@@ -33,7 +33,7 @@
     group: '{{ user_name }}'
     mode: 0644
 
-- name: 'install drop-ins for editors'
+- name: 'Install drop-ins for editors'
   tags: 'user'
   loop: '{{ user_config["editors"] | dict2items | map(attribute = "key") }}'
   loop_control:

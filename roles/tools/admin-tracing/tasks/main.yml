@@ -1,5 +1,5 @@
 ---
-- name: 'install system tracing and debugging tools'
+- name: 'Install system tracing and debugging tools'
   become: true
   become_user: 'root'
   ansible.builtin.package:

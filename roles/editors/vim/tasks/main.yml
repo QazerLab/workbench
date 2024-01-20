@@ -1,12 +1,12 @@
 ---
-- name: 'install vim'
+- name: 'Install vim'
   become: true
   become_user: 'root'
   ansible.builtin.package:
     name: 'vim'
     state: 'present'
 
-- name: 'store vim dirs locations'
+- name: 'Store vim dirs locations'
   tags: 'user'
   ansible.builtin.set_fact:
     autoload_dir: '{{ user_config["home_dir"] }}/.vim/autoload'
@@ -14,7 +14,7 @@
     colors_dir: '{{ user_config["home_dir"] }}/.vim/colors'
     configs_dir: '{{ user_config["home_dir"] }}/{{ editor_config["config_dropins_dir"] }}'
 
-- name: 'ensure .vim directory and its children exist'
+- name: 'Ensure .vim directory and its children exist'
   tags: 'user'
   loop:
     - '{{ user_config["home_dir"] }}/.vim'
@@ -29,7 +29,7 @@
     state: 'directory'
     mode: 0755
 
-- name: 'install custom color schemes'
+- name: 'Install custom color schemes'
   tags: 'user'
   ansible.builtin.copy:
     src: 'vim/colors/'
@@ -38,7 +38,7 @@
     group: '{{ user_name }}'
     mode: 0644
 
-- name: 'install basic .vimrc'
+- name: 'Install basic .vimrc'
   tags: 'user'
   ansible.builtin.template:
     src: 'vimrc.j2'
@@ -47,7 +47,7 @@
     group: '{{ user_name }}'
     mode: 0644
 
-- name: 'install pathogen'
+- name: 'Install pathogen'
   tags: 'user'
   ansible.builtin.get_url:
     url: '{{ vim_pathogen_url }}'

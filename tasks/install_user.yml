@@ -2,7 +2,7 @@
 - become: true
   become_user: '{{ user_name }}'
   block:
-    - name: 'print installation banner'
+    - name: 'Print installation banner'
       tags: 'user'
       ansible.builtin.debug:
         msg:
@@ -10,12 +10,12 @@
           - 'Configuring user: {{ user_name }}'
           - '==============================================='
 
-    - name: 'apply basic roles'
+    - name: 'Apply basic roles'
       tags: 'user'
       ansible.builtin.include_role:
         name: 'profile'
 
-    - name: 'install shells'
+    - name: 'Install shells'
       tags: 'user'
       loop: '{{ user_config["shells"] | dict2items }}'
       ansible.builtin.include_role:
@@ -25,7 +25,7 @@
       loop_control:
         loop_var: 'shell_item'
 
-    - name: 'install editors'
+    - name: 'Install editors'
       tags: 'user'
       loop: '{{ user_config["editors"] | dict2items }}'
       ansible.builtin.include_role:
@@ -35,7 +35,7 @@
       loop_control:
         loop_var: 'editor_item'
 
-    - name: 'install user`s desktop environment, if required'
+    - name: 'Install user`s desktop environment, if required'
       tags: 'user'
       ansible.builtin.include_role:
         name: 'des/{{ user_config["gui"]["de"]["name"] }}'
@@ -43,7 +43,7 @@
         de_config: '{{ user_config["gui"]["de"] }}'
       when: '"gui" in user_config and "de" in user_config["gui"]'
 
-    - name: 'install toolchains required for user'
+    - name: 'Install toolchains required for user'
       tags: 'user'
       ansible.builtin.include_role:
         name: 'tools/{{ toolchain_item.key }}'
@@ -53,7 +53,7 @@
       loop_control:
         loop_var: 'toolchain_item'
 
-    - name: 'install standalone applications'
+    - name: 'Install standalone applications'
       tags: 'user'
       ansible.builtin.include_role:
         name: 'apps/{{ app_item.key }}'

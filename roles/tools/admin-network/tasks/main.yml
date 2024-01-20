@@ -1,5 +1,5 @@
 ---
-- name: 'install network administration tools'
+- name: 'Install network administration tools'
   become: true
   become_user: 'root'
   ansible.builtin.package:

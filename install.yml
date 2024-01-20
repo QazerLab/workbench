@@ -1,14 +1,14 @@
 ---
-- name: 'install the whole suite'
+- name: 'Install the whole suite'
   hosts: 'all'
   tasks:
-    - name: 'check mandatory clean_configs option'
+    - name: 'Check mandatory clean_configs option'
       tags: 'user'
       when: 'clean_configs is not defined or clean_configs not in ["no", "safe", "all"]'
       ansible.builtin.set_fact:
         clean_configs: 'safe'
 
-    - name: 'fail if invalid user is requested'
+    - name: 'Fail if invalid user is requested'
       tags: 'user'
       when: 'user is defined and user not in users'
       ansible.builtin.fail:
@@ -17,7 +17,7 @@
           explicitly, but no configuration for this user
           is found in inventory. Refusing to continue.
 
-    - name: 'limit users list to specific user'
+    - name: 'Limit users list to specific user'
       tags: 'user'
       when: 'user is defined and user in users'
       ansible.builtin.set_fact:
@@ -28,17 +28,17 @@
           selectattr("key", "equalto", user)
         }}
 
-    - name: 'install Xorg'
+    - name: 'Install Xorg'
       ansible.builtin.include_role:
         name: 'xorg'
       when: '"gui" in system'
 
-    - name: 'install DM'
+    - name: 'Install DM'
       ansible.builtin.include_role:
         name: 'dms/{{ system["gui"]["dm"] }}'
       when: '"gui" in system and "dm" in system["gui"]'
 
-    - name: 'configure users'
+    - name: 'Configure users'
       tags: 'user'
       loop: '{{ user_items | default (users | dict2items) }}'
       ansible.builtin.include_tasks:

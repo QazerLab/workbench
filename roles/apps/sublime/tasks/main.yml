@@ -1,5 +1,5 @@
 ---
-- name: 'add sublime repo'
+- name: 'Add sublime repo'
   become: true
   become_user: 'root'
   ansible.builtin.blockinfile:
@@ -10,7 +10,7 @@
       [sublime-text]
       Server = https://download.sublimetext.com/arch/stable/x86_64
 
-- name: 'import sublime repo key'
+- name: 'Import sublime repo key'
   become: true
   become_user: 'root'
   community.general.pacman_key:
@@ -18,7 +18,7 @@
     data: '{{ lookup("file", "sublimehq-publickey.gpg") }}'
     state: 'present'
 
-- name: 'install sublime-text package'
+- name: 'Install sublime-text package'
   become: true
   become_user: 'root'
   community.general.pacman:
@@ -26,7 +26,7 @@
     state: 'present'
     update_cache: true
 
-- name: 'check for sublime user config directory'
+- name: 'Check for sublime user config directory'
   tags: 'user'
   ansible.builtin.file:
     path: '{{ sublime_user_config_dir }}'
@@ -35,7 +35,7 @@
     state: 'directory'
     mode: 0755
 
-- name: 'install sublime configs'
+- name: 'Install sublime configs'
   tags: 'user'
   loop:
     - 'NetBeans.tmTheme'

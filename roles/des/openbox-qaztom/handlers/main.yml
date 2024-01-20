@@ -1,28 +1,28 @@
 ---
-- name: 'check if openbox is running'
+- name: 'Check if openbox is running'
   ansible.builtin.command: 'pgrep openbox'
   register: 'openbox_test'
   failed_when: 'openbox_test.rc >= 2'
   listen: 'reconfigure openbox'
 
-- name: 'reconfigure current openbox session'
+- name: 'Reconfigure current openbox session'
   ansible.builtin.command: 'openbox --reconfigure'
   when: 'openbox_test.rc == 0'
   listen: 'reconfigure openbox'
 
-- name: 'check if xfce-panel is running'
+- name: 'Check if xfce-panel is running'
   ansible.builtin.command: 'pgrep xfce4-panel'
   register: 'panel_test'
   failed_when: 'panel_test.rc >= 2'
   listen: 'reconfigure xfce-panel'
 
-- name: 'check if xfconfd is running'
+- name: 'Check if xfconfd is running'
   ansible.builtin.command: 'pgrep xfconfd'
   register: 'xfconfd_test'
   failed_when: 'xfconfd_test.rc >= 2'
   listen: 'reconfigure xfce-panel'
 
-- name: 'restart panel with new settings'
+- name: 'Restart panel with new settings'
   ansible.builtin.shell: 'killall xfconfd && xfce4-panel -r'
   when: 'panel_test.rc == 0 and xfconfd_test.rc == 0'
   listen: 'reconfigure xfce-panel'

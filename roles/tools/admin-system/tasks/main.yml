@@ -1,5 +1,5 @@
 ---
-- name: 'install system administration tools'
+- name: 'Install system administration tools'
   become: true
   become_user: 'root'
   ansible.builtin.package:

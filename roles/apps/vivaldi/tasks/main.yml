@@ -1,5 +1,5 @@
 ---
-- name: 'install vivaldi packages'
+- name: 'Install vivaldi packages'
   become: true
   become_user: 'root'
   ansible.builtin.package:
@@ -8,7 +8,7 @@
       - 'vivaldi-ffmpeg-codecs'
     state: 'present'
 
-- name: 'ensure vivaldi downloads directory exists'
+- name: 'Ensure vivaldi downloads directory exists'
   tags: 'user'
   ansible.builtin.file:
     path: '{{ user_config["home_dir"] }}/{{ user_config["downloads_dir"] }}/vivaldi'
@@ -17,24 +17,24 @@
     state: 'directory'
     mode: 0755
 
-- name: 'delete vivaldi configs if required'
+- name: 'Delete vivaldi configs if required'
   tags: 'user'
   ansible.builtin.file:
     path: '{{ user_config["home_dir"] }}/.config/vivaldi'
     state: 'absent'
   when: 'clean_configs == "all"'
 
-- name: 'check for vivaldi config directory'
+- name: 'Check for vivaldi config directory'
   tags: 'user'
   ansible.builtin.stat:
     path: '{{ user_config["home_dir"] }}/.config/vivaldi'
   register: 'vconfig_result'
 
-- name: 'install vivaldi config'
+- name: 'Install vivaldi config'
   tags: 'user'
   when: 'not vconfig_result.stat.exists'
   block:
-    - name: 'create vivaldi config directory'
+    - name: 'Create vivaldi config directory'
       ansible.builtin.file:
         path: '{{ user_config["home_dir"] }}/.config/vivaldi/Default'
         owner: '{{ user_name }}'
@@ -42,7 +42,7 @@
         state: 'directory'
         mode: 0755
 
-    - name: 'install vivaldi preferences'
+    - name: 'Install vivaldi preferences'
       ansible.builtin.template:
         src: 'Preferences.j2'
         dest: '{{ user_config["home_dir"] }}/.config/vivaldi/Default/Preferences'

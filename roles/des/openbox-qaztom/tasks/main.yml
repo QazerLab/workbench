@@ -1,5 +1,5 @@
 ---
-- name: 'install qaztom packages'
+- name: 'Install qaztom packages'
   become: true
   become_user: 'root'
   ansible.builtin.package:
@@ -33,7 +33,7 @@
       - 'vlc'
     state: 'present'
 
-- name: 'configure desktop environment apps'
+- name: 'Configure desktop environment apps'
   tags: 'user'
   loop: '{{ openbox_qaztom_apps | dict2items | map(attribute = "key") }}'
   ansible.builtin.include_tasks:
@@ -45,7 +45,7 @@
   loop_control:
     loop_var: 'de_app_item'
 
-- name: 'install profile drop-ins'
+- name: 'Install profile drop-ins'
   tags: 'user'
   loop:
     - '20_01_hidpi_vars'

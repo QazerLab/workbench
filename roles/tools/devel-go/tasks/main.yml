@@ -1,12 +1,12 @@
 ---
-- name: 'install golang toolchain'
+- name: 'Install golang toolchain'
   become: true
   become_user: 'root'
   ansible.builtin.package:
     name: 'go'
     state: 'present'
 
-- name: 'ensure GOPATH exists'
+- name: 'Ensure GOPATH exists'
   tags: 'user'
   ansible.builtin.file:
     path: '{{ user_config["home_dir"] }}/{{ toolchain_config["gopath"] }}'
@@ -15,7 +15,7 @@
     state: 'directory'
     mode: 0755
 
-- name: 'install templated profile drop-ins'
+- name: 'Install templated profile drop-ins'
   tags: 'user'
   loop:
     - '15_01_go_gopath'

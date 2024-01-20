@@ -1,5 +1,5 @@
 ---
-- name: 'install Java packages'
+- name: 'Install Java packages'
   become: true
   become_user: 'root'
   ansible.builtin.package:
@@ -25,7 +25,7 @@
       - 'netbeans'
       - 'visualvm'
 
-- name: 'install templated shell drop-ins'
+- name: 'Install templated shell drop-ins'
   tags: 'user'
   vars:
     java_dropin_templates:

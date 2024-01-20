@@ -1,9 +1,9 @@
 ---
-- name: 'store desktop environment app config'
+- name: 'Store desktop environment app config'
   ansible.builtin.set_fact:
     qaztom_app_config: '{{ openbox_qaztom_apps[qaztom_app_name] }}'
 
-- name: 'ensure app config directories exist for {{ qaztom_app_name }}'
+- name: 'Ensure app config directories exist for {{ qaztom_app_name }}'
   loop: '{{ qaztom_app_config.config_dirs }}'
   when: 'qaztom_app_config.config_dirs is defined'
   ansible.builtin.file:
@@ -13,7 +13,7 @@
     state: 'directory'
     mode: 0755
 
-- name: 'install configs for {{ qaztom_app_name }}'
+- name: 'Install configs for {{ qaztom_app_name }}'
   loop: '{{ qaztom_app_config.config_files }}'
   when: 'qaztom_app_config.config_files is defined'
   ansible.builtin.copy:
@@ -24,7 +24,7 @@
     mode: 0644
   notify: '{{ qaztom_app_config.config_handlers }}'
 
-- name: 'install templated configs for {{ qaztom_app_name }}'
+- name: 'Install templated configs for {{ qaztom_app_name }}'
   loop: '{{ qaztom_app_config.config_templates }}'
   when: 'qaztom_app_config.config_templates is defined'
   ansible.builtin.template:
@@ -35,7 +35,7 @@
     mode: 0644
   notify: '{{ qaztom_app_config.config_handlers }}'
 
-- name: 'apply mime types association for {{ qaztom_app_name }}'
+- name: 'Apply mime types association for {{ qaztom_app_name }}'
   when: 'qaztom_app_config.mime_associations is defined'
   ansible.builtin.command:
     argv:
