@@ -1,7 +1,7 @@
 ---
 - name: 'Find plugin config for {{ plugin }}'
   ansible.builtin.set_fact:
-    plugin_config: '{{ vim_basic_plugins[plugin] }}'
+    plugin_config: '{{ editors_vim_basic_plugins[plugin] }}'
     plugin_dir: '{{ bundle_dir }}/{{ plugin }}'
 
 - name: 'Download plugin {{ plugin }}'

@@ -14,7 +14,7 @@
   become: true
   become_user: 'root'
   community.general.pacman_key:
-    id: '{{ sublime_gpg_publickey }}'
+    id: '{{ apps_sublime_gpg_publickey }}'
     data: '{{ lookup("file", "sublimehq-publickey.gpg") }}'
     state: 'present'
 
@@ -29,7 +29,7 @@
 - name: 'Check for sublime user config directory'
   tags: 'user'
   ansible.builtin.file:
-    path: '{{ sublime_user_config_dir }}'
+    path: '{{ apps_sublime_user_config_dir }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     state: 'directory'
@@ -42,7 +42,7 @@
     - 'Preferences.sublime-settings'
   ansible.builtin.copy:
     src: '{{ item }}'
-    dest: '{{ sublime_user_config_dir }}/{{ item }}'
+    dest: '{{ apps_sublime_user_config_dir }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'

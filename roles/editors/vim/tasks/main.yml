@@ -50,7 +50,7 @@
 - name: 'Install pathogen'
   tags: 'user'
   ansible.builtin.get_url:
-    url: '{{ vim_pathogen_url }}'
+    url: '{{ editors_vim_pathogen_url }}'
     dest: '{{ autoload_dir }}/pathogen.vim'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
@@ -58,7 +58,7 @@
 
 - name: 'Install basic vim plugins'
   with_items:
-    - '{{ vim_basic_plugins | dict2items | map(attribute="key") }}'
+    - '{{ editors_vim_basic_plugins | dict2items | map(attribute="key") }}'
   tags: 'user'
   ansible.builtin.include_tasks:
     file: 'plugin.yml'

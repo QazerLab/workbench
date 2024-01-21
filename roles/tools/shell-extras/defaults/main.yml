@@ -1,5 +1,5 @@
 ---
-shell_extras_editor_plugins:
+tools_shell_extras_editor_plugins:
   vim:
     fzf:
       repo: 'https://github.com/junegunn/fzf.vim'

@@ -20,7 +20,7 @@ de_config:
 
 
 
-openbox_qaztom_apps:
+des_openbox_qaztom_apps:
   openbox:
     config_dirs:
       - '.config/openbox'

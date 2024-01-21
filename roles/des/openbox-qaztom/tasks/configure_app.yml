@@ -1,7 +1,7 @@
 ---
 - name: 'Store desktop environment app config'
   ansible.builtin.set_fact:
-    qaztom_app_config: '{{ openbox_qaztom_apps[qaztom_app_name] }}'
+    qaztom_app_config: '{{ des_openbox_qaztom_apps[qaztom_app_name] }}'
 
 - name: 'Ensure app config directories exist for {{ qaztom_app_name }}'
   loop: '{{ qaztom_app_config.config_dirs }}'

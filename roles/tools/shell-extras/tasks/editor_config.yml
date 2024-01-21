@@ -3,7 +3,7 @@
   ansible.builtin.set_fact:
     plugins_dir: '{{ user_config["home_dir"] }}/{{ user_config["editors"][editor]["plugins_dir"] }}'
     configs_dir: '{{ user_config["home_dir"] }}/{{ user_config["editors"][editor]["config_dropins_dir"] }}'
-    role_editor_settings: '{{ shell_extras_editor_plugins[editor] }}'
+    role_editor_settings: '{{ tools_shell_extras_editor_plugins[editor] }}'
 
 - name: 'Install plugins for {{ editor }}'
   loop: '{{ role_editor_settings | dict2items | map(attribute="key") }}'

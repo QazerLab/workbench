@@ -1,7 +1,7 @@
 ---
-sublime_user_config_dir: '{{ user_config["home_dir"] }}/.config/sublime-text/Packages/User'
+apps_sublime_user_config_dir: '{{ user_config["home_dir"] }}/.config/sublime-text/Packages/User'
 
 # Sublime repository's public key ID.
 #
 # The key itself is provided in files/sublimehq-publickey.gpg
-sublime_gpg_publickey: '1EDDE2CDFC025D17F6DA9EC0ADAE6AD28A8F901A'
+apps_sublime_gpg_publickey: '1EDDE2CDFC025D17F6DA9EC0ADAE6AD28A8F901A'

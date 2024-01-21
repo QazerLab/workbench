@@ -1,7 +1,7 @@
 ---
-vim_pathogen_url: https://tpo.pe/pathogen.vim
+editors_vim_pathogen_url: https://tpo.pe/pathogen.vim
 
-vim_basic_plugins:
+editors_vim_basic_plugins:
   youarehere:
     repo: https://github.com/bignimbus/you-are-here.vim.git
     requires_config: true

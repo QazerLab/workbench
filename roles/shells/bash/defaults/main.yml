@@ -2,7 +2,7 @@
 shell_config:
   config_dropins_dir: '.bashrc.d'
 
-bash_ps1_colors:
+shells_bash_ps1_colors:
   desktop:
     unprivileged: '92'   # Light green
     superuser: '93'      # Light yellow
@@ -10,6 +10,6 @@ bash_ps1_colors:
     unprivileged: '95'   # Magenta
     superuser: '31'      # Dark red
 
-bash_ps1_host:
+shells_bash_ps1_host:
   desktop: ''
   server: '\H | '

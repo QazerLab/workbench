@@ -35,7 +35,7 @@
 
 - name: 'Configure desktop environment apps'
   tags: 'user'
-  loop: '{{ openbox_qaztom_apps | dict2items | map(attribute="key") }}'
+  loop: '{{ des_openbox_qaztom_apps | dict2items | map(attribute="key") }}'
   ansible.builtin.include_tasks:
     file: 'configure_app.yml'
     apply:
