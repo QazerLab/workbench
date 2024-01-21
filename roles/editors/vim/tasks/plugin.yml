@@ -4,14 +4,14 @@
     plugin_config: '{{ vim_basic_plugins[plugin] }}'
     plugin_dir: '{{ bundle_dir }}/{{ plugin }}'
 
-- name: 'Download {{ plugin }} plugin'
+- name: 'Download plugin {{ plugin }}'
   ansible.builtin.git:
     repo: '{{ plugin_config.repo }}'
     dest: '{{ plugin_dir }}'
     depth: 1
     force: true
 
-- name: 'Install {{ plugin }} plugin config'
+- name: 'Install plugin config for {{ plugin }}'
   when: 'plugin_config.requires_config'
   ansible.builtin.copy:
     src: 'vim/configs/{{ plugin }}.vim'

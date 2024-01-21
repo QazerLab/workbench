@@ -4,14 +4,14 @@
     plugin_config: '{{ role_editor_settings[plugin] }}'
     plugin_dir: '{{ plugins_dir }}/{{ plugin }}'
 
-- name: 'Download {{ plugin }} plugin'
+- name: 'Download plugin {{ plugin }}'
   ansible.builtin.git:
     repo: '{{ plugin_config.repo }}'
     dest: '{{ plugin_dir }}'
     depth: 1
     force: true
 
-- name: 'Install {{ plugin }} plugin config'
+- name: 'Install plugin config for {{ plugin }}'
   when: 'plugin_config.requires_config'
   ansible.builtin.copy:
     src: 'editor_configs/vim/{{ plugin }}.vim'
