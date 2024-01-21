@@ -1,0 +1,47 @@
+# This is intentionally: we want to keep roles grouped in subdirectories
+# for clarity, but Ansible does not allow it by default when it uses
+# roles autodiscovery.
+#
+# Flattening the roles/ directory structure to satisfy role-name[path]
+# requirements and import by role names instead of exact paths is possible,
+# but undesired.
+#
+# There are two options, thus:
+#
+# * make roles path include all intermediate dirs in roles/;
+# * just use direct include by path contrary to best practices.
+#
+# We choose latter. If inclusion by path will be deprecated and removed,
+# there always is an option to just flatten the roles/ hierarchy, though.
+install.yml role-name[path]
+tasks/install_user.yml role-name[path]
+
+# This one is discussable, but given that most of use cases are
+# desktop installations (and even server use cases do not imply
+# mission-critical environments), comfort matters more than strict
+# playbook idempotency.
+#
+# Should we need to configure Vim on mission-critical servers, this
+# one should change and exact tags should be used.
+roles/editors/vim/tasks/plugin.yml latest[git]
+roles/tools/devel-basic/tasks/vim_plugin.yml latest[git]
+roles/tools/devel-extras/tasks/vim_plugin.yml latest[git]
+roles/tools/shell-extras/tasks/vim_plugin.yml latest[git]
+
+# This one is intentional too: see README.md, section `Common Configuration
+# Model'.
+roles/apps/doublecmd/defaults/main.yml var-naming[no-role-prefix]
+roles/apps/ssh/defaults/main.yml var-naming[no-role-prefix]
+roles/des/openbox-qaztom/defaults/main.yml var-naming[no-role-prefix]
+roles/shells/bash/defaults/main.yml var-naming[no-role-prefix]
+roles/tools/devel-extras/defaults/main.yml var-naming[no-role-prefix]
+roles/tools/devel-go/defaults/main.yml var-naming[no-role-prefix]
+roles/tools/devel-rust/defaults/main.yml var-naming[no-role-prefix]
+
+# Empty lines are cool. Separating logical blocks of data is cool.
+# Walls of text are bad.
+#
+# Thus, let's shut yamllint up and do what we want.
+inventories/vostro.yml yaml[empty-lines]
+roles/des/openbox-qaztom/defaults/main.yml yaml[empty-lines]
+roles/tools/admin-system/tasks/main.yml yaml[empty-lines]
