@@ -3,26 +3,31 @@
   ansible.builtin.command: 'pgrep openbox'
   register: 'openbox_test'
   failed_when: 'openbox_test.rc >= 2'
+  changed_when: false
   listen: 'reconfigure openbox'
 
 - name: 'Reconfigure current openbox session'
   ansible.builtin.command: 'openbox --reconfigure'
   when: 'openbox_test.rc == 0'
+  changed_when: true
   listen: 'reconfigure openbox'
 
 - name: 'Check if xfce-panel is running'
   ansible.builtin.command: 'pgrep xfce4-panel'
   register: 'panel_test'
   failed_when: 'panel_test.rc >= 2'
+  changed_when: false
   listen: 'reconfigure xfce-panel'
 
 - name: 'Check if xfconfd is running'
   ansible.builtin.command: 'pgrep xfconfd'
   register: 'xfconfd_test'
   failed_when: 'xfconfd_test.rc >= 2'
+  changed_when: false
   listen: 'reconfigure xfce-panel'
 
 - name: 'Restart panel with new settings'
   ansible.builtin.shell: 'killall xfconfd && xfce4-panel -r'
   when: 'panel_test.rc == 0 and xfconfd_test.rc == 0'
+  changed_when: true
   listen: 'reconfigure xfce-panel'

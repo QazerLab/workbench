@@ -37,6 +37,7 @@
 
 - name: 'Apply mime types association for {{ qaztom_app_name }}'
   when: 'qaztom_app_config.mime_associations is defined'
+  changed_when: true
   ansible.builtin.command:
     argv:
       - 'xdg-mime'

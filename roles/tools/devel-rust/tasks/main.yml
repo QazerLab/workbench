@@ -27,6 +27,7 @@
 - name: 'Install rust toolchains'
   tags: 'user'
   loop: '{{ toolchain_config["rustup_toolchains"] | map(attribute="name") }}'
+  changed_when: true
   ansible.builtin.command:
     argv:
       - 'rustup'
@@ -36,6 +37,7 @@
 
 - name: 'Set default rust toolchain'
   tags: 'user'
+  changed_when: true
   ansible.builtin.command:
     argv:
       - 'rustup'
@@ -48,6 +50,8 @@
     - 'rust-src'
     - 'rust-docs'
     - 'rust-analyzer'
+  register: 'rustup_add_result'
+  changed_when: '"is up to date" not in rustup_add_result.stderr'
   ansible.builtin.command:
     argv:
       - 'rustup'
@@ -59,6 +63,8 @@
   tags: 'user'
   loop: '{{ toolchain_config["cargo_plugins"] }}'
   when: '"cargo_plugins" in toolchain_config'
+  register: 'cargo_add_result'
+  changed_when: '"is already installed" not in cargo_add_result.stderr'
   ansible.builtin.command:
     argv:
       - 'cargo'
