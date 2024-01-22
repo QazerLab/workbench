@@ -39,10 +39,7 @@
   tags: 'user'
   changed_when: true
   ansible.builtin.command:
-    argv:
-      - 'rustup'
-      - 'default'
-      - '{{ rustup_default_toolchains | first }}'
+    cmd: 'rustup default {{ rustup_default_toolchains | first }}'
 
 - name: 'Add mandatory rust components'
   tags: 'user'
@@ -53,11 +50,7 @@
   register: 'rustup_add_result'
   changed_when: '"is up to date" not in rustup_add_result.stderr'
   ansible.builtin.command:
-    argv:
-      - 'rustup'
-      - 'component'
-      - 'add'
-      - '{{ item }}'
+    cmd: 'rustup component add {{ item }}'
 
 - name: 'Add user-requsted cargo components'
   tags: 'user'
@@ -66,7 +59,4 @@
   register: 'cargo_add_result'
   changed_when: '"is already installed" not in cargo_add_result.stderr'
   ansible.builtin.command:
-    argv:
-      - 'cargo'
-      - 'install'
-      - '{{ item }}'
+    cmd: 'cargo install {{ item }}'

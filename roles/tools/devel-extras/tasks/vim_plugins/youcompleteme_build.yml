@@ -13,13 +13,15 @@
 # This probably is an optimization point for future, but this does not take
 # lots of time to rebuild, so no one cares.
 - name: 'Prepare plugin for build'
-  ansible.builtin.command: 'cmake -G "Unix Makefiles" . {{ plugin_dir }}/third_party/ycmd/cpp'
+  ansible.builtin.command:
+    cmd: 'cmake -G "Unix Makefiles" . {{ plugin_dir }}/third_party/ycmd/cpp'
   changed_when: true
   args:
     chdir: '{{ plugin_dir }}/build'
 
 - name: 'Build youcompleteme plugin'
-  ansible.builtin.command: 'cmake --build . --target ycm_core'
+  ansible.builtin.command:
+    cmd: 'cmake --build . --target ycm_core'
   changed_when: true
   args:
     chdir: '{{ plugin_dir }}/build'
@@ -35,7 +37,8 @@
 
 - name: 'Youcompleteme language support - Golang'
   when: '"devel-go" in user_config["toolchains"]'
-  ansible.builtin.command: 'go install golang.org/x/tools/gopls@v0.7.1'
+  ansible.builtin.command:
+    cmd: 'go install golang.org/x/tools/gopls@v0.7.1'
   changed_when: true
   environment:
     GO111MODULE: 'on'
