@@ -184,3 +184,28 @@ Interesting Stuff
 
 * Custom [Openbox-based environment](roles/des/openbox-qaztom/README.md) with complete
   and highly custom [keymap](roles/des/openbox-qaztom/docs/keymap.md).
+
+
+
+Style Guide
+===========
+
+The recommended task attribute order is the following:
+
+```
+name
+when
+tags
+become
+become_user
+loop
+loop_control
+vars
+register
+notify
+changed_when
+failed_when
+args
+environment
+task / block
+```
