@@ -37,11 +37,3 @@ roles/shells/bash/defaults/main.yml var-naming[no-role-prefix]
 roles/tools/devel-extras/defaults/main.yml var-naming[no-role-prefix]
 roles/tools/devel-go/defaults/main.yml var-naming[no-role-prefix]
 roles/tools/devel-rust/defaults/main.yml var-naming[no-role-prefix]
-
-# Empty lines are cool. Separating logical blocks of data is cool.
-# Walls of text are bad.
-#
-# Thus, let's shut yamllint up and do what we want.
-inventories/vostro.yml yaml[empty-lines]
-roles/des/openbox-qaztom/defaults/main.yml yaml[empty-lines]
-roles/tools/admin-system/tasks/main.yml yaml[empty-lines]

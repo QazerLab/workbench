@@ -1,0 +1,6 @@
+# Empty lines are cool. Separating logical blocks of data is cool.
+# Walls of text are bad.
+#
+# Thus, we suppress this warning completely everywhere.
+skip_list:
+  - 'yaml[empty-lines]'
