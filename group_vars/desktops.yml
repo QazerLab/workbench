@@ -62,6 +62,8 @@ users:
       devel-extras:
         vagrant_backend: 'virtualbox'
 
+      admin-network: {}
+
       media: {}
       office: {}
 
