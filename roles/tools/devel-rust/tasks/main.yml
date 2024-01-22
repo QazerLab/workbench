@@ -4,7 +4,7 @@
   ansible.builtin.set_fact:
     rustup_default_toolchains: >-
       {{
-         toolchain_config["rustup_toolchains"] |
+         toolchain_config.rustup_toolchains |
          selectattr("default", "defined") |
          selectattr("default") |
          map(attribute="name")
@@ -26,7 +26,7 @@
 
 - name: 'Install rust toolchains'
   tags: 'user'
-  loop: '{{ toolchain_config["rustup_toolchains"] | map(attribute="name") }}'
+  loop: '{{ toolchain_config.rustup_toolchains | map(attribute="name") }}'
   changed_when: true
   ansible.builtin.command:
     argv:
@@ -61,7 +61,7 @@
 
 - name: 'Add user-requsted cargo components'
   tags: 'user'
-  loop: '{{ toolchain_config["cargo_plugins"] }}'
+  loop: '{{ toolchain_config.cargo_plugins }}'
   when: '"cargo_plugins" in toolchain_config'
   register: 'cargo_add_result'
   changed_when: '"is already installed" not in cargo_add_result.stderr'

@@ -10,13 +10,13 @@
   tags: 'user'
   when: 'clean_configs == "all"'
   ansible.builtin.file:
-    path: '{{ user_config["home_dir"] }}/.config/doublecmd'
+    path: '{{ user_config.home_dir }}/.config/doublecmd'
     state: 'absent'
 
 - name: 'Check for doublecmd config directory'
   tags: 'user'
   ansible.builtin.stat:
-    path: '{{ user_config["home_dir"] }}/.config/doublecmd'
+    path: '{{ user_config.home_dir }}/.config/doublecmd'
   register: 'dconfig_result'
 
 - name: 'Install doublecmd configs'
@@ -25,7 +25,7 @@
   block:
     - name: 'Create doublecmd configs directory'
       ansible.builtin.file:
-        path: '{{ user_config["home_dir"] }}/.config/doublecmd'
+        path: '{{ user_config.home_dir }}/.config/doublecmd'
         owner: '{{ user_name }}'
         group: '{{ user_name }}'
         state: 'directory'
@@ -34,7 +34,7 @@
     - name: 'Install doublecmd.xml'
       ansible.builtin.template:
         src: 'doublecmd.xml.j2'
-        dest: '{{ user_config["home_dir"] }}/.config/doublecmd/doublecmd.xml'
+        dest: '{{ user_config.home_dir }}/.config/doublecmd/doublecmd.xml'
         owner: '{{ user_name }}'
         group: '{{ user_name }}'
         mode: '0644'
@@ -42,7 +42,7 @@
     - name: 'Install ignorelist.txt'
       ansible.builtin.copy:
         src: 'ignorelist.txt'
-        dest: '{{ user_config["home_dir"] }}/.config/doublecmd/ignorelist.txt'
+        dest: '{{ user_config.home_dir }}/.config/doublecmd/ignorelist.txt'
         owner: '{{ user_name }}'
         group: '{{ user_name }}'
         mode: '0644'

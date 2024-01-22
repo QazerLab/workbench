@@ -1,4 +1,4 @@
-{% if 'dm' in system['gui'] and system['gui']['dm'] == 'lightdm' %}
+{% if 'dm' in system.gui and system.gui.dm == 'lightdm' %}
 # Lockscreen manager.
 light-locker &
 {% endif %}
@@ -8,7 +8,7 @@ xcompmgr &
 
 {% if "wallpaper" in de_config %}
 # Wallpaper under the desktop.
-feh --bg-scale "{{ de_config['wallpaper'] }}"
+feh --bg-scale "{{ de_config.wallpaper }}"
 {% endif %}
 
 # The panel.

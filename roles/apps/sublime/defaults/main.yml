@@ -1,5 +1,5 @@
 ---
-apps_sublime_user_config_dir: '{{ user_config["home_dir"] }}/.config/sublime-text/Packages/User'
+apps_sublime_user_config_dir: '{{ user_config.home_dir }}/.config/sublime-text/Packages/User'
 
 # Sublime repository's public key ID.
 #

@@ -47,7 +47,7 @@
 # This is done to avoid syncing YCM with each rustup update - we just point YCM
 # to the user's default rustup home, assuming that the toolchain is present.
 - name: 'Youcompleteme language support - Rust'
-  when: '"devel-rust" in user_config["toolchains"]'
+  when: '"devel-rust" in user_config.toolchains'
   block:
     - name: 'YCM Rust - find default toolchain'
       ansible.builtin.set_fact:
@@ -63,7 +63,7 @@
     - name: 'YCM Rust - integrate YCM with Rust toolchain'
       ansible.builtin.file:
         path: '{{ plugin_dir }}/third_party/ycmd/third_party/rust-analyzer'
-        src: '{{ user_config["home_dir"] }}/.rustup/toolchains/{{ rustup_default_toolchain }}'
+        src: '{{ user_config.home_dir }}/.rustup/toolchains/{{ rustup_default_toolchain }}'
         state: 'link'
 
 - name: 'Remove youcompleteme build directory'

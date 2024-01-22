@@ -9,15 +9,15 @@
 - name: 'Store vim dirs locations'
   tags: 'user'
   ansible.builtin.set_fact:
-    autoload_dir: '{{ user_config["home_dir"] }}/.vim/autoload'
-    bundle_dir: '{{ user_config["home_dir"] }}/{{ editor_config["plugins_dir"] }}'
-    colors_dir: '{{ user_config["home_dir"] }}/.vim/colors'
-    configs_dir: '{{ user_config["home_dir"] }}/{{ editor_config["config_dropins_dir"] }}'
+    autoload_dir: '{{ user_config.home_dir }}/.vim/autoload'
+    bundle_dir: '{{ user_config.home_dir }}/{{ editor_config.plugins_dir }}'
+    colors_dir: '{{ user_config.home_dir }}/.vim/colors'
+    configs_dir: '{{ user_config.home_dir }}/{{ editor_config.config_dropins_dir }}'
 
 - name: 'Ensure .vim directory and its children exist'
   tags: 'user'
   loop:
-    - '{{ user_config["home_dir"] }}/.vim'
+    - '{{ user_config.home_dir }}/.vim'
     - '{{ autoload_dir }}'
     - '{{ bundle_dir }}'
     - '{{ colors_dir }}'
@@ -42,7 +42,7 @@
   tags: 'user'
   ansible.builtin.template:
     src: 'vimrc.j2'
-    dest: '{{ user_config["home_dir"] }}/.vimrc'
+    dest: '{{ user_config.home_dir }}/.vimrc'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'

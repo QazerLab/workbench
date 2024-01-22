@@ -30,10 +30,10 @@
   vars:
     java_dropin_templates:
       - '13_01_java_aliases'
-  loop: '{{ user_config["shells"] | dict2items | product(java_dropin_templates) }}'
+  loop: '{{ user_config.shells | dict2items | product(java_dropin_templates) }}'
   ansible.builtin.template:
-    src: 'shell_dropins/{{ item[0]["key"] }}/{{ item[1] }}.j2'
-    dest: '{{ user_config["home_dir"] }}/{{ item[0]["value"]["config_dropins_dir"] }}/{{ item[1] }}'
+    src: 'shell_dropins/{{ item.0.key }}/{{ item.1 }}.j2'
+    dest: '{{ user_config.home_dir }}/{{ item.0.value.config_dropins_dir }}/{{ item.1 }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'

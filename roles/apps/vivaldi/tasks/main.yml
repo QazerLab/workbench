@@ -11,7 +11,7 @@
 - name: 'Ensure vivaldi downloads directory exists'
   tags: 'user'
   ansible.builtin.file:
-    path: '{{ user_config["home_dir"] }}/{{ user_config["downloads_dir"] }}/vivaldi'
+    path: '{{ user_config.home_dir }}/{{ user_config.downloads_dir }}/vivaldi'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     state: 'directory'
@@ -20,14 +20,14 @@
 - name: 'Delete vivaldi configs if required'
   tags: 'user'
   ansible.builtin.file:
-    path: '{{ user_config["home_dir"] }}/.config/vivaldi'
+    path: '{{ user_config.home_dir }}/.config/vivaldi'
     state: 'absent'
   when: 'clean_configs == "all"'
 
 - name: 'Check for vivaldi config directory'
   tags: 'user'
   ansible.builtin.stat:
-    path: '{{ user_config["home_dir"] }}/.config/vivaldi'
+    path: '{{ user_config.home_dir }}/.config/vivaldi'
   register: 'vconfig_result'
 
 - name: 'Install vivaldi config'
@@ -36,7 +36,7 @@
   block:
     - name: 'Create vivaldi config directory'
       ansible.builtin.file:
-        path: '{{ user_config["home_dir"] }}/.config/vivaldi/Default'
+        path: '{{ user_config.home_dir }}/.config/vivaldi/Default'
         owner: '{{ user_name }}'
         group: '{{ user_name }}'
         state: 'directory'
@@ -45,7 +45,7 @@
     - name: 'Install vivaldi preferences'
       ansible.builtin.template:
         src: 'Preferences.j2'
-        dest: '{{ user_config["home_dir"] }}/.config/vivaldi/Default/Preferences'
+        dest: '{{ user_config.home_dir }}/.config/vivaldi/Default/Preferences'
         owner: '{{ user_name }}'
         group: '{{ user_name }}'
         mode: '0644'

@@ -1,8 +1,8 @@
 ---
 - name: 'Store editor-related settings'
   ansible.builtin.set_fact:
-    plugins_dir: '{{ user_config["home_dir"] }}/{{ user_config["editors"][editor]["plugins_dir"] }}'
-    configs_dir: '{{ user_config["home_dir"] }}/{{ user_config["editors"][editor]["config_dropins_dir"] }}'
+    plugins_dir: '{{ user_config.home_dir }}/{{ user_config["editors"][editor]["plugins_dir"] }}'
+    configs_dir: '{{ user_config.home_dir }}/{{ user_config["editors"][editor]["config_dropins_dir"] }}'
     role_editor_plugins: '{{ tools_devel_extra_editor_plugins[editor] }}'
     role_editor_configs: '{{ tools_devel_extra_editor_plugins[editor] }}'
 

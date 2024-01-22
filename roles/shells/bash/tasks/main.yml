@@ -8,14 +8,14 @@
 - name: 'Clean managed drop-ins directory'
   tags: 'user'
   ansible.builtin.file:
-    path: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
+    path: '{{ user_config.home_dir }}/{{ shell_config.config_dropins_dir }}'
     state: 'absent'
   when: 'clean_configs in ["safe", "all"]'
 
 - name: 'Ensure drop-ins directories exist'
   tags: 'user'
   ansible.builtin.file:
-    path: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
+    path: '{{ user_config.home_dir }}/{{ shell_config.config_dropins_dir }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     state: 'directory'
@@ -25,7 +25,7 @@
   tags: 'user'
   ansible.builtin.template:
     src: 'bashrc.j2'
-    dest: '{{ user_config["home_dir"] }}/.bashrc'
+    dest: '{{ user_config.home_dir }}/.bashrc'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'
@@ -34,7 +34,7 @@
   tags: 'user'
   ansible.builtin.copy:
     src: 'bash_profile'
-    dest: '{{ user_config["home_dir"] }}/.bash_profile'
+    dest: '{{ user_config.home_dir }}/.bash_profile'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'
@@ -43,7 +43,7 @@
   tags: 'user'
   ansible.builtin.copy:
     src: 'dropins/'
-    dest: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}'
+    dest: '{{ user_config.home_dir }}/{{ shell_config.config_dropins_dir }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'
@@ -72,7 +72,7 @@
     - '00_03_arch_utils'
   ansible.builtin.template:
     src: 'dropins/{{ item }}.j2'
-    dest: '{{ user_config["home_dir"] }}/{{ shell_config["config_dropins_dir"] }}/{{ item }}'
+    dest: '{{ user_config.home_dir }}/{{ shell_config.config_dropins_dir }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'

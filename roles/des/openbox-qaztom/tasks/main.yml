@@ -51,7 +51,7 @@
     - '20_01_hidpi_vars'
   ansible.builtin.template:
     src: 'profile_dropins/{{ item }}.j2'
-    dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
+    dest: '{{ user_config.home_dir }}/{{ user_config.profile_dropins_dir }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'

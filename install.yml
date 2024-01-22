@@ -35,8 +35,8 @@
 
     - name: 'Install DM'
       ansible.builtin.include_role:
-        name: 'dms/{{ system["gui"]["dm"] }}'
-      when: '"gui" in system and "dm" in system["gui"]'
+        name: 'dms/{{ system.gui.dm }}'
+      when: '"gui" in system and "dm" in system.gui'
 
     - name: 'Configure users'
       tags: 'user'

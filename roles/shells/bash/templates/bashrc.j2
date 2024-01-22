@@ -1,9 +1,9 @@
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
 # Load Ansible-managed drop-ins.
-if [ -d ~/{{ shell_config['config_dropins_dir'] }} ]
+if [ -d ~/{{ shell_config.config_dropins_dir }} ]
 then
-    for rcfile in ~/{{ shell_config['config_dropins_dir'] }}/*
+    for rcfile in ~/{{ shell_config.config_dropins_dir }}/*
     do
         [ -r "$rcfile" ] && . "$rcfile"
     done
@@ -11,9 +11,9 @@ fi
 
 # Give a chance to perform machine-specific configuration.
 # This configuration is not managed by Ansible.
-if [ -d ~/{{ shell_config['config_dropins_dir'] }}-unmanaged ]
+if [ -d ~/{{ shell_config.config_dropins_dir }}-unmanaged ]
 then
-    for rcfile in ~/{{ shell_config['config_dropins_dir'] }}-unmanaged/*
+    for rcfile in ~/{{ shell_config.config_dropins_dir }}-unmanaged/*
     do
         [ -r "$rcfile" ] && . "$rcfile"
     done

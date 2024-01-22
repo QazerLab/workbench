@@ -12,7 +12,7 @@
     - '.ssh'
     - '.ssh/config.d'
   ansible.builtin.file:
-    path: '{{ user_config["home_dir"] }}/{{ item }}'
+    path: '{{ user_config.home_dir }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     state: 'directory'
@@ -22,7 +22,7 @@
   tags: 'user'
   ansible.builtin.template:
     src: 'config.j2'
-    dest: '{{ user_config["home_dir"] }}/.ssh/config'
+    dest: '{{ user_config.home_dir }}/.ssh/config'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'
@@ -33,7 +33,7 @@
     - '03_01_ssh_agent_socket'
   ansible.builtin.template:
     src: 'profile_dropins/{{ item }}.j2'
-    dest: '{{ user_config["home_dir"] }}/{{ user_config["profile_dropins_dir"] }}/{{ item }}'
+    dest: '{{ user_config.home_dir }}/{{ user_config.profile_dropins_dir }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'
@@ -44,7 +44,7 @@
 # say, CentOS / Almalinux).
 - name: 'Enable ssh agent'
   tags: 'user'
-  when: 'ansible_os_family == "Archlinux" and app_config["use_agent"]'
+  when: 'ansible_os_family == "Archlinux" and app_config.use_agent'
   ansible.builtin.systemd_service:
     name: 'ssh-agent'
     scope: 'user'

@@ -47,21 +47,21 @@
 - name: 'Install vagrant backend'
   when: '"vagrant_backend" in toolchain_config'
   ansible.builtin.include_tasks:
-    file: 'vagrant_backends/{{ toolchain_config["vagrant_backend"] }}.yml'
+    file: 'vagrant_backends/{{ toolchain_config.vagrant_backend }}.yml'
 
 - name: 'Install drop-ins for shells'
   tags: 'user'
-  loop: '{{ user_config["shells"] | dict2items }}'
+  loop: '{{ user_config.shells | dict2items }}'
   ansible.builtin.copy:
-    src: 'shell_dropins/{{ item["key"] }}/'
-    dest: '{{ user_config["home_dir"] }}/{{ item["value"]["config_dropins_dir"] }}'
+    src: 'shell_dropins/{{ item.key }}/'
+    dest: '{{ user_config.home_dir }}/{{ item.value.config_dropins_dir }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'
 
 - name: 'Install drop-ins for editors'
   tags: 'user'
-  loop: '{{ user_config["editors"] | dict2items | map(attribute="key") }}'
+  loop: '{{ user_config.editors | dict2items | map(attribute="key") }}'
   loop_control:
     loop_var: 'editor_item'
   vars:

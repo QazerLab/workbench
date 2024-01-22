@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
     <menu id="apps-devel" label="Devel">
-{% if 'devel-java' in user_config['toolchains'] %}
+{% if 'devel-java' in user_config.toolchains %}
         <item label="NetBeans">
             <action name="Execute">
                 <command>netbeans</command>
@@ -22,7 +22,7 @@
     </menu>
 
     <menu id="apps-net" label="Net">
-{% if 'vivaldi' in user_config['apps'] %}
+{% if 'vivaldi' in user_config.apps %}
         <item label="Vivaldi">
             <action name="Execute">
                 <command>vivaldi-stable</command>
@@ -74,7 +74,7 @@
     </menu>
 
     <menu id="apps-other" label="Other">
-{% if 'media' in user_config['toolchains'] %}
+{% if 'media' in user_config.toolchains %}
         <item label="Gimp">
             <action name="Execute">
                 <command>gimp</command>
@@ -95,7 +95,7 @@
     </menu>
 
     <menu id="system" label="System">
-{% if 'dm' in system['gui'] and system['gui']['dm'] == 'lightdm' %}
+{% if 'dm' in system.gui and system.gui.dm == 'lightdm' %}
         <item label="Lock">
             <action name="Execute">
                 <command>light-locker-command -l</command>
@@ -130,7 +130,7 @@
             </action>
         </item>
 
-{% if 'doublecmd' in user_config['apps'] %}
+{% if 'doublecmd' in user_config.apps %}
         <item label="Double Commander">
             <action name="Execute">
                 <command>doublecmd</command>
@@ -141,7 +141,7 @@
         </item>
 {% endif %}
 
-{% if 'sublime' in user_config['apps'] %}
+{% if 'sublime' in user_config.apps %}
         <item label="Sublime">
             <action name="Execute">
                 <command>subl</command>

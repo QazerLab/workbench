@@ -18,7 +18,7 @@
 
     - name: 'Install shells'
       tags: 'user'
-      loop: '{{ user_config["shells"] | dict2items }}'
+      loop: '{{ user_config.shells | dict2items }}'
       ansible.builtin.include_role:
         name: 'shells/{{ shell_item.key }}'
       vars:
@@ -28,7 +28,7 @@
 
     - name: 'Install editors'
       tags: 'user'
-      loop: '{{ user_config["editors"] | dict2items }}'
+      loop: '{{ user_config.editors | dict2items }}'
       ansible.builtin.include_role:
         name: 'editors/{{ editor_item.key }}'
       vars:
@@ -39,10 +39,10 @@
     - name: 'Install user`s desktop environment, if required'
       tags: 'user'
       ansible.builtin.include_role:
-        name: 'des/{{ user_config["gui"]["de"]["name"] }}'
+        name: 'des/{{ user_config.gui.de.name }}'
       vars:
-        de_config: '{{ user_config["gui"]["de"] }}'
-      when: '"gui" in user_config and "de" in user_config["gui"]'
+        de_config: '{{ user_config.gui.de }}'
+      when: '"gui" in user_config and "de" in user_config.gui'
 
     - name: 'Install toolchains required for user'
       tags: 'user'
@@ -50,7 +50,7 @@
         name: 'tools/{{ toolchain_item.key }}'
       vars:
         toolchain_config: '{{ toolchain_item.value }}'
-      loop: '{{ user_config["toolchains"] | dict2items }}'
+      loop: '{{ user_config.toolchains | dict2items }}'
       loop_control:
         loop_var: 'toolchain_item'
 
@@ -60,6 +60,6 @@
         name: 'apps/{{ app_item.key }}'
       vars:
         app_config: '{{ app_item.value }}'
-      loop: '{{ user_config["apps"] | dict2items }}'
+      loop: '{{ user_config.apps | dict2items }}'
       loop_control:
         loop_var: 'app_item'

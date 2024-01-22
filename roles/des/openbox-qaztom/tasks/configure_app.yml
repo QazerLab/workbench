@@ -7,7 +7,7 @@
   loop: '{{ qaztom_app_config.config_dirs }}'
   when: 'qaztom_app_config.config_dirs is defined'
   ansible.builtin.file:
-    path: '{{ user_config["home_dir"] }}/{{ item }}'
+    path: '{{ user_config.home_dir }}/{{ item }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     state: 'directory'
@@ -18,7 +18,7 @@
   when: 'qaztom_app_config.config_files is defined'
   ansible.builtin.copy:
     src: '{{ qaztom_app_name }}/{{ item.from }}'
-    dest: '{{ user_config["home_dir"] }}/{{ item.to }}'
+    dest: '{{ user_config.home_dir }}/{{ item.to }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'
@@ -29,7 +29,7 @@
   when: 'qaztom_app_config.config_templates is defined'
   ansible.builtin.template:
     src: '{{ qaztom_app_name }}/{{ item.from }}'
-    dest: '{{ user_config["home_dir"] }}/{{ item.to }}'
+    dest: '{{ user_config.home_dir }}/{{ item.to }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'
