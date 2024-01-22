@@ -24,16 +24,16 @@ tasks/install_user.yml role-name[path]
 # Should we need to configure Vim on mission-critical servers, this
 # one should change and exact tags should be used.
 roles/editors/vim/tasks/plugin.yml latest[git]
-roles/tools/devel-basic/tasks/vim_plugin.yml latest[git]
-roles/tools/devel-extras/tasks/vim_plugin.yml latest[git]
-roles/tools/shell-extras/tasks/vim_plugin.yml latest[git]
+roles/tools/devel_basic/tasks/vim_plugin.yml latest[git]
+roles/tools/devel_extras/tasks/vim_plugin.yml latest[git]
+roles/tools/shell_extras/tasks/vim_plugin.yml latest[git]
 
 # This one is intentional too: see README.md, section `Common Configuration
 # Model'.
 roles/apps/doublecmd/defaults/main.yml var-naming[no-role-prefix]
 roles/apps/ssh/defaults/main.yml var-naming[no-role-prefix]
-roles/des/openbox-qaztom/defaults/main.yml var-naming[no-role-prefix]
+roles/des/openbox_qaztom/defaults/main.yml var-naming[no-role-prefix]
 roles/shells/bash/defaults/main.yml var-naming[no-role-prefix]
-roles/tools/devel-extras/defaults/main.yml var-naming[no-role-prefix]
-roles/tools/devel-go/defaults/main.yml var-naming[no-role-prefix]
-roles/tools/devel-rust/defaults/main.yml var-naming[no-role-prefix]
+roles/tools/devel_extras/defaults/main.yml var-naming[no-role-prefix]
+roles/tools/devel_go/defaults/main.yml var-naming[no-role-prefix]
+roles/tools/devel_rust/defaults/main.yml var-naming[no-role-prefix]
