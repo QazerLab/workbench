@@ -6,11 +6,11 @@
     state: 'present'
 
 - name: 'Clean managed drop-ins directory'
+  when: 'clean_configs in ["safe", "all"]'
   tags: 'user'
   ansible.builtin.file:
     path: '{{ user_config.home_dir }}/{{ shell_config.config_dropins_dir }}'
     state: 'absent'
-  when: 'clean_configs in ["safe", "all"]'
 
 - name: 'Ensure drop-ins directories exist'
   tags: 'user'

@@ -18,21 +18,21 @@
     mode: '0755'
 
 - name: 'Delete vivaldi configs if required'
+  when: 'clean_configs == "all"'
   tags: 'user'
   ansible.builtin.file:
     path: '{{ user_config.home_dir }}/.config/vivaldi'
     state: 'absent'
-  when: 'clean_configs == "all"'
 
 - name: 'Check for vivaldi config directory'
   tags: 'user'
+  register: 'vconfig_result'
   ansible.builtin.stat:
     path: '{{ user_config.home_dir }}/.config/vivaldi'
-  register: 'vconfig_result'
 
 - name: 'Install vivaldi config'
-  tags: 'user'
   when: 'not vconfig_result.stat.exists'
+  tags: 'user'
   block:
     - name: 'Create vivaldi config directory'
       ansible.builtin.file:

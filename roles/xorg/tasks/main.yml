@@ -35,8 +35,8 @@
     mode: '0644'
 
 - name: 'Install laptop Xorg configuration'
-  become: true
   when: 'system["laptop"]'
+  become: true
   loop:
     - '20_touchpad.conf'
   ansible.builtin.copy:

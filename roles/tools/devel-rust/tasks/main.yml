@@ -11,8 +11,8 @@
       }}
 
 - name: 'Check that exactly one toolchain is default'
-  tags: 'user'
   when: 'rustup_default_toolchains | length == 0 or rustup_default_toolchains | length > 1'
+  tags: 'user'
   ansible.builtin.fail:
     msg: 'Configuration error: exactly one Rust toolchain must be default!'
 
@@ -53,9 +53,9 @@
     cmd: 'rustup component add {{ item }}'
 
 - name: 'Add user-requsted cargo components'
+  when: '"cargo_plugins" in toolchain_config'
   tags: 'user'
   loop: '{{ toolchain_config.cargo_plugins }}'
-  when: '"cargo_plugins" in toolchain_config'
   register: 'cargo_add_result'
   changed_when: '"is already installed" not in cargo_add_result.stderr'
   ansible.builtin.command:

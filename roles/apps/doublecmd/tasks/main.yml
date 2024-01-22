@@ -7,21 +7,21 @@
     state: 'present'
 
 - name: 'Delete doublecmd configs if required'
-  tags: 'user'
   when: 'clean_configs == "all"'
+  tags: 'user'
   ansible.builtin.file:
     path: '{{ user_config.home_dir }}/.config/doublecmd'
     state: 'absent'
 
 - name: 'Check for doublecmd config directory'
   tags: 'user'
+  register: 'dconfig_result'
   ansible.builtin.stat:
     path: '{{ user_config.home_dir }}/.config/doublecmd'
-  register: 'dconfig_result'
 
 - name: 'Install doublecmd configs'
-  tags: 'user'
   when: 'not dconfig_result.stat.exists'
+  tags: 'user'
   block:
     - name: 'Create doublecmd configs directory'
       ansible.builtin.file:

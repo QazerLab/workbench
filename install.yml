@@ -3,14 +3,14 @@
   hosts: 'all'
   tasks:
     - name: 'Check mandatory clean_configs option'
-      tags: 'user'
       when: 'clean_configs is not defined or clean_configs not in ["no", "safe", "all"]'
+      tags: 'user'
       ansible.builtin.set_fact:
         clean_configs: 'safe'
 
     - name: 'Fail if invalid user is requested'
-      tags: 'user'
       when: 'user is defined and user not in users'
+      tags: 'user'
       ansible.builtin.fail:
         msg: >-
           User configuration for {{ user }} is requested
@@ -18,8 +18,8 @@
           is found in inventory. Refusing to continue.
 
     - name: 'Limit users list to specific user'
-      tags: 'user'
       when: 'user is defined and user in users'
+      tags: 'user'
       ansible.builtin.set_fact:
         user_items: >-
           {{
@@ -29,22 +29,22 @@
           }}
 
     - name: 'Install Xorg'
+      when: '"gui" in system'
       ansible.builtin.include_role:
         name: 'xorg'
-      when: '"gui" in system'
 
     - name: 'Install DM'
+      when: '"gui" in system and "dm" in system.gui'
       ansible.builtin.include_role:
         name: 'dms/{{ system.gui.dm }}'
-      when: '"gui" in system and "dm" in system.gui'
 
     - name: 'Configure users'
       tags: 'user'
       loop: '{{ user_items | default(users | dict2items) }}'
-      ansible.builtin.include_tasks:
-        file: 'tasks/install_user.yml'
+      loop_control:
+        loop_var: 'user_item'
       vars:
         user_name: '{{ user_item.key }}'
         user_config: '{{ user_item.value }}'
-      loop_control:
-        loop_var: 'user_item'
+      ansible.builtin.include_tasks:
+        file: 'tasks/install_user.yml'

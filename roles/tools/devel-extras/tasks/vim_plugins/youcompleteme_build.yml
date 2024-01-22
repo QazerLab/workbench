@@ -13,18 +13,18 @@
 # This probably is an optimization point for future, but this does not take
 # lots of time to rebuild, so no one cares.
 - name: 'Prepare plugin for build'
+  changed_when: true
+  args:
+    chdir: '{{ plugin_dir }}/build'
   ansible.builtin.command:
     cmd: 'cmake -G "Unix Makefiles" . {{ plugin_dir }}/third_party/ycmd/cpp'
-  changed_when: true
-  args:
-    chdir: '{{ plugin_dir }}/build'
 
 - name: 'Build youcompleteme plugin'
-  ansible.builtin.command:
-    cmd: 'cmake --build . --target ycm_core'
   changed_when: true
   args:
     chdir: '{{ plugin_dir }}/build'
+  ansible.builtin.command:
+    cmd: 'cmake --build . --target ycm_core'
 
 - name: 'Install watchdog library'
   ansible.builtin.copy:
@@ -37,13 +37,13 @@
 
 - name: 'Youcompleteme language support - Golang'
   when: '"devel-go" in user_config["toolchains"]'
-  ansible.builtin.command:
-    cmd: 'go install golang.org/x/tools/gopls@v0.7.1'
   changed_when: true
   environment:
     GO111MODULE: 'on'
     GOPATH: '{{ plugin_dir }}/third_party/ycmd/third_party/go'
     GOBIN: '{{ plugin_dir }}/third_party/ycmd/third_party/go/bin'
+  ansible.builtin.command:
+    cmd: 'go install golang.org/x/tools/gopls@v0.7.1'
 
 # XXX: here we diverge from YCM installation guide, which suggests installing
 # whole toolchain into the temporary directory and then copy it into YCM dir.

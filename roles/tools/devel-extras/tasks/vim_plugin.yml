@@ -21,8 +21,8 @@
     mode: '0644'
 
 - name: 'Build plugin {{ plugin }}'
+  when: 'plugin_config.requires_build'
   ansible.builtin.include_tasks:
     file: 'vim_plugins/{{ plugin }}_build.yml'
     apply:
       tags: 'user'
-  when: 'plugin_config.requires_build'

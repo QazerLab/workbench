@@ -57,12 +57,11 @@
     mode: '0644'
 
 - name: 'Install basic vim plugins'
-  with_items:
-    - '{{ editors_vim_basic_plugins | dict2items | map(attribute="key") }}'
   tags: 'user'
+  loop: '{{ editors_vim_basic_plugins | dict2items | map(attribute="key") }}'
+  loop_control:
+    loop_var: 'plugin'
   ansible.builtin.include_tasks:
     file: 'plugin.yml'
     apply:
       tags: 'user'
-  loop_control:
-    loop_var: 'plugin'

@@ -4,8 +4,8 @@
     qaztom_app_config: '{{ des_openbox_qaztom_apps[qaztom_app_name] }}'
 
 - name: 'Ensure app config directories exist for {{ qaztom_app_name }}'
-  loop: '{{ qaztom_app_config.config_dirs }}'
   when: 'qaztom_app_config.config_dirs is defined'
+  loop: '{{ qaztom_app_config.config_dirs }}'
   ansible.builtin.file:
     path: '{{ user_config.home_dir }}/{{ item }}'
     owner: '{{ user_name }}'
@@ -14,26 +14,26 @@
     mode: '0755'
 
 - name: 'Install configs for {{ qaztom_app_name }}'
-  loop: '{{ qaztom_app_config.config_files }}'
   when: 'qaztom_app_config.config_files is defined'
+  loop: '{{ qaztom_app_config.config_files }}'
+  notify: '{{ qaztom_app_config.config_handlers }}'
   ansible.builtin.copy:
     src: '{{ qaztom_app_name }}/{{ item.from }}'
     dest: '{{ user_config.home_dir }}/{{ item.to }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'
-  notify: '{{ qaztom_app_config.config_handlers }}'
 
 - name: 'Install templated configs for {{ qaztom_app_name }}'
-  loop: '{{ qaztom_app_config.config_templates }}'
   when: 'qaztom_app_config.config_templates is defined'
+  loop: '{{ qaztom_app_config.config_templates }}'
+  notify: '{{ qaztom_app_config.config_handlers }}'
   ansible.builtin.template:
     src: '{{ qaztom_app_name }}/{{ item.from }}'
     dest: '{{ user_config.home_dir }}/{{ item.to }}'
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: '0644'
-  notify: '{{ qaztom_app_config.config_handlers }}'
 
 - name: 'Apply mime types association for {{ qaztom_app_name }}'
   when: 'qaztom_app_config.mime_associations is defined'

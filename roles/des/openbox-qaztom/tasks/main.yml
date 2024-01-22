@@ -36,14 +36,14 @@
 - name: 'Configure desktop environment apps'
   tags: 'user'
   loop: '{{ des_openbox_qaztom_apps | dict2items | map(attribute="key") }}'
+  loop_control:
+    loop_var: 'de_app_item'
+  vars:
+    qaztom_app_name: '{{ de_app_item }}'
   ansible.builtin.include_tasks:
     file: 'configure_app.yml'
     apply:
       tags: 'user'
-  vars:
-    qaztom_app_name: '{{ de_app_item }}'
-  loop_control:
-    loop_var: 'de_app_item'
 
 - name: 'Install profile drop-ins'
   tags: 'user'

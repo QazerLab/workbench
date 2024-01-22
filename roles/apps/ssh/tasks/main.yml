@@ -43,8 +43,8 @@
 # has a default agent unit shipepd with openssh package (which is not the case for,
 # say, CentOS / Almalinux).
 - name: 'Enable ssh agent'
-  tags: 'user'
   when: 'ansible_os_family == "Archlinux" and app_config.use_agent'
+  tags: 'user'
   ansible.builtin.systemd_service:
     name: 'ssh-agent'
     scope: 'user'
