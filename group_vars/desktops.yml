@@ -17,11 +17,11 @@ users:
         plugins_dir: '.vim/bundle'
 
     toolchains:
-      shell-basic: {}
-      shell-extras: {}
-      admin-system: {}
-      admin-network: {}
-      admin-tracing: {}
+      shell_basic: {}
+      shell_extras: {}
+      admin_system: {}
+      admin_network: {}
+      admin_tracing: {}
 
     apps: {}
 
@@ -42,13 +42,13 @@ users:
         plugins_dir: '.vim/bundle'
 
     toolchains:
-      shell-basic: {}
-      shell-extras: {}
+      shell_basic: {}
+      shell_extras: {}
 
-      devel-basic: {}
-      devel-java: {}
+      devel_basic: {}
+      devel_java: {}
 
-      devel-rust:
+      devel_rust:
         rustup_toolchains:
           - name: 'stable-x86_64-unknown-linux-gnu'
             default: true
@@ -56,13 +56,13 @@ users:
         cargo_plugins:
           - 'cargo-expand'
 
-      devel-go:
+      devel_go:
         gopath: 'pub/src/misc/gopath'
 
-      devel-extras:
+      devel_extras:
         vagrant_backend: 'virtualbox'
 
-      admin-network: {}
+      admin_network: {}
 
       media: {}
       office: {}
@@ -80,7 +80,7 @@ users:
 
     gui:
       de:
-        name: 'openbox-qaztom'
+        name: 'openbox_qaztom'
         wallpaper: '/usr/local/share/wallpapers/arch_desktop.png'
         xfce_panel:
           x: 960

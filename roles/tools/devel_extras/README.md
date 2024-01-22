@@ -1,4 +1,4 @@
-devel-extras
+devel_extras
 ============
 
 Installs extra development tools. The main reason for not including them into

@@ -1,4 +1,4 @@
-devel-golang
+devel_golang
 ============
 
 Installs and configures the Golang toolchain.

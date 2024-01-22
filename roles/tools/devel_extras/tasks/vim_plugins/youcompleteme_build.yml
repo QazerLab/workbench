@@ -36,7 +36,7 @@
     mode: '0755'
 
 - name: 'Youcompleteme language support - Golang'
-  when: '"devel-go" in user_config["toolchains"]'
+  when: '"devel_go" in user_config["toolchains"]'
   changed_when: true
   environment:
     GO111MODULE: 'on'
@@ -50,13 +50,13 @@
 # This is done to avoid syncing YCM with each rustup update - we just point YCM
 # to the user's default rustup home, assuming that the toolchain is present.
 - name: 'Youcompleteme language support - Rust'
-  when: '"devel-rust" in user_config.toolchains'
+  when: '"devel_rust" in user_config.toolchains'
   block:
     - name: 'YCM Rust - find default toolchain'
       ansible.builtin.set_fact:
         rustup_default_toolchain: >-
           {{
-             user_config["toolchains"]["devel-rust"]["rustup_toolchains"] |
+             user_config.toolchains.devel_rust.rustup_toolchains |
              selectattr("default", "defined") |
              selectattr("default") |
              map(attribute = "name") |

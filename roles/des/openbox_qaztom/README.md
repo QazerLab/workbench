@@ -1,4 +1,4 @@
-openbox-qaztom
+openbox_-_qaztom
 ==============
 
 A custom Openbox-based DE striving to include only lightweight components with no dependencies
@@ -7,7 +7,7 @@ on heavy DEs (though Xfce components are still used).
 WM: Openbox.
 Desktop: Tilda console + wallpaper + Xfce panel.
 
-![Sample screenshot](docs/openbox-qaztom.png)
+![Sample screenshot](docs/openbox_qaztom.png)
 
 Note the [keymap](docs/keymap.md) description.
 

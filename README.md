@@ -182,8 +182,8 @@ See [The Troubleshooting Guide](TROUBLESHOOTING.md).
 Interesting Stuff
 =================
 
-* Custom [Openbox-based environment](roles/des/openbox-qaztom/README.md) with complete
-  and highly custom [keymap](roles/des/openbox-qaztom/docs/keymap.md).
+* Custom [Openbox-based environment](roles/des/openbox_qaztom/README.md) with complete
+  and highly custom [keymap](roles/des/openbox_qaztom/docs/keymap.md).
 
 
 

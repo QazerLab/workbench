@@ -1,4 +1,4 @@
-devel-rust
+devel_rust
 ==========
 
 Installs Rust development tools.
