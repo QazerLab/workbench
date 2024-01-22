@@ -1,5 +1,5 @@
 ---
-- name: 'Install Java packages'
+- name: 'Install Java development packages'
   become: true
   become_user: 'root'
   ansible.builtin.package:
@@ -22,6 +22,13 @@
       - 'gradle'
       - 'bazel'
 
+- name: 'Install GUI Java development tools'
+  when: '"gui" in user_config'
+  become: true
+  become_user: 'root'
+  ansible.builtin.package:
+    state: 'present'
+    name:
       - 'netbeans'
       - 'visualvm'
 
