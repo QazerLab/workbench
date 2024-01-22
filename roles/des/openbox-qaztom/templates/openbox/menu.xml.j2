@@ -45,7 +45,7 @@
         </item>
     </menu>
 
-    <!-- TODO: make optional when LO deployment would be supported -->
+{% if 'office' in user_config.toolchains %}
     <menu id="apps-office" label="Libre Office">
         <item label="Writer">
             <action name="Execute">
@@ -72,6 +72,7 @@
             </action>
         </item>
     </menu>
+{% endif %}
 
     <menu id="apps-other" label="Other">
 {% if 'media' in user_config.toolchains %}
