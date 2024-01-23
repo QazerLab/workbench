@@ -1,1 +1,14 @@
 ansible_connection: 'local'
+
+# XXX: though most parts of desktop configurations do not differ from host to host,
+# we cannot define the defaults here, as Ansible has dropped support for its
+# hash_behavior=merge option, and there is no possibility to override such defaults
+# at the host level only partially (by defining only differing parts which have to be
+# merged into the default config).
+#
+# The recommendation of the merge feature author is to simply copy-paste whole data
+# structure at the host's inventory level, so we obey this recommendation - see
+# https://www.reddit.com/r/ansible/comments/a7x92q/comment/ec8mf7f for details.
+#
+# That said, system and users' configurations have to be redefined again and again
+# in individual inventories, and there is nothing left to define at the group level.
