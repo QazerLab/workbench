@@ -1,0 +1,11 @@
+---
+# XXX: this role is a stub serving as a feature-flag for legacy systems which
+# still have desktop Skype present. For new installations, nothing gets
+# installed, as web-version the preferred alternative.
+- name: 'Print stub message'
+  tags: 'user'
+  debug:
+    msg: >-
+      WARNING: Skype is no longer shipped via official
+      Arch repos or via AUR, as MS chose to provide
+      only Snap builds since 2023.

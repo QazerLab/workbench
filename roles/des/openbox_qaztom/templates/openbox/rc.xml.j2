@@ -434,7 +434,7 @@
         </keybind>
 {% endif %}
 
-        <!-- TODO: make optional app? -->
+{% if 'skype' in user_config.apps %}
         <keybind key="C-W-s">
             <action name="Execute">
                 <startupnotify>
@@ -444,6 +444,7 @@
                 <command>skypeforlinux</command>
             </action>
         </keybind>
+${% endif %}
 
 {% if 'doublecmd' in user_config.apps %}
         <keybind key="C-W-d">

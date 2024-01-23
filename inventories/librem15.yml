@@ -82,6 +82,8 @@ desktops:
 
             vivaldi: {}
             sublime: {}
+            transmission: {}
+            skype: {}
 
             doublecmd:
               terminal: 'alacritty'

@@ -1,0 +1,7 @@
+---
+- name: 'Install transmission package'
+  become: true
+  become_user: 'root'
+  ansible.builtin.package:
+    name: 'transmission-gtk'
+    state: 'present'

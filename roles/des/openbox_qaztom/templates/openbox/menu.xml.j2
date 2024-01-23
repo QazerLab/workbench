@@ -34,7 +34,7 @@
         </item>
 {% endif %}
 
-        <!-- TODO: make optional when Transmission deployment would be supported -->
+{% if 'transmission' in user_config.apps %}
         <item label="Transmission">
             <action name="Execute">
                 <command>transmission-gtk</command>
@@ -44,6 +44,7 @@
             </action>
         </item>
     </menu>
+{% endif %}
 
 {% if 'office' in user_config.toolchains %}
     <menu id="apps-office" label="Libre Office">
