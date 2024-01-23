@@ -407,7 +407,11 @@
                     <enabled>true</enabled>
                     <name>Transmission</name>
                 </startupnotify>
+{% if system.hidpi %}
+                <command>env GDK_SCALE=1 transmission-gtk</command>
+{% else %}
                 <command>transmission-gtk</command>
+{% endif %}
             </action>
         </keybind>
 {% endif %}
