@@ -5,3 +5,92 @@ desktops:
       system:
         laptop: true
         hidpi: true
+
+        gui:
+          dm: 'lightdm'
+
+      users:
+        root:
+          home_dir: '/root'
+
+          profile_dropins_dir: '.profile.d'
+
+          shells:
+            bash:
+              config_dropins_dir: '.bashrc.d'
+
+          editors:
+            vim:
+              default: true
+              config_dropins_dir: '.vim/configs'
+              plugins_dir: '.vim/bundle'
+
+          toolchains:
+            shell_basic: {}
+            shell_extras: {}
+            admin_system: {}
+            admin_network: {}
+            admin_tracing: {}
+
+          apps: {}
+
+        qazer:
+          home_dir: '/home/qazer'
+          downloads_dir: 'misc/downloads'
+
+          profile_dropins_dir: '.profile.d'
+
+          shells:
+            bash:
+              config_dropins_dir: '.bashrc.d'
+
+          editors:
+            vim:
+              default: true
+              config_dropins_dir: '.vim/configs'
+              plugins_dir: '.vim/bundle'
+
+          toolchains:
+            shell_basic: {}
+            shell_extras: {}
+
+            devel_basic: {}
+            devel_java: {}
+
+            devel_rust:
+              rustup_toolchains:
+                - name: 'stable-x86_64-unknown-linux-gnu'
+                  default: true
+                - name: 'nightly-x86_64-unknown-linux-gnu'
+              cargo_plugins:
+                - 'cargo-expand'
+
+            devel_go:
+              gopath: 'pub/src/misc/gopath'
+
+            devel_extras:
+              vagrant_backend: 'virtualbox'
+
+            admin_network: {}
+
+            media: {}
+            office: {}
+
+          apps:
+            ssh:
+              use_agent: true
+
+            vivaldi: {}
+            sublime: {}
+
+            doublecmd:
+              terminal: 'alacritty'
+              editor: 'subl'
+
+          gui:
+            de:
+              name: 'openbox_qaztom'
+              wallpaper: '/usr/local/share/wallpapers/arch_desktop.png'
+              xfce_panel:
+                x: 1920
+                y: 2144
