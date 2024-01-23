@@ -1,6 +1,6 @@
-nnoremap <Leader>nn :NERDTreeFocus<CR>
-nnoremap <Leader>nc :NERDTreeClose<CR>
-nnoremap <Leader>nf :NERDTreeFind<CR>
+nnoremap <Leader>n :NERDTreeFocus<CR>
+nnoremap <Leader>c :NERDTreeClose<CR>
+nnoremap <Leader>l :NERDTreeFind<CR>
 
 " Chdir on plugin load.
 let g:NERDTreeChDirMode = 1
