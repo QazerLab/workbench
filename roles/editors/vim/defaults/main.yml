@@ -9,3 +9,9 @@ editors_vim_basic_plugins:
   nerdtree:
     repo: https://github.com/scrooloose/nerdtree
     requires_config: true
+
+editors_vim_packages:
+  Archlinux:
+    - 'vim'
+  RedHat:
+    - 'vim-enhanced'

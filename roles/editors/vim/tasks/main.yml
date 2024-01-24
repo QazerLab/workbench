@@ -1,6 +1,6 @@
 ---
 - name: 'Check that role supports target OS'
-  when: 'ansible_os_family not in ["Archlinux"]'
+  when: 'ansible_os_family not in ["Archlinux", "RedHat"]'
   tags: 'user'
   ansible.builtin.fail:
     msg: >-
@@ -11,7 +11,7 @@
   become: true
   become_user: 'root'
   ansible.builtin.package:
-    name: 'vim'
+    name: '{{ editors_vim_packages[ansible_os_family] }}'
     state: 'present'
 
 - name: 'Store vim dirs locations'
