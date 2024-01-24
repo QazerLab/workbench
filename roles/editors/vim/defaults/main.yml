@@ -13,5 +13,7 @@ editors_vim_basic_plugins:
 editors_vim_packages:
   Archlinux:
     - 'vim'
+    - 'git'
   RedHat:
     - 'vim-enhanced'
+    - 'git'
