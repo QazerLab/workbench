@@ -1,0 +1,20 @@
+---
+tools_admin_system_basic_packages:
+  - 'socat'
+  - 'pciutils'
+  - 'usbutils'
+  - 'smartmontools'
+  - 'lm_sensors'
+  - 'upower'
+  - 'lshw'
+  - 'hwloc'
+  - 'upower'
+
+tools_admin_system_packages:
+  Archlinux: >-
+    {{
+      tools_admin_system_basic_packages +
+      ["acpi", "usb_modeswitch"]
+    }}
+
+  RedHat: '{{ tools_admin_system_basic_packages }}'

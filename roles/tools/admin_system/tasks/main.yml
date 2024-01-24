@@ -1,6 +1,6 @@
 ---
 - name: 'Check that role supports target OS'
-  when: 'ansible_os_family not in ["Archlinux"]'
+  when: 'ansible_os_family not in ["Archlinux", "RedHat"]'
   tags: 'user'
   ansible.builtin.fail:
     msg: >-
@@ -12,23 +12,4 @@
   become_user: 'root'
   ansible.builtin.package:
     state: 'present'
-    name:
-      - 'socat'
-      - 'pciutils'
-      - 'usbutils'
-      - 'smartmontools'
-      - 'lm_sensors'
-      - 'upower'
-      - 'lshw'
-      - 'hwloc'
-      - 'upower'
-      - 'acpi'
-
-      # TODO: this one is needed only on Arch-based
-      # desktops, as it provides udev rules for USB
-      # LTE dongles.
-      #
-      # Make it conditional depending on host's group
-      # and distro?
-      - 'usb_modeswitch'
-
+    name: '{{ tools_admin_system_packages[ansible_os_family] }}'
