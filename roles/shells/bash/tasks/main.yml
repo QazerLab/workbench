@@ -9,6 +9,7 @@
 
 - name: 'Install bash'
   become: true
+  become_user: 'root'
   ansible.builtin.package:
     name: 'bash'
     state: 'present'
