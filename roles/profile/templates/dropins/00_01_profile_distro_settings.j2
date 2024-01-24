@@ -1,0 +1,12 @@
+# This file contains distro-specific profile settings.
+# If this file is empty, nothing is wrong.
+
+{% if ansible_os_family == 'RedHat' %}
+# RedHat distros have old terminal info database which
+# does not contain information about alacritty, so
+# we have to pretend that we are using xterm.
+if [ "$TERM" == 'alacritty' ]
+then
+    export TERM=xterm
+fi
+{% endif %}
