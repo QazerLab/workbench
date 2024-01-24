@@ -1,0 +1,30 @@
+---
+tools_admin_network_base_packages:
+      - 'traceroute'
+      - 'mtr'
+      - 'tcpdump'
+      - 'nmap'
+      - 'curl'
+
+tools_admin_network_packages:
+  Archlinux: >-
+    {{
+      tools_admin_network_base_packages +
+
+      ['iproute2', 'bind-tools', 'gnu-netcat'] +
+
+      [
+        'dhcpcd',
+        'netctl',
+        'dialog',
+        'wpa_supplicant',
+        'ifplugd',
+        'openresolv'
+      ]
+    }}
+
+  RedHat: >-
+    {{
+      tools_admin_network_base_packages +
+      ['iproute', 'bind-utils', 'netcat']
+    }}
