@@ -12,6 +12,7 @@
       - 'bat'
       - 'jq'
       - 'yq'
+      - 'wget'
       - 'lynx'
 
 - name: 'Install profile drop-ins'

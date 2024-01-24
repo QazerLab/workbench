@@ -1,3 +1,2 @@
 alias ls='ls --color=auto'
 alias grep='grep --color'
-alias ip='ip --color'

@@ -6,10 +6,7 @@
     state: 'present'
     name:
       - 'coreutils'
-      - 'iproute2'
       - 'grep'
-      - 'curl'
-      - 'wget'
       - 'which'
       - 'file'
       - 'tree'

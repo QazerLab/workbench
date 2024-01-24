@@ -1,0 +1,1 @@
+alias ip='ip --color'

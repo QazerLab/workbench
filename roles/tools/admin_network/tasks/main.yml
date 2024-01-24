@@ -5,6 +5,7 @@
   ansible.builtin.package:
     state: 'present'
     name:
+      - 'iproute2'
       - 'bind-tools'
       - 'traceroute'
       - 'gnu-netcat'
@@ -31,3 +32,13 @@
     state: 'present'
     name:
       - 'wireshark-qt'
+
+- name: 'Install drop-ins for shells'
+  tags: 'user'
+  loop: '{{ user_config.shells | dict2items }}'
+  ansible.builtin.copy:
+    src: 'shell_dropins/{{ item.key }}/'
+    dest: '{{ user_config.home_dir }}/{{ item.value.config_dropins_dir }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
+    mode: '0644'
