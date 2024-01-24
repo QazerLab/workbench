@@ -3,7 +3,7 @@
 # still have desktop Skype present. For new installations, nothing gets
 # installed, as web-version is the preferred alternative.
 
-- name: 'Check that role supports target OS'
+- name: 'Fail if role does not support target OS'
   when: 'ansible_os_family not in ["Archlinux"]'
   tags: 'user'
   ansible.builtin.fail:
