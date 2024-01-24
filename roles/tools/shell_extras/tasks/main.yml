@@ -1,6 +1,6 @@
 ---
 - name: 'Check that role supports target OS'
-  when: 'ansible_os_family not in ["Archlinux"]'
+  when: 'ansible_os_family not in ["Archlinux", "RedHat"]'
   tags: 'user'
   ansible.builtin.fail:
     msg: >-
@@ -12,16 +12,54 @@
   become_user: 'root'
   ansible.builtin.package:
     state: 'present'
-    name:
-      - 'moreutils'
-      - 'ripgrep'
-      - 'fd'
-      - 'fzf'
-      - 'bat'
-      - 'jq'
-      - 'yq'
-      - 'wget'
-      - 'lynx'
+    name: '{{ tools_shell_extras_packages[ansible_os_family] }}'
+
+- name: 'Install static binaries when packages are not available'
+  when: 'ansible_os_family == "RedHat"'
+  block:
+    - name: 'Install fzf static binary'
+      ansible.builtin.unarchive:
+        src: '{{ tools_shell_extras_fzf_release }}'
+        dest: '/usr/local/bin'
+        remote_src: true
+
+    - name: 'Ensure fzf shell completions directory exists'
+      ansible.builtin.file:
+        path: '/usr/share/fzf'
+        owner: 'root'
+        group: 'root'
+        state: 'directory'
+        mode: '0755'
+
+    - name: 'Install fzf shell configurations'
+      ansible.builtin.unarchive:
+        src: '{{ tools_shell_extras_fzf_sources }}'
+        dest: '/usr/share/fzf'
+        remote_src: true
+        extra_opts:
+          - '--strip=2'
+          - '--wildcards'
+          - 'fzf-{{ tools_shell_extras_fzf_version }}/shell/*'
+
+    - name: 'Install bat static binary'
+      ansible.builtin.unarchive:
+        src: '{{ tools_shell_extras_bat_release }}'
+        dest: '/usr/local/bin'
+        remote_src: true
+        extra_opts:
+          - '--strip=1'
+          - '--wildcards'
+          - '*/bat'
+
+    - name: 'Install fd static binary'
+      ansible.builtin.unarchive:
+        src: '{{ tools_shell_extras_fd_release }}'
+        dest: '/usr/local/bin'
+        remote_src: true
+        extra_opts:
+          - '--strip=1'
+          - '--wildcards'
+          - '*/fd'
 
 - name: 'Install profile drop-ins'
   tags: 'user'
