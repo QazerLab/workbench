@@ -2,6 +2,9 @@
 tools_shell_extras_editor_plugins:
   vim:
     fzf:
+      repo: 'https://github.com/junegunn/fzf'
+      requires_config: false
+    fzf_vim:
       repo: 'https://github.com/junegunn/fzf.vim'
       requires_config: true
 
