@@ -1,6 +1,6 @@
 ---
 - name: 'Check that role supports target OS'
-  when: 'ansible_os_family not in ["Archlinux"]'
+  when: 'ansible_os_family not in ["Archlinux", "RedHat"]'
   tags: 'user'
   ansible.builtin.fail:
     msg: >-
@@ -77,7 +77,7 @@
   tags: 'user'
   loop:
     - '00_01_bash_ps_vars'
-    - '00_03_arch_utils'
+    - '00_03_distro_utils'
   ansible.builtin.template:
     src: 'dropins/{{ item }}.j2'
     dest: '{{ user_config.home_dir }}/{{ shell_config.config_dropins_dir }}/{{ item }}'

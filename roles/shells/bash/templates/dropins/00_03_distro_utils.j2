@@ -1,6 +1,9 @@
-# TODO: create a separate role for pacman?
+# Distro-specific basic aliases and helpers go below.
+# If this file is empty, nothing is wrong.
 
 {% if ansible_os_family == 'Archlinux' %}
+
+# TODO: create a separate role for pacman?
 alias pacman='pacman --color always'
 
 # Diff between actual config and its default version in the installed package.
