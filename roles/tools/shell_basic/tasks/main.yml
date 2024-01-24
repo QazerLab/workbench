@@ -1,6 +1,6 @@
 ---
 - name: 'Check that role supports target OS'
-  when: 'ansible_os_family not in ["Archlinux"]'
+  when: 'ansible_os_family not in ["Archlinux", "RedHat"]'
   tags: 'user'
   ansible.builtin.fail:
     msg: >-
