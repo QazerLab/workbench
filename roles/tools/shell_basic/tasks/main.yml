@@ -36,6 +36,15 @@
 
 - name: 'Install profile drop-ins'
   tags: 'user'
+  ansible.builtin.copy:
+    src: 'profile_dropins/'
+    dest: '{{ user_config.home_dir }}/{{ user_config.profile_dropins_dir }}'
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
+    mode: '0644'
+
+- name: 'Install templated profile drop-ins'
+  tags: 'user'
   loop:
     - '01_01_default_editor'
   ansible.builtin.template:
