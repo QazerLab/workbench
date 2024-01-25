@@ -2,9 +2,8 @@
 # If this file is empty, nothing is wrong.
 
 {% if ansible_os_family == 'RedHat' %}
-# RedHat distros have old terminal info database which
-# does not contain information about alacritty, so
-# we have to pretend that we are using xterm.
+# RedHat distros have old terminal info database which does not contain
+# information about alacritty, so we have to pretend that we are using xterm.
 #
 # XXX: using 256color version of xterm is crucial, as it has ccc capability,
 # which allows fzf to color its border properly.

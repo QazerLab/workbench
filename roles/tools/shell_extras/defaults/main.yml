@@ -38,13 +38,22 @@ tools_shell_extras_packages:
 # though it could be a good idea to specify version in inventories.
 tools_shell_extras_fzf_version: '0.46.0'
 tools_shell_extras_fzf_repo: 'https://github.com/junegunn/fzf'
-tools_shell_extras_fzf_release: '{{ tools_shell_extras_fzf_repo }}/releases/download/{{ tools_shell_extras_fzf_version }}/fzf-{{ tools_shell_extras_fzf_version }}-linux_amd64.tar.gz'
-tools_shell_extras_fzf_sources: '{{ tools_shell_extras_fzf_repo }}/archive/refs/tags/{{ tools_shell_extras_fzf_version }}.tar.gz'
+tools_shell_extras_fzf_release: "\
+  {{ tools_shell_extras_fzf_repo }}/releases/download/\
+  {{ tools_shell_extras_fzf_version }}/fzf-{{ tools_shell_extras_fzf_version }}\
+  -linux_amd64.tar.gz"
+tools_shell_extras_fzf_sources: "\
+  {{ tools_shell_extras_fzf_repo }}/archive/refs/tags/\
+  {{ tools_shell_extras_fzf_version }}.tar.gz"
 
 tools_shell_extras_fd_version: '9.0.0'
 tools_shell_extras_fd_releases: 'https://github.com/sharkdp/fd/releases/download'
-tools_shell_extras_fd_release: '{{ tools_shell_extras_fd_releases }}/v{{ tools_shell_extras_fd_version }}/fd-v{{ tools_shell_extras_fd_version }}-i686-unknown-linux-musl.tar.gz'
+tools_shell_extras_fd_release: "\
+  {{ tools_shell_extras_fd_releases }}/v{{ tools_shell_extras_fd_version }}/\
+  fd-v{{ tools_shell_extras_fd_version }}-i686-unknown-linux-musl.tar.gz"
 
 tools_shell_extras_bat_version: '0.24.0'
 tools_shell_extras_bat_releases: 'https://github.com/sharkdp/bat/releases/download'
-tools_shell_extras_bat_release: '{{ tools_shell_extras_bat_releases }}/v{{ tools_shell_extras_bat_version }}/bat-v{{ tools_shell_extras_bat_version }}-x86_64-unknown-linux-musl.tar.gz'
+tools_shell_extras_bat_release: "\
+  {{ tools_shell_extras_bat_releases }}/v{{ tools_shell_extras_bat_version }}/\
+  bat-v{{ tools_shell_extras_bat_version }}-x86_64-unknown-linux-musl.tar.gz"
