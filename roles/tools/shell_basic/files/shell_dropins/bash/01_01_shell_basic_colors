@@ -1,2 +1,18 @@
 alias ls='ls --color=auto'
 alias grep='grep --color'
+
+# https://unix.stackexchange.com/questions/52659/how-can-i-list-ls-colors-in-colour
+function print_colors() {
+    (
+        IFS=:;
+
+        for ls_color in ${LS_COLORS[@]}
+        do
+            color=${ls_color##*=};
+            ext=${ls_color%%=*};
+            echo -en "\E[${color}m${ext}\E[0m "
+        done
+
+        echo
+    )
+}
