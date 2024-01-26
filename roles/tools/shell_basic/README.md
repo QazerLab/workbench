@@ -8,8 +8,13 @@ Configures minimal environment for good shell experience.
 LS_COLORS
 ---------
 
-This role ships custom 'LS_COLORS' scheme, which is based on the default ls
+This role ships custom `LS_COLORS` scheme, which is based on the default ls
 color scheme but is more consistent:
+
+![LS_COLORS theme](docs/ls_colors.png)
+
+The basic color for entities of the same type remains the same, and all
+additional information is conveyed solely via background color:
 
 * __files__: white...
   * __with multiple hardlinks__: with cyan background.
@@ -26,8 +31,6 @@ color scheme but is more consistent:
   * __with SUID bit__: with red background;
   * __with SGID bit__: with orange background;
   * __with capabilities__: with yellow background.
-
-![LS_COLORS theme](docs/ls_colors.png)
 
 Additionally, ordinary files have some colors too, but these colors should not
 be easy to mix with main coloring.
