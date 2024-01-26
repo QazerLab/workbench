@@ -13,6 +13,8 @@ tools_admin_network_packages:
 
       ['iproute2', 'bind-tools', 'gnu-netcat'] +
 
+      ['websocat'] +
+
       [
         'dhcpcd',
         'netctl',
