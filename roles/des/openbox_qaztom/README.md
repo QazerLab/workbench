@@ -1,4 +1,4 @@
-openbox_-_qaztom
+openbox_qaztom
 ==============
 
 A custom Openbox-based DE striving to include only lightweight components with no dependencies
