@@ -39,8 +39,7 @@
   when: 'qaztom_app_config.mime_associations is defined'
   changed_when: true
   ansible.builtin.command:
-    argv:
-      - 'xdg-mime'
-      - 'default'
-      - '{{ qaztom_app_config.mime_associations.desktop_file }}'
-      - '{{ qaztom_app_config.mime_associations.mime_types | join(" ") }}'
+    cmd: >-
+      xdg-mime default
+      {{ qaztom_app_config.mime_associations.desktop_file }}
+      {{ qaztom_app_config.mime_associations.mime_types | join(" ") }}
