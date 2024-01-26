@@ -27,5 +27,7 @@ color scheme but is more consistent:
   * __with SGID bit__: with orange background;
   * __with capabilities__: with yellow background.
 
+![LS_COLORS theme](docs/ls_colors.png)
+
 Additionally, ordinary files have some colors too, but these colors should not
 be easy to mix with main coloring.
