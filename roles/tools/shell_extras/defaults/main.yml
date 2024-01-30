@@ -10,6 +10,7 @@ tools_shell_extras_editor_plugins:
 
 tools_shell_extras_packages:
   Archlinux:
+    - 'mlocate'
     - 'moreutils'
     - 'ripgrep'
     - 'fd'
@@ -28,6 +29,7 @@ tools_shell_extras_packages:
   # Probably, these tools (along with jq?) deserve to be moved out of this
   # toolchain?
   RedHat:
+    - 'mlocate'
     - 'moreutils'
     - 'ripgrep'
     - 'jq'
