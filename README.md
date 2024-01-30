@@ -8,9 +8,6 @@ A workstation installation suite.
 Target Requirements
 ===================
 
-The main target distro is ArchLinux, though there are no explicit dependencies (the
-implicit ones are package names).
-
 The suite expects the target OS to be
 
 * working and self-sufficient (e.g. in case of Arch the system is expected to be
@@ -18,8 +15,19 @@ in post-[Installation Guide](https://wiki.archlinux.org/index.php/Installation_g
 state);
 * connected to the Internet.
 
-Roles which may be useful for configuring user profile on servers (e.g.
-`profile`, `bash`, `vim`) are planned to support CentOS/RHEL in future.
+Distro/architecture support:
+
+* __ArchLinux on x86_64__:
+    * full support (all roles);
+* __CentOS/AlmaLinux 8 on x86_64__:
+    * `profile`;
+    * `editors/vim`;
+    * `shells/bash`;
+    * `shell_basic`;
+    * `shell_extras`;
+    * `admin_network`;
+    * `admin_system`;
+    * `admin_tracing`.
 
 
 
