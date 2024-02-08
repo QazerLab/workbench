@@ -28,6 +28,10 @@
             selectattr("key", "equalto", user)
           }}
 
+    - name: 'Configure target platform'
+      ansible.builtin.include_tasks:
+        file: 'tasks/platform_{{ ansible_os_family | lower }}.yml'
+
     - name: 'Install Xorg'
       when: '"gui" in system'
       ansible.builtin.include_role:

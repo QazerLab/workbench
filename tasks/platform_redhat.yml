@@ -1,0 +1,21 @@
+---
+# XXX: the yum_repository builtin module requires us to set baseurl or
+# mirrorlist parameter explicitly. These URLs are distro-specific, and setting
+# them explicitly would require us to customize the installation per-distro
+# rather than per- family.
+#
+# Given that all RedHat-family distros already ship the configuration for
+# powertools and we only need to enable it (not configure it from scratch),
+# yum_repository's requirements are a pointless obstacle, so we resort to the
+# CLI command to enable the required repo and to avoid per-distro
+# configuration.
+- name: 'enable powertools repo'
+  become: true
+  ansible.builtin.command:
+    cmd: 'yum config-manager --enable powertools'
+
+- name: 'add EPEL repo'
+  become: true
+  ansible.builtin.package:
+    name: 'epel-release'
+    state: 'present'
