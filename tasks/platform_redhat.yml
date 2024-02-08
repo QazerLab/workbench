@@ -9,12 +9,13 @@
 # yum_repository's requirements are a pointless obstacle, so we resort to the
 # CLI command to enable the required repo and to avoid per-distro
 # configuration.
-- name: 'enable powertools repo'
+- name: 'Enable powertools repo'
   become: true
+  changed_when: true
   ansible.builtin.command:
     cmd: 'yum config-manager --enable powertools'
 
-- name: 'add EPEL repo'
+- name: 'Add EPEL repo'
   become: true
   ansible.builtin.package:
     name: 'epel-release'
