@@ -16,6 +16,9 @@
 install.yml role-name[path]
 tasks/install_user.yml role-name[path]
 
+# See the comment inside the task file for motivation.
+tasks/platform_redhat.yml command-instead-of-module
+
 # This one is discussable, but given that most of use cases are
 # desktop installations (and even server use cases do not imply
 # mission-critical environments), comfort matters more than strict
