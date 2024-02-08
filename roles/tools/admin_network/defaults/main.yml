@@ -1,5 +1,6 @@
 ---
 tools_admin_network_base_packages:
+  - 'whois'
   - 'traceroute'
   - 'mtr'
   - 'tcpdump'
