@@ -39,6 +39,7 @@
       - 'zathura-ps'
       - 'audacious'
       - 'vlc'
+      - 'xournalpp'
     state: 'present'
 
 - name: 'Configure desktop environment apps'

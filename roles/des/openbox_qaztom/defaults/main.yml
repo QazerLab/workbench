@@ -15,6 +15,12 @@ de_config:
     x: 960
     y: 1066
 
+  # Again, window size is hard-coded into config as an absolute value, so we have to
+  # parameterize it and take device-specific values from particular inventory.
+  xournalpp:
+    window_width: 1920
+    window_height: 1030
+
   # Uncomment to set the wallpaper under Tilda.
   # wallpaper: /path/to/file
 
@@ -132,3 +138,11 @@ des_openbox_qaztom_apps:
       mime_types:
         - 'application/pdf'
         - 'image/vnd.djvu'
+
+  xournalpp:
+    config_dirs:
+      - '.config/xournalpp'
+    config_templates:
+      - from: 'settings.xml.j2'
+        to: '.config/xournalpp/settings.xml'
+    config_handlers: []

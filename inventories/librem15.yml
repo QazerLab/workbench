@@ -97,3 +97,6 @@ desktops:
               xfce_panel:
                 x: 1920
                 y: 2144
+              xournalpp:
+                window_width: 1920
+                window_height: 1030
