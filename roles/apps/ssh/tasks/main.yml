@@ -48,7 +48,7 @@
 
 # XXX: do not bother with creating custom units for non-Arch systems, as currently
 # the agent is required only for client machines, which are Arch desktops, and Arch
-# has a default agent unit shipepd with openssh package (which is not the case for,
+# has a default agent unit shipped with openssh package (which is not the case for,
 # say, CentOS / Almalinux).
 - name: 'Enable ssh agent'
   when: 'ansible_os_family == "Archlinux" and app_config.use_agent'
