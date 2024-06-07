@@ -47,5 +47,6 @@ users:
     toolchains:
       shell_basic: {}
       shell_extras: {}
+      admin_network: {}
 
     apps: {}
