@@ -38,7 +38,7 @@ tools_shell_extras_packages:
 # These parameters apply only to fallback static binary installation, so they
 # are private to the role and are not considered parts of toolchain config,
 # though it could be a good idea to specify version in inventories.
-tools_shell_extras_fzf_version: '0.46.0'
+tools_shell_extras_fzf_version: '0.53.0'
 tools_shell_extras_fzf_repo: 'https://github.com/junegunn/fzf'
 tools_shell_extras_fzf_release: "\
   {{ tools_shell_extras_fzf_repo }}/releases/download/\
