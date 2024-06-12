@@ -1,0 +1,8 @@
+#!/bin/bash -eu
+script_location="$(dirname "${BASH_SOURCE[0]}")"
+venv_location="$script_location/.ansible_venv"
+
+"$script_location/.venv_install"
+. "$venv_location/bin/activate"
+
+ansible-playbook "$@"

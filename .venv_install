@@ -1,0 +1,12 @@
+#!/bin/bash -eu
+script_location="$(dirname "${BASH_SOURCE[0]}")"
+venv_location="$script_location/.ansible_venv"
+
+[ -d "$venv_location" ] && exit
+
+echo "Creating new virtualenv at $venv_location..."
+virtualenv "$venv_location"
+. "$venv_location/bin/activate"
+
+echo "Installing ansible to virtualenv..."
+pip install -r "$script_location/.venv_install_requirements.txt"

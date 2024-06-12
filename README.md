@@ -55,6 +55,15 @@ ansible-playbook -i inventories/$DEVICE -t user install.yml
 
 This mode does not affect system-wide configs and does not install packages.
 
+**NOTE**: due to Ansible's support policy, there may be a need in older
+Ansible version than the control host has. If the playbook fails due to
+unknown reasons which seem to be Python-related, use `./ansible` instead of
+`ansible` and `./ansible-playbook` instead of `ansible-playbook`: these
+wrappers will install a specific legacy Ansible version (currently &mdash; the
+latest release of 2.x branch) into local virtualenv and run this specific
+version instead of system-wide one. Currently this may be required if the
+target host is based on RHEL 8 and the control host has Ansible 3.x.
+
 
 
 Global Options
