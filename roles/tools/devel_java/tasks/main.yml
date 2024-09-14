@@ -17,6 +17,10 @@
       - 'openjdk-doc'
       - 'openjdk-src'
 
+      - 'jdk21-openjdk'
+      - 'openjdk21-doc'
+      - 'openjdk21-src'
+
       - 'jdk17-openjdk'
       - 'openjdk17-doc'
       - 'openjdk17-src'
