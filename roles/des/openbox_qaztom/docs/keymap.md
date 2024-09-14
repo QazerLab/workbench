@@ -89,7 +89,7 @@ Finally, the bottom row:
 Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>       | Comment
 ---------|----------------------------------|------------------------|-----------------------------
 Z        | Move to edge left                |                        |
-X        | Move to edge down                |                        |
+X        | Move to edge down                | Run Xournalpp          |
 C        | Move to edge up                  |                        |
 V        | Move to edge right               | Run VisualVM           |
 B        |                                  |                        |
