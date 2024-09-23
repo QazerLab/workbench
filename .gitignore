@@ -1,3 +1,7 @@
 *.retry
 
 .ansible_venv/
+
+# Existing test VMs' metadata.
+tests/alma8/.vagrant/
+tests/alma9/.vagrant/

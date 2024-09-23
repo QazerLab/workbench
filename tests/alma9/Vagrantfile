@@ -1,0 +1,35 @@
+VAGRANT_COMMAND = ARGV[0]
+
+Vagrant.configure("2") do |config|
+    if VAGRANT_COMMAND == "ssh"
+        config.ssh.username = 'qazer'
+    end
+
+    config.vm.box = "almalinux/9"
+
+    config.vm.network :forwarded_port, guest: 22, host: 2221, id: "ssh"
+
+    # XXX: weirdly, 1G RAM is not enough for yum (since Alma 9), so we need
+    # 2G just to be able to install any package without triggering the OOMKiller.
+    config.vm.provider "virtualbox" do |vb|
+        vb.memory = "2048"
+    end
+
+    config.vm.provision "shell", inline: <<-SHELL
+        getent passwd qazer &> /dev/null || adduser -m qazer
+        echo "qazer ALL=NOPASSWD:ALL" > /etc/sudoers.d/qazer
+        mkdir -p -m 0700 /home/qazer/.ssh
+        cp /home/vagrant/.ssh/authorized_keys /home/qazer/.ssh/
+        chown -R qazer.qazer /home/qazer/.ssh
+
+        yum install -y python3
+    SHELL
+
+    config.vm.provision "ansible" do |ansible|
+        ansible.playbook = "../../install.yml"
+
+        ansible.groups = {
+            "servers": ["default"]
+        }
+    end
+end
