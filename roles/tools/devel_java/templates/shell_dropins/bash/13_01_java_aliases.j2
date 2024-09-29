@@ -6,3 +6,21 @@ alias j17='sudo archlinux-java set java-17-openjdk'
 alias j21='sudo archlinux-java set java-21-openjdk'
 alias j22='sudo archlinux-java set java-22-openjdk'
 {% endif %}
+
+alias hsdis_print_templates='
+    export _JAVA_OPTIONS="
+        ${_JAVA_OPTIONS}
+        -XX:+UnlockDiagnosticVMOptions
+        -XX:PrintAssemblyOptions=intel
+        -XX:+PrintInterpreter
+    "
+'
+
+alias hsdis_print_asm='
+    export _JAVA_OPTIONS="
+        ${_JAVA_OPTIONS}
+        -XX:+UnlockDiagnosticVMOptions
+        -XX:PrintAssemblyOptions=intel
+        -XX:+PrintAssembly
+    "
+'
