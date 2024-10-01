@@ -6,6 +6,8 @@ tools_admin_network_base_packages:
   - 'tcpdump'
   - 'nmap'
   - 'curl'
+  - 'ethtool'
+  - 'iftop'
 
 tools_admin_network_packages:
   Archlinux: >-

@@ -1,13 +1,17 @@
 ---
 tools_admin_system_basic_packages:
+  - 'htop'
   - 'socat'
   - 'pciutils'
   - 'usbutils'
   - 'smartmontools'
   - 'lm_sensors'
   - 'upower'
+  - 'powertop'
   - 'lshw'
   - 'hwloc'
+  - 'iotop'
+  - 'firejail'
 
 tools_admin_system_packages:
   Archlinux: >-
