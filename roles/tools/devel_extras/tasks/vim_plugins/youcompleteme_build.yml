@@ -1,49 +1,29 @@
 ---
-- name: 'Create youcompleteme build directory'
-  ansible.builtin.file:
-    path: '{{ plugin_dir }}/build'
-    state: 'directory'
-    owner: '{{ user_name }}'
-    group: '{{ user_name }}'
-    mode: '0755'
+- name: 'Initialize youcompleteme build arguments'
+  ansible.builtin.set_fact:
+    ycm_build_args: '{{ plugin_config.default_build_args }}'
 
-# XXX: as we build YCM in temporary directory, changed_when is always true.
-# Every role re-run, in fact, just rebuilds the plugin anew.
-#
-# This probably is an optimization point for future, but this does not take
-# lots of time to rebuild, so no one cares.
-- name: 'Prepare plugin for build'
-  changed_when: true
-  args:
-    chdir: '{{ plugin_dir }}/build'
-  ansible.builtin.command:
-    cmd: 'cmake -G "Unix Makefiles" . {{ plugin_dir }}/third_party/ycmd/cpp'
-
-- name: 'Build youcompleteme plugin'
-  changed_when: true
-  args:
-    chdir: '{{ plugin_dir }}/build'
-  ansible.builtin.command:
-    cmd: 'cmake --build . --target ycm_core'
-
-- name: 'Install watchdog library'
-  ansible.builtin.copy:
-    remote_src: true
-    src: '{{ plugin_dir }}/third_party/ycmd/third_party/watchdog_deps/watchdog/src/watchdog'
-    dest: '{{ plugin_dir }}/third_party/ycmd/third_party/watchdog_deps/watchdog/build/lib3/'
-    owner: '{{ user_name }}'
-    group: '{{ user_name }}'
-    mode: '0755'
+- name: 'Youcompleteme language support - C and C++'
+  when: '"devel_basic" in user_config["toolchains"]'
+  ansible.builtin.set_fact:
+    ycm_build_args: '{{ ycm_build_args }} --clangd-completer'
 
 - name: 'Youcompleteme language support - Golang'
   when: '"devel_go" in user_config["toolchains"]'
+  ansible.builtin.set_fact:
+    ycm_build_args: '{{ ycm_build_args }} --go-completer'
+
+- name: 'Youcompleteme language support - Java'
+  when: '"devel_java" in user_config["toolchains"]'
+  ansible.builtin.set_fact:
+    ycm_build_args: '{{ ycm_build_args }} --java-completer'
+
+- name: 'Run youcompleteme build'
   changed_when: true
-  environment:
-    GO111MODULE: 'on'
-    GOPATH: '{{ plugin_dir }}/third_party/ycmd/third_party/go'
-    GOBIN: '{{ plugin_dir }}/third_party/ycmd/third_party/go/bin'
+  args:
+    chdir: '{{ plugin_dir }}'
   ansible.builtin.command:
-    cmd: 'go install golang.org/x/tools/gopls@v0.7.1'
+    cmd: 'python3 install.py {{ ycm_build_args }}'
 
 # XXX: here we diverge from YCM installation guide, which suggests installing
 # whole toolchain into the temporary directory and then copy it into YCM dir.
@@ -68,8 +48,3 @@
         path: '{{ plugin_dir }}/third_party/ycmd/third_party/rust-analyzer'
         src: '{{ user_config.home_dir }}/.rustup/toolchains/{{ rustup_default_toolchain }}'
         state: 'link'
-
-- name: 'Remove youcompleteme build directory'
-  ansible.builtin.file:
-    path: '{{ plugin_dir }}/build'
-    state: 'absent'

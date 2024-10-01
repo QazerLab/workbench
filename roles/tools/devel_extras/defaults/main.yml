@@ -11,3 +11,4 @@ tools_devel_extra_editor_plugins:
       repo: https://github.com/Valloric/YouCompleteMe
       requires_build: true
       requires_config: true
+      default_build_args: ''
