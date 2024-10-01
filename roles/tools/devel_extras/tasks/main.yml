@@ -25,6 +25,14 @@
       # Mostly used for package building, specifically, AUR packages.
       - 'fakeroot'
 
+      # Given that we use clangd language server (e. g. in Vim's YCM),
+      # and there are lots of freestyle C/C++, we need some way to let clangd
+      # know how to index these projects.
+      #
+      # Bear seems to be the best tool for this task; it is able to process
+      # whole OpenJDK project in a sufficiently good manner.
+      - 'bear'
+
       # Heavyweight stuff.
       - 'docker'
       - 'docker-compose'
