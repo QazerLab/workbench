@@ -88,7 +88,7 @@ Finally, the bottom row:
 
 Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>       | Comment
 ---------|----------------------------------|------------------------|-----------------------------
-Z        | Move to edge left                |                        |
+Z        | Move to edge left                | Run Kiwix              |
 X        | Move to edge down                | Run Xournalpp          |
 C        | Move to edge up                  |                        |
 V        | Move to edge right               | Run VisualVM           |
