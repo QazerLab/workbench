@@ -903,10 +903,11 @@ ${% endif %}
         <manageDesktops>yes</manageDesktops>
     </menu>
 
-    <!-- TODO: make optional depending on feature flags -->
     <applications>
+{% if 'devel_web' in user_config.toolchains %}
         <application class="firefox">
             <decor>no</decor>
         </application>
+{% endif %}
     </applications>
 </openbox_config>
