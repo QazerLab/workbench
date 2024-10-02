@@ -462,7 +462,7 @@ ${% endif %}
         </keybind>
 {% endif %}
 
-        <!-- TODO: make optional app? -->
+{% if 'devel_web' in user_config.toolchains %}
         <keybind key="C-W-f">
             <action name="Execute">
                 <startupnotify>
@@ -472,6 +472,7 @@ ${% endif %}
                 <command>firefox</command>
             </action>
         </keybind>
+{% endif %}
 
 {% if 'media' in user_config.toolchains %}
         <keybind key="C-W-g">
@@ -558,7 +559,7 @@ ${% endif %}
         </keybind>
 {% endif %}
 
-        <!-- TODO: make optional app? -->
+{% if 'devel_web' in user_config.toolchains %}
         <keybind key="C-W-m">
             <action name="Execute">
                 <startupnotify>
@@ -568,6 +569,7 @@ ${% endif %}
                 <command>chromium</command>
             </action>
         </keybind>
+{% endif %}
 
         <!--
             Misc.

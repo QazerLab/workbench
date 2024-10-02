@@ -68,6 +68,9 @@ desktops:
                 - 'cargo-expand'
 
             devel_extras: {}
+
+            devel_web: {}
+
             admin_network: {}
 
             media: {}

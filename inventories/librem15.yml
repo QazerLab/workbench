@@ -72,6 +72,8 @@ desktops:
             devel_extras:
               vagrant_backend: 'virtualbox'
 
+            devel_web: {}
+
             admin_network: {}
 
             media: {}
