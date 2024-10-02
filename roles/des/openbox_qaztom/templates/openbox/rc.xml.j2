@@ -486,17 +486,6 @@ ${% endif %}
         </keybind>
 {% endif %}
 
-        <!-- TODO: make optional app? -->
-        <keybind key="C-W-l">
-            <action name="Execute">
-                <startupnotify>
-                    <enabled>true</enabled>
-                    <name>Slack</name>
-                </startupnotify>
-                <command>slack</command>
-            </action>
-        </keybind>
-
 {% if 'media' in user_config.toolchains %}
         <keybind key="C-W-z">
             <action name="Execute">

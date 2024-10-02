@@ -79,7 +79,7 @@ G        |                                  | Run Gimp               |
 H        | Go to desktop left               |                        |
 J        | Minimize window                  |
 K        | Maximize window                  |
-L        | Go to desktop right              | Run Slack
+L        | Go to desktop right              |
 ;        | Lock screen                      |
 '        |                                  |
 
