@@ -87,6 +87,7 @@ desktops:
             sublime: {}
             transmission: {}
             skype: {}
+            telegram: {}
 
             doublecmd:
               terminal: 'alacritty'

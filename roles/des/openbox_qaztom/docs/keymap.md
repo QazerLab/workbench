@@ -55,7 +55,7 @@ Tab      | Cycle windows                    |                        | Better th
 Q        | Reconfigure Openbox              |                        |
 W        | Close window                     | Run Wireshark          | `W-W` beats `Alt-F4`
 E        | Show window menu                 | Run editor (Sublime)   |
-R        | Open quick run window (gmrun)    |                        | `W-R` is from Windows
+R        | Open quick run window (gmrun)    | Run Telegram           | `W-R` is from Windows
 T        | Run terminal                     | Run Transmission       |
 Y        |                                  |                        |
 U        | Move to desktop left             |                        |

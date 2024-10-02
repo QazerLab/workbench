@@ -400,6 +400,18 @@
         </keybind>
 {% endif %}
 
+{% if 'telegram' in user_config.apps %}
+        <keybind key="C-W-r">
+            <action name="Execute">
+                <startupnotify>
+                    <enabled>true</enabled>
+                    <name>Telegram</name>
+                </startupnotify>
+                <command>telegram-desktop</command>
+            </action>
+        </keybind>
+{% endif %}
+
 {% if 'transmission' in user_config.apps %}
         <keybind key="C-W-t">
             <action name="Execute">
