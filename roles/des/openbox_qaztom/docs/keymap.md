@@ -103,8 +103,8 @@ M        | Move window                      | Run Chromium           |
 
 Some legacy hotkeys are still kept alive and may be used along main hotkeys:
 
-* `Alt-Tab` (superceded by `Win-Tab`);
-* `Alt-F4` (superceded by `Win-W`);
-* `Win-Down/Up` (superceded by `Win-J/K`, but actually `Win-A` is used for both actions in 99% of cases).
+* `Alt-Tab` (superseded by `Win-Tab`);
+* `Alt-F4` (superseded by `Win-W`);
+* `Win-Down/Up` (superseded by `Win-J/K`, but actually `Win-A` is used for both actions in 99% of cases).
 
 Someday these will be gone due to uselessness.
