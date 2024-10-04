@@ -1,7 +1,7 @@
 Workbench
 =========
 
-A workstation installation suite.
+Cozy environment configuration suite.
 
 
 
@@ -15,19 +15,158 @@ in post-[Installation Guide](https://wiki.archlinux.org/index.php/Installation_g
 state);
 * connected to the Internet.
 
-Distro/architecture support:
+Compatibility Matrix
+---------------------
 
-* __ArchLinux on x86_64__:
-    * full support (all roles);
-* __CentOS/AlmaLinux 8 on x86_64__:
-    * `profile`;
-    * `editors/vim`;
-    * `shells/bash`;
-    * `shell_basic`;
-    * `shell_extras`;
-    * `admin_network`;
-    * `admin_system`;
-    * `admin_tracing`.
+The compatibility matrix shows what distro families and architectures are supported by what role:
+
+* **&#x2713;** &mdash; the role fully supports target distro family under all conditions;
+* **${ARCH} only** &mdash; the role fully supports target distro family, but only for specific architectures;
+* **no GUI** &mdash; the role supports target distro family, but support is limited to system and/or CLI tools and configurations.
+* empty cell &mdash; the role does not support target distro family at all.
+
+System-wide configuration:
+
+<table>
+    <tr>
+        <th></th>
+        <th><b>ArchLinux</b></th>
+        <th><b>RedHat</b></th>
+    </tr>
+    <tr>
+        <td><b>xorg</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan = "3" align = "center"><b>DMs</b></td>
+    </tr>
+    <tr>
+        <td><b>lightdm</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+</table>
+
+User-specific configuration:
+
+<table>
+    <tr>
+        <th></th>
+        <th><b>ArchLinux</b></th>
+        <th><b>RedHat</b></th>
+    </tr>
+    <tr>
+        <td><b>profile</b></td>
+        <td><b>&#x2713;</b></td>
+        <td><b>&#x2713;</b></td>
+    </tr>
+    <tr>
+        <td colspan = "3" align = "center"><b>shells</b></td>
+    </tr>
+    <tr>
+        <td><b>bash</b></td>
+        <td><b>&#x2713;</b></td>
+        <td><b>&#x2713;</b></td>
+    </tr>
+    <tr>
+        <td colspan = "3" align = "center"><b>editors</b></td>
+    </tr>
+    <tr>
+        <td><b>vim</b></td>
+        <td><b>&#x2713;</b></td>
+        <td><b>&#x2713;</b></td>
+    </tr>
+    <tr>
+        <td colspan = "3" align = "center"><b>toolchains</b></td>
+    </tr>
+    <tr>
+        <td><b>shell_basic</b></td>
+        <td><b>&#x2713;</b></td>
+        <td><b>&#x2713;</b></td>
+    </tr>
+    <tr>
+        <td><b>shell_extras</b></td>
+        <td><b>&#x2713;</b></td>
+        <td><b>amd64 only</b></td>
+    </tr>
+    <tr>
+        <td><b>admin_network</b></td>
+        <td><b>&#x2713;</b></td>
+        <td><b>no GUI</b></td>
+    </tr>
+    <tr>
+        <td><b>admin_system</b></td>
+        <td><b>&#x2713;</b></td>
+        <td><b>&#x2713;</b></td>
+    </tr>
+    <tr>
+        <td><b>admin_tracing</b></td>
+        <td><b>&#x2713;</b></td>
+        <td><b>&#x2713;</b></td>
+    </tr>
+    <tr>
+        <td><b>devel_basic</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><b>devel_java</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><b>devel_rust</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><b>devel_go</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><b>devel_python</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><b>devel_extras</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><b>devel_web</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><b>media</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><b>office</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan = "3" align = "center"><b>DEs</b></td>
+    </tr>
+    <tr>
+        <td><b>openbox_qaztom</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan = "3" align = "center"><b>standalone apps</b></td>
+    </tr>
+    <tr>
+        <td><b>(all apps)</b></td>
+        <td><b>&#x2713;</b></td>
+        <td></td>
+    </tr>
+</table>
 
 
 
