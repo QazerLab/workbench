@@ -27,6 +27,19 @@ set shiftwidth=4
 set smarttab
 set expandtab
 
+" Sometimes Vim happens to be not so smart and ignores some hints like LANG
+" which should make Vim use UTF-8 by default, so we force UTF-8 here. This
+" should affect only how things are displayed in Vim, not the on-disk encoding
+" of files, so it should be perfectly OK.
+"
+" We need to force UTF-8 to make nifty symbols in listchars appear correctly
+" disregarding the actual file encoding; also, some plugins could use
+" non-ASCII characters for their TUI.
+"
+" XXX: here we strongly assume that the system is set up to handle UTF-8
+" properly (LANG and LC_* variables are set to UTF-8 locales, etc.).
+set encoding=utf-8
+
 " Highlight tabs and trailing spaces.
 set list
 set listchars=tab:→\ ,trail:·
