@@ -1,0 +1,29 @@
+---
+system:
+  laptop: false
+  hidpi: false
+
+# The default configuration for embedded devices should be pretty compact,
+# so we cover only the root user with some minimal set of tools they could need.
+users:
+  root:
+    home_dir: '/root'
+
+    profile_dropins_dir: '.profile.d'
+
+    shells:
+      bash:
+        config_dropins_dir: '.bashrc.d'
+
+    editors:
+      vim:
+        default: true
+        config_dropins_dir: '.vim/configs'
+        plugins_dir: '.vim/bundle'
+
+    toolchains:
+      shell_basic: {}
+      admin_system: {}
+      admin_network: {}
+
+    apps: {}

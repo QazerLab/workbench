@@ -64,8 +64,11 @@
       {{
         "server" if "servers" in groups
         else (
-          "desktop" if "desktops" in groups
-          else "unknown"
+          "device" if "devices" in groups
+          else (
+            "desktop" if "desktops" in groups
+            else "unknown"
+          )
         )
       }}
     user_role: >-

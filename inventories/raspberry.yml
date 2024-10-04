@@ -1,0 +1,50 @@
+devices:
+  hosts:
+    pi:
+      users:
+        root:
+          home_dir: '/root'
+
+          profile_dropins_dir: '.profile.d'
+
+          shells:
+            bash:
+              config_dropins_dir: '.bashrc.d'
+
+          editors:
+            vim:
+              default: true
+              config_dropins_dir: '.vim/configs'
+              plugins_dir: '.vim/bundle'
+
+          toolchains:
+            shell_basic: {}
+            shell_extras: {}
+            admin_system: {}
+            admin_network: {}
+            admin_tracing: {}
+
+          apps: {}
+
+        qazer:
+          home_dir: '/home/qazer'
+          downloads_dir: 'misc/downloads'
+
+          profile_dropins_dir: '.profile.d'
+
+          shells:
+            bash:
+              config_dropins_dir: '.bashrc.d'
+
+          editors:
+            vim:
+              default: true
+              config_dropins_dir: '.vim/configs'
+              plugins_dir: '.vim/bundle'
+
+          toolchains:
+            shell_basic: {}
+            shell_extras: {}
+            admin_network: {}
+
+          apps: {}

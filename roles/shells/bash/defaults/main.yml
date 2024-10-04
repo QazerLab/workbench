@@ -9,7 +9,11 @@ shells_bash_ps1_colors:
   server:
     unprivileged: '38;5;200'  # Magenta
     superuser: '38;5;196'     # Dark red
+  device:
+    unprivileged: '38;5;51'   # Cyan
+    superuser: '38;5;226'     # Light yellow
 
 shells_bash_ps1_host:
   desktop: ''
+  device: ''
   server: '\H | '
