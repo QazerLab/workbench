@@ -51,6 +51,8 @@ tools_shell_extras_packages:
 tools_shell_extras_platforms:
   x86_64:
     fzf: 'amd64'
+  aarch64:
+    fzf: 'arm64'
 
 tools_shell_extras_fzf_version: '0.53.0'
 tools_shell_extras_fzf_repo: 'https://github.com/junegunn/fzf'

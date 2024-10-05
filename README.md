@@ -21,7 +21,7 @@ Compatibility Matrix
 The compatibility matrix shows what distro families and architectures are supported by what role:
 
 * **&#x2713;** &mdash; the role fully supports target distro family under all conditions;
-* **${ARCH} only** &mdash; the role fully supports target distro family, but only for specific architectures;
+* **${ARCH}** &mdash; the role fully supports target distro family, but only for specific architectures;
 * **no GUI** &mdash; the role supports target distro family, but support is limited to system and/or CLI tools and configurations.
 * empty cell &mdash; the role does not support target distro family at all.
 
@@ -96,8 +96,8 @@ User-specific configuration:
     <tr>
         <td><b>shell_extras</b></td>
         <td><b>&#x2713;</b></td>
-        <td><b>amd64 only</b></td>
-        <td><b>&#x2713;</b></td>
+        <td><b>amd64, arm64</b></td>
+        <td><b>amd64, arm64</b></td>
     </tr>
     <tr>
         <td><b>admin_network</b></td>
