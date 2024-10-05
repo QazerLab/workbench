@@ -1,4 +1,13 @@
 ---
+# RHEL distos seem to not include tar in base system, and it is needed for some
+# operations in our playbooks (e.g. unarchive tasks), so let's install it just
+# right now.
+- name: 'Install tar'
+  become: true
+  ansible.builtin.package:
+    name: 'tar'
+    state: 'present'
+
 # XXX: the yum_repository builtin module requires us to set baseurl or
 # mirrorlist parameter explicitly. These URLs are distro-specific, and setting
 # them explicitly would require us to customize the installation per-distro
