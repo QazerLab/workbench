@@ -12,33 +12,33 @@ tools_shell_extras_base_packages:
   - 'mlocate'
   - 'moreutils'
   - 'ripgrep'
+  - 'bat'
   - 'jq'
   - 'wget'
+  - 'lynx'
 
 tools_shell_extras_packages:
   Archlinux: >-
     {{
       tools_shell_extras_base_packages +
 
-      ['fd', 'fzf', 'bat', 'yq', 'lynx']
+      ['fd', 'fzf']
     }}
 
-  # XXX: fd, fzf and bat are not yet available as ordinary packages, so they
-  # are installed as plain statically-linked binaries.
-  #
-  # yq and lynx are not available as packages, but there is no real need for
-  # them on servers, so they are simply discarded for the RedHat family.
-  # Probably, these tools (along with jq?) deserve to be moved out of this
-  # toolchain?
-  RedHat: '{{ tools_shell_extras_base_packages }}'
+  # XXX: fzf is not yet available as ordinary package in EPEL8, so it is
+  # installed as plain statically-linked binary.
+  RedHat: >-
+    {{
+      tools_shell_extras_base_packages +
 
-  # XXX: again, yq does not seem to be available for now, so we omit it.
-  # It should appear in Crimson though, as it is present in the Bookworm repo.
+      ['fd-find']
+    }}
+
   PureOS: >-
     {{
       tools_shell_extras_base_packages +
 
-      ['fd-find', 'fzf', 'bat', 'lynx']
+      ['fd-find', 'fzf']
     }}
 
 # The parameters below apply only to fallback static binary installation, so
@@ -51,8 +51,6 @@ tools_shell_extras_packages:
 tools_shell_extras_platforms:
   x86_64:
     fzf: 'amd64'
-    fd: 'i686'
-    bat: 'x86_64'
 
 tools_shell_extras_fzf_version: '0.53.0'
 tools_shell_extras_fzf_repo: 'https://github.com/junegunn/fzf'
@@ -63,17 +61,3 @@ tools_shell_extras_fzf_release: "\
 tools_shell_extras_fzf_sources: "\
   {{ tools_shell_extras_fzf_repo }}/archive/refs/tags/\
   {{ tools_shell_extras_fzf_version }}.tar.gz"
-
-tools_shell_extras_fd_version: '9.0.0'
-tools_shell_extras_fd_releases: 'https://github.com/sharkdp/fd/releases/download'
-tools_shell_extras_fd_release: "\
-  {{ tools_shell_extras_fd_releases }}/v{{ tools_shell_extras_fd_version }}/\
-  fd-v{{ tools_shell_extras_fd_version }}-\
-  {{ tools_shell_extras_platforms[ansible_architecture].fd }}-unknown-linux-musl.tar.gz"
-
-tools_shell_extras_bat_version: '0.24.0'
-tools_shell_extras_bat_releases: 'https://github.com/sharkdp/bat/releases/download'
-tools_shell_extras_bat_release: "\
-  {{ tools_shell_extras_bat_releases }}/v{{ tools_shell_extras_bat_version }}/\
-  bat-v{{ tools_shell_extras_bat_version }}-\
-  {{ tools_shell_extras_platforms[ansible_architecture].bat }}-unknown-linux-musl.tar.gz"

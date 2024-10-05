@@ -45,26 +45,6 @@
           - '--wildcards'
           - 'fzf-{{ tools_shell_extras_fzf_version }}/shell/*'
 
-    - name: 'Install bat static binary'
-      ansible.builtin.unarchive:
-        src: '{{ tools_shell_extras_bat_release }}'
-        dest: '/usr/local/bin'
-        remote_src: true
-        extra_opts:
-          - '--strip=1'
-          - '--wildcards'
-          - '*/bat'
-
-    - name: 'Install fd static binary'
-      ansible.builtin.unarchive:
-        src: '{{ tools_shell_extras_fd_release }}'
-        dest: '/usr/local/bin'
-        remote_src: true
-        extra_opts:
-          - '--strip=1'
-          - '--wildcards'
-          - '*/fd'
-
 - name: 'Install profile drop-ins'
   tags: 'user'
   ansible.builtin.copy:
