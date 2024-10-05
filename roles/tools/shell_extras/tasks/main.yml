@@ -45,6 +45,27 @@
           - '--wildcards'
           - 'fzf-{{ tools_shell_extras_fzf_version }}/shell/*'
 
+# XXX: Some distros seem to rename fd and bat in their packages to avoid name
+# clash with already existing packages. We will probably never face this issue,
+# so we make an attempt to make these binaries availabe via their original
+# names by symlinking them from /usr/local/bin.
+- name: 'Make renamed binaries available in PATH with their original names'
+  when: 'ansible_os_family == "PureOS"'
+  become: true
+  become_user: 'root'
+  block:
+    - name: 'Symlink /usr/local/bin/fd to original package binary'
+      ansible.builtin.file:
+        path: '/usr/local/bin/fd'
+        src: '/usr/lib/cargo/bin/fd'
+        state: 'link'
+
+    - name: 'Symlink /usr/local/bin/bat to original package binary'
+      ansible.builtin.file:
+        path: '/usr/local/bin/bat'
+        src: '/usr/bin/batcat'
+        state: 'link'
+
 - name: 'Install profile drop-ins'
   tags: 'user'
   ansible.builtin.copy:
