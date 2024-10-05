@@ -72,7 +72,7 @@ The home row:
 Base Key | Win-\<Key\>                      | Ctrl-Win-\<Key\>       | Comment
 ---------|----------------------------------|------------------------|-----------------------------
 A        | Toggle maximize                  |                        | Incredibly useful
-S        |                                  | Run Skype              |
+S        |                                  |                        |
 D        | Toggle show desktop              | Run DoubleCmd          | `W-D` is from Windows
 F        | Toggle fullscreen                | Run Firefox            |
 G        |                                  | Run Gimp               |

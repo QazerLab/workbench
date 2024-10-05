@@ -86,7 +86,6 @@ desktops:
             vivaldi: {}
             sublime: {}
             transmission: {}
-            skype: {}
             telegram: {}
 
             doublecmd:

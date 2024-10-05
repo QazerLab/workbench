@@ -450,18 +450,6 @@
         </keybind>
 {% endif %}
 
-{% if 'skype' in user_config.apps %}
-        <keybind key="C-W-s">
-            <action name="Execute">
-                <startupnotify>
-                    <enabled>true</enabled>
-                    <name>Skype</name>
-                </startupnotify>
-                <command>skypeforlinux</command>
-            </action>
-        </keybind>
-${% endif %}
-
 {% if 'doublecmd' in user_config.apps %}
         <keybind key="C-W-d">
             <action name="Execute">
