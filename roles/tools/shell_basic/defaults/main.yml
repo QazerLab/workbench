@@ -1,0 +1,31 @@
+---
+tools_shell_basic_base_packages:
+  - 'coreutils'
+  - 'grep'
+  - 'file'
+  - 'tree'
+  - 'man-db'
+
+tools_shell_basic_packages:
+  Archlinux: >-
+    {{
+      tools_shell_basic_base_packages +
+
+      ['which', 'man-pages']
+    }}
+
+  RedHat: >-
+    {{
+      tools_shell_basic_base_packages +
+
+      ['which', 'man-pages']
+    }}
+
+  # XXX: which seems to be provided by debianutils which, in turn, seems to be
+  # always present in the system, so we don't install it explicitly.
+  PureOS: >-
+    {{
+      tools_shell_basic_base_packages +
+
+      ['manpages', 'manpages-dev']
+    }}

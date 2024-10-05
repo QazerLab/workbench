@@ -8,18 +8,20 @@ tools_shell_extras_editor_plugins:
       repo: 'https://github.com/junegunn/fzf.vim'
       requires_config: true
 
+tools_shell_extras_base_packages:
+  - 'mlocate'
+  - 'moreutils'
+  - 'ripgrep'
+  - 'jq'
+  - 'wget'
+
 tools_shell_extras_packages:
-  Archlinux:
-    - 'mlocate'
-    - 'moreutils'
-    - 'ripgrep'
-    - 'fd'
-    - 'fzf'
-    - 'bat'
-    - 'jq'
-    - 'yq'
-    - 'wget'
-    - 'lynx'
+  Archlinux: >-
+    {{
+      tools_shell_extras_base_packages +
+
+      ['fd', 'fzf', 'bat', 'yq', 'lynx']
+    }}
 
   # XXX: fd, fzf and bat are not yet available as ordinary packages, so they
   # are installed as plain statically-linked binaries.
@@ -28,12 +30,16 @@ tools_shell_extras_packages:
   # them on servers, so they are simply discarded for the RedHat family.
   # Probably, these tools (along with jq?) deserve to be moved out of this
   # toolchain?
-  RedHat:
-    - 'mlocate'
-    - 'moreutils'
-    - 'ripgrep'
-    - 'jq'
-    - 'wget'
+  RedHat: '{{ tools_shell_extras_base_packages }}'
+
+  # XXX: again, yq does not seem to be available for now, so we omit it.
+  # It should appear in Crimson though, as it is present in the Bookworm repo.
+  PureOS: >-
+    {{
+      tools_shell_extras_base_packages +
+
+      ['fd-find', 'fzf', 'bat', 'lynx']
+    }}
 
 # The parameters below apply only to fallback static binary installation, so
 # they are private to the role and are not considered parts of toolchain

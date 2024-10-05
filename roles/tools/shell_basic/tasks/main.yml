@@ -1,6 +1,6 @@
 ---
 - name: 'Fail if role does not support target OS'
-  when: 'ansible_os_family not in ["Archlinux", "RedHat"]'
+  when: 'ansible_os_family not in ["Archlinux", "RedHat", "PureOS"]'
   tags: 'user'
   ansible.builtin.fail:
     msg: >-
@@ -12,14 +12,7 @@
   become_user: 'root'
   ansible.builtin.package:
     state: 'present'
-    name:
-      - 'coreutils'
-      - 'grep'
-      - 'which'
-      - 'file'
-      - 'tree'
-      - 'man-db'
-      - 'man-pages'
+    name: '{{ tools_shell_basic_packages[ansible_os_family] }}'
 
 - name: 'Find default editor'
   tags: 'user'

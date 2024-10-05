@@ -1,6 +1,6 @@
 ---
 - name: 'Fail if role does not support target OS'
-  when: 'ansible_os_family not in ["Archlinux", "RedHat"]'
+  when: 'ansible_os_family not in ["Archlinux", "RedHat", "PureOS"]'
   tags: 'user'
   ansible.builtin.fail:
     msg: >-
@@ -12,8 +12,4 @@
   become_user: 'root'
   ansible.builtin.package:
     state: 'present'
-    name:
-      - 'perf'
-      - 'trace-cmd'
-      - 'strace'
-      - 'ltrace'
+    name: '{{ tools_admin_tracing_packages[ansible_os_family] }}'

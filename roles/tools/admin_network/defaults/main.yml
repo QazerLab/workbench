@@ -31,5 +31,13 @@ tools_admin_network_packages:
   RedHat: >-
     {{
       tools_admin_network_base_packages +
+
       ['iproute', 'bind-utils', 'netcat']
+    }}
+
+  PureOS: >-
+    {{
+      tools_admin_network_base_packages +
+
+      ['iproute2', 'bind9-utils', 'dnsutils', 'netcat']
     }}

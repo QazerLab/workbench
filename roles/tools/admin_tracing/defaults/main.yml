@@ -1,0 +1,28 @@
+---
+tools_admin_tracing_base_packages:
+  - 'trace-cmd'
+  - 'strace'
+
+tools_admin_tracing_packages:
+  Archlinux: >-
+    {{
+      tools_admin_tracing_base_packages +
+
+      ['perf', 'ltrace']
+    }}
+
+  RedHat: >-
+    {{
+      tools_admin_tracing_base_packages +
+
+      ['perf', 'ltrace']
+    }}
+
+  # XXX: occasionally, there is no ltrace for PureOS, though it seems to exist
+  # in original Debian Bookworm repos and, thus, should appear in Crimson.
+  PureOS: >-
+    {{
+      tools_admin_tracing_base_packages +
+
+      ['linux-perf']
+    }}

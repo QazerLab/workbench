@@ -5,7 +5,6 @@ tools_admin_system_basic_packages:
   - 'pciutils'
   - 'usbutils'
   - 'smartmontools'
-  - 'lm_sensors'
   - 'upower'
   - 'powertop'
   - 'lshw'
@@ -17,7 +16,22 @@ tools_admin_system_packages:
   Archlinux: >-
     {{
       tools_admin_system_basic_packages +
-      ["acpi", "usb_modeswitch"]
+
+      ['lm_sensors'] +
+
+      ['acpi', 'usb_modeswitch']
     }}
 
-  RedHat: '{{ tools_admin_system_basic_packages }}'
+  RedHat: >-
+    {{
+      tools_admin_system_basic_packages +
+
+      ['lm_sensors']
+    }}
+
+  PureOS: >-
+    {{
+      tools_admin_system_basic_packages +
+
+      ['lm-sensors']
+    }}

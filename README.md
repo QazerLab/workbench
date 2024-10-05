@@ -32,18 +32,21 @@ System-wide configuration:
         <th></th>
         <th><b>ArchLinux</b></th>
         <th><b>RedHat</b></th>
+        <th><b>PureOS</b></th>
     </tr>
     <tr>
         <td><b>xorg</b></td>
         <td><b>&#x2713;</b></td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
-        <td colspan = "3" align = "center"><b>DMs</b></td>
+        <td colspan = "4" align = "center"><b>DMs</b></td>
     </tr>
     <tr>
         <td><b>lightdm</b></td>
         <td><b>&#x2713;</b></td>
+        <td></td>
         <td></td>
     </tr>
 </table>
@@ -55,33 +58,38 @@ User-specific configuration:
         <th></th>
         <th><b>ArchLinux</b></th>
         <th><b>RedHat</b></th>
+        <th><b>PureOS</b></th>
     </tr>
     <tr>
         <td><b>profile</b></td>
         <td><b>&#x2713;</b></td>
         <td><b>&#x2713;</b></td>
+        <td><b>&#x2713;</b></td>
     </tr>
     <tr>
-        <td colspan = "3" align = "center"><b>shells</b></td>
+        <td colspan = "4" align = "center"><b>shells</b></td>
     </tr>
     <tr>
         <td><b>bash</b></td>
         <td><b>&#x2713;</b></td>
         <td><b>&#x2713;</b></td>
+        <td><b>&#x2713;</b></td>
     </tr>
     <tr>
-        <td colspan = "3" align = "center"><b>editors</b></td>
+        <td colspan = "4" align = "center"><b>editors</b></td>
     </tr>
     <tr>
         <td><b>vim</b></td>
         <td><b>&#x2713;</b></td>
         <td><b>&#x2713;</b></td>
+        <td><b>&#x2713;</b></td>
     </tr>
     <tr>
-        <td colspan = "3" align = "center"><b>toolchains</b></td>
+        <td colspan = "4" align = "center"><b>toolchains</b></td>
     </tr>
     <tr>
         <td><b>shell_basic</b></td>
+        <td><b>&#x2713;</b></td>
         <td><b>&#x2713;</b></td>
         <td><b>&#x2713;</b></td>
     </tr>
@@ -89,14 +97,17 @@ User-specific configuration:
         <td><b>shell_extras</b></td>
         <td><b>&#x2713;</b></td>
         <td><b>amd64 only</b></td>
+        <td><b>&#x2713;</b></td>
     </tr>
     <tr>
         <td><b>admin_network</b></td>
         <td><b>&#x2713;</b></td>
         <td><b>no GUI</b></td>
+        <td><b>no GUI</b></td>
     </tr>
     <tr>
         <td><b>admin_system</b></td>
+        <td><b>&#x2713;</b></td>
         <td><b>&#x2713;</b></td>
         <td><b>&#x2713;</b></td>
     </tr>
@@ -104,66 +115,78 @@ User-specific configuration:
         <td><b>admin_tracing</b></td>
         <td><b>&#x2713;</b></td>
         <td><b>&#x2713;</b></td>
+        <td><b>&#x2713;</b></td>
     </tr>
     <tr>
         <td><b>devel_basic</b></td>
         <td><b>&#x2713;</b></td>
+        <td></td>
         <td></td>
     </tr>
     <tr>
         <td><b>devel_java</b></td>
         <td><b>&#x2713;</b></td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
         <td><b>devel_rust</b></td>
         <td><b>&#x2713;</b></td>
+        <td></td>
         <td></td>
     </tr>
     <tr>
         <td><b>devel_go</b></td>
         <td><b>&#x2713;</b></td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
         <td><b>devel_python</b></td>
         <td><b>&#x2713;</b></td>
+        <td></td>
         <td></td>
     </tr>
     <tr>
         <td><b>devel_extras</b></td>
         <td><b>&#x2713;</b></td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
         <td><b>devel_web</b></td>
         <td><b>&#x2713;</b></td>
+        <td></td>
         <td></td>
     </tr>
     <tr>
         <td><b>media</b></td>
         <td><b>&#x2713;</b></td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
         <td><b>office</b></td>
         <td><b>&#x2713;</b></td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
-        <td colspan = "3" align = "center"><b>DEs</b></td>
+        <td colspan = "4" align = "center"><b>DEs</b></td>
     </tr>
     <tr>
         <td><b>openbox_qaztom</b></td>
         <td><b>&#x2713;</b></td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
-        <td colspan = "3" align = "center"><b>standalone apps</b></td>
+        <td colspan = "4" align = "center"><b>standalone apps</b></td>
     </tr>
     <tr>
         <td><b>(all apps)</b></td>
         <td><b>&#x2713;</b></td>
+        <td></td>
         <td></td>
     </tr>
 </table>
