@@ -382,8 +382,8 @@ loop_control
 vars
 register
 notify
-changed_when
 failed_when
+changed_when
 args
 environment
 task / block
