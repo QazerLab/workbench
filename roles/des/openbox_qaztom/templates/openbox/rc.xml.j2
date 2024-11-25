@@ -486,6 +486,18 @@
         </keybind>
 {% endif %}
 
+{% if 'mattermost' in user_config.apps %}
+        <keybind key="C-W-l">
+            <action name="Execute">
+                <startupnotify>
+                    <enabled>true</enabled>
+                    <name>Mattermost</name>
+                </startupnotify>
+                <command>mattermost-desktop</command>
+            </action>
+        </keybind>
+{% endif %}
+
 {% if 'media' in user_config.toolchains %}
         <keybind key="C-W-z">
             <action name="Execute">

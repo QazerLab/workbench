@@ -86,6 +86,7 @@ desktops:
             vivaldi: {}
             sublime: {}
             telegram: {}
+            mattermost: {}
 
             doublecmd:
               terminal: 'alacritty'

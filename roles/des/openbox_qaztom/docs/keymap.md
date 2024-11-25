@@ -77,9 +77,9 @@ D        | Toggle show desktop              | Run DoubleCmd          | `W-D` is 
 F        | Toggle fullscreen                | Run Firefox            |
 G        |                                  | Run Gimp               |
 H        | Go to desktop left               |                        |
-J        | Minimize window                  |
-K        | Maximize window                  |
-L        | Go to desktop right              |
+J        | Minimize window                  |                        |
+K        | Maximize window                  |                        |
+L        | Go to desktop right              | Run Mattermost         |
 ;        | Lock screen                      |
 '        |                                  |
 
