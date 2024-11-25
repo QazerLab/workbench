@@ -36,6 +36,7 @@
       # Heavyweight stuff.
       - 'docker'
       - 'docker-compose'
+      - 'docker-buildx'
       - 'podman'
       - 'buildah'
       - 'skopeo'
