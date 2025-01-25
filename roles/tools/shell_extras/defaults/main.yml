@@ -25,13 +25,11 @@ tools_shell_extras_packages:
       ['fd', 'fzf']
     }}
 
-  # XXX: fzf is not yet available as ordinary package in EPEL8, so it is
-  # installed as plain statically-linked binary.
   RedHat: >-
     {{
       tools_shell_extras_base_packages +
 
-      ['fd-find']
+      ['fd-find', 'fzf']
     }}
 
   PureOS: >-

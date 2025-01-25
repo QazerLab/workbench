@@ -1,10 +1,7 @@
 ---
 - name: 'Fail if role does not support target OS'
   when: >-
-    ansible_os_family not in ['Archlinux', 'PureOS'] and (
-      ansible_os_family in ['RedHat'] and
-      ansible_architecture not in ['x86_64']
-    )
+    ansible_os_family not in ['Archlinux', 'RedHat', 'PureOS']
   tags: 'user'
   ansible.builtin.fail:
     msg: >-
@@ -19,7 +16,7 @@
     name: '{{ tools_shell_extras_packages[ansible_os_family] }}'
 
 - name: 'Install static binaries when packages are not available'
-  when: 'ansible_os_family in ["RedHat", "PureOS"]'
+  when: 'ansible_os_family in ["PureOS"]'
   block:
     - name: 'Install fzf static binary'
       ansible.builtin.unarchive:
