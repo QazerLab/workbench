@@ -11,22 +11,13 @@
 # XXX: the yum_repository builtin module requires us to set baseurl or
 # mirrorlist parameter explicitly. These URLs are distro-specific, and setting
 # them explicitly would require us to customize the installation per-distro
-# rather than per- family.
+# rather than per-family.
 #
 # Given that all RedHat-family distros already ship the configuration for
-# powertools and we only need to enable it (not configure it from scratch),
+# crb and we only need to enable it (not configure it from scratch),
 # yum_repository's requirements are a pointless obstacle, so we resort to the
 # CLI command to enable the required repo and to avoid per-distro
 # configuration.
-- name: 'Enable powertools repo'
-  when: 'ansible_distribution_major_version == "8"'
-  become: true
-  changed_when: true
-  ansible.builtin.command:
-    cmd: 'yum config-manager --enable powertools'
-
-# XXX: for bureaucratic reasons in AlmaLinux 9 powertools were renamed to crb.
-# This is just the same powertools repo, but rebranded.
 - name: 'Enable crb repo'
   when: 'ansible_distribution_major_version == "9"'
   become: true
