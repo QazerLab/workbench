@@ -10,7 +10,7 @@
   become: true
   become_user: 'root'
   ansible.builtin.package:
-    name: 'doublecmd-gtk2'
+    name: 'doublecmd-qt5'
     state: 'present'
 
 - name: 'Delete doublecmd configs if required'
