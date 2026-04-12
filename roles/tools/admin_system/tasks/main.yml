@@ -1,15 +1,15 @@
 ---
 - name: 'Fail if role does not support target OS'
-  when: 'ansible_os_family not in ["Archlinux", "RedHat", "PureOS"]'
+  when: 'ansible_facts["os_family"] not in ["Archlinux", "RedHat", "PureOS"]'
   tags: 'user'
   ansible.builtin.fail:
     msg: >-
       This role does not yet support target distribution;
-      target OS family is: {{ ansible_os_family }}.
+      target OS family is: {{ ansible_facts["os_family"] }}.
 
 - name: 'Install system administration tools'
   become: true
   become_user: 'root'
   ansible.builtin.package:
     state: 'present'
-    name: '{{ tools_admin_system_packages[ansible_os_family] }}'
+    name: '{{ tools_admin_system_packages[ansible_facts["os_family"]] }}'

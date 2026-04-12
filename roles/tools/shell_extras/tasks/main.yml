@@ -1,22 +1,22 @@
 ---
 - name: 'Fail if role does not support target OS'
   when: >-
-    ansible_os_family not in ['Archlinux', 'RedHat', 'PureOS']
+    ansible_facts["os_family"] not in ['Archlinux', 'RedHat', 'PureOS']
   tags: 'user'
   ansible.builtin.fail:
     msg: >-
       This role does not yet support target distribution;
-      target OS is: {{ ansible_os_family }} on {{ ansible_architecture }}.
+      target OS is: {{ ansible_facts["os_family"] }} on {{ ansible_architecture }}.
 
 - name: 'Install extra CLI tools'
   become: true
   become_user: 'root'
   ansible.builtin.package:
     state: 'present'
-    name: '{{ tools_shell_extras_packages[ansible_os_family] }}'
+    name: '{{ tools_shell_extras_packages[ansible_facts["os_family"]] }}'
 
 - name: 'Install static binaries when packages are not available'
-  when: 'ansible_os_family in ["PureOS"]'
+  when: 'ansible_facts["os_family"] in ["PureOS"]'
   block:
     - name: 'Install fzf static binary'
       ansible.builtin.unarchive:
@@ -47,7 +47,7 @@
 # so we make an attempt to make these binaries availabe via their original
 # names by symlinking them from /usr/local/bin.
 - name: 'Make renamed binaries available in PATH with their original names'
-  when: 'ansible_os_family == "PureOS"'
+  when: 'ansible_facts["os_family"] == "PureOS"'
   become: true
   become_user: 'root'
   block:
